@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllphiFleet", "AllphiFleet\AllphiFleet.csproj", "{81AAC8D2-A9A9-40A2-9F90-3444EC997B9D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{8FAFBFD8-BAA4-4DAC-BD23-20DF20017968}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{57413C3F-4ECA-4712-A6B7-137C93B2BDC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81AAC8D2-A9A9-40A2-9F90-3444EC997B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81AAC8D2-A9A9-40A2-9F90-3444EC997B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81AAC8D2-A9A9-40A2-9F90-3444EC997B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81AAC8D2-A9A9-40A2-9F90-3444EC997B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FAFBFD8-BAA4-4DAC-BD23-20DF20017968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAFBFD8-BAA4-4DAC-BD23-20DF20017968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAFBFD8-BAA4-4DAC-BD23-20DF20017968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAFBFD8-BAA4-4DAC-BD23-20DF20017968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57413C3F-4ECA-4712-A6B7-137C93B2BDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57413C3F-4ECA-4712-A6B7-137C93B2BDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57413C3F-4ECA-4712-A6B7-137C93B2BDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57413C3F-4ECA-4712-A6B7-137C93B2BDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62A4A7D0-82B1-4C6C-A606-D0BA075C79D2}
+	EndGlobalSection
+EndGlobal
