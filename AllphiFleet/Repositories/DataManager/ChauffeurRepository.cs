@@ -10,10 +10,10 @@ namespace Entities.Models.DataManager
 {
     //endpoint
     //niet generiek
-    public class ChauffeurManager : IDataRepository<Chauffeur>
+    public class ChauffeurRepository : IDataRepository<Chauffeur>
     {
         readonly ChauffeurContext _chauffeurContext;
-        public ChauffeurManager(ChauffeurContext context)
+        public ChauffeurRepository(ChauffeurContext context)
         {
             _chauffeurContext = context;
         }

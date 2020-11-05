@@ -1,8 +1,6 @@
 ﻿using AllphiFleet.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DAL
 {
@@ -13,7 +11,7 @@ namespace DAL
         {
         }
 
-        public DbSet<AllphiFleet.Models.Chauffeur> Chauffeurs { get; set; }
+        public DbSet<Chauffeur> Chauffeurs { get; set; }
         //public DbSet<Account> Accounts { get; set; }
 
         //data invoeren
