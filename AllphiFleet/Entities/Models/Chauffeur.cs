@@ -1,15 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace AllphiFleet.Models
 {
     [Table("chauffeur")]
     public class Chauffeur
     {
+        public enum RijbewijsTypes
+        {
+            AM,
+            A,
+            B,
+            C,
+            D,
+            G
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ChauffeurId { get; set; }
@@ -31,8 +39,8 @@ namespace AllphiFleet.Models
         [Required(ErrorMessage = "Rijksregisternummer is verplicht.")]
         public string RijksRegisterNummer { get; set; }
 
-        //enum nog aanmaken
-        public string TypeRijbewijs { get; set; }
+        public RijbewijsTypes TypeRijbewijs { get; set; }
+        
         public bool Actief { get; set; }
     }
 }

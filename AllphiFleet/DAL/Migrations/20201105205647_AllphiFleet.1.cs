@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DAL.Migrations
+namespace Repositories.Migrations
 {
-    public partial class AllpiFleetChauffeur : Migration
+    public partial class AllphiFleet1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,13 +18,23 @@ namespace DAL.Migrations
                     Adres = table.Column<string>(nullable: false),
                     GeboorteDatum = table.Column<DateTime>(nullable: false),
                     RijksRegisterNummer = table.Column<string>(nullable: false),
-                    TypeRijbewijs = table.Column<string>(nullable: true),
+                    TypeRijbewijs = table.Column<int>(nullable: false),
                     Actief = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_chauffeur", x => x.ChauffeurId);
                 });
+
+            migrationBuilder.InsertData(
+                table: "chauffeur",
+                columns: new[] { "ChauffeurId", "Actief", "Adres", "GeboorteDatum", "Naam", "RijksRegisterNummer", "TypeRijbewijs", "Voornaam" },
+                values: new object[] { 1L, true, "Bremptstraat 54", new DateTime(1979, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bob", "999-888-7777", 2, "Uncle" });
+
+            migrationBuilder.InsertData(
+                table: "chauffeur",
+                columns: new[] { "ChauffeurId", "Actief", "Adres", "GeboorteDatum", "Naam", "RijksRegisterNummer", "TypeRijbewijs", "Voornaam" },
+                values: new object[] { 2L, true, "Bremptstraat 54", new DateTime(1989, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Breem", "999-888-1111", 1, "Rik" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

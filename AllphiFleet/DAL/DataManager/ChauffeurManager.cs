@@ -8,6 +8,8 @@ using System.Text;
 
 namespace Entities.Models.DataManager
 {
+    //endpoint
+    //niet generiek
     public class ChauffeurManager : IDataRepository<Chauffeur>
     {
         readonly ChauffeurContext _chauffeurContext;

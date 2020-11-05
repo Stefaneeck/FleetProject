@@ -4,16 +4,14 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace DAL.Migrations
+namespace Repositories.Migrations
 {
     [DbContext(typeof(ChauffeurContext))]
-    [Migration("20201105160534_AllpiFleet.Chauffeur2")]
-    partial class AllpiFleetChauffeur2
+    partial class ChauffeurContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,6 +25,9 @@ namespace DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Actief")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Adres")
                         .IsRequired()
@@ -43,8 +44,8 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TypeRijbewijs")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TypeRijbewijs")
+                        .HasColumnType("int");
 
                     b.Property<string>("Voornaam")
                         .IsRequired()
@@ -53,6 +54,30 @@ namespace DAL.Migrations
                     b.HasKey("ChauffeurId");
 
                     b.ToTable("chauffeur");
+
+                    b.HasData(
+                        new
+                        {
+                            ChauffeurId = 1L,
+                            Actief = true,
+                            Adres = "Bremptstraat 54",
+                            GeboorteDatum = new DateTime(1979, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Naam = "Bob",
+                            RijksRegisterNummer = "999-888-7777",
+                            TypeRijbewijs = 2,
+                            Voornaam = "Uncle"
+                        },
+                        new
+                        {
+                            ChauffeurId = 2L,
+                            Actief = true,
+                            Adres = "Bremptstraat 54",
+                            GeboorteDatum = new DateTime(1989, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Naam = "Breem",
+                            RijksRegisterNummer = "999-888-1111",
+                            TypeRijbewijs = 1,
+                            Voornaam = "Rik"
+                        });
                 });
 #pragma warning restore 612, 618
         }
