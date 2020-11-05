@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
+    [DbContext(typeof(ChauffeurContext))]
     [Migration("20201105160534_AllpiFleet.Chauffeur2")]
     partial class AllpiFleetChauffeur2
     {

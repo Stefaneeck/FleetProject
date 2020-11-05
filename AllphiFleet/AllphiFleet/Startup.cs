@@ -28,7 +28,7 @@ namespace AllphiFleet
         public void ConfigureServices(IServiceCollection services)
         {
             //added stefan
-            services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]));
+            services.AddDbContext<ChauffeurContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]));
             //end added
             services.AddControllers();
         }
