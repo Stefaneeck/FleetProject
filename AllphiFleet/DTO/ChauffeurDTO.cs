@@ -2,18 +2,8 @@
 
 namespace DTO
 {
-    public class ChauffeurDTO
+    public partial class ChauffeurDTO
     {
-        public enum RijbewijsTypes
-        {
-            AM,
-            A,
-            B,
-            C,
-            D,
-            G
-        }
-
         public long ChauffeurId { get; set; }
 
         public string Naam { get; set; }
@@ -29,6 +19,6 @@ namespace DTO
         public RijbewijsTypes TypeRijbewijs { get; set; }
         
         //ter voorbeeld voor mapper in comment gezet
-        //public bool Actief { get; set; }
+        public bool Actief { get; set; }
     }
 }

@@ -14,12 +14,20 @@ namespace ReadApi.Controllers
     public class ChauffeurController : ControllerBase
     {
         //DI van IDataRepository en IMapper
-        private readonly IDataRepository<Chauffeur> _dataRepository;
-        private readonly IMapper _mapper;
+        private readonly IDataRepository<ChauffeurDTO> _dataRepository;
+        //private readonly IMapper _mapper;
+
+        /*
         public ChauffeurController(IDataRepository<Chauffeur> dataRepository, IMapper mapper)
         {
             _dataRepository = dataRepository;
             _mapper = mapper;
+        }
+
+        */
+        public ChauffeurController(IDataRepository<ChauffeurDTO> dataRepository)
+        {
+            _dataRepository = dataRepository;
         }
         // GET: api/Employee
         [HttpGet]
@@ -29,12 +37,13 @@ namespace ReadApi.Controllers
         {
             try
             {
-                IEnumerable<Chauffeur> chauffeurs = _dataRepository.GetAll();
+                IEnumerable<ChauffeurDTO> chauffeurDTOs = _dataRepository.GetAll();
 
                 //automapper, model omzetten naar DTO
-                ChauffeurDTO[] dtos = _mapper.Map<ChauffeurDTO[]>(chauffeurs);
+                //hier niet omzetten maar in servicelaag (chauffeurrepository)
+                //ChauffeurDTO[] dtos = _mapper.Map<ChauffeurDTO[]>(chauffeurs);
 
-                return Ok(dtos);
+                return Ok(chauffeurDTOs);
             }
             catch (Exception)
             {
@@ -46,53 +55,53 @@ namespace ReadApi.Controllers
         [HttpGet("{id}", Name = "Get")]
         public IActionResult Get(long id)
         {
-            Chauffeur chauffeurs = _dataRepository.Get(id);
-            if (chauffeurs == null)
+            ChauffeurDTO chauffeurDTO = _dataRepository.Get(id);
+            if (chauffeurDTO == null)
             {
                 return NotFound("The Chauffeur record couldn't be found.");
             }
-            return Ok(chauffeurs);
+            return Ok(chauffeurDTO);
         }
         // POST: api/Employee
         [HttpPost]
-        public IActionResult Post([FromBody] Chauffeur chauffeur)
+        public IActionResult Post([FromBody] ChauffeurDTO chauffeurDTO)
         {
-            if (chauffeur == null)
+            if (chauffeurDTO == null)
             {
                 return BadRequest("Chauffeur is null.");
             }
-            _dataRepository.Add(chauffeur);
+            _dataRepository.Add(chauffeurDTO);
             return CreatedAtRoute(
                   "Get",
-                  new { Id = chauffeur.ChauffeurId },
-                  chauffeur);
+                  new { Id = chauffeurDTO.ChauffeurId },
+                  chauffeurDTO);
         }
         // PUT: api/Employee/5
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] Chauffeur chauffeur)
+        public IActionResult Put(long id, [FromBody] ChauffeurDTO chauffeurDTO)
         {
-            if (chauffeur == null)
+            if (chauffeurDTO == null)
             {
                 return BadRequest("Chauffeur is null.");
             }
-            Chauffeur chauffeurToUpdate = _dataRepository.Get(id);
+            ChauffeurDTO chauffeurToUpdate = _dataRepository.Get(id);
             if (chauffeurToUpdate == null)
             {
                 return NotFound("The Chauffeur record couldn't be found.");
             }
-            _dataRepository.Update(chauffeurToUpdate, chauffeur);
+            _dataRepository.Update(chauffeurToUpdate, chauffeurDTO);
             return NoContent();
         }
         // DELETE: api/Employee/5
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            Chauffeur chauffeur = _dataRepository.Get(id);
-            if (chauffeur == null)
+            ChauffeurDTO chauffeurDTO = _dataRepository.Get(id);
+            if (chauffeurDTO == null)
             {
                 return NotFound("The Chauffeur record couldn't be found.");
             }
-            _dataRepository.Delete(chauffeur);
+            _dataRepository.Delete(chauffeurDTO);
             return NoContent();
         }
     }

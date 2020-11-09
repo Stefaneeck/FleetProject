@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,15 +8,6 @@ namespace Repositories.Models
     public class Chauffeur
     {
         //annotations gewijzigd naar fluentapi om makkelijker met nhibernate samen te kunnen werken
-        public enum RijbewijsTypes
-        {
-            AM,
-            A,
-            B,
-            C,
-            D,
-            G
-        }
 
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

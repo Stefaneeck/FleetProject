@@ -11,6 +11,9 @@ namespace Repositories.Profiles
         {
             //omzetten van Chauffeur naar ChauffeurDTO
             this.CreateMap<Chauffeur, ChauffeurDTO>();
+
+            //omgekeerde mapping
+            this.CreateMap<Chauffeur, ChauffeurDTO>().ReverseMap();
         }
     }
 }
