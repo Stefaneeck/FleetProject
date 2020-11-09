@@ -1,5 +1,5 @@
-﻿using DTO;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Repositories.Models;
 using System;
 
 namespace Repositories
@@ -10,11 +10,9 @@ namespace Repositories
             : base(options)
         {
         }
-
         public DbSet<Chauffeur> Chauffeurs { get; set; }
         //public DbSet<Account> Accounts { get; set; }
 
-        //data invoeren
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //instellingen voor de tabel in de databank
@@ -54,6 +52,7 @@ namespace Repositories
                 .Property(c => c.Actief)
                 .IsRequired();
 
+            //data invoeren
             //id expliciet meegeven hier, desondanks het auto increment is
             modelBuilder.Entity<Chauffeur>().HasData(new Chauffeur
             {

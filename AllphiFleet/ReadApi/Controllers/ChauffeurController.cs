@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using DTO;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
+using Repositories.Models;
 
 namespace ReadApi.Controllers
 {
@@ -12,17 +13,34 @@ namespace ReadApi.Controllers
     [ApiController]
     public class ChauffeurController : ControllerBase
     {
+        //DI van IDataRepository en IMapper
         private readonly IDataRepository<Chauffeur> _dataRepository;
-        public ChauffeurController(IDataRepository<Chauffeur> dataRepository)
+        private readonly IMapper _mapper;
+        public ChauffeurController(IDataRepository<Chauffeur> dataRepository, IMapper mapper)
         {
             _dataRepository = dataRepository;
+            _mapper = mapper;
         }
         // GET: api/Employee
         [HttpGet]
+        
+        //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
         public IActionResult Get()
         {
-            IEnumerable<Chauffeur> chauffeurs = _dataRepository.GetAll();
-            return Ok(chauffeurs);
+            try
+            {
+                IEnumerable<Chauffeur> chauffeurs = _dataRepository.GetAll();
+
+                //automapper, model omzetten naar DTO
+                ChauffeurDTO[] dtos = _mapper.Map<ChauffeurDTO[]>(chauffeurs);
+
+                return Ok(dtos);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database error");
+            }
+            
         }
         // GET: api/Employee/5
         [HttpGet("{id}", Name = "Get")]

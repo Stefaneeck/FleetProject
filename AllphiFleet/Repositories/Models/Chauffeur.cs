@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace DTO
+namespace Repositories.Models
 {
     public class Chauffeur
     {
+        //annotations gewijzigd naar fluentapi om makkelijker met nhibernate samen te kunnen werken
         public enum RijbewijsTypes
         {
             AM,
@@ -40,3 +43,4 @@ namespace DTO
         public bool Actief { get; set; }
     }
 }
+
