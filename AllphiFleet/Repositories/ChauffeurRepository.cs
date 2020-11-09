@@ -1,15 +1,11 @@
-﻿using AllphiFleet.Models;
-using DAL;
-using Entities.Models.Repository;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using System.Linq;
 
-namespace Entities.Models.DataManager
+namespace Repositories
 {
-    //endpoint
-    //niet generiek
     public class ChauffeurRepository : IDataRepository<Chauffeur>
     {
         readonly ChauffeurContext _chauffeurContext;

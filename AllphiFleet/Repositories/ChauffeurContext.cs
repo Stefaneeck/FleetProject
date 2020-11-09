@@ -1,8 +1,8 @@
-﻿using AllphiFleet.Models;
+﻿using DTO;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace DAL
+namespace Repositories
 {
     public class ChauffeurContext : DbContext
     {
@@ -17,6 +17,43 @@ namespace DAL
         //data invoeren
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //instellingen voor de tabel in de databank
+            //werken met fluent api manier in plaats van annotations in model klasse zelf, zodat we geen annotions moeten gebruiken en de klassen daar als DTO's kunnen gebruiken
+            modelBuilder.Entity<Chauffeur>()
+                .HasKey(c => c.ChauffeurId);
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.ChauffeurId)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.Naam)
+                .IsRequired();
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.Voornaam)
+                .IsRequired();
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.Adres)
+                .IsRequired();
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.GeboorteDatum)
+                .IsRequired();
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.RijksRegisterNummer)
+                .IsRequired();
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.TypeRijbewijs)
+                .IsRequired();
+
+            modelBuilder.Entity<Chauffeur>()
+                .Property(c => c.Actief)
+                .IsRequired();
+
             //id expliciet meegeven hier, desondanks het auto increment is
             modelBuilder.Entity<Chauffeur>().HasData(new Chauffeur
             {
@@ -38,7 +75,7 @@ namespace DAL
                 RijksRegisterNummer = "999-888-1111",
                 TypeRijbewijs = Chauffeur.RijbewijsTypes.A,
                 Actief = true
-            });;
+            }); ;
         }
     }
 }

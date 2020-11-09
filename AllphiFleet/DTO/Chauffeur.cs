@@ -1,11 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace AllphiFleet.Models
+namespace DTO
 {
-    [Table("chauffeur")]
     public class Chauffeur
     {
         public enum RijbewijsTypes
@@ -18,29 +14,29 @@ namespace AllphiFleet.Models
             G
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ChauffeurId { get; set; }
 
-        [Required(ErrorMessage = "Naam is verplicht.")]
+        //[Required(ErrorMessage = "Naam is verplicht.")]
         public string Naam { get; set; }
 
-        [Required(ErrorMessage = "Voornaam is verplicht.")]
+        //[Required(ErrorMessage = "Voornaam is verplicht.")]
         public string Voornaam { get; set; }
 
         //hier klasse adres voor maken
-        [Required(ErrorMessage = "Adres is verplicht.")]
+        //[Required(ErrorMessage = "Adres is verplicht.")]
         public string Adres { get; set; }
 
-        [Required(ErrorMessage = "Geboortedatum is verplicht.")]
+        //[Required(ErrorMessage = "Geboortedatum is verplicht.")]
         public DateTime GeboorteDatum { get; set; }
 
         //todo validatie
-        [Required(ErrorMessage = "Rijksregisternummer is verplicht.")]
+        //[Required(ErrorMessage = "Rijksregisternummer is verplicht.")]
         public string RijksRegisterNummer { get; set; }
 
         public RijbewijsTypes TypeRijbewijs { get; set; }
-        
+
         public bool Actief { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Repositories.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "chauffeur",
+                name: "Chauffeurs",
                 columns: table => new
                 {
                     ChauffeurId = table.Column<long>(nullable: false)
@@ -23,16 +23,16 @@ namespace Repositories.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_chauffeur", x => x.ChauffeurId);
+                    table.PrimaryKey("PK_Chauffeurs", x => x.ChauffeurId);
                 });
 
             migrationBuilder.InsertData(
-                table: "chauffeur",
+                table: "Chauffeurs",
                 columns: new[] { "ChauffeurId", "Actief", "Adres", "GeboorteDatum", "Naam", "RijksRegisterNummer", "TypeRijbewijs", "Voornaam" },
                 values: new object[] { 1L, true, "Bremptstraat 54", new DateTime(1979, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bob", "999-888-7777", 2, "Uncle" });
 
             migrationBuilder.InsertData(
-                table: "chauffeur",
+                table: "Chauffeurs",
                 columns: new[] { "ChauffeurId", "Actief", "Adres", "GeboorteDatum", "Naam", "RijksRegisterNummer", "TypeRijbewijs", "Voornaam" },
                 values: new object[] { 2L, true, "Bremptstraat 54", new DateTime(1989, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Breem", "999-888-1111", 1, "Rik" });
         }
@@ -40,7 +40,7 @@ namespace Repositories.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "chauffeur");
+                name: "Chauffeurs");
         }
     }
 }
