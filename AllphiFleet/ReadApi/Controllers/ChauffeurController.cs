@@ -26,7 +26,7 @@ namespace ReadApi.Controllers
         {
             try
             {
-                IEnumerable<ChauffeurDTO> chauffeurDTOs = _chauffeurService.GetChauffeurs();
+                IEnumerable<ChauffeurDTO> chauffeurDTOs = _chauffeurService.GetChauffeurs(null);
 
                 //automapper, model omzetten naar DTO
                 //hier niet omzetten maar in servicelaag (chauffeurrepository)
