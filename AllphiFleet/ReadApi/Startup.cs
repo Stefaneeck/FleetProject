@@ -1,5 +1,4 @@
 using AutoMapper;
-using DTO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repositories;
 using Repositories.Models;
-using Repositories.Profiles;
-using System;
-using System.Linq;
-using System.Reflection;
+using Services;
 
 namespace ReadApi
 {
@@ -29,9 +25,11 @@ namespace ReadApi
         {
             //added stefan
             services.AddDbContext<ChauffeurContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]));
-           
+
             //added stefan (addscoped voor DI van IDataRepository)
-            services.AddScoped<IDataRepository<ChauffeurDTO>, ChauffeurRepository>();
+            services.AddScoped<IDataReadRepository<Chauffeur>, ChauffeurRepository>();
+
+            services.AddScoped<ChauffeurService>();
 
             //added Stefan (automapper toevoegen)
             //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet, daarom static klasse gemaakt waarin assembly kan worden opgehaald
@@ -41,6 +39,8 @@ namespace ReadApi
             //typeof omdat je geen klasse als variabele kan gebruiken
             //assembly van klasse chauffeurprofile ophalen
             //services.AddAutoMapper(typeof(ChauffeurProfile)); 
+            
+            //moet de assembly zijn uit het project dat profile bevat
             services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
 
             services.AddControllers();

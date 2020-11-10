@@ -1,4 +1,4 @@
-﻿namespace DTO
+﻿namespace Repositories
 {        public enum RijbewijsTypes
         {
             AM,

@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Repositories;
+using System;
 
 namespace DTO
 {
+
+    //link met repositories voor enum, anders doen?
     public partial class ChauffeurDTO
     {
         public long ChauffeurId { get; set; }
@@ -18,7 +21,6 @@ namespace DTO
 
         public RijbewijsTypes TypeRijbewijs { get; set; }
         
-        //ter voorbeeld voor mapper in comment gezet
         public bool Actief { get; set; }
     }
 }

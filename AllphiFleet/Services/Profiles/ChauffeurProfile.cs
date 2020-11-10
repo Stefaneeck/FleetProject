@@ -2,8 +2,9 @@
 using DTO;
 using Repositories.Models;
 
-namespace Repositories.Profiles
+namespace Services.Profiles
 {
+    //configuratie Automapper
     //moet overerven van profile klasse van automapper
     public class ChauffeurProfile : Profile
     {

@@ -1,5 +1,4 @@
-﻿using DTO;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Repositories.Models;
 using System;
 
