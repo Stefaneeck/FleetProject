@@ -11,6 +11,9 @@ namespace Repositories
         {
             _chauffeurContext = context;
         }
+
+        //best iqueryable gebruiken, ienumerable eerder voor in memory data (gaat gegevens eerst lokaal ophalen en dan query'en).
+        //iqueryable voert de sql rechtstreeks op de db uit
         public IEnumerable<Chauffeur> GetAll()
         {
             return _chauffeurContext.Chauffeurs.ToList();

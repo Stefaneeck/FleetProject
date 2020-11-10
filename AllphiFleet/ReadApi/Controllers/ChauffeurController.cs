@@ -19,9 +19,8 @@ namespace ReadApi.Controllers
             _chauffeurService = chauffeurService;
 
         }
-        // GET: api/Employee
-        [HttpGet]
-        
+        // GET: api/chauffeur
+        [HttpGet]        
         //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
         public IActionResult Get()
         {
@@ -41,7 +40,7 @@ namespace ReadApi.Controllers
             }
             
         }
-        // GET: api/Employee/5
+        // GET: api/chauffeur/1
         [HttpGet("{id}", Name = "Get")]
         public IActionResult Get(long id)
         {
