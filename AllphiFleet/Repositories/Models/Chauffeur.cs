@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Repositories.Models
 {
-    public class Chauffeur
+    public class Chauffeur : IIdentifiable
     {
         //annotations gewijzigd naar fluentapi om makkelijker met nhibernate samen te kunnen werken
 
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ChauffeurId { get; set; }
+        public long Id { get; set; }
 
         //[Required(ErrorMessage = "Naam is verplicht.")]
         public string Naam { get; set; }

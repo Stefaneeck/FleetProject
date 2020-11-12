@@ -8,23 +8,23 @@ using Repositories;
 
 namespace Repositories.Migrations
 {
-    [DbContext(typeof(ChauffeurContext))]
-    partial class ChauffeurRepositoryModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AllphiFleetContext))]
+    partial class AllphiFleetContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("DTO.Chauffeur", b =>
+            modelBuilder.Entity("Repositories.Models.Chauffeur", b =>
                 {
-                    b.Property<long>("ChauffeurId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<bool>("Actief")
                         .HasColumnType("bit");
@@ -51,14 +51,14 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ChauffeurId");
+                    b.HasKey("Id");
 
                     b.ToTable("Chauffeurs");
 
                     b.HasData(
                         new
                         {
-                            ChauffeurId = 1L,
+                            Id = 1L,
                             Actief = true,
                             Adres = "Bremptstraat 54",
                             GeboorteDatum = new DateTime(1979, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -69,7 +69,7 @@ namespace Repositories.Migrations
                         },
                         new
                         {
-                            ChauffeurId = 2L,
+                            Id = 2L,
                             Actief = true,
                             Adres = "Bremptstraat 54",
                             GeboorteDatum = new DateTime(1989, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),

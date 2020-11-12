@@ -7,7 +7,7 @@ namespace DTO
     //link met repositories voor enum, anders doen?
     public partial class ChauffeurDTO
     {
-        public long ChauffeurId { get; set; }
+        public long Id { get; set; }
 
         public string Naam { get; set; }
 

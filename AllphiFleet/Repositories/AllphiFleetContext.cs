@@ -1,13 +1,12 @@
-﻿/*
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Repositories.Models;
+using System;
 
 namespace Repositories
 {
-    public class ChauffeurContext : DbContext
+    public class AllphiFleetContext : DbContext
     {
-        public ChauffeurContext(DbContextOptions options)
+        public AllphiFleetContext(DbContextOptions options)
             : base(options)
         {
         }
@@ -19,10 +18,10 @@ namespace Repositories
             //instellingen voor de tabel in de databank
             //werken met fluent api manier in plaats van annotations in model klasse zelf, zodat we geen annotions moeten gebruiken en de klassen daar als DTO's kunnen gebruiken
             modelBuilder.Entity<Chauffeur>()
-                .HasKey(c => c.ChauffeurId);
+                .HasKey(c => c.Id);
 
             modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.ChauffeurId)
+                .Property(c => c.Id)
                 .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Chauffeur>()
@@ -53,11 +52,11 @@ namespace Repositories
                 .Property(c => c.Actief)
                 .IsRequired();
 
-            /*data invoeren
+            //data invoeren
             //id expliciet meegeven hier, desondanks het auto increment is
-            modeBuilder.Entity<Chauffeur>().HasData(new Chauffeur
+            modelBuilder.Entity<Chauffeur>().HasData(new Chauffeur
             {
-                ChauffeurId = 1,
+                Id = 1,
                 Naam = "Bob",
                 Voornaam = "Uncle",
                 Adres = "Bremptstraat 54",
@@ -67,7 +66,7 @@ namespace Repositories
                 Actief = true
             }, new Chauffeur
             {
-                ChauffeurId = 2,
+                Id = 2,
                 Naam = "Breem",
                 Voornaam = "Rik",
                 Adres = "Bremptstraat 54",
@@ -81,5 +80,3 @@ namespace Repositories
         }
     }
 }
-
-*/

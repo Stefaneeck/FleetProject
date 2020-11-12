@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repositories;
-using Repositories.Models;
 using Services;
 
 namespace ReadApi
@@ -24,10 +23,16 @@ namespace ReadApi
         public void ConfigureServices(IServiceCollection services)
         {
             //added stefan
-            services.AddDbContext<ChauffeurContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]));
+            services.AddDbContext<AllphiFleetContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]));
 
             //added stefan (addscoped voor DI van IDataRepository)
-            services.AddScoped<IDataReadRepository<Chauffeur>, ChauffeurRepository>();
+            //hier bepalen welke concrete interface hij zal gebruiken
+            //services.AddScoped<IDataReadRepository<Chauffeur>, ChauffeurRepository>();
+
+            //services.AddScoped<IDataReadRepository<Chauffeur>, DataReadRepository<Chauffeur>>();
+
+            //als je dit gebruikt ipv addscoped voor elke entity, hoef je maar 1 lijn te typen
+            services.AddTransient(typeof(IDataReadRepository<>), typeof(DataReadRepository<>));
 
             services.AddScoped<ChauffeurService>();
 

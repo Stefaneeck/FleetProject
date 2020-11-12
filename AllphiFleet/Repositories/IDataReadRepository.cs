@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-
+﻿using System.Linq;
 
 namespace Repositories
 {
     public interface IDataReadRepository<TEntity>
     {
-        IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll();
         TEntity Get(long id);
 
         /*
