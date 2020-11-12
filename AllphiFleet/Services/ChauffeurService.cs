@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using DTO;
 using Repositories;
-using Repositories.Models;
+using Models;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DTO;
-using Repositories.Models;
+using Models;
 
 namespace Services.Profiles
 {

@@ -1,4 +1,4 @@
-﻿namespace Repositories
+﻿namespace Models
 {        public enum RijbewijsTypes
         {
             AM,

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Repositories.Models
+
+namespace Models
 {
     public class Chauffeur : IIdentifiable
     {

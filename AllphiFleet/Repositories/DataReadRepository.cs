@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Repositories.Models;
+using Models;
 
 namespace Repositories
 {
