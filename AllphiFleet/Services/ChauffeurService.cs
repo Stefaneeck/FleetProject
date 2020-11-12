@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Services
 {
-    public class ChauffeurService
+    public class ChauffeurService : IChauffeurService
     {
         private readonly IMapper _mapper;
         private readonly IDataReadRepository<Chauffeur> _repository;

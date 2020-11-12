@@ -13,8 +13,8 @@ namespace ReadApi.Controllers
     {
         //DI
         //interface van maken of niet?
-        private readonly ChauffeurService _chauffeurService;
-        public ChauffeurController(ChauffeurService chauffeurService)
+        private readonly IChauffeurService _chauffeurService;
+        public ChauffeurController(IChauffeurService chauffeurService)
         {
             _chauffeurService = chauffeurService;
 

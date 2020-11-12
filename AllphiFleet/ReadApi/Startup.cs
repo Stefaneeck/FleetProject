@@ -34,7 +34,7 @@ namespace ReadApi
             //als je dit gebruikt ipv addscoped voor elke entity, hoef je maar 1 lijn te typen
             services.AddTransient(typeof(IDataReadRepository<>), typeof(DataReadRepository<>));
 
-            services.AddScoped<ChauffeurService>();
+            services.AddScoped<IChauffeurService, ChauffeurService>();
 
             //added Stefan (automapper toevoegen)
             //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet, daarom static klasse gemaakt waarin assembly kan worden opgehaald
