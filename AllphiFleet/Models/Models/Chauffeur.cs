@@ -6,31 +6,23 @@ namespace Models
     public class Chauffeur : IIdentifiable
     {
         //annotations gewijzigd naar fluentapi om makkelijker met nhibernate samen te kunnen werken
-
-        //[Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-
-        //[Required(ErrorMessage = "Naam is verplicht.")]
         public string Naam { get; set; }
-
-        //[Required(ErrorMessage = "Voornaam is verplicht.")]
         public string Voornaam { get; set; }
-
-        //hier klasse adres voor maken
-        //[Required(ErrorMessage = "Adres is verplicht.")]
-        public string Adres { get; set; }
-
-        //[Required(ErrorMessage = "Geboortedatum is verplicht.")]
         public DateTime GeboorteDatum { get; set; }
-
         //todo validatie
-        //[Required(ErrorMessage = "Rijksregisternummer is verplicht.")]
         public string RijksRegisterNummer { get; set; }
-
         public RijbewijsTypes TypeRijbewijs { get; set; }
-
         public bool Actief { get; set; }
+
+        //rel adres
+        public long AdresId { get; set; }
+        public Adres Adres { get; set; }
+
+        //rel tankkaart
+        public long TankkaartId { get; set; }
+        public Tankkaart Tankkaart { get; set; }
+
     }
 }
 

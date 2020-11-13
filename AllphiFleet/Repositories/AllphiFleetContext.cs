@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
-using System;
 
 namespace Repositories
 {
@@ -11,10 +10,15 @@ namespace Repositories
         {
         }
         public DbSet<Chauffeur> Chauffeurs { get; set; }
-        //public DbSet<Account> Accounts { get; set; }
+        public DbSet<Adres> Adressen { get; set; }
+        public DbSet<Tankkaart> Tankkaarten { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            ChauffeurModelConstraints.OnModelCreatingChauffeur(modelBuilder);
+        }
+            /*
             //instellingen voor de tabel in de databank
             //werken met fluent api manier in plaats van annotations in model klasse zelf, zodat we geen annotions moeten gebruiken en de klassen daar als DTO's kunnen gebruiken
             modelBuilder.Entity<Chauffeur>()
@@ -78,5 +82,6 @@ namespace Repositories
 
             
         }
+        */
+        }
     }
-}
