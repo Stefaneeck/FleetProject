@@ -218,6 +218,72 @@ namespace Repositories
             .HasForeignKey(o => o.FactuurId)
             .IsRequired();
 
+            //herstelling
+            modelBuilder.Entity<Herstelling>()
+               .HasKey(h => h.Id);
+
+            modelBuilder.Entity<Herstelling>()
+                .Property(h => h.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Herstelling>()
+                .Property(h => h.DatumHerstelling)
+                .IsRequired();
+
+            modelBuilder.Entity<Herstelling>()
+                .Property(h => h.SchadeOmschrijving)
+                .IsRequired();
+
+            //verzekeringsmaatschapij
+            modelBuilder.Entity<VerzekeringsMaatschappij>()
+               .HasKey(v => v.Id);
+
+            modelBuilder.Entity<VerzekeringsMaatschappij>()
+                .Property(v => v.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<VerzekeringsMaatschappij>()
+                .Property(v => v.ReferentieNrVerzekeringsMaatschappij)
+                .IsRequired();
+
+            //rel herstelling verzekeringsmaatschappij one many
+            modelBuilder.Entity<Herstelling>()
+            .HasOne<VerzekeringsMaatschappij>(h => h.VerzekeringsMaatschappij)
+            .WithMany(v => v.Herstellingen)
+            .HasForeignKey(h => h.VerzekeringsMaatschappijId)
+            .IsRequired();
+
+            //aanvraag
+            modelBuilder.Entity<Aanvraag>()
+               .HasKey(a => a.Id);
+
+            modelBuilder.Entity<Aanvraag>()
+                .Property(a => a.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Aanvraag>()
+                .Property(a => a.DatumAanvraag)
+                .IsRequired();
+
+            modelBuilder.Entity<Aanvraag>()
+                .Property(a => a.TypeAanvraag)
+                .IsRequired();
+
+            modelBuilder.Entity<Aanvraag>()
+                .Property(a => a.GewensteData)
+                .IsRequired();
+
+            modelBuilder.Entity<Aanvraag>()
+                .Property(a => a.StatusAanvraag)
+                .IsRequired();
+
+            //rel aanvraag voertuig one many
+            modelBuilder.Entity<Aanvraag>()
+            .HasOne<Voertuig>(a => a.Voertuig)
+            .WithMany(v => v.Aanvragen)
+            .HasForeignKey(a => a.VoertuigId)
+            .IsRequired();
+
 
             /*
             //data invoeren

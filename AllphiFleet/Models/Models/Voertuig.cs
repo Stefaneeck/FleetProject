@@ -14,7 +14,6 @@ namespace Models
         public int KilometerStand { get; set; }
 
         public ICollection<Onderhoud> OnderhoudsBeurten { get; set; }
-
-
+        public ICollection<Aanvraag> Aanvragen { get; set; }
     }
 }
