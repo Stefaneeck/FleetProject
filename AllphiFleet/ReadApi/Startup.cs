@@ -5,8 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLog;
+using ReadApi.CustomExceptionMiddleware;
+using ReadApi.Extensions;
 using Repositories;
 using Services;
+using System.IO;
 
 namespace ReadApi
 {
@@ -14,6 +18,9 @@ namespace ReadApi
     {
         public Startup(IConfiguration configuration)
         {
+            //Nlog config
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+
             Configuration = configuration;
         }
 
@@ -37,6 +44,9 @@ namespace ReadApi
 
             services.AddScoped<IChauffeurService, ChauffeurService>();
 
+            //Nlog
+            services.AddSingleton<ILoggerManager, LoggerManager>();
+
             //added Stefan (automapper toevoegen)
             //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet, daarom static klasse gemaakt waarin assembly kan worden opgehaald
             //werkte niet omdat het in een ander project staat (?)
@@ -48,16 +58,25 @@ namespace ReadApi
             //moet de assembly zijn uit het project dat profile bevat
             services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
 
+            //extension method uit ExceptionMiddlewareExtensions klasse
+            services.ConfigureLoggerService();
+
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //voor global exceptions
+            //vervangen door custom exception middleware
+            //app.ConfigureExceptionHandler(logger);
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 

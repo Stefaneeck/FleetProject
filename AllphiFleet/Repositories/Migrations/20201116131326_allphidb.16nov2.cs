@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repositories.Migrations
 {
-    public partial class allphidb16nov1 : Migration
+    public partial class allphidb16nov2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.Enums;
 using System;
 
-namespace Repositories
+namespace Repositories.ModelConstraints
 {
     public class ChauffeurModelConstraints
     {
@@ -50,7 +51,9 @@ namespace Repositories
                 .Property(c => c.Actief)
                 .IsRequired();
 
-            /*
+            
+            //adres en tankkaart kan je hier niet als objecten meegeven, adres en tankkaart apart aanmaken en dan hier enkel verwijzen naar de forgein key id van dat adres
+
             //data invoeren
             //id expliciet meegeven hier, desondanks het auto increment is
             modelBuilder.Entity<Chauffeur>().HasData(new Chauffeur
@@ -58,23 +61,27 @@ namespace Repositories
                 Id = 1,
                 Naam = "Bob",
                 Voornaam = "Uncle",
-                Adres = "Bremptstraat 54",
+                AdresId = 1,
+
                 GeboorteDatum = new DateTime(1979, 04, 25),
                 RijksRegisterNummer = "999-888-7777",
                 TypeRijbewijs = RijbewijsTypes.B,
+                TankkaartId = 1,
                 Actief = true
             }, new Chauffeur
             {
                 Id = 2,
                 Naam = "Breem",
                 Voornaam = "Rik",
-                Adres = "Bremptstraat 54",
+                AdresId = 2,
                 GeboorteDatum = new DateTime(1989, 04, 11),
                 RijksRegisterNummer = "999-888-1111",
                 TypeRijbewijs = RijbewijsTypes.A,
+                TankkaartId = 2,
                 Actief = true
             }); ;
-            */
+            
+            
 
         }
     }

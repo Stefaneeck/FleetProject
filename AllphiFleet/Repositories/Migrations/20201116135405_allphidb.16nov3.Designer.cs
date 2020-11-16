@@ -10,8 +10,8 @@ using Repositories;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(AllphiFleetContext))]
-    [Migration("20201116114207_allphidb.16nov1")]
-    partial class allphidb16nov1
+    [Migration("20201116135405_allphidb.16nov3")]
+    partial class allphidb16nov3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,6 +117,32 @@ namespace Repositories.Migrations
                     b.HasIndex("TankkaartId");
 
                     b.ToTable("Chauffeurs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Actief = true,
+                            AdresId = 1L,
+                            GeboorteDatum = new DateTime(1979, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Naam = "Bob",
+                            RijksRegisterNummer = "999-888-7777",
+                            TankkaartId = 1L,
+                            TypeRijbewijs = 2,
+                            Voornaam = "Uncle"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Actief = true,
+                            AdresId = 2L,
+                            GeboorteDatum = new DateTime(1989, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Naam = "Breem",
+                            RijksRegisterNummer = "999-888-1111",
+                            TankkaartId = 2L,
+                            TypeRijbewijs = 1,
+                            Voornaam = "Rik"
+                        });
                 });
 
             modelBuilder.Entity("Models.Factuur", b =>

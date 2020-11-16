@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories;
 
 namespace Repositories.Migrations
 {
     [DbContext(typeof(AllphiFleetContext))]
-    partial class AllphiFleetContextModelSnapshot : ModelSnapshot
+    [Migration("20201116131326_allphidb.16nov2")]
+    partial class allphidb16nov2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,32 +117,6 @@ namespace Repositories.Migrations
                     b.HasIndex("TankkaartId");
 
                     b.ToTable("Chauffeurs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Actief = true,
-                            AdresId = 1L,
-                            GeboorteDatum = new DateTime(1979, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Naam = "Bob",
-                            RijksRegisterNummer = "999-888-7777",
-                            TankkaartId = 1L,
-                            TypeRijbewijs = 2,
-                            Voornaam = "Uncle"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Actief = true,
-                            AdresId = 2L,
-                            GeboorteDatum = new DateTime(1989, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Naam = "Breem",
-                            RijksRegisterNummer = "999-888-1111",
-                            TankkaartId = 2L,
-                            TypeRijbewijs = 1,
-                            Voornaam = "Rik"
-                        });
                 });
 
             modelBuilder.Entity("Models.Factuur", b =>

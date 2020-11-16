@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace Repositories
+namespace Repositories.ModelConstraints
 {
     public class ModelConstraintsRelaties
     {
