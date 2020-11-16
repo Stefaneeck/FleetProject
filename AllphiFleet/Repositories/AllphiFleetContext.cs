@@ -15,49 +15,24 @@ namespace Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             ChauffeurModelConstraints.OnModelCreatingChauffeur(modelBuilder);
+            AdresModelConstraints.OnModelCreatingAdres(modelBuilder);
+            FactuurModelConstraints.OnModelCreatingFactuur(modelBuilder);
+            HerstellingModelConstraints.OnModelCreatingHerstelling(modelBuilder);
+            NummerplaatModelConstraints.OnModelCreatingNummerplaat(modelBuilder);
+            OnderhoudModelConstraints.OnModelCreatingOnderhoud(modelBuilder);
+            TankkaartModelConstraints.OnModelCreatingTankkaart(modelBuilder);
+            VerzekeringsMaatschappijModelConstraints.OnModelCreatingVerzekeringsMaatschappij(modelBuilder);
+            VoertuigModelConstraints.OnModelCreatingVoertuig(modelBuilder);
+
+            //relaties
+            ModelConstraintsRelaties.OnModelCreatingMaakRelaties(modelBuilder);
         }
-            /*
-            //instellingen voor de tabel in de databank
-            //werken met fluent api manier in plaats van annotations in model klasse zelf, zodat we geen annotions moeten gebruiken en de klassen daar als DTO's kunnen gebruiken
-            modelBuilder.Entity<Chauffeur>()
-                .HasKey(c => c.Id);
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.Id)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.Naam)
-                .IsRequired();
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.Voornaam)
-                .IsRequired();
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.Adres)
-                .IsRequired();
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.GeboorteDatum)
-                .IsRequired();
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.RijksRegisterNummer)
-                .IsRequired();
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.TypeRijbewijs)
-                .IsRequired();
-
-            modelBuilder.Entity<Chauffeur>()
-                .Property(c => c.Actief)
-                .IsRequired();
+            
 
             //data invoeren
             //id expliciet meegeven hier, desondanks het auto increment is
+            /*
             modelBuilder.Entity<Chauffeur>().HasData(new Chauffeur
             {
                 Id = 1,

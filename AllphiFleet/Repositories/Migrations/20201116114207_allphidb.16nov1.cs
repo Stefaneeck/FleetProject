@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repositories.Migrations
 {
-    public partial class allphidb13nov5 : Migration
+    public partial class allphidb16nov1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,6 +54,19 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "VerzekeringsMaatschappij",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReferentieNrVerzekeringsMaatschappij = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VerzekeringsMaatschappij", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Voertuig",
                 columns: table => new
                 {
@@ -96,6 +109,52 @@ namespace Repositories.Migrations
                         name: "FK_Chauffeurs_Tankkaarten_TankkaartId",
                         column: x => x.TankkaartId,
                         principalTable: "Tankkaarten",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Herstelling",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DatumHerstelling = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SchadeOmschrijving = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VerzekeringsMaatschappijId = table.Column<long>(type: "bigint", nullable: false),
+                    Fotos = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Documenten = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Herstelling", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Herstelling_VerzekeringsMaatschappij_VerzekeringsMaatschappijId",
+                        column: x => x.VerzekeringsMaatschappijId,
+                        principalTable: "VerzekeringsMaatschappij",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Aanvraag",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DatumAanvraag = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TypeAanvraag = table.Column<int>(type: "int", nullable: false),
+                    GewensteData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StatusAanvraag = table.Column<int>(type: "int", nullable: false),
+                    VoertuigId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Aanvraag", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Aanvraag_Voertuig_VoertuigId",
+                        column: x => x.VoertuigId,
+                        principalTable: "Voertuig",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -150,6 +209,11 @@ namespace Repositories.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Aanvraag_VoertuigId",
+                table: "Aanvraag",
+                column: "VoertuigId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Chauffeurs_AdresId",
                 table: "Chauffeurs",
                 column: "AdresId");
@@ -158,6 +222,11 @@ namespace Repositories.Migrations
                 name: "IX_Chauffeurs_TankkaartId",
                 table: "Chauffeurs",
                 column: "TankkaartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Herstelling_VerzekeringsMaatschappijId",
+                table: "Herstelling",
+                column: "VerzekeringsMaatschappijId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Nummerplaat_VoertuigId",
@@ -178,7 +247,13 @@ namespace Repositories.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Aanvraag");
+
+            migrationBuilder.DropTable(
                 name: "Chauffeurs");
+
+            migrationBuilder.DropTable(
+                name: "Herstelling");
 
             migrationBuilder.DropTable(
                 name: "Nummerplaat");
@@ -191,6 +266,9 @@ namespace Repositories.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tankkaarten");
+
+            migrationBuilder.DropTable(
+                name: "VerzekeringsMaatschappij");
 
             migrationBuilder.DropTable(
                 name: "Factuur");

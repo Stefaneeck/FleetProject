@@ -10,8 +10,8 @@ using Repositories;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(AllphiFleetContext))]
-    [Migration("20201113140203_allphidb.13nov6")]
-    partial class allphidb13nov6
+    [Migration("20201116114207_allphidb.16nov1")]
+    partial class allphidb16nov1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,35 @@ namespace Repositories.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("Models.Aanvraag", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("DatumAanvraag")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GewensteData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusAanvraag")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeAanvraag")
+                        .HasColumnType("int");
+
+                    b.Property<long>("VoertuigId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VoertuigId");
+
+                    b.ToTable("Aanvraag");
+                });
 
             modelBuilder.Entity("Models.Adres", b =>
                 {
@@ -253,6 +282,17 @@ namespace Repositories.Migrations
                     b.ToTable("Voertuig");
                 });
 
+            modelBuilder.Entity("Models.Aanvraag", b =>
+                {
+                    b.HasOne("Models.Voertuig", "Voertuig")
+                        .WithMany("Aanvragen")
+                        .HasForeignKey("VoertuigId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Voertuig");
+                });
+
             modelBuilder.Entity("Models.Chauffeur", b =>
                 {
                     b.HasOne("Models.Adres", "Adres")
@@ -335,6 +375,8 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Models.Voertuig", b =>
                 {
+                    b.Navigation("Aanvragen");
+
                     b.Navigation("Nummerplaten");
 
                     b.Navigation("OnderhoudsBeurten");

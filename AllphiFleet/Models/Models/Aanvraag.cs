@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Models.Enums;
+using System;
 
 namespace Models
 {

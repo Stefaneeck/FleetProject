@@ -1,4 +1,5 @@
-﻿namespace Models
+﻿namespace Models.Enums
+
 {
     public enum WagenTypes
     {

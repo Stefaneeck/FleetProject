@@ -1,5 +1,5 @@
-﻿using System;
-
+﻿using Models.Enums;
+using System;
 
 namespace Models
 {
