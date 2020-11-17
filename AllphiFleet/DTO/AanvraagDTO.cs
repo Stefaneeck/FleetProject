@@ -1,9 +1,10 @@
-﻿using Models.Enums;
+﻿using Models;
+using Models.Enums;
 using System;
 
-namespace Models
+namespace DTO
 {
-    public class Aanvraag : IIdentifiable
+    public class AanvraagDTO
     {
         public long Id { get; set; }
         public DateTime DatumAanvraag { get; set; }
@@ -12,7 +13,7 @@ namespace Models
         //ef ondersteunt geen lijsten, aparte tabel van maken of string bewerking
         public string GewensteData { get; set; }
         public AanvraagStatussen StatusAanvraag { get; set; }
-        public long VoertuigId { get; set; }
+        //public long VoertuigId { get; set; }
         public Voertuig Voertuig { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Models.Enums;
 
 namespace Models
@@ -15,6 +16,8 @@ namespace Models
         public int KilometerStand { get; set; }
 
         public ICollection<Onderhoud> OnderhoudsBeurten { get; set; }
+
+        [JsonIgnore]
         public ICollection<Aanvraag> Aanvragen { get; set; }
     }
 }

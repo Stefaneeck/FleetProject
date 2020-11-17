@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -21,7 +19,7 @@ namespace ReadApi.Controllers
             _logger = logger;
         }
         // GET: api/chauffeur
-        [HttpGet]
+        [HttpGet(Name = "getAllChauffeurs")]
         //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
 
         public IActionResult Get()
@@ -36,6 +34,19 @@ namespace ReadApi.Controllers
             _logger.LogInfo($"Ophalen van {chauffeurDTOs.Count()} records.");
 
             return Ok(chauffeurDTOs);
+        }
+
+        //Get: api/chauffeur/1
+
+        [HttpGet("{id}", Name = "GetChauffeur")]
+        public IActionResult Get(long id)
+        {
+            ChauffeurDTO chauffeurDTO = _chauffeurService.GetChauffeur(id);
+            if (chauffeurDTO == null)
+            {
+                return NotFound("Chauffeur niet gevonden.");
+            }
+            return Ok(chauffeurDTO);
         }
 
         /*
@@ -59,16 +70,5 @@ namespace ReadApi.Controllers
         }
         */
 
-        // GET: api/chauffeur/1
-        [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get(long id)
-        {
-            ChauffeurDTO chauffeurDTO = _chauffeurService.GetChauffeur(id);
-            if (chauffeurDTO == null)
-            {
-                return NotFound("The Chauffeur record couldn't be found.");
-            }
-            return Ok(chauffeurDTO);
-        }
     }
 }

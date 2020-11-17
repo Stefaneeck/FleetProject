@@ -4,8 +4,6 @@ using System;
 
 namespace DTO
 {
-
-    //link met repositories voor enum, anders doen?
     public partial class ChauffeurDTO
     {
         public long Id { get; set; }

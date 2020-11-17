@@ -43,6 +43,7 @@ namespace ReadApi
             services.AddTransient(typeof(IDataReadRepository<>), typeof(DataReadRepository<>));
 
             services.AddScoped<IChauffeurService, ChauffeurService>();
+            services.AddScoped<IAanvraagService, AanvraagService>();
 
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();
