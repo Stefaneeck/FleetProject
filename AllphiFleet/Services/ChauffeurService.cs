@@ -4,6 +4,7 @@ using Repositories;
 using Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -20,9 +21,11 @@ namespace Services
         //filter nullable maken?
         public IEnumerable<ChauffeurDTO> GetChauffeurs(DriverFilter filter)
         {
-            //getall geeft iquerable terug
-            //moet terug gezet worden naar getall
-            var results = _repository.GetAllChauffeurs();
+            //eager loading door include erbij te zetten, standaard haalt hij gerelateerde data niet op (dus geen adressen van chauffeurs bvb)
+            var results = _repository.GetAll()
+                .Include(c => c.Adres)
+                .Include(c => c.Tankkaart);
+
 
             /*
             

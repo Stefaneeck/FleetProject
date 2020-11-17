@@ -61,3 +61,9 @@
 2020-11-17 11:05:31.0984 INFO Ophalen van 2 records.
 2020-11-17 11:08:01.1827 INFO Alle chauffeurs aan het ophalen.
 2020-11-17 11:08:03.2415 INFO Ophalen van 2 records.
+2020-11-17 11:17:47.9655 INFO Alle chauffeurs aan het ophalen.
+2020-11-17 11:17:50.1145 INFO Ophalen van 2 records.
+2020-11-17 11:18:22.8609 INFO Alle chauffeurs aan het ophalen.
+2020-11-17 11:18:24.4876 INFO Ophalen van 2 records.
+2020-11-17 11:30:07.1025 INFO Alle chauffeurs aan het ophalen.
+2020-11-17 11:30:08.8545 INFO Ophalen van 2 records.

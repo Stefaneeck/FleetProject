@@ -33,10 +33,6 @@ namespace ReadApi.Controllers
 
             //throw new Exception("Exception tijdens ophalen van chauffeurs.");
 
-            //automapper, model omzetten naar DTO
-            //hier niet omzetten maar in servicelaag (chauffeurrepository)
-            //ChauffeurDTO[] dtos = _mapper.Map<ChauffeurDTO[]>(chauffeurs);
-
             _logger.LogInfo($"Ophalen van {chauffeurDTOs.Count()} records.");
 
             return Ok(chauffeurDTOs);
