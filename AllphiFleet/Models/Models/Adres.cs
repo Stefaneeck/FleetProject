@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -10,6 +11,9 @@ namespace Models
         public string Stad { get; set; }
         public int Postcode { get; set; }
         //public int ChauffeurId { get; set; }
+
+        //jsonignore voor circular reference bij ophalen van data te omzeilen. betere oplossing zoeken?
+        [JsonIgnore]
         public ICollection<Chauffeur> Chauffeurs { get; set; }
     }
 }

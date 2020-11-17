@@ -40,8 +40,6 @@ namespace ReadApi.Controllers
             _logger.LogInfo($"Ophalen van {chauffeurDTOs.Count()} records.");
 
             return Ok(chauffeurDTOs);
-
-
         }
 
         /*

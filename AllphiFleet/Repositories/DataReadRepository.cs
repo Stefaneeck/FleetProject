@@ -22,6 +22,15 @@ namespace Repositories
         {
             return table;
         }
+
+        //ter test, moet weg
+        //eager loading door include erbij te zetten, standaard haalt hij gerelateerde data niet op (dus geen adressen van chauffeurs bvb)
+        public IQueryable<Chauffeur> GetAllChauffeurs()
+        {
+            return _fleetContext.Chauffeurs
+                   .Include(c => c.Adres)
+                   .Include(c => c.Tankkaart);
+        }
         public TEntity Get(long id)
         {
             //werkt nu wel, want e zal sowiso een id hebben (interface iidentifiable)

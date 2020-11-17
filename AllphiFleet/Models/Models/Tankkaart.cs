@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Models.Enums;
 
 namespace Models
@@ -18,6 +19,8 @@ namespace Models
         //public TankkaartOpties Opties { get; set; }
         public string Opties { get; set; }
 
+        //circular reference vermijden
+        [JsonIgnore]
         public ICollection<Chauffeur> Chauffeurs { get; set; }
     }
 }

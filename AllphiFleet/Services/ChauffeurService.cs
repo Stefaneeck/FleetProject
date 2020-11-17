@@ -21,7 +21,8 @@ namespace Services
         public IEnumerable<ChauffeurDTO> GetChauffeurs(DriverFilter filter)
         {
             //getall geeft iquerable terug
-            var results = _repository.GetAll();
+            //moet terug gezet worden naar getall
+            var results = _repository.GetAllChauffeurs();
 
             /*
             

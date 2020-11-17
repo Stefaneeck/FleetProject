@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Models;
+using System.Linq;
 
 namespace Repositories
 {
@@ -6,6 +7,9 @@ namespace Repositories
     {
         IQueryable<TEntity> GetAll();
         TEntity Get(long id);
+
+        //ter test, moet weg
+        IQueryable<Chauffeur> GetAllChauffeurs();
 
         /*
         void Add(TEntity entity);
