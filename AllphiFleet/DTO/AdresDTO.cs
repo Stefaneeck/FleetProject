@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Models
+namespace DTO
 {
-    public class Adres : IIdentifiable
+    public class AdresDTO
     {
         public long Id { get; set; }
         public string Straat { get; set; }
@@ -14,6 +15,6 @@ namespace Models
 
         //jsonignore voor circular reference bij ophalen van data te omzeilen. betere oplossing zoeken?
         //[JsonIgnore]
-        public ICollection<Chauffeur> Chauffeurs { get; set; }
+        //public ICollection<Chauffeur> Chauffeurs { get; set; }
     }
 }

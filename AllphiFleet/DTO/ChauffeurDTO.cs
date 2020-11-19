@@ -4,7 +4,7 @@ using System;
 
 namespace DTO
 {
-    public partial class ChauffeurDTO
+    public class ChauffeurDTO
     {
         public long Id { get; set; }
 
@@ -12,7 +12,7 @@ namespace DTO
 
         public string Voornaam { get; set; }
 
-        public Adres Adres { get; set; }
+        public AdresDTO Adres { get; set; }
 
         public DateTime GeboorteDatum { get; set; }
 
@@ -20,7 +20,7 @@ namespace DTO
 
         public RijbewijsTypes TypeRijbewijs { get; set; }
 
-        public Tankkaart Tankkaart { get; set; }
+        public TankkaartDTO Tankkaart { get; set; }
         
         public bool Actief { get; set; }
     }
