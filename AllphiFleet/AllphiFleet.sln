@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadApi", "ReadApi\ReadApi.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{60207134-51E1-4399-BED1-A1ABF5344FB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteAPI", "WriteAPI\WriteAPI.csproj", "{97DD1E8A-5372-44AE-BCB3-9CD9BEDD0D16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{60207134-51E1-4399-BED1-A1ABF5344FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60207134-51E1-4399-BED1-A1ABF5344FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60207134-51E1-4399-BED1-A1ABF5344FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97DD1E8A-5372-44AE-BCB3-9CD9BEDD0D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97DD1E8A-5372-44AE-BCB3-9CD9BEDD0D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97DD1E8A-5372-44AE-BCB3-9CD9BEDD0D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97DD1E8A-5372-44AE-BCB3-9CD9BEDD0D16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,10 +8,8 @@ namespace Services.Profiles
     {
         public TankkaartProfile()
         {
-            //omzetten van Chauffeur naar ChauffeurDTO
             this.CreateMap<Tankkaart, TankkaartDTO>();
 
-            //omgekeerde mapping
             this.CreateMap<Tankkaart, TankkaartDTO>().ReverseMap();
         }
     }

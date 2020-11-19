@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using DTO;
 using Models;
-using Models.ViewModels;
 
 namespace Services.Profiles
 {
@@ -16,8 +15,6 @@ namespace Services.Profiles
 
             //omgekeerde mapping
             this.CreateMap<Chauffeur, ChauffeurDTO>().ReverseMap();
-
-            this.CreateMap<ChauffeurDTO, ChauffeurViewModel>();
         }
     }
 }

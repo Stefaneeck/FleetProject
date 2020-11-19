@@ -4,8 +4,8 @@ namespace Models
 {
     public class VerzekeringsMaatschappij
     {
-        public long Id { get; set; }
-        public int ReferentieNrVerzekeringsMaatschappij { get; set; }
-        public ICollection<Herstelling> Herstellingen { get; set; }
+        public virtual long Id { get; set; }
+        public virtual int ReferentieNrVerzekeringsMaatschappij { get; set; }
+        public virtual ICollection<Herstelling> Herstellingen { get; set; }
     }
 }

@@ -2,12 +2,12 @@
 {
     public class Nummerplaat
     {
-        public long Id { get; set; }
-        public string NummerPlaatTekens { get; set; }
+        public virtual long Id { get; set; }
+        public virtual string NummerPlaatTekens { get; set; }
 
         //rel voertuig
-        public long VoertuigId { get; set; }
+        public virtual long VoertuigId { get; set; }
 
-        public Voertuig Voertuig { get; set; }
+        public virtual Voertuig Voertuig { get; set; }
     }
 }

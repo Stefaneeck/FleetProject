@@ -4,17 +4,17 @@ namespace Models
 {
     public class Onderhoud
     {
-        public long Id { get; set; }
-        public DateTime DatumOnderhoud { get; set; }
-        public decimal Prijs { get; set; }
-        public string Garage { get; set; }
+        public virtual long Id { get; set; }
+        public virtual DateTime DatumOnderhoud { get; set; }
+        public virtual decimal Prijs { get; set; }
+        public virtual string Garage { get; set; }
 
         //rel factuur
-        public long FactuurId { get; set; }
-        public Factuur Factuur { get; set; }
+        public virtual long FactuurId { get; set; }
+        public virtual Factuur Factuur { get; set; }
 
         //rel voertuig
-        public long VoertuigId { get; set; }
-        public Voertuig Voertuig { get; set; }
+        public virtual long VoertuigId { get; set; }
+        public virtual Voertuig Voertuig { get; set; }
     }
 }

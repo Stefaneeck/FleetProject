@@ -4,17 +4,16 @@ namespace Models
 {
     public class Herstelling
     {
-        public long Id { get; set; }
-        public DateTime DatumHerstelling { get; set; }
-        public string SchadeOmschrijving { get; set; }
+        public virtual long Id { get; set; }
+        public virtual DateTime DatumHerstelling { get; set; }
+        public virtual string SchadeOmschrijving { get; set; }
 
         //rel verzekeringsmaatschappij
-        public long VerzekeringsMaatschappijId { get; set; }
-        public VerzekeringsMaatschappij VerzekeringsMaatschappij { get; set; }
+        public virtual long VerzekeringsMaatschappijId { get; set; }
+        public virtual VerzekeringsMaatschappij VerzekeringsMaatschappij { get; set; }
 
         //opslaan als welk type?
-        public string Fotos { get; set; }
-        public string Documenten { get; set; }
-
+        public virtual string Fotos { get; set; }
+        public virtual string Documenten { get; set; }
     }
 }

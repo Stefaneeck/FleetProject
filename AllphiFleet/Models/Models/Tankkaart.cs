@@ -7,20 +7,20 @@ namespace Models
 {
     public class Tankkaart
     {
-        public long Id { get; set; }
-        public int Kaartnummer { get; set; }
-        public DateTime GeldigheidsDatum { get; set; }
+        public virtual long Id { get; set; }
+        public virtual int Kaartnummer { get; set; }
+        public virtual DateTime GeldigheidsDatum { get; set; }
 
-        public int Pincode { get; set; }
+        public virtual int Pincode { get; set; }
 
-        public AuthenticatieTypes AuthType { get; set; }
+        public virtual AuthenticatieTypes AuthType { get; set; }
 
         //enum gebruiken of string? meerdere waarden..
         //public TankkaartOpties Opties { get; set; }
-        public string Opties { get; set; }
+        public virtual string Opties { get; set; }
 
         //circular reference vermijden
         [JsonIgnore]
-        public ICollection<Chauffeur> Chauffeurs { get; set; }
+        public virtual ICollection<Chauffeur> Chauffeurs { get; set; }
     }
 }

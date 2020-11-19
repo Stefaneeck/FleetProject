@@ -28,6 +28,8 @@ namespace Repositories
             //werkt nu wel, want e zal sowiso een id hebben (interface iidentifiable)
             return table
                   .FirstOrDefault(e => e.Id == id);
+
+            //find gebruiken ipv firstordefault om id te omzeilen?
         }
     }
 }
