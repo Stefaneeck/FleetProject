@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class TankkaartModelConstraints
+    public static class TankkaartModelConstraints
     {
-        public static void OnModelCreatingTankkaart(ModelBuilder modelBuilder)
+        public static void OnModelCreatingTankkaart(this ModelBuilder modelBuilder)
         {
             //tankkaart
 

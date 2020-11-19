@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class HerstellingModelConstraints
+    public static class HerstellingModelConstraints
     {
-        public static void OnModelCreatingHerstelling(ModelBuilder modelBuilder)
+        public static void OnModelCreatingHerstelling(this ModelBuilder modelBuilder)
         {
             //herstelling
             modelBuilder.Entity<Herstelling>()

@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class NummerplaatModelConstraints
+    public static class NummerplaatModelConstraints
     {
-        public static void OnModelCreatingNummerplaat(ModelBuilder modelBuilder)
+        public static void OnModelCreatingNummerplaat(this ModelBuilder modelBuilder)
         {
             //nummerplaat
             modelBuilder.Entity<Nummerplaat>()

@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class VoertuigModelConstraints
+    public static class VoertuigModelConstraints
     {
-        public static void OnModelCreatingVoertuig(ModelBuilder modelBuilder)
+        public static void OnModelCreatingVoertuig(this ModelBuilder modelBuilder)
         {
             //voertuig
 

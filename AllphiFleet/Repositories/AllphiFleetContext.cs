@@ -16,48 +16,19 @@ namespace Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ChauffeurModelConstraints.OnModelCreatingChauffeur(modelBuilder);
-            AdresModelConstraints.OnModelCreatingAdres(modelBuilder);
-            FactuurModelConstraints.OnModelCreatingFactuur(modelBuilder);
-            HerstellingModelConstraints.OnModelCreatingHerstelling(modelBuilder);
-            NummerplaatModelConstraints.OnModelCreatingNummerplaat(modelBuilder);
-            OnderhoudModelConstraints.OnModelCreatingOnderhoud(modelBuilder);
-            TankkaartModelConstraints.OnModelCreatingTankkaart(modelBuilder);
-            VerzekeringsMaatschappijModelConstraints.OnModelCreatingVerzekeringsMaatschappij(modelBuilder);
-            VoertuigModelConstraints.OnModelCreatingVoertuig(modelBuilder);
+            //ChauffeurModelConstraints.OnModelCreatingChauffeur(modelBuilder);
+            modelBuilder.OnModelCreatingChauffeur();
+            modelBuilder.OnModelCreatingAdres();
+            modelBuilder.OnModelCreatingFactuur();
+            modelBuilder.OnModelCreatingHerstelling();
+            modelBuilder.OnModelCreatingNummerplaat();
+            modelBuilder.OnModelCreatingOnderhoud();
+            modelBuilder.OnModelCreatingTankkaart();
+            modelBuilder.OnModelCreatingVerzekeringsMaatschappij();
+            modelBuilder.OnModelCreatingVoertuig();
 
-            //relaties
-            ModelConstraintsRelaties.OnModelCreatingMaakRelaties(modelBuilder);
-        }
-            
-
-            //data invoeren
-            //id expliciet meegeven hier, desondanks het auto increment is
-            /*
-            modelBuilder.Entity<Chauffeur>().HasData(new Chauffeur
-            {
-                Id = 1,
-                Naam = "Bob",
-                Voornaam = "Uncle",
-                Adres = "Bremptstraat 54",
-                GeboorteDatum = new DateTime(1979, 04, 25),
-                RijksRegisterNummer = "999-888-7777",
-                TypeRijbewijs = RijbewijsTypes.B,
-                Actief = true
-            }, new Chauffeur
-            {
-                Id = 2,
-                Naam = "Breem",
-                Voornaam = "Rik",
-                Adres = "Bremptstraat 54",
-                GeboorteDatum = new DateTime(1989, 04, 11),
-                RijksRegisterNummer = "999-888-1111",
-                TypeRijbewijs = RijbewijsTypes.A,
-                Actief = true
-            }); ;
-
-            
-        }
-        */
+            //relaties nog over te zetten
+            modelBuilder.OnModelCreatingMaakRelaties();
         }
     }
+}

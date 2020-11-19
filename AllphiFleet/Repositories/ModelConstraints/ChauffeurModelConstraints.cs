@@ -5,9 +5,9 @@ using System;
 
 namespace Repositories.ModelConstraints
 {
-    public class ChauffeurModelConstraints
+    public static class ChauffeurModelConstraints
     {
-        public static void OnModelCreatingChauffeur(ModelBuilder modelBuilder)
+        public static void OnModelCreatingChauffeur(this ModelBuilder modelBuilder)
         {
             //instellingen voor de tabel in de databank
             //werken met fluent api manier in plaats van annotations in model klasse zelf, zodat we geen annotions moeten gebruiken en de klassen daar als DTO's kunnen gebruiken

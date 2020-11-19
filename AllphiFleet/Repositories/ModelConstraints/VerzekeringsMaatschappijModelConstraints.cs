@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class VerzekeringsMaatschappijModelConstraints
+    public static class VerzekeringsMaatschappijModelConstraints
     {
-        public static void OnModelCreatingVerzekeringsMaatschappij(ModelBuilder modelBuilder)
+        public static void OnModelCreatingVerzekeringsMaatschappij(this ModelBuilder modelBuilder)
         {
             //verzekeringsmaatschapij
             modelBuilder.Entity<VerzekeringsMaatschappij>()

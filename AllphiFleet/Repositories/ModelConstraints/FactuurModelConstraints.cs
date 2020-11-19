@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class FactuurModelConstraints
+    public static class FactuurModelConstraints
     {
-        public static void OnModelCreatingFactuur(ModelBuilder modelBuilder)
+        public static void OnModelCreatingFactuur(this ModelBuilder modelBuilder)
         {
             //factuur
             modelBuilder.Entity<Factuur>()

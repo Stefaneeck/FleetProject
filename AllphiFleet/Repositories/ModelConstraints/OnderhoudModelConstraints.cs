@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class OnderhoudModelConstraints
+    public static class OnderhoudModelConstraints
     {
-        public static void OnModelCreatingOnderhoud(ModelBuilder modelBuilder)
+        public static void OnModelCreatingOnderhoud(this ModelBuilder modelBuilder)
         {
             //onderhoud
             modelBuilder.Entity<Onderhoud>()

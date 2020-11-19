@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class AdresModelConstraints
+    public static class AdresModelConstraints
     {
-        public static void OnModelCreatingAdres(ModelBuilder modelBuilder)
+        public static void OnModelCreatingAdres(this ModelBuilder modelBuilder)
         {
             //adres
 

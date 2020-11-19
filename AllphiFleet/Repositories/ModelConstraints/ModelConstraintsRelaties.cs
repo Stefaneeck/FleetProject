@@ -3,9 +3,9 @@ using Models;
 
 namespace Repositories.ModelConstraints
 {
-    public class ModelConstraintsRelaties
+    public static class ModelConstraintsRelaties
     {
-        public static void OnModelCreatingMaakRelaties(ModelBuilder modelBuilder)
+        public static void OnModelCreatingMaakRelaties(this ModelBuilder modelBuilder)
         {
             //rel chauffeur adres one many
             modelBuilder.Entity<Chauffeur>()
