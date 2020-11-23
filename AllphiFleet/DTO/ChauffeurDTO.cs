@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Enums;
+﻿using Models.Enums;
 using System;
 
 namespace DTO

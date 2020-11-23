@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Models.Enums;
 using ReadApi;
 using Services;
 using WriteAPI;
@@ -23,9 +26,8 @@ namespace WriteApi.Controllers
             _session = session;
         }
         // GET: api/chauffeur
-        [HttpGet(Name = "getAllChauffeursWriteAPI")]
-        //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
 
+        [HttpGet(Name = "getAllChauffeursWriteAPI")]
         public IActionResult Get()
         {
 
@@ -50,6 +52,16 @@ namespace WriteApi.Controllers
                 return NotFound("Chauffeur niet gevonden.");
             }
             return Ok(chauffeurDTO);
+        }
+
+        [HttpPost("/writeapi/chauffeur")]
+        public IActionResult AddChauffeur(Chauffeur chauffeur)
+        {
+            _session.BeginTransaction();
+            _session.Save(chauffeur);
+            _session.Commit();
+
+            return Ok(chauffeur);
         }
     }
 }

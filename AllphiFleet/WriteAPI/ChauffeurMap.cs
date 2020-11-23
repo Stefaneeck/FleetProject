@@ -10,6 +10,15 @@ namespace WriteAPI
             //dbo.Chauffeurs werkte niet
             this.Table("Chauffeurs");
 
+            /*
+            this.Id(x => x.Id, x =>
+            {
+                x.Generator(Generators.Identity);
+                x.Type(NHibernateUtil.Int64);
+                x.Column("Id");
+                x.UnsavedValue(0);
+            });
+            */
             this.Id(c => c.Id);
             this.Property(c => c.Naam);
             this.Property(c => c.Voornaam);
@@ -19,6 +28,7 @@ namespace WriteAPI
             this.Property(c => c.Actief);
             //hoe adresid en tankkaartid niet tonen?
             this.Property(c => c.AdresId);
+
             this.ManyToOne(c => c.Adres, a =>
             {
                 a.Column("adresId");

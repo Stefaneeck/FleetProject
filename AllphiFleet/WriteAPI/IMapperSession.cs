@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 namespace WriteAPI
 {
     //+- dbcontext
+    //generiek maken
     public interface IMapperSession
     {
         void BeginTransaction();
