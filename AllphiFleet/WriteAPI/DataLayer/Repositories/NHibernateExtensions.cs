@@ -4,7 +4,7 @@ using NHibernate.Cfg.MappingSchema;
 using NHibernate.Dialect;
 using NHibernate.Mapping.ByCode;
 
-namespace WriteAPI
+namespace WriteAPI.DataLayer.Repositories
 {
     public static class NHibernateExtensions
     {

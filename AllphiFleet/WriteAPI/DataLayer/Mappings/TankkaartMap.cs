@@ -19,11 +19,13 @@ namespace WriteAPI
 
             /*
             this.Bag(x => x.Chauffeurs, mapper => {
+                //inverse true of false? error bij false
                 mapper.Inverse(true);
+                //bij deleten niet verwijderen
                 mapper.Cascade(Cascade.None);
                 mapper.Key(k => 
                 { 
-                    k.Column("TankkaartId");
+                    k.Column("Id");
                     k.NotNullable(true);
                 }
                 );
@@ -31,7 +33,6 @@ namespace WriteAPI
             },
                 r => r.OneToMany()
             );
-
             */
         }
     }

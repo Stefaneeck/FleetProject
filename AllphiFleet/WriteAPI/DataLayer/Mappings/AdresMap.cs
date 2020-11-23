@@ -16,13 +16,15 @@ namespace WriteAPI
             this.Property(a => a.Stad);
             this.Property(a => a.Postcode);
 
+            //Gebeurt in EF
           /*
             this.Bag(x => x.Chauffeurs, mapper => {
                 mapper.Inverse(true);
                 mapper.Cascade(Cascade.None);
                 mapper.Key(k =>
                 {
-                    k.Column("AdresId");
+                    //chauffeurid
+                    k.Column("Id");
                     //nhibernate will insert the child with parent id already set
                     k.NotNullable(true);
                 }
@@ -31,8 +33,9 @@ namespace WriteAPI
                 },
                 r => r.OneToMany()
             );
+          */
           
-             */
+             
         }
 
     }

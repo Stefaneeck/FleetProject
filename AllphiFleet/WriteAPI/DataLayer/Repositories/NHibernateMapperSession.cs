@@ -3,7 +3,7 @@ using NHibernate;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WriteAPI
+namespace WriteAPI.DataLayer.Repositories
 {
     //+- concrete dbcontext implementatie
     public class NHibernateMapperSession : IMapperSession

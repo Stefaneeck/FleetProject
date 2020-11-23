@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using System.Reflection;
+using WriteAPI.DataLayer.Repositories;
+using WriteAPI.PipelineBehaviours;
 
 namespace WriteAPI
 {
@@ -29,6 +27,13 @@ namespace WriteAPI
             //var connectionString = Configuration.GetConnectionString("AllphiFleetDB");
             var connectionString = Configuration["ConnectionString:AllphiFleetDB"];
             services.AddNHibernate(connectionString);
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            //register all validators in the assembly that also contains startup
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+
+            //Since we need to validate each and every request, we add it with a Transient Scope to the container
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
             services.AddControllers();
         }

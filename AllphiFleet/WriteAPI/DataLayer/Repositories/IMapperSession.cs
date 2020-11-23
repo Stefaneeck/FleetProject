@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WriteAPI
+namespace WriteAPI.DataLayer.Repositories
 {
     //+- dbcontext
     //generiek maken
