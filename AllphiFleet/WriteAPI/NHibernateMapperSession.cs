@@ -45,7 +45,7 @@ namespace WriteAPI
         public async Task Save(Chauffeur entity)
         {
             await _session.SaveOrUpdateAsync(entity);
-            await _session.FlushAsync();
+            //await _session.FlushAsync();
         }
 
         public async Task Delete(Chauffeur entity)

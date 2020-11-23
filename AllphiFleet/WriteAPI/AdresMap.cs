@@ -16,13 +16,22 @@ namespace WriteAPI
             this.Property(a => a.Stad);
             this.Property(a => a.Postcode);
 
-            /*
+          /*
             this.Bag(x => x.Chauffeurs, mapper => {
-                mapper.Inverse(false);
-                mapper.Cascade(Cascade.All);
-                mapper.Key(k => k.Column("AdresId"));
-                });
-
+                mapper.Inverse(true);
+                mapper.Cascade(Cascade.None);
+                mapper.Key(k =>
+                {
+                    k.Column("AdresId");
+                    //nhibernate will insert the child with parent id already set
+                    k.NotNullable(true);
+                }
+                );
+                mapper.Lazy(CollectionLazy.Lazy);
+                },
+                r => r.OneToMany()
+            );
+          
              */
         }
 

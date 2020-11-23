@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using NHibernate.Mapping;
+using System.Collections.Generic;
 
 namespace Models
 {

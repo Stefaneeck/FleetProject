@@ -1,4 +1,5 @@
 ﻿using Models;
+using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
 namespace WriteAPI
@@ -15,6 +16,23 @@ namespace WriteAPI
             this.Property(t => t.Pincode);
             this.Property(t => t.AuthType);
             this.Property(t => t.Opties);
+
+            /*
+            this.Bag(x => x.Chauffeurs, mapper => {
+                mapper.Inverse(true);
+                mapper.Cascade(Cascade.None);
+                mapper.Key(k => 
+                { 
+                    k.Column("TankkaartId");
+                    k.NotNullable(true);
+                }
+                );
+                mapper.Lazy(CollectionLazy.Lazy);
+            },
+                r => r.OneToMany()
+            );
+
+            */
         }
     }
 }
