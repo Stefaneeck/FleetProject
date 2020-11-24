@@ -15,7 +15,6 @@ namespace WriteApi.FrontEnd.Controllers
     public class ChauffeurController : ControllerBase
     {
         //DI
-
         //private readonly ILoggerManager _logger;
 
         //nhibernate

@@ -10,6 +10,7 @@ using ReadApi.CustomExceptionMiddleware;
 using ReadApi.Extensions;
 using Repositories;
 using Services;
+using Services.Interfaces;
 using System.IO;
 
 namespace ReadApi
@@ -44,6 +45,7 @@ namespace ReadApi
 
             services.AddScoped<IChauffeurService, ChauffeurService>();
             services.AddScoped<IAanvraagService, AanvraagService>();
+            services.AddScoped<IAdresService, AdresService>();
 
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();
