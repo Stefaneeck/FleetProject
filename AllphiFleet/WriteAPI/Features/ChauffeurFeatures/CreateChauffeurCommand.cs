@@ -2,14 +2,13 @@
 using Models;
 using Models.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using WriteAPI.DataLayer.Repositories;
 
 namespace WriteAPI.Features.ChauffeurFeatures
 {
+    //mag dto zijn?
     public class CreateChauffeurCommand : IRequest<int>
     {
         public long Id { get; set; }
@@ -23,15 +22,17 @@ namespace WriteAPI.Features.ChauffeurFeatures
         public long AdresId { get; set; }
         public virtual long TankkaartId { get; set; }
 
+        //handler in aparte klasse?
         public class CreateChauffeurCommandHandler : IRequestHandler<CreateChauffeurCommand, int>
         {
-            private readonly IMapperSession _context;
-            public CreateChauffeurCommandHandler(IMapperSession context)
+            private readonly IMapperSession<Chauffeur> _context;
+            public CreateChauffeurCommandHandler(IMapperSession<Chauffeur> context)
             {
                 _context = context;
             }
             public async Task<int> Handle(CreateChauffeurCommand command, CancellationToken cancellationToken)
             {
+                //mapping maken
                 var chauffeur = new Chauffeur();
 
                 chauffeur.Naam = command.Naam;
@@ -43,10 +44,12 @@ namespace WriteAPI.Features.ChauffeurFeatures
                 chauffeur.AdresId = command.AdresId;
                 chauffeur.TankkaartId = command.TankkaartId;
 
-
                 //_context.Chauffeurs.Add(chauffeur);
 
+                _context.BeginTransaction();
                 await _context.Save(chauffeur);
+                await _context.Commit();
+                
                 return (int)chauffeur.Id;
             }
         }

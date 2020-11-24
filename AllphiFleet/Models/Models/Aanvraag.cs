@@ -5,14 +5,14 @@ namespace Models
 {
     public class Aanvraag : IIdentifiable
     {
-        public long Id { get; set; }
-        public DateTime DatumAanvraag { get; set; }
-        public AanvraagTypes TypeAanvraag { get; set; }
+        public virtual long Id { get; set; }
+        public virtual DateTime DatumAanvraag { get; set; }
+        public virtual AanvraagTypes TypeAanvraag { get; set; }
 
         //ef ondersteunt geen lijsten, aparte tabel van maken of string bewerking
-        public string GewensteData { get; set; }
-        public AanvraagStatussen StatusAanvraag { get; set; }
-        public long VoertuigId { get; set; }
-        public Voertuig Voertuig { get; set; }
+        public virtual string GewensteData { get; set; }
+        public virtual AanvraagStatussen StatusAanvraag { get; set; }
+        public virtual long VoertuigId { get; set; }
+        public virtual Voertuig Voertuig { get; set; }
     }
 }

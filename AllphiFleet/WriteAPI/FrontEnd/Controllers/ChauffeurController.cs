@@ -19,11 +19,11 @@ namespace WriteApi.FrontEnd.Controllers
         //private readonly ILoggerManager _logger;
 
         //nhibernate
-        private readonly IMapperSession _session;
+        private readonly IMapperSession<Chauffeur> _session;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public ChauffeurController(IMapperSession session)
+        public ChauffeurController(IMapperSession<Chauffeur> session)
         {
             _session = session;
         }
@@ -69,6 +69,10 @@ namespace WriteApi.FrontEnd.Controllers
 
         public async Task<IActionResult> CreateChauffeur(CreateChauffeurCommand command)
         {
+            //we willen dat de validatie in de pipeline gebeurt
+            //vroeger valideren we pas als we al in de applicatielogica zitten
+            //bij dit model: als het geldig is komt het in de applicatielogica, anders niet
+
             Chauffeur c = new Chauffeur();
            
             //map van command naar chauffeur
@@ -82,10 +86,13 @@ namespace WriteApi.FrontEnd.Controllers
             c.Id = command.Id;
             c.TypeRijbewijs = command.TypeRijbewijs;
 
+            //gebeurt nu in createchauffeurcommand, ok?
+            /*
             _session.BeginTransaction();
 
             await _session.Save(c);
             await _session.Commit();
+            */
 
             return Ok(await Mediator.Send(command));
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace WriteAPI.DataLayer.Repositories
 {
     //+- concrete dbcontext implementatie
-    public class NHibernateMapperSession : IMapperSession
+    public class NHibernateMapperSession<T> : IMapperSession<T> where T : class
     {
         private readonly ISession _session;
         private ITransaction _transaction;
@@ -17,6 +17,9 @@ namespace WriteAPI.DataLayer.Repositories
         }
 
         public IQueryable<Chauffeur> Chauffeurs => _session.Query<Chauffeur>();
+        public IQueryable<Aanvraag> Aanvragen => _session.Query<Aanvraag>();
+        public IQueryable<Adres> Adressen => _session.Query<Adres>();
+        public IQueryable<Tankkaart> Tankkaarten => _session.Query<Tankkaart>();
 
         public void BeginTransaction()
         {
@@ -42,13 +45,13 @@ namespace WriteAPI.DataLayer.Repositories
             }
         }
 
-        public async Task Save(Chauffeur entity)
+        public async Task Save(T entity)
         {
             await _session.SaveOrUpdateAsync(entity);
             //await _session.FlushAsync();
         }
 
-        public async Task Delete(Chauffeur entity)
+        public async Task Delete(T entity)
         {
             await _session.DeleteAsync(entity);
         }

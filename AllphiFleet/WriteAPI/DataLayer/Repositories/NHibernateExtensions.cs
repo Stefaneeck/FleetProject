@@ -32,7 +32,12 @@ namespace WriteAPI.DataLayer.Repositories
 
             services.AddSingleton(sessionFactory);
             services.AddScoped(factory => sessionFactory.OpenSession());
-            services.AddScoped<IMapperSession, NHibernateMapperSession>();
+
+            //old
+            //services.AddScoped<IMapperSession, NHibernateMapperSession>();
+
+            //new
+            services.AddTransient(typeof(IMapperSession<>), typeof(NHibernateMapperSession<>));
 
             return services;
         }

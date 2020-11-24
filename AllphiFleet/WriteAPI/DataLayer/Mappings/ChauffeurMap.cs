@@ -9,10 +9,8 @@ namespace WriteAPI
     {
         public ChauffeurMap()
         {
-            //dbo.Chauffeurs werkte niet
             this.Table("Chauffeurs");
 
-            
             this.Id(x => x.Id, x =>
             {
                 //native = what ever is native in underlying db
