@@ -27,6 +27,10 @@ namespace Repositories.ModelConstraints
             modelBuilder.Entity<Voertuig>()
                 .Property(v => v.KilometerStand)
                 .IsRequired();
+
+            modelBuilder.Entity<Voertuig>()
+               .Property(v => v.ChassisNr)
+               .IsRequired();
         }
     }
 }

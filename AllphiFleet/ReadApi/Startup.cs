@@ -46,6 +46,7 @@ namespace ReadApi
             services.AddScoped<IChauffeurService, ChauffeurService>();
             services.AddScoped<IAanvraagService, AanvraagService>();
             services.AddScoped<IAdresService, AdresService>();
+            services.AddScoped<IFactuurService, FactuurService>();
 
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();

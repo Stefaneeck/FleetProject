@@ -55,6 +55,7 @@ namespace Repositories.ModelConstraints
             .WithMany(v => v.Aanvragen)
             .HasForeignKey(a => a.VoertuigId)
             .IsRequired();
+
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Models
     public class Voertuig
     {
         public virtual long Id { get; set; }
+        public virtual long ChassisNr { get; set; }
         public virtual ICollection<Nummerplaat> Nummerplaten { get; set; }
 
         public virtual BrandstofTypes TypeBrandStof { get; set; }

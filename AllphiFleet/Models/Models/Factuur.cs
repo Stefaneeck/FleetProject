@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class Factuur
+    public class Factuur : IIdentifiable
     {
         public virtual long Id { get; set; }
         public virtual string NaamGefactureerde { get; set; }
