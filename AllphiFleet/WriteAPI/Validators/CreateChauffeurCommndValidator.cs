@@ -11,16 +11,28 @@ namespace WriteAPI.Validators
         //checken of al iets bestaat door dbcontext te injecteren bvb.
         public CreateChauffeurCommndValidator()
         {
-            RuleFor(c => c.createChauffeurDTO.Naam).NotEmpty();
-            RuleFor(c => c.createChauffeurDTO.Voornaam).NotEmpty();
-            RuleFor(c => c.createChauffeurDTO.Actief).NotEmpty();
-            RuleFor(c => c.createChauffeurDTO.GeboorteDatum).NotEmpty();
-            RuleFor(c => c.createChauffeurDTO.RijksRegisterNummer).NotEmpty();
-            RuleFor(c => c.createChauffeurDTO.TypeRijbewijs).NotEmpty();
+            
+            RuleFor(c => c.CreateChauffeurDTO.Naam).NotEmpty();
+            RuleFor(c => c.CreateChauffeurDTO.Voornaam).NotEmpty();
+            RuleFor(c => c.CreateChauffeurDTO.Actief).NotEmpty();
+            RuleFor(c => c.CreateChauffeurDTO.GeboorteDatum).NotEmpty();
+            RuleFor(c => c.CreateChauffeurDTO.RijksRegisterNummer).NotEmpty();
+            RuleFor(c => c.CreateChauffeurDTO.TypeRijbewijs).NotEmpty();
+            
+
+            /*
+            RuleFor(c => c.Naam).NotEmpty();
+            RuleFor(c => c.Voornaam).NotEmpty();
+            RuleFor(c => c.Actief).NotEmpty();
+            RuleFor(c => c.GeboorteDatum).NotEmpty();
+            RuleFor(c => c.RijksRegisterNummer).NotEmpty();
+            RuleFor(c => c.TypeRijbewijs).NotEmpty();
+            */
+
             //RuleFor(c => c.createChauffeurDTO.AdresId).NotEmpty();
-            RuleFor(c => c.createChauffeurDTO.Adres).NotEmpty();
+            //RuleFor(c => c.createChauffeurDTO.Adres).NotEmpty();
             //RuleFor(c => c.createChauffeurDTO.TankkaartId).NotEmpty();
-            RuleFor(c => c.createChauffeurDTO.Tankkaart).NotEmpty();
+            //RuleFor(c => c.createChauffeurDTO.Tankkaart).NotEmpty();
 
         }
     }

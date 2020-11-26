@@ -60,6 +60,7 @@ namespace ReadApi
             //services.AddAutoMapper(typeof(ChauffeurProfile)); 
             
             //moet de assembly zijn uit het project dat profile bevat
+            //moet dus assembly van services project zijn
             services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
 
             //extension method uit ExceptionMiddlewareExtensions klasse

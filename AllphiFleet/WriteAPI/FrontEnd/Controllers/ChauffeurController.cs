@@ -66,7 +66,7 @@ namespace WriteApi.FrontEnd.Controllers
             return Ok(chauffeur);
         }*/
 
-        public async Task<IActionResult> CreateChauffeur(CreateChauffeurCommand command)
+        public async Task<IActionResult> CreateChauffeur(CreateChauffeurDTO createChauffeurDTO)
         {
             //we willen dat de validatie in de pipeline gebeurt
             //vroeger valideren we pas als we al in de applicatielogica zitten
@@ -96,7 +96,8 @@ namespace WriteApi.FrontEnd.Controllers
             await _session.Commit();
             */
 
-            return Ok(await Mediator.Send(command));
+            //return Ok(await Mediator.Send(command));
+            return Ok(await Mediator.Send(new CreateChauffeurCommand { CreateChauffeurDTO = createChauffeurDTO }));
         }
     }
 }

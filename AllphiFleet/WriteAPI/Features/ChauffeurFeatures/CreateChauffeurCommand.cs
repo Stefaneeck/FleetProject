@@ -1,5 +1,8 @@
 ﻿using DTO;
 using MediatR;
+using Models;
+using Models.Enums;
+using System;
 
 namespace WriteAPI.Features.ChauffeurFeatures
 {
@@ -15,11 +18,12 @@ namespace WriteAPI.Features.ChauffeurFeatures
         public string RijksRegisterNummer { get; set; }
         public RijbewijsTypes TypeRijbewijs { get; set; }
         public bool Actief { get; set; }
+        public Adres Adres { get; set; }
         public long AdresId { get; set; }
         public virtual long TankkaartId { get; set; }
-        */
 
-        public CreateChauffeurDTO createChauffeurDTO { get; set; }
+        */
+        public CreateChauffeurDTO CreateChauffeurDTO { get; set; }
         //per command een DTO maken, verschillende DTOs maken
     }
 }
