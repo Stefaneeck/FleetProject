@@ -32,7 +32,7 @@ namespace WriteAPI
                 {
                     k.Column(col => col.Name("Id"));
                 });
-                map.Cascade(Cascade.All);
+                map.Cascade(Cascade.None);
                 map.Inverse(true);
             },
             action => action.OneToMany());

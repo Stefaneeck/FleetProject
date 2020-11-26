@@ -33,7 +33,7 @@ namespace WriteAPI
                 map.Column("AdresId");
                 //map.NotNullable(false);
 
-                map.Cascade(Cascade.None);
+                map.Cascade(Cascade.All);
             });
             
 
