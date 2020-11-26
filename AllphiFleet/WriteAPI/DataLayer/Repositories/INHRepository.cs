@@ -6,7 +6,7 @@ namespace WriteAPI.DataLayer.Repositories
 {
     //+- dbcontext
     //generiek maken
-    public interface IMapperSession<T> where T : class
+    public interface INHRepository<T> where T : class
     {
         void BeginTransaction();
         Task Commit();

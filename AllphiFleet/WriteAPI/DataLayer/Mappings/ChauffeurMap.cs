@@ -11,13 +11,13 @@ namespace WriteAPI
         {
             this.Table("Chauffeurs");
 
-            this.Id(x => x.Id, x =>
+            this.Id(c => c.Id, c =>
             {
                 //native = what ever is native in underlying db
-                x.Generator(Generators.Native);
-                x.Type(NHibernateUtil.Int64);
-                x.Column("Id");
-                x.UnsavedValue(0);
+                c.Generator(Generators.Native);
+                c.Type(NHibernateUtil.Int64);
+                c.Column("Id");
+                c.UnsavedValue(0);
             });
             
             //this.Id(c => c.Id);

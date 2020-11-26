@@ -18,11 +18,11 @@ namespace WriteApi.FrontEnd.Controllers
         //private readonly ILoggerManager _logger;
 
         //nhibernate
-        private readonly IMapperSession<Chauffeur> _session;
+        private readonly INHRepository<Chauffeur> _session;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public ChauffeurController(IMapperSession<Chauffeur> session)
+        public ChauffeurController(INHRepository<Chauffeur> session)
         {
             _session = session;
         }
@@ -72,6 +72,8 @@ namespace WriteApi.FrontEnd.Controllers
             //vroeger valideren we pas als we al in de applicatielogica zitten
             //bij dit model: als het geldig is komt het in de applicatielogica, anders niet
 
+            //gebeurt nu in createchauffeurcommandhandler
+            /*
             Chauffeur c = new Chauffeur();
            
             //map van command naar chauffeur
@@ -84,6 +86,7 @@ namespace WriteApi.FrontEnd.Controllers
             c.GeboorteDatum = command.GeboorteDatum;
             c.Id = command.Id;
             c.TypeRijbewijs = command.TypeRijbewijs;
+            */
 
             //gebeurt nu in createchauffeurcommand, ok?
             /*

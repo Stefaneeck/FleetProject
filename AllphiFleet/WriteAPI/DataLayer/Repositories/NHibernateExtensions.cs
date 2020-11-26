@@ -37,7 +37,7 @@ namespace WriteAPI.DataLayer.Repositories
             //services.AddScoped<IMapperSession, NHibernateMapperSession>();
 
             //new
-            services.AddTransient(typeof(IMapperSession<>), typeof(NHibernateMapperSession<>));
+            services.AddTransient(typeof(INHRepository<>), typeof(NHRepository<>));
 
             return services;
         }

@@ -1,16 +1,12 @@
-﻿using MediatR;
-using Models;
-using Models.Enums;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using WriteAPI.DataLayer.Repositories;
+﻿using DTO;
+using MediatR;
 
 namespace WriteAPI.Features.ChauffeurFeatures
 {
     //mag dto zijn?
     public class CreateChauffeurCommand : IRequest<int>
     {
+        /*
         public long Id { get; set; }
         public string Naam { get; set; }
         public string Voornaam { get; set; }
@@ -21,37 +17,9 @@ namespace WriteAPI.Features.ChauffeurFeatures
         public bool Actief { get; set; }
         public long AdresId { get; set; }
         public virtual long TankkaartId { get; set; }
+        */
 
-        //handler in aparte klasse?
-        public class CreateChauffeurCommandHandler : IRequestHandler<CreateChauffeurCommand, int>
-        {
-            private readonly IMapperSession<Chauffeur> _context;
-            public CreateChauffeurCommandHandler(IMapperSession<Chauffeur> context)
-            {
-                _context = context;
-            }
-            public async Task<int> Handle(CreateChauffeurCommand command, CancellationToken cancellationToken)
-            {
-                //mapping maken
-                var chauffeur = new Chauffeur();
-
-                chauffeur.Naam = command.Naam;
-                chauffeur.Voornaam = command.Voornaam;
-                chauffeur.GeboorteDatum = command.GeboorteDatum;
-                chauffeur.RijksRegisterNummer = command.RijksRegisterNummer;
-                chauffeur.TypeRijbewijs = command.TypeRijbewijs;
-                chauffeur.Actief = command.Actief;
-                chauffeur.AdresId = command.AdresId;
-                chauffeur.TankkaartId = command.TankkaartId;
-
-                //_context.Chauffeurs.Add(chauffeur);
-
-                _context.BeginTransaction();
-                await _context.Save(chauffeur);
-                await _context.Commit();
-                
-                return (int)chauffeur.Id;
-            }
-        }
+        public CreateChauffeurDTO createChauffeurDTO { get; set; }
+        //per command een DTO maken, verschillende DTOs maken
     }
 }

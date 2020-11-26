@@ -12,11 +12,12 @@ namespace WriteAPI.Validators
         //checken of al iets bestaat door dbcontext te injecteren bvb.
         public CreateAanvraagCommndValidator()
         {
-            RuleFor(a => a.DatumAanvraag).NotEmpty();
-            RuleFor(a => a.GewensteData).NotEmpty();
-            RuleFor(a => a.StatusAanvraag).NotEmpty();
-            RuleFor(a => a.TypeAanvraag).NotEmpty();
-            RuleFor(a => a.VoertuigId).NotEmpty();
+            RuleFor(a => a.createAanvraagDTO.DatumAanvraag).NotEmpty();
+            RuleFor(a => a.createAanvraagDTO.GewensteData).NotEmpty();
+            RuleFor(a => a.createAanvraagDTO.StatusAanvraag).NotEmpty();
+            RuleFor(a => a.createAanvraagDTO.TypeAanvraag).NotEmpty();
+            //RuleFor(a => a.createAanvraagDTO.VoertuigId).NotEmpty();
+            RuleFor(a => a.createAanvraagDTO.Voertuig).NotEmpty();
         }
     }
 }

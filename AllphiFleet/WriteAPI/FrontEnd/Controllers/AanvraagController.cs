@@ -20,11 +20,11 @@ namespace WriteApi.FrontEnd.Controllers
         //private readonly ILoggerManager _logger;
 
         //nhibernate
-        private readonly IMapperSession<Aanvraag> _session;
+        private readonly INHRepository<Aanvraag> _session;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public AanvraagController(IMapperSession<Aanvraag> session)
+        public AanvraagController(INHRepository<Aanvraag> session)
         {
             _session = session;
         }
@@ -59,14 +59,21 @@ namespace WriteApi.FrontEnd.Controllers
             //vroeger valideren we pas als we al in de applicatielogica zitten
             //bij dit model: als het geldig is komt het in de applicatielogica, anders niet
 
+            //gebeurt nu in createaanvraagcommandhandler
+            /*
             Aanvraag a = new Aanvraag();
 
             //map van command naar chauffeur
-            a.DatumAanvraag = command.DatumAanvraag;
-            a.GewensteData = command.GewensteData;
-            a.StatusAanvraag = command.StatusAanvraag;
-            a.TypeAanvraag = command.TypeAanvraag;
-            a.VoertuigId = command.VoertuigId;
+            a.DatumAanvraag = command.createAanvraagDTO.DatumAanvraag;
+            a.GewensteData = command.createAanvraagDTO.GewensteData;
+            a.StatusAanvraag = command.createAanvraagDTO.StatusAanvraag;
+            a.TypeAanvraag = command.createAanvraagDTO.TypeAanvraag;
+            //a.VoertuigId = command.createAanvraagDTO.Voertuig.VoertuigId;
+
+            //voertuig in aanvraagdto moet voertuigdto worden, hier dan ook nog mappen
+            a.Voertuig = command.createAanvraagDTO.Voertuig;
+
+            */
 
             /*
             _session.BeginTransaction();

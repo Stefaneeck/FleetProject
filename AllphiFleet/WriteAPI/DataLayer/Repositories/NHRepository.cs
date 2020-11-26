@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 namespace WriteAPI.DataLayer.Repositories
 {
     //+- concrete dbcontext implementatie
-    public class NHibernateMapperSession<T> : IMapperSession<T> where T : class
+    public class NHRepository<T> : INHRepository<T> where T : class
     {
         private readonly ISession _session;
         private ITransaction _transaction;
 
-        public NHibernateMapperSession(ISession session)
+        public NHRepository(ISession session)
         {
             _session = session;
         }
