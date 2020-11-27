@@ -13,6 +13,7 @@ namespace WriteAPI.DataLayer.Repositories
         Task Rollback();
         void CloseTransaction();
         Task Save(T entity);
+        //Task Delete(long id);
         Task Delete(T entity);
         IQueryable<Chauffeur> Chauffeurs { get; }
         IQueryable<Aanvraag> Aanvragen { get; }

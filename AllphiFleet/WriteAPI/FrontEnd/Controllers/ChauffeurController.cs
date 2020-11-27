@@ -46,7 +46,8 @@ namespace WriteApi.FrontEnd.Controllers
         [HttpGet("{id}", Name = "GetChauffeurWriteAPI")]
         public IActionResult Get(long id)
         {
-            //ChauffeurDTO chauffeurDTO = _chauffeurService.GetChauffeur(id);
+            //ChauffeurDTO chauffeurDTO = _session.Chauffeurs.FirstOrDefault(e => e.Id == id);
+
             ChauffeurDTO chauffeurDTO = null;
             if (chauffeurDTO == null)
             {
@@ -55,49 +56,41 @@ namespace WriteApi.FrontEnd.Controllers
             return Ok(chauffeurDTO);
         }
 
+
         [HttpPost("/writeapi/chauffeur")]
-        /*
-        public IActionResult AddChauffeur(Chauffeur chauffeur)
-        {
-            _session.BeginTransaction();
-            _session.Save(chauffeur);
-            _session.Commit();
-
-            return Ok(chauffeur);
-        }*/
-
         public async Task<IActionResult> CreateChauffeur(CreateChauffeurDTO createChauffeurDTO)
         {
             //we willen dat de validatie in de pipeline gebeurt
             //vroeger valideren we pas als we al in de applicatielogica zitten
             //bij dit model: als het geldig is komt het in de applicatielogica, anders niet
 
-            //gebeurt nu in createchauffeurcommandhandler
-            /*
-            Chauffeur c = new Chauffeur();
-           
-            //map van command naar chauffeur
-            c.Naam = command.Naam;
-            c.Voornaam = command.Voornaam;
-            c.RijksRegisterNummer = command.RijksRegisterNummer;
-            c.TankkaartId = command.TankkaartId;
-            c.Actief = command.Actief;
-            c.AdresId = command.AdresId;
-            c.GeboorteDatum = command.GeboorteDatum;
-            c.Id = command.Id;
-            c.TypeRijbewijs = command.TypeRijbewijs;
-            */
-
-            //gebeurt nu in createchauffeurcommand, ok?
-            /*
-            _session.BeginTransaction();
-
-            await _session.Save(c);
-            await _session.Commit();
-            */
-
             //return Ok(await Mediator.Send(command));
             return Ok(await Mediator.Send(new CreateChauffeurCommand { CreateChauffeurDTO = createChauffeurDTO }));
+        }
+
+        //correcte syntax
+        [HttpDelete("Delete")]
+        //writeapi/chauffeur/delete?id
+        //aanpassen naar betere route
+
+        //gewoon int meegeven ipv dto? consistentie..
+        //id blijft op 0 staan, maken
+        public async Task<IActionResult> DeleteChauffeur(long id)
+        {
+            /*
+            var entity = await _service.ReadAsync(id);
+
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            await _service.DeleteAsync(id);
+            */
+            //return Ok(await Mediator.Send(new DeleteChauffeurCommand { DeleteChauffeurDTO = deleteChauffeurDTO }));
+
+            //nog aanpassen, fixed value
+            return Ok(await Mediator.Send(new DeleteChauffeurCommand { Id = 12 }));
         }
     }
 }

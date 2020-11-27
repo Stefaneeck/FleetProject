@@ -51,9 +51,17 @@ namespace WriteAPI.DataLayer.Repositories
             //await _session.FlushAsync();
         }
 
+        /*
+        public async Task Delete(long id)
+        {
+            await _session.DeleteAsync((int)id);
+        }
+
+        */
         public async Task Delete(T entity)
         {
             await _session.DeleteAsync(entity);
         }
+
     }
 }

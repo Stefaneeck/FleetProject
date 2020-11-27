@@ -11,10 +11,8 @@ namespace WriteAPI
         {
             this.Table("Adressen");
 
-            //this.Id(a => a.Id);
             this.Id(a => a.Id, a =>
             {
-                //native = what ever is native in underlying db
                 a.Generator(Generators.Native);
                 a.Type(NHibernateUtil.Int64);
                 a.Column("Id");
@@ -36,27 +34,6 @@ namespace WriteAPI
                 map.Inverse(true);
             },
             action => action.OneToMany());
-
-            //Gebeurt in EF
-            /*
-              this.Bag(x => x.Chauffeurs, mapper => {
-                  mapper.Inverse(true);
-                  mapper.Cascade(Cascade.None);
-                  mapper.Key(k =>
-                  {
-                      //chauffeurid
-                      k.Column("Id");
-                      //nhibernate will insert the child with parent id already set
-                      k.NotNullable(true);
-                  }
-                  );
-                  mapper.Lazy(CollectionLazy.Lazy);
-                  },
-                  r => r.OneToMany()
-              );
-            */
-
-
         }
 
     }

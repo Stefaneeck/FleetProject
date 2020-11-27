@@ -18,16 +18,6 @@ namespace WriteAPI.Validators
             RuleFor(c => c.CreateChauffeurDTO.GeboorteDatum).NotEmpty();
             RuleFor(c => c.CreateChauffeurDTO.RijksRegisterNummer).NotEmpty();
             RuleFor(c => c.CreateChauffeurDTO.TypeRijbewijs).NotEmpty();
-            
-
-            /*
-            RuleFor(c => c.Naam).NotEmpty();
-            RuleFor(c => c.Voornaam).NotEmpty();
-            RuleFor(c => c.Actief).NotEmpty();
-            RuleFor(c => c.GeboorteDatum).NotEmpty();
-            RuleFor(c => c.RijksRegisterNummer).NotEmpty();
-            RuleFor(c => c.TypeRijbewijs).NotEmpty();
-            */
 
             //RuleFor(c => c.createChauffeurDTO.AdresId).NotEmpty();
             //RuleFor(c => c.createChauffeurDTO.Adres).NotEmpty();

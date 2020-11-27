@@ -28,39 +28,20 @@ namespace WriteAPI
             this.Property(c => c.TypeRijbewijs);
             this.Property(c => c.Actief);
 
+            //this.Property(c => c.TankkaartId);
+
             ManyToOne(x => x.Adres, map =>
             {
                 map.Column("AdresId");
-                //map.NotNullable(false);
-
                 map.Cascade(Cascade.All);
             });
+
             
-
-            //this.Property(c => c.AdresId);
-            this.Property(c => c.TankkaartId);
-
-            //hoe adresid en tankkaartid niet tonen?
-            //this.Property(c => c.AdresId);
-
-            //deze zijn null want er wordt nergens naar de property adresid verwezen, hoe oplossen?
-
-            /*
-            this.ManyToOne(c => c.Adres, a =>
+            ManyToOne(x => x.Tankkaart, map =>
             {
-                a.Column("AdresId");
-                a.Class(typeof(Adres));
+                map.Column("TankkaartId");
+                map.Cascade(Cascade.All);
             });
-            */
-
-
-            /*
-            this.ManyToOne(p => p.Tankkaart, t =>
-            {
-                t.Column("TankkaartId");
-                t.Class(typeof(Tankkaart));
-            });
-            */
         }
     }
 }
