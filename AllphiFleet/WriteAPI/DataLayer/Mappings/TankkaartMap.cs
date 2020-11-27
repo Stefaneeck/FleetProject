@@ -9,6 +9,8 @@ namespace WriteAPI
     {
         public TankkaartMap()
         {
+            //hier aparte delete voor
+
             this.Table("Tankkaarten");
 
             this.Id(t => t.Id, t =>
@@ -33,6 +35,8 @@ namespace WriteAPI
                 });
                 map.Cascade(Cascade.None);
                 map.Inverse(true);
+
+                map.Lazy(CollectionLazy.Lazy);
             },
             action => action.OneToMany());
         }

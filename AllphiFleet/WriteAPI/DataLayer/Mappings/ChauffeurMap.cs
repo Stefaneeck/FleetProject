@@ -33,14 +33,17 @@ namespace WriteAPI
             ManyToOne(x => x.Adres, map =>
             {
                 map.Column("AdresId");
-                map.Cascade(Cascade.All);
+                //bij delete, delete orphans
+                map.Cascade(Cascade.DeleteOrphans | Cascade.Refresh | Cascade.Persist);
             });
 
             
             ManyToOne(x => x.Tankkaart, map =>
             {
                 map.Column("TankkaartId");
-                map.Cascade(Cascade.All);
+                //cascade all houdt ook remove in, dus dan wordt hij verwijderd.. daarom specifiekere cascades
+                //geen delete action, dus eigenlijk cascade none voor delete
+                map.Cascade(Cascade.Refresh | Cascade.Persist);
             });
         }
     }

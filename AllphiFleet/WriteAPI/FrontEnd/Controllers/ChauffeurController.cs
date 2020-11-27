@@ -43,7 +43,7 @@ namespace WriteApi.FrontEnd.Controllers
 
         //Get: api/chauffeur/1
 
-        [HttpGet("{id}", Name = "GetChauffeurWriteAPI")]
+        [HttpGet("/writeapi/chauffeur/{id}", Name = "GetChauffeurWriteAPI")]
         public IActionResult Get(long id)
         {
             //ChauffeurDTO chauffeurDTO = _session.Chauffeurs.FirstOrDefault(e => e.Id == id);
@@ -69,7 +69,7 @@ namespace WriteApi.FrontEnd.Controllers
         }
 
         //correcte syntax
-        [HttpDelete("Delete")]
+        [HttpDelete("/writeapi/chauffeur/delete/{id}")]
         //writeapi/chauffeur/delete?id
         //aanpassen naar betere route
 
@@ -90,7 +90,7 @@ namespace WriteApi.FrontEnd.Controllers
             //return Ok(await Mediator.Send(new DeleteChauffeurCommand { DeleteChauffeurDTO = deleteChauffeurDTO }));
 
             //nog aanpassen, fixed value
-            return Ok(await Mediator.Send(new DeleteChauffeurCommand { Id = 12 }));
+            return Ok(await Mediator.Send(new DeleteChauffeurCommand { Id = id }));
         }
     }
 }

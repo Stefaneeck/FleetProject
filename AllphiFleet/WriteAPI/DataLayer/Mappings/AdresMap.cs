@@ -9,6 +9,8 @@ namespace WriteAPI
     {
         public AdresMap()
         {
+            //hier geen aparte delete voor
+
             this.Table("Adressen");
 
             this.Id(a => a.Id, a =>
@@ -30,8 +32,12 @@ namespace WriteAPI
                 {
                     k.Column(col => col.Name("Id"));
                 });
+                //als een adres verwijderd wordt, gebeurt er niets?
+                //delete orphans?
                 map.Cascade(Cascade.None);
                 map.Inverse(true);
+
+                map.Lazy(CollectionLazy.Lazy);
             },
             action => action.OneToMany());
         }

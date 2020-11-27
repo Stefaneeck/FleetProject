@@ -24,11 +24,14 @@ namespace WriteAPI.DataLayer.Repositories
         public void BeginTransaction()
         {
             _transaction = _session.BeginTransaction();
+            if (_transaction == null)
+                throw new System.Exception();
         }
 
         public async Task Commit()
         {
-            await _transaction.CommitAsync();
+            if(_transaction != null)
+                await _transaction.CommitAsync();
         }
 
         public async Task Rollback()

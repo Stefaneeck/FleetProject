@@ -10,10 +10,14 @@ namespace WriteAPI.Features.ChauffeurFeatures
 {
     public class DeleteChauffeurCommandHandler : IRequestHandler<DeleteChauffeurCommand, int>
     {
-        private readonly INHRepository<Chauffeur> _context;
-        public DeleteChauffeurCommandHandler(INHRepository<Chauffeur> context, IMapper mapper)
+        private readonly INHRepository<Chauffeur> _chauffeurContext;
+        private readonly INHRepository<Adres> _adresContext;
+        private readonly INHRepository<Tankkaart> _tankkaartContext;
+        public DeleteChauffeurCommandHandler(INHRepository<Chauffeur> chauffeurContext, INHRepository<Adres> adresContext, INHRepository<Tankkaart> tankkaartContext, IMapper mapper)
         {
-            _context = context;
+            _chauffeurContext = chauffeurContext;
+            _adresContext = adresContext;
+            _tankkaartContext = tankkaartContext;
         }
         public async Task<int> Handle(DeleteChauffeurCommand command, CancellationToken cancellationToken)
         {
@@ -26,33 +30,43 @@ namespace WriteAPI.Features.ChauffeurFeatures
 
             //kijken of chauffeur al bestaat
             var chauffeur = new Chauffeur();
-            chauffeur = _context.Chauffeurs.ToList().FirstOrDefault(e => e.Id == command.Id);
-            if(chauffeur == null)
+            chauffeur = _chauffeurContext.Chauffeurs.FirstOrDefault(e => e.Id == command.Id);
+            //if(chauffeur == null)
                 //return not found
                 //hoe doen met mediatr?
 
-            //undo later
-            //chauffeur.Tankkaart = _mapper.Map<Tankkaart>(command.CreateChauffeurDTO.Tankkaart);
-
-
-            //_context.Chauffeurs.Add(chauffeur);
-
             //try catch rondzetten
-            //buiten try begintransaction
-            // save commit binnen try block
-            //catchblok rollback
 
-            //todo controleren of chauffeur wel bestaat
-            _context.BeginTransaction();
+            /*
+            //1: delete adres
+            var adres = chauffeur.Adres;
+            chauffeur.Adres = null;
+            //adres.Chauffeurs.Remove(chauffeur);
 
-            //await _context.Delete(chauffeur);
-            //await _context.Delete(command.DeleteChauffeurDTO.Id);
-            await _context.Delete(chauffeur);
-            await _context.Commit();
+            _adresContext.BeginTransaction();
+            await _adresContext.Delete(adres);
+            await _adresContext.Commit();
+
+            //2: delete tankkaart
+            var tankkaart = chauffeur.Tankkaart;
+            chauffeur.Tankkaart = null;
+            //tankkaart.Chauffeurs.Remove(chauffeur);
+
+            _tankkaartContext.BeginTransaction();
+            await _tankkaartContext.Delete(tankkaart);
+            await _tankkaartContext.Commit();
+
+            */
+
+            //3: delete chauffeur
+            _chauffeurContext.BeginTransaction();
+            await _chauffeurContext.Delete(chauffeur);
+            await _chauffeurContext.Commit();
 
             //moet niets teruggeven
             //aanpassen
             //unit in mediatr equivalent van void
+
             return (int)command.Id;
         }
     }

@@ -11,15 +11,15 @@ namespace WriteAPI.Features.ChauffeurFeatures
     public class CreateChauffeurCommandHandler : IRequestHandler<CreateChauffeurCommand, int>
     {
         private readonly INHRepository<Chauffeur> _context;
-        private readonly INHRepository<Tankkaart> _tankkaartContext;
-        private readonly IMapper _mapper;
+        //private readonly INHRepository<Tankkaart> _tankkaartContext;
+        //private readonly IMapper _mapper;
 
         //inhrepository van createchauffeurdto ipv chauffeur? niet meer mappen dan
         public CreateChauffeurCommandHandler(INHRepository<Chauffeur> context, INHRepository<Tankkaart> tankkaartContext, IMapper mapper)
         {
             _context = context;
-            _tankkaartContext = tankkaartContext;
-            _mapper = mapper;
+            //_tankkaartContext = tankkaartContext;
+            //_mapper = mapper;
         }
         public async Task<int> Handle(CreateChauffeurCommand command, CancellationToken cancellationToken)
         {
@@ -57,8 +57,6 @@ namespace WriteAPI.Features.ChauffeurFeatures
 
             //undo later
             //chauffeur.Tankkaart = _mapper.Map<Tankkaart>(command.CreateChauffeurDTO.Tankkaart);
-
-
             //_context.Chauffeurs.Add(chauffeur);
 
             _context.BeginTransaction();
