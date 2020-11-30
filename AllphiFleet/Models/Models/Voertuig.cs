@@ -4,7 +4,7 @@ using Models.Enums;
 
 namespace Models
 {
-    public class Voertuig
+    public class Voertuig : IIdentifiable
     {
         public virtual long Id { get; set; }
         public virtual long ChassisNr { get; set; }

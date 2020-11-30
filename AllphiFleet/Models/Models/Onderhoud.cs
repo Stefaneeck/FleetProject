@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class Onderhoud
+    public class Onderhoud : IIdentifiable
     {
         public virtual long Id { get; set; }
         public virtual DateTime DatumOnderhoud { get; set; }

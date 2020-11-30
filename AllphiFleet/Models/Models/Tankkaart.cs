@@ -5,7 +5,7 @@ using Models.Enums;
 
 namespace Models
 {
-    public class Tankkaart
+    public class Tankkaart : IIdentifiable
     {
         public virtual long Id { get; set; }
         public virtual int Kaartnummer { get; set; }

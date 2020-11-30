@@ -14,6 +14,7 @@ namespace WriteAPI.DataLayer.Repositories
         void CloseTransaction();
         Task Save(T entity);
         //Task Delete(long id);
+        Task Update(T entity);
         Task Delete(T entity);
         IQueryable<Chauffeur> Chauffeurs { get; }
         IQueryable<Aanvraag> Aanvragen { get; }

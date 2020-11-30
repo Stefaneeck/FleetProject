@@ -16,15 +16,21 @@ namespace WriteAPI.Features.ChauffeurFeatures
         private readonly INHRepository<Adres> _adresContext;
         private readonly INHRepository<Tankkaart> _tankkaartContext;
 
+        //voor evict
+        //private readonly ISession _session;
+
         //private readonly IMapper _mapper;
 
         //inhrepository van createchauffeurdto ipv chauffeur? niet meer mappen dan
-        public UpdateChauffeurCommandHandler(INHRepository<Chauffeur> chauffeurContext, INHRepository<Adres> adresContext, INHRepository<Tankkaart> tankkaartContext, IMapper mapper)
+        public UpdateChauffeurCommandHandler(INHRepository<Chauffeur> chauffeurContext, INHRepository<Adres> adresContext, 
+            INHRepository<Tankkaart> tankkaartContext, IMapper mapper, ISession session)
         {
             _chauffeurContext = chauffeurContext;
             _adresContext = adresContext;
             _tankkaartContext = tankkaartContext;
             //_mapper = mapper;
+
+            //_session = session;
         }
         public async Task<int> Handle(UpdateChauffeurCommand command, CancellationToken cancellationToken)
         {
@@ -94,7 +100,13 @@ namespace WriteAPI.Features.ChauffeurFeatures
 
             try
             {
-                await _chauffeurContext.Save(chauffeur);
+                //_session.Evict(chauffeur);
+                //_session.Evict(chauffeur.Adres);
+                //_session.Evict(chauffeur.Tankkaart);
+
+
+                //_session.Flush();
+                await _chauffeurContext.Update(chauffeur);
                 await _chauffeurContext.Commit();
             }
             catch (Exception e)

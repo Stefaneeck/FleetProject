@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class Herstelling
+    public class Herstelling : IIdentifiable
     {
         public virtual long Id { get; set; }
         public virtual DateTime DatumHerstelling { get; set; }

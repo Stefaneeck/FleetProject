@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class Nummerplaat
+    public class Nummerplaat : IIdentifiable
     {
         public virtual long Id { get; set; }
         public virtual string NummerPlaatTekens { get; set; }

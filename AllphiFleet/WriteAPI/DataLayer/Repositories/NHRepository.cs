@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace WriteAPI.DataLayer.Repositories
 {
     //+- concrete dbcontext implementatie
-    public class NHRepository<T> : INHRepository<T> where T : class
+    public class NHRepository<T> : INHRepository<T> where T : class, IIdentifiable
     {
         private readonly ISession _session;
         private ITransaction _transaction;
@@ -68,5 +68,14 @@ namespace WriteAPI.DataLayer.Repositories
             await _session.DeleteAsync(entity);
         }
 
+        public async Task Update(T entity)
+        {
+            var existingEntity = Chauffeurs.FirstOrDefault(c => c.Id == entity.Id);
+
+            if (existingEntity == null)
+                throw new System.Exception(entity.Id.ToString());
+
+            await _session.MergeAsync(entity);
+        }
     }
 }

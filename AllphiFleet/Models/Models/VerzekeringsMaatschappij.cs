@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class VerzekeringsMaatschappij
+    public class VerzekeringsMaatschappij : IIdentifiable
     {
         public virtual long Id { get; set; }
         public virtual int ReferentieNrVerzekeringsMaatschappij { get; set; }
