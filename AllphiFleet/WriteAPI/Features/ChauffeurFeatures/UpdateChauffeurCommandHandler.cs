@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Models;
-using NHibernate;
 using System;
 using System.Linq;
 using System.Threading;

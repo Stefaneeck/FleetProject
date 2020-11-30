@@ -50,8 +50,10 @@ namespace WriteApi.FrontEnd.Controllers
             {
                 return Ok("Adres bestaat niet");
             }
-            
-            return Ok(await Mediator.Send(new DeleteAdresCommand { Id = id }));
+            else
+            {
+                return Ok(await Mediator.Send(new DeleteAdresCommand { Id = id }));
+            }
         }
     }
 }
