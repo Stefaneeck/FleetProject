@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadApi", "ReadApi\ReadApi.csproj", "{C701187F-2B01-4864-A357-2E2BAB4BF640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{60207134-51E1-4399-BED1-A1ABF5344FB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{60207134-51E1-4399-BED1-A1ABF5344FB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteAPI", "WriteAPI\WriteAPI.csproj", "{97DD1E8A-5372-44AE-BCB3-9CD9BEDD0D16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteAPI", "WriteAPI\WriteAPI.csproj", "{97DD1E8A-5372-44AE-BCB3-9CD9BEDD0D16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

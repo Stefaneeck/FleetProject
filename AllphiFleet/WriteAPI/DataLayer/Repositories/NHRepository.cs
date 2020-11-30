@@ -50,6 +50,8 @@ namespace WriteAPI.DataLayer.Repositories
 
         public async Task Save(T entity)
         {
+            //_session.Evict(entity);
+
             await _session.SaveOrUpdateAsync(entity);
             //await _session.FlushAsync();
         }

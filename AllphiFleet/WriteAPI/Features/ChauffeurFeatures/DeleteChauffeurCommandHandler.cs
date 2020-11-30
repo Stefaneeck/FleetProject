@@ -37,28 +37,6 @@ namespace WriteAPI.Features.ChauffeurFeatures
 
             //try catch rondzetten
 
-            /*
-            //1: delete adres
-            var adres = chauffeur.Adres;
-            chauffeur.Adres = null;
-            //adres.Chauffeurs.Remove(chauffeur);
-
-            _adresContext.BeginTransaction();
-            await _adresContext.Delete(adres);
-            await _adresContext.Commit();
-
-            //2: delete tankkaart
-            var tankkaart = chauffeur.Tankkaart;
-            chauffeur.Tankkaart = null;
-            //tankkaart.Chauffeurs.Remove(chauffeur);
-
-            _tankkaartContext.BeginTransaction();
-            await _tankkaartContext.Delete(tankkaart);
-            await _tankkaartContext.Commit();
-
-            */
-
-            //3: delete chauffeur
             _chauffeurContext.BeginTransaction();
             await _chauffeurContext.Delete(chauffeur);
             await _chauffeurContext.Commit();

@@ -68,13 +68,13 @@ namespace WriteApi.FrontEnd.Controllers
             return Ok(await Mediator.Send(new CreateChauffeurCommand { CreateChauffeurDTO = createChauffeurDTO }));
         }
 
-        //correcte syntax
-        [HttpDelete("/writeapi/chauffeur/delete/{id}")]
-        //writeapi/chauffeur/delete?id
-        //aanpassen naar betere route
+        [HttpPut("/writeapi/chauffeur/update/{id}")]
+        public async Task<IActionResult> UpdateChauffeur(UpdateChauffeurDTO updateChauffeurDTO)
+        {
+            return Ok(await Mediator.Send(new UpdateChauffeurCommand { UpdateChauffeurDTO = updateChauffeurDTO }));
+        }
 
-        //gewoon int meegeven ipv dto? consistentie..
-        //id blijft op 0 staan, maken
+        [HttpDelete("/writeapi/chauffeur/delete/{id}")]
         public async Task<IActionResult> DeleteChauffeur(long id)
         {
             /*
@@ -84,12 +84,9 @@ namespace WriteApi.FrontEnd.Controllers
             {
                 return NotFound();
             }
-
-            await _service.DeleteAsync(id);
             */
-            //return Ok(await Mediator.Send(new DeleteChauffeurCommand { DeleteChauffeurDTO = deleteChauffeurDTO }));
-
-            //nog aanpassen, fixed value
+            //todo
+            //checken of hij wel bestaat
             return Ok(await Mediator.Send(new DeleteChauffeurCommand { Id = id }));
         }
     }
