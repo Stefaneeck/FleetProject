@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Models;
 using System;
 using System.Linq;
@@ -9,24 +8,20 @@ using WriteAPI.DataLayer.Repositories;
 
 namespace WriteAPI.Features.AdresFeatures
 {
-    public class DeleteAdresCommandHandler : IRequestHandler<DeleteAdresCommand, int>
+    public class DeleteAdresCommandHandler : IRequestHandler<DeleteAdresCommand, Unit>
     {
         private readonly INHRepository<Adres> _adresContext;
         public DeleteAdresCommandHandler(INHRepository<Adres> adresContext)
         {
             _adresContext = adresContext;
         }
-        public async Task<int> Handle(DeleteAdresCommand command, CancellationToken cancellationToken)
-        {
-           
-            //kijken of adres bestaat
-            var adres = _adresContext.Adressen.FirstOrDefault(a => a.Id == command.Id);
 
-            //met mediatr teruggeven ipv ex
-            if(adres == null)
-            {
-                throw new Exception("Adres bestaat niet");
-            }
+        //je moet altijd iets teruggeven met mediatr
+        //unit is void equivalent van mediatr
+        public async Task<Unit> Handle(DeleteAdresCommand command, CancellationToken cancellationToken)
+        {
+            //adres ophalen
+            var adres = _adresContext.Adressen.FirstOrDefault(a => a.Id == command.Id);
 
             _adresContext.BeginTransaction();
 
@@ -42,11 +37,7 @@ namespace WriteAPI.Features.AdresFeatures
                 await _adresContext.Rollback();
             }
 
-            //moet niets teruggeven
-            //aanpassen
-            //unit in mediatr equivalent van void
-
-            return (int)command.Id;
+            return Unit.Value;
         }
     }
 }

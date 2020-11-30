@@ -7,14 +7,14 @@ using WriteAPI.DataLayer.Repositories;
 
 namespace WriteAPI.Features.AdresFeatures
 {
-    public class UpdateAdresCommandHandler : IRequestHandler<UpdateAdresCommand, int>
+    public class UpdateAdresCommandHandler : IRequestHandler<UpdateAdresCommand, Unit>
     {
         private readonly INHRepository<Adres> _adresContext;
         public UpdateAdresCommandHandler(INHRepository<Adres> adresContext)
         {
             _adresContext = adresContext;
         }
-        public async Task<int> Handle(UpdateAdresCommand command, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateAdresCommand command, CancellationToken cancellationToken)
         {
 
             var adres = new Adres
@@ -41,7 +41,7 @@ namespace WriteAPI.Features.AdresFeatures
                 await _adresContext.Rollback();
             }
 
-            return (int)adres.Id;
+            return Unit.Value;
         }
     }
 }

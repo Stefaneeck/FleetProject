@@ -11,19 +11,13 @@ namespace WriteAPI.Features.ChauffeurFeatures
     public class CreateChauffeurCommandHandler : IRequestHandler<CreateChauffeurCommand, int>
     {
         private readonly INHRepository<Chauffeur> _context;
-        //private readonly INHRepository<Tankkaart> _tankkaartContext;
-        //private readonly IMapper _mapper;
 
-        //inhrepository van createchauffeurdto ipv chauffeur? niet meer mappen dan
-        public CreateChauffeurCommandHandler(INHRepository<Chauffeur> context, INHRepository<Tankkaart> tankkaartContext, IMapper mapper)
+        public CreateChauffeurCommandHandler(INHRepository<Chauffeur> context)
         {
             _context = context;
-            //_tankkaartContext = tankkaartContext;
-            //_mapper = mapper;
         }
         public async Task<int> Handle(CreateChauffeurCommand command, CancellationToken cancellationToken)
         {
-            //mapping maken
             var chauffeur = new Chauffeur
             {
                 Naam = command.CreateChauffeurDTO.Naam,
@@ -42,8 +36,6 @@ namespace WriteAPI.Features.ChauffeurFeatures
                     Postcode = command.CreateChauffeurDTO.Adres.Postcode
                 },
 
-                //TankkaartId = 4,
-                
                 Tankkaart = new Tankkaart
                 {
                     Id = 0,
@@ -54,10 +46,6 @@ namespace WriteAPI.Features.ChauffeurFeatures
                     Opties = command.CreateChauffeurDTO.Tankkaart.Opties
                 }
             };
-
-            //undo later
-            //chauffeur.Tankkaart = _mapper.Map<Tankkaart>(command.CreateChauffeurDTO.Tankkaart);
-            //_context.Chauffeurs.Add(chauffeur);
 
             _context.BeginTransaction();
 

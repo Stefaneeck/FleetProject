@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using WriteAPI.Features.ChauffeurFeatures;
 using WriteAPI.Features.AdresFeatures;
+using System.Linq;
 
 namespace WriteApi.FrontEnd.Controllers
 {
@@ -14,13 +15,13 @@ namespace WriteApi.FrontEnd.Controllers
     [ApiController]
     public class AdresController : ControllerBase
     {
-        private readonly INHRepository<Adres> _session;
+        private readonly INHRepository<Adres> _context;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public AdresController(INHRepository<Adres> session)
+        public AdresController(INHRepository<Adres> context)
         {
-            _session = session;
+            _context = context;
         }
 
         [HttpPost("/writeapi/adres")]
@@ -40,6 +41,16 @@ namespace WriteApi.FrontEnd.Controllers
         {
             //todo
             //checken of hij wel bestaat
+            //kijken of adres bestaat
+            var adres = _context.Adressen.FirstOrDefault(a => a.Id == id);
+
+            //met mediatr teruggeven ipv ex
+            //custom validator maken? logica naar daar verhuizen niet zo goed
+            if (adres == null)
+            {
+                return Ok("Adres bestaat niet");
+            }
+            
             return Ok(await Mediator.Send(new DeleteAdresCommand { Id = id }));
         }
     }

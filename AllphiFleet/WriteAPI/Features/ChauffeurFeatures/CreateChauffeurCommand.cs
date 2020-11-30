@@ -10,6 +10,5 @@ namespace WriteAPI.Features.ChauffeurFeatures
     public class CreateChauffeurCommand : IRequest<int>
     {
         public CreateChauffeurDTO CreateChauffeurDTO { get; set; }
-        //per command een DTO maken, verschillende DTOs maken
     }
 }
