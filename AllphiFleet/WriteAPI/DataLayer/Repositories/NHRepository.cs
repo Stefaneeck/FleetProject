@@ -21,6 +21,8 @@ namespace WriteAPI.DataLayer.Repositories
         public IQueryable<Adres> Adressen => _session.Query<Adres>();
         public IQueryable<Tankkaart> Tankkaarten => _session.Query<Tankkaart>();
 
+        public IQueryable<T> genericRepository => _session.Query<T>();
+
         public void BeginTransaction()
         {
             _transaction = _session.BeginTransaction();
@@ -70,7 +72,10 @@ namespace WriteAPI.DataLayer.Repositories
 
         public async Task Update(T entity)
         {
-            var existingEntity = Chauffeurs.FirstOrDefault(c => c.Id == entity.Id);
+            //hoe Chauffeurs generic maken? moet Adressen.FirstOrDefault zijn als er een adres binnenkomt
+            //var existingEntity = Chauffeurs.FirstOrDefault(c => c.Id == entity.Id);
+
+            var existingEntity = genericRepository.FirstOrDefault(c => c.Id == entity.Id);
 
             if (existingEntity == null)
                 throw new System.Exception(entity.Id.ToString());
