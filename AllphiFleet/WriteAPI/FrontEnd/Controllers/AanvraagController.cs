@@ -15,74 +15,32 @@ namespace WriteApi.FrontEnd.Controllers
     [ApiController]
     public class AanvraagController : ControllerBase
     {
-        //DI
-
-        //private readonly ILoggerManager _logger;
-
-        //nhibernate
-        private readonly INHRepository<Aanvraag> _session;
+        private readonly INHRepository<Aanvraag> _aanvraagContext;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public AanvraagController(INHRepository<Aanvraag> session)
+        public AanvraagController(INHRepository<Aanvraag> aanvraagContext)
         {
-            _session = session;
-        }
-        // GET: api/aanvraag
-
-        [HttpGet(Name = "getAllAanvragenWriteAPI")]
-        public IActionResult Get()
-        {
-            var chauffeurs = _session.Chauffeurs.ToList();
-
-            return Ok(chauffeurs);
-        }
-
-        //Get: api/chauffeur/1
-
-        [HttpGet("{id}", Name = "GetAanvraagWriteAPI")]
-        public IActionResult Get(long id)
-        {
-            //ChauffeurDTO chauffeurDTO = _chauffeurService.GetChauffeur(id);
-            AanvraagDTO aanvraagDTO = null;
-            if (aanvraagDTO == null)
-            {
-                return NotFound("Aanvraag niet gevonden.");
-            }
-            return Ok(aanvraagDTO);
+            _aanvraagContext = aanvraagContext;
         }
 
         [HttpPost("/writeapi/aanvraag")]
-        public async Task<IActionResult> CreateAanvraag(CreateAanvraagCommand command)
+        public async Task<IActionResult> CreateAanvraag(CreateAanvraagDTO createAanvraagDTO)
         {
-            //we willen dat de validatie in de pipeline gebeurt
-            //vroeger valideren we pas als we al in de applicatielogica zitten
-            //bij dit model: als het geldig is komt het in de applicatielogica, anders niet
+            return Ok(await Mediator.Send(new CreateAanvraagCommand { CreateAanvraagDTO = createAanvraagDTO }));
+        }
 
-            //gebeurt nu in createaanvraagcommandhandler
-            /*
-            Aanvraag a = new Aanvraag();
+        //probleem bij update, hij maakt nieuw voertuig object aan
+        [HttpPut("/writeapi/aanvraag/update/{id}")]
+        public async Task<IActionResult> UpdateAanvraag(UpdateAanvraagDTO updateAanvraagDTO)
+        {
+            return Ok(await Mediator.Send(new UpdateAanvraagCommand { UpdateAanvraagDTO = updateAanvraagDTO }));
+        }
 
-            //map van command naar chauffeur
-            a.DatumAanvraag = command.createAanvraagDTO.DatumAanvraag;
-            a.GewensteData = command.createAanvraagDTO.GewensteData;
-            a.StatusAanvraag = command.createAanvraagDTO.StatusAanvraag;
-            a.TypeAanvraag = command.createAanvraagDTO.TypeAanvraag;
-            //a.VoertuigId = command.createAanvraagDTO.Voertuig.VoertuigId;
-
-            //voertuig in aanvraagdto moet voertuigdto worden, hier dan ook nog mappen
-            a.Voertuig = command.createAanvraagDTO.Voertuig;
-
-            */
-
-            /*
-            _session.BeginTransaction();
-
-            await _session.Save(a);
-            await _session.Commit();
-            */
-
-            return Ok(await Mediator.Send(command));
+        [HttpDelete("/writeapi/aanvraag/delete/{id}")]
+        public async Task<IActionResult> DeleteAanvraag(long id)
+        {
+            return Ok(await Mediator.Send(new DeleteAanvraagCommand { Id = id }));
         }
     }
 }

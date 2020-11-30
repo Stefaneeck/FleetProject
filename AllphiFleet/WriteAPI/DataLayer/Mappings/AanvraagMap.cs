@@ -26,7 +26,14 @@ namespace WriteAPI.DataLayer.Mappings
             this.Property(a => a.StatusAanvraag);
 
             //rel voertuig
-            this.Property(a => a.VoertuigId);
+            //this.Property(a => a.VoertuigId);
+            ManyToOne(a => a.Voertuig, map =>
+            {
+                map.Column("VoertuigId");
+                //bij delete, delete orphans
+                //cascade merge omdat we bij update merge gebruiken, als dit niet aanstaat dan update hij enkel de aanvraag
+                map.Cascade(Cascade.Refresh | Cascade.Persist | Cascade.Merge);
+            });
         }
     }
 }

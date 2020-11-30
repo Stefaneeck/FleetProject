@@ -21,12 +21,12 @@ namespace WriteAPI.Features.AanvraagFeatures
             //mapping maken
             var aanvraag = new Aanvraag();
 
-            aanvraag.DatumAanvraag = command.createAanvraagDTO.DatumAanvraag;
-            aanvraag.TypeAanvraag = command.createAanvraagDTO.TypeAanvraag;
-            aanvraag.GewensteData = command.createAanvraagDTO.GewensteData;
-            aanvraag.StatusAanvraag = command.createAanvraagDTO.StatusAanvraag;
+            aanvraag.DatumAanvraag = command.CreateAanvraagDTO.DatumAanvraag;
+            aanvraag.TypeAanvraag = command.CreateAanvraagDTO.TypeAanvraag;
+            aanvraag.GewensteData = command.CreateAanvraagDTO.GewensteData;
+            aanvraag.StatusAanvraag = command.CreateAanvraagDTO.StatusAanvraag;
             //aanvraag.VoertuigId = command.createAanvraagDTO.VoertuigId;
-            aanvraag.Voertuig = _mapper.Map<Voertuig>(command.createAanvraagDTO.Voertuig);
+            aanvraag.Voertuig = _mapper.Map<Voertuig>(command.CreateAanvraagDTO.Voertuig);
 
             //_context.Chauffeurs.Add(chauffeur);
 

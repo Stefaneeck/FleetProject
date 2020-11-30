@@ -14,17 +14,13 @@ namespace WriteApi.FrontEnd.Controllers
     [ApiController]
     public class ChauffeurController : ControllerBase
     {
-        //DI
-        //private readonly ILoggerManager _logger;
-
-        //nhibernate
-        private readonly INHRepository<Chauffeur> _session;
+        private readonly INHRepository<Chauffeur> _chauffeurContext;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public ChauffeurController(INHRepository<Chauffeur> session)
+        public ChauffeurController(INHRepository<Chauffeur> chauffeurContext)
         {
-            _session = session;
+            _chauffeurContext = chauffeurContext;
         }
         // GET: api/chauffeur
 
@@ -32,7 +28,7 @@ namespace WriteApi.FrontEnd.Controllers
         public IActionResult Get()
         {
 
-            var chauffeurs = _session.Chauffeurs.ToList();
+            var chauffeurs = _chauffeurContext.Chauffeurs.ToList();
 
             //IEnumerable<ChauffeurDTO> chauffeurDTOs = _chauffeurService.GetChauffeurs(null);
 
@@ -64,10 +60,15 @@ namespace WriteApi.FrontEnd.Controllers
             //vroeger valideren we pas als we al in de applicatielogica zitten
             //bij dit model: als het geldig is komt het in de applicatielogica, anders niet
 
+
+            //null reference exception indien we command hier niet aanmaken
             //return Ok(await Mediator.Send(command));
+
+            //correcte manier
             return Ok(await Mediator.Send(new CreateChauffeurCommand { CreateChauffeurDTO = createChauffeurDTO }));
         }
 
+        //id parameter niet echt nodig, want id is required in json
         [HttpPut("/writeapi/chauffeur/update/{id}")]
         public async Task<IActionResult> UpdateChauffeur(UpdateChauffeurDTO updateChauffeurDTO)
         {
@@ -77,16 +78,6 @@ namespace WriteApi.FrontEnd.Controllers
         [HttpDelete("/writeapi/chauffeur/delete/{id}")]
         public async Task<IActionResult> DeleteChauffeur(long id)
         {
-            /*
-            var entity = await _service.ReadAsync(id);
-
-            if (entity == null)
-            {
-                return NotFound();
-            }
-            */
-            //todo
-            //checken of hij wel bestaat
             return Ok(await Mediator.Send(new DeleteChauffeurCommand { Id = id }));
         }
     }

@@ -1,23 +1,17 @@
 ﻿using FluentValidation;
 using WriteAPI.Features.AanvraagFeatures;
-using WriteAPI.Features.ChauffeurFeatures;
 
 namespace WriteAPI.Validators
 {
-    //validatie met fluentvalidation package
-    //We have n number of similar validators for each command
     public class CreateAanvraagCommndValidator : AbstractValidator<CreateAanvraagCommand>
     {
-        //voor later
-        //checken of al iets bestaat door dbcontext te injecteren bvb.
         public CreateAanvraagCommndValidator()
         {
-            RuleFor(a => a.createAanvraagDTO.DatumAanvraag).NotEmpty();
-            RuleFor(a => a.createAanvraagDTO.GewensteData).NotEmpty();
-            RuleFor(a => a.createAanvraagDTO.StatusAanvraag).NotEmpty();
-            RuleFor(a => a.createAanvraagDTO.TypeAanvraag).NotEmpty();
-            //RuleFor(a => a.createAanvraagDTO.VoertuigId).NotEmpty();
-            RuleFor(a => a.createAanvraagDTO.Voertuig).NotEmpty();
+            RuleFor(a => a.CreateAanvraagDTO.DatumAanvraag).NotEmpty();
+            RuleFor(a => a.CreateAanvraagDTO.GewensteData).NotEmpty();
+            RuleFor(a => a.CreateAanvraagDTO.StatusAanvraag).NotEmpty();
+            RuleFor(a => a.CreateAanvraagDTO.TypeAanvraag).NotEmpty();
+            RuleFor(a => a.CreateAanvraagDTO.Voertuig).NotEmpty();
         }
     }
 }
