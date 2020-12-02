@@ -23,6 +23,8 @@ namespace Services
         public IEnumerable<AanvraagDTO> GetAanvragen(DriverFilter filter)
         {
             //eager loading door include erbij te zetten, standaard haalt hij gerelateerde data niet op (dus geen adressen van chauffeurs bvb)
+
+            //logica van include naar datalayer overzetten?
             var results = _repository.GetAll()
                 .Include(a => a.Voertuig);
 

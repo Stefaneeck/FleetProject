@@ -1,3 +1,4 @@
+using AutoMapper;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services;
 using System.Reflection;
 using WriteRepositories;
 using WriteAPI.PipelineBehaviours;
@@ -27,21 +29,15 @@ namespace WriteAPI
             //var connectionString = Configuration.GetConnectionString("AllphiFleetDB");
             var connectionString = Configuration["ConnectionString:AllphiFleetDB"];
             services.AddNHibernate(connectionString);
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
-
-            //op deze manier niet afhankelijk van classenaamveranderingen zoals bij typeof manier
-            services.AddMediatR(WriteServices.AssemblyInfoUtil.GetAssembly());
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
             //register all validators in the assembly that also contains startup
-            //services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
-            //is naar andere assembly verhuist, daarom type of validationbehaviour
-            //services.AddValidatorsFromAssembly(typeof(ValidationBehaviour<,>).Assembly);
-            services.AddValidatorsFromAssembly(Validation.AssemblyInfoUtil.GetAssembly());
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
 
             //Since we need to validate each and every request, we add it with a Transient Scope to the container
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
-            //services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
+            services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
 
             services.AddControllers();
         }
