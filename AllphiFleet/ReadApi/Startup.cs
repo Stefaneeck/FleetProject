@@ -67,6 +67,12 @@ namespace ReadApi
             //extension method uit ExceptionMiddlewareExtensions klasse
             services.ConfigureLoggerService();
 
+            //cross origin requests enablen voor angular project
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
             services.AddControllers();
         }
 
@@ -89,6 +95,9 @@ namespace ReadApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //om uit angular project data te kunnen ophalen
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {
