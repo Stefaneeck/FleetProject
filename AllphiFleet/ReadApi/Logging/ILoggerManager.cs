@@ -1,4 +1,4 @@
-﻿namespace ReadApi
+﻿namespace ReadApi.Logging
 {
     public interface ILoggerManager
     {

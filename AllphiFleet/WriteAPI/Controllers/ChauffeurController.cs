@@ -6,9 +6,9 @@ using Models;
 using WriteRepositories;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using WriteAPI.Features.ChauffeurFeatures;
+using Commands.ChauffeurCommands;
 
-namespace WriteApi.FrontEnd.Controllers
+namespace WriteApi.Controllers
 {
     [Route("writeapi/chauffeur")]
     [ApiController]

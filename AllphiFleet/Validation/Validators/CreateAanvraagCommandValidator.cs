@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using WriteAPI.Features.AanvraagFeatures;
+using Commands.AanvraagCommands;
 
-namespace WriteAPI.Validators
+namespace Validation.Validators
 {
-    public class CreateAanvraagCommndValidator : AbstractValidator<CreateAanvraagCommand>
+    public class CreateAanvraagCommandValidator : AbstractValidator<CreateAanvraagCommand>
     {
-        public CreateAanvraagCommndValidator()
+        public CreateAanvraagCommandValidator()
         {
             RuleFor(a => a.CreateAanvraagDTO.DatumAanvraag).NotEmpty();
             RuleFor(a => a.CreateAanvraagDTO.GewensteData).NotEmpty();

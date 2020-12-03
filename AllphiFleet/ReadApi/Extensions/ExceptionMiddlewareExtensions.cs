@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using ReadApi.CustomExceptionMiddleware;
+using ReadApi.Logging;
 using System.Net;
 
 namespace ReadApi.Extensions

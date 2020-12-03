@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Models;
 
-namespace WriteAPI.Features.ChauffeurFeatures
+namespace Commands.ChauffeurCommands
 {
     public class DeleteChauffeurCommand : IRequest<Unit>, IIdentifiable
     {

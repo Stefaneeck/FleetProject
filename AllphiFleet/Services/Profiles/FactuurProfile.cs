@@ -2,7 +2,7 @@
 using Models;
 using AutoMapper;
 
-namespace Services.Profiles
+namespace ReadServices.Profiles
 {
     public class FactuurProfile : Profile
     {

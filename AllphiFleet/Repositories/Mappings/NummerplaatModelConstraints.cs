@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace Repositories.ModelConstraints
+namespace ReadRepositories.Mappings
 {
     public static class NummerplaatModelConstraints
     {

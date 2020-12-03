@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
-using Repositories.ModelConstraints;
+using ReadRepositories.Mappings;
 
-namespace Repositories
+namespace ReadRepositories
 {
     public class AllphiFleetContext : DbContext
     {

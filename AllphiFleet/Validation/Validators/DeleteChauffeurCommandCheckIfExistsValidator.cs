@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
 using Models;
 using WriteRepositories;
-using WriteAPI.Features.ChauffeurFeatures;
+using Commands.ChauffeurCommands;
 
-namespace WriteAPI.Validators
+namespace Validation.Validators
 {
-    public class DeleteChauffeurCommndCheckIfExistsValidator : AbstractValidator<DeleteChauffeurCommand>
+    public class DeleteChauffeurCommandCheckIfExistsValidator : AbstractValidator<DeleteChauffeurCommand>
     {
         private readonly INHRepository<Chauffeur> _chauffeurContext;
-        public DeleteChauffeurCommndCheckIfExistsValidator(INHRepository<Chauffeur> chauffeurContext)
+        public DeleteChauffeurCommandCheckIfExistsValidator(INHRepository<Chauffeur> chauffeurContext)
         {
             _chauffeurContext = chauffeurContext;
 

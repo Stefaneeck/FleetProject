@@ -2,7 +2,7 @@
 using DTO;
 using Models;
 
-namespace Services.Profiles
+namespace ReadServices.Profiles
 {
     //configuratie Automapper
     //moet overerven van profile klasse van automapper

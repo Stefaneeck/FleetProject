@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Commands.AanvraagCommands;
+using MediatR;
 using Models;
 using System;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WriteRepositories;
 
-namespace WriteAPI.Features.AanvraagFeatures
+namespace WriteServices.AanvraagHandlers
 {
     public class UpdateAanvraagCommandHandler : IRequestHandler<UpdateAanvraagCommand, Unit>
     {

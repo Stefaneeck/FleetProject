@@ -1,7 +1,7 @@
 ﻿using DTO;
 using MediatR;
 
-namespace WriteAPI.Features.ChauffeurFeatures
+namespace Commands.ChauffeurCommands
 {
     public class UpdateChauffeurCommand : IRequest<Unit>
     {

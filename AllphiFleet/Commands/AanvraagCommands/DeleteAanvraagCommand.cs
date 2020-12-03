@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Models;
 
-namespace WriteAPI.Features.AanvraagFeatures
+namespace Commands.AanvraagCommands
 {
-    public class DeleteAanvraagCommand : IRequest<Unit>
+    public class DeleteAanvraagCommand : IRequest<Unit>, IIdentifiable
     {
         //public DeleteAanvraagDTO DeleteAdresDTO { get; set; }
         public long Id { get; set; }

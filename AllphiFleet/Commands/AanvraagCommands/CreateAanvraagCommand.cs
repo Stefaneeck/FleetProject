@@ -1,7 +1,7 @@
 ﻿using DTO;
 using MediatR;
 
-namespace WriteAPI.Features.AanvraagFeatures
+namespace Commands.AanvraagCommands
 {
     public class CreateAanvraagCommand : IRequest<int>
     {

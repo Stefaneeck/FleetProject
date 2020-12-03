@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WriteRepositories;
 
-namespace WriteAPI.Validators
+namespace Validation.Validators
 {
     public static class ValidationExtensions
     {
@@ -17,6 +17,8 @@ namespace WriteAPI.Validators
             where TEntity : class, IIdentifiable
 
         {
+            string boodschap = typeof(TEntity).Name.ToString() + " bestaat niet";
+
             //als we een command hebben met een id, moet er ook een chauffeur bestaan met die id in de database
             //lamdba, input is TCommand, output is id
             //voor elke command die we als input krijgen, geef zijn id terug
@@ -28,7 +30,7 @@ namespace WriteAPI.Validators
                 return obj != null;
             })
             .WithErrorCode("AlreadyExists")
-            .WithMessage("Chauffeur bestaat niet.");
+            .WithMessage(boodschap);
         }
     }
 }

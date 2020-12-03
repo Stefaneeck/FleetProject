@@ -8,9 +8,10 @@ using Microsoft.Extensions.Hosting;
 using NLog;
 using ReadApi.CustomExceptionMiddleware;
 using ReadApi.Extensions;
-using Repositories;
-using Services;
-using Services.Interfaces;
+using ReadApi.Logging;
+using ReadRepositories;
+using ReadServices;
+using ReadServices.Interfaces;
 using System.IO;
 
 namespace ReadApi

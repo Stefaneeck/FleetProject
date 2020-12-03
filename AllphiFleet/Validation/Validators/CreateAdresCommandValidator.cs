@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using WriteAPI.Features.AdresFeatures;
+using Commands.AdresCommands;
 
-namespace WriteAPI.Validators
+namespace Validation.Validators
 {
-    public class CreateAdresCommndValidator : AbstractValidator<CreateAdresCommand>
+    public class CreateAdresCommandValidator : AbstractValidator<CreateAdresCommand>
     {
-        public CreateAdresCommndValidator()
+        public CreateAdresCommandValidator()
         {
             RuleFor(c => c.CreateAdresDTO.Straat).NotEmpty();
             RuleFor(c => c.CreateAdresDTO.Nummer).NotEmpty();

@@ -3,7 +3,7 @@ using NHibernate;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
-namespace WriteAPI
+namespace WriteRepositories.Mappings
 {
     public class TankkaartMap : ClassMapping<Tankkaart>
     {

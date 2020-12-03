@@ -1,6 +1,6 @@
 ﻿using NLog;
 
-namespace ReadApi
+namespace ReadApi.Logging
 {
     public class LoggerManager : ILoggerManager
     {

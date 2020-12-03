@@ -1,7 +1,7 @@
 ﻿using DTO;
 using System.Collections.Generic;
 
-namespace Services.Interfaces
+namespace ReadServices.Interfaces
 {
     public interface IFactuurService
     {

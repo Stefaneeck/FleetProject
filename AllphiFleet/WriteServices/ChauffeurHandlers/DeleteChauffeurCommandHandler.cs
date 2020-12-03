@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Commands.ChauffeurCommands;
+using MediatR;
 using Models;
 using System;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WriteRepositories;
 
-namespace WriteAPI.Features.ChauffeurFeatures
+namespace WriteServices.ChauffeurHandlers
 {
     public class DeleteChauffeurCommandHandler : IRequestHandler<DeleteChauffeurCommand, Unit>
     {

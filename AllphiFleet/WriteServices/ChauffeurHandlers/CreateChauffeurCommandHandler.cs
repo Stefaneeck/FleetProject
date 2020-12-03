@@ -1,11 +1,12 @@
-﻿using MediatR;
+﻿using Commands.ChauffeurCommands;
+using MediatR;
 using Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using WriteRepositories;
 
-namespace WriteAPI.Features.ChauffeurFeatures
+namespace WriteServices.ChauffeurHandlers
 {
     public class CreateChauffeurCommandHandler : IRequestHandler<CreateChauffeurCommand, int>
     {

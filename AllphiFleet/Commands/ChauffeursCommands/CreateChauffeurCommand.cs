@@ -4,7 +4,7 @@ using Models;
 using Models.Enums;
 using System;
 
-namespace WriteAPI.Features.ChauffeurFeatures
+namespace Commands.ChauffeurCommands
 {
     //mag dto zijn?
     public class CreateChauffeurCommand : IRequest<int>

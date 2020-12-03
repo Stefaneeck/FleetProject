@@ -5,10 +5,10 @@ using Models;
 using WriteRepositories;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using WriteAPI.Features.AdresFeatures;
 using System.Linq;
+using Commands.AdresCommands;
 
-namespace WriteApi.FrontEnd.Controllers
+namespace WriteApi.Controllers
 {
     [Route("writeapi/adres")]
     [ApiController]

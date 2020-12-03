@@ -3,7 +3,7 @@ using Models;
 using Models.Enums;
 using System;
 
-namespace Repositories.ModelConstraints
+namespace ReadRepositories.Mappings
 {
     public static class ChauffeurModelConstraints
     {

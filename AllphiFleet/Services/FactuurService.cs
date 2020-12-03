@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using DTO;
-using Repositories;
+using ReadRepositories;
 using Models;
 using System.Collections.Generic;
 using System.Linq;
-using Services.Interfaces;
+using ReadServices.Interfaces;
 
-namespace Services
+namespace ReadServices
 {
     public class FactuurService : IFactuurService
     {

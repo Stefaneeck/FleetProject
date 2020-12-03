@@ -1,7 +1,7 @@
 ﻿using DTO;
 using MediatR;
 
-namespace WriteAPI.Features.AdresFeatures
+namespace Commands.AdresCommands
 {
     //mag dto zijn?
     public class CreateAdresCommand : IRequest<int>

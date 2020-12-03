@@ -1,15 +1,15 @@
 ﻿using FluentValidation;
-using WriteAPI.Features.ChauffeurFeatures;
+using Commands.ChauffeurCommands;
 
-namespace WriteAPI.Validators
+namespace Validation.Validators
 {
     //validatie met fluentvalidation package
     //We have n number of similar validators for each command
-    public class CreateChauffeurCommndValidator : AbstractValidator<CreateChauffeurCommand>
+    public class CreateChauffeurCommandValidator : AbstractValidator<CreateChauffeurCommand>
     {
         //voor later
         //checken of al iets bestaat door dbcontext te injecteren bvb.
-        public CreateChauffeurCommndValidator()
+        public CreateChauffeurCommandValidator()
         {
             RuleFor(c => c.CreateChauffeurDTO.Naam).NotEmpty();
             RuleFor(c => c.CreateChauffeurDTO.Voornaam).NotEmpty();

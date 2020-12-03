@@ -1,7 +1,7 @@
 ﻿using Models;
 using System.Linq;
 
-namespace Repositories
+namespace ReadRepositories
 {
     public interface IDataReadRepository<TEntity>
     {

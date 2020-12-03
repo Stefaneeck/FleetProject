@@ -1,7 +1,7 @@
 ﻿using DTO;
 using MediatR;
 
-namespace WriteAPI.Features.AdresFeatures
+namespace Commands.AdresCommands
 {
     public class UpdateAdresCommand : IRequest<Unit>
     {

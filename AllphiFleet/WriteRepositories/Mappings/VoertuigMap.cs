@@ -3,7 +3,7 @@ using NHibernate;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
-namespace WriteAPI.DataLayer.Mappings
+namespace WriteRepositories.Mappings
 {
     public class VoertuigMap : ClassMapping<Voertuig>
     {

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace Repositories
+namespace ReadRepositories
 {
     //constraint op TEntity: het moet een klasse en iidentifiable zijn
     public class DataReadRepository<TEntity> : IDataReadRepository<TEntity> where TEntity : class, IIdentifiable

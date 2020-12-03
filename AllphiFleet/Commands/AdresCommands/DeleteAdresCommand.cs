@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Models;
 
-namespace WriteAPI.Features.AdresFeatures
+namespace Commands.AdresCommands
 {
-    public class DeleteAdresCommand : IRequest<Unit>
+    public class DeleteAdresCommand : IRequest<Unit>, IIdentifiable
     {
         //public DeleteAdresDTO DeleteAdresDTO { get; set; }
         public long Id { get; set; }

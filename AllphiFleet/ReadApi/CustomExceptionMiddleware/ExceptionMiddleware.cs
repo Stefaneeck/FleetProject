@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ReadApi.Logging;
 using System;
 using System.Net;
 using System.Threading.Tasks;

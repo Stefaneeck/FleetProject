@@ -5,9 +5,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Reflection;
 using WriteRepositories;
-using WriteAPI.PipelineBehaviours;
+using Validation.PipelineBehaviours;
 
 namespace WriteAPI
 {
