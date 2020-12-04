@@ -1,1 +1,41 @@
-<p>driverlist works!</p>
+<div class='table-responsive'>
+  <table class='table'
+         *ngIf='drivers && drivers.length'>
+    <thead>
+      <tr>
+        <th>
+          <button class='btn btn-primary'>
+          </button>
+        </th>
+        <th>Id</th>
+        <th>Naam</th>
+        <th>Voornaam</th>
+        <th>AdresId</th>
+        <th>Geboortedatum</th>
+        <th>Rijksregisternummer</th>
+        <th>Tankkaart Id</th>
+        <th>Type rijbewijs</th>
+        <th>Actief</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let driver of drivers'>
+        <td>
+        </td>
+        <td>
+          <a>
+            {{ driver.id }}
+          </a>
+        </td>
+        <td>{{ driver.naam }}</td>
+        <td>{{ driver.voornaam }}</td>
+        <td>{{ driver.adres.id }}</td>
+        <td>{{ driver.geboorteDatum | date:'dd/MM/yyyy' }}</td>
+        <td>{{ driver.rijksRegisterNummer }}</td>
+        <td>{{ driver.tankkaart.id }}</td>
+        <td>{{ driver.typeRijbewijs }}</td>
+        <td>{{ driver.actief }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
