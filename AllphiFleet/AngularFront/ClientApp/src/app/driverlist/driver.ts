@@ -1,4 +1,4 @@
-interface IDriver {
+export interface IDriver {
 
   id: number;
   naam: string;
