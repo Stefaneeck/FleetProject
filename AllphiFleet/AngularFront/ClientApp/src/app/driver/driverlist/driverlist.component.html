@@ -23,7 +23,9 @@
         <td>
         </td>
         <td>
-          <a>
+          <!-- driver is een route van app.module
+            driver is de route, driver.id is de parameter -->
+          <a [routerLink]="['/driver', driver.id]">
             {{ driver.id }}
           </a>
         </td>

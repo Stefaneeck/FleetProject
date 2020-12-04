@@ -24,14 +24,17 @@ export class DriverService {
         catchError(this.handleError)
       );
   }
-  /*
-  getProduct(id: number): Observable<IDriver | undefined> {
-    return this.getProducts()
+
+  //undefined pipe uitzoeken
+  getDriver(id: number): Observable<IDriver | undefined> {
+    //creatie van url voor chauffeur op te halen nog opschonen
+    return this.http.get<IDriver>(this.driverUrl + '/' + id)
       .pipe(
-        map((products: IDriver[]) => products.find(p => p.productId === id))
-      );
-     
-  } */
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+    );
+
+  }
 
   private handleError(err: HttpErrorResponse): Observable<never> {
     // in a real world app, we may send the server to some remote logging infrastructure
