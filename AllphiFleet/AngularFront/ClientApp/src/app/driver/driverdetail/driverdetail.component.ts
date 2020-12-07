@@ -26,7 +26,6 @@ export class DriverdetailComponent implements OnInit {
     //getDriver methode vanuit driver service rechtstreeks gebruiken?
     if (id) {
       this.getDriver(id);
-
     }
     this.pageTitle += `: ${id}`;
   }

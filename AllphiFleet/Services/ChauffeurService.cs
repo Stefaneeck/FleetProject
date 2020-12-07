@@ -27,6 +27,9 @@ namespace ReadServices
                 .Include(c => c.Adres)
                 .Include(c => c.Tankkaart);
 
+            //omzetten naar chauffeurDTOs en dan returnen
+            //tolist = niet meer werken met abstracte query, maar forceren om met concrete data te werken
+            return _mapper.Map<IEnumerable<ChauffeurDTO>>(results.ToList());
 
             /*
             
@@ -37,16 +40,24 @@ namespace ReadServices
                 results = results.Where(x => x.Adres.Contains(filter.st));
 
             */
-
-
-            //omzetten naar chauffeurDTOs en dan returnen
-            //tolist = niet meer werken met abstracte query, maar forceren om met concrete data te werken
-            return _mapper.Map<IEnumerable<ChauffeurDTO>>(results.ToList());           
         }
 
         public ChauffeurDTO GetChauffeur(long id)
         {
-            return _mapper.Map<ChauffeurDTO>(_repository.Get(id));
+            //niet ideaal, want eerst alles ophalen.. hoe oplossen?
+            var result = _repository.GetAll()
+                .Include(c => c.Adres)
+                .Include(c => c.Tankkaart)
+                .FirstOrDefault(e => e.Id == id);
+
+            return _mapper.Map<ChauffeurDTO>(result);
+
+            //include gaat niet op een domeinobject, enkel op iquerable
+            /*
+            return _mapper.Map<ChauffeurDTO>(_repository.Get(id)
+                .Include(c => c.Adres)
+                .Include(c => c.Tankkaart));
+            */
         }
     }
 

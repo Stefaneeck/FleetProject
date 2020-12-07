@@ -1,7 +1,7 @@
 <div class='card'
      *ngIf='driver'>
   <div class='card-header'>
-    {{ pageTitle + ': ' + driver.naam }}
+    {{ pageTitle + ': ' + driver.naam + ' ' + driver.voornaam }}
   </div>
 
   <div class='card-body'>
@@ -21,19 +21,20 @@
         </div>
         <div class='row'>
           <div class='col-md-4'>Adres:</div>
-          <div class='col-md-8'></div>
+          <div class='col-md-8'>{{ driver.adres.straat + ' '+ driver.adres.nummer + ', ' + driver.adres.postcode + ' ' + driver.adres.stad }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>Geboortedatum:</div>
-          <div class='col-md-8'>{{ driver.geboorteDatum }}</div>
+          <div class='col-md-8'>{{ driver.geboorteDatum | date:'dd/MM/yyyy' }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>Rijksregisternummer:</div>
           <div class='col-md-8'>{{ driver.rijksRegisterNummer }}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Tankkaart Id:</div>
-          <div class='col-md-8'></div>
+          <!-- vervangen door string representatie van het hele object? -->
+          <div class='col-md-4'>Tankkaartnummer:</div>
+          <div class='col-md-8'>{{ driver.tankkaart.kaartnummer }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>Type rijbewijs:</div>

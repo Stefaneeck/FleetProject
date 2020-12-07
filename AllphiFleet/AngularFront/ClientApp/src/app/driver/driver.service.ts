@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
@@ -13,12 +13,13 @@ export class DriverService {
   // If using Stackblitz, replace the url with this line
   // because Stackblitz can't find the api folder.
   // private productUrl = 'assets/products/products.json';
-  private driverUrl = 'https://localhost:44334/api/chauffeur';
+  private driverReadUrl = 'https://localhost:44334/api/chauffeur';
+  private driverWriteUrl ='https://localhost:44358/writeapi/chauffeur'
 
   constructor(private http: HttpClient) { }
 
   getDrivers(): Observable<IDriver[]> {
-    return this.http.get<IDriver[]>(this.driverUrl)
+    return this.http.get<IDriver[]>(this.driverReadUrl)
       .pipe(
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
@@ -28,12 +29,21 @@ export class DriverService {
   //undefined pipe uitzoeken
   getDriver(id: number): Observable<IDriver | undefined> {
     //creatie van url voor chauffeur op te halen nog opschonen
-    return this.http.get<IDriver>(this.driverUrl + '/' + id)
+    return this.http.get<IDriver>(this.driverReadUrl + '/' + id)
       .pipe(
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
     );
 
+  }
+
+  postDriver(driverData: IDriver): Observable<IDriver> {
+    const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.post<IDriver>(this.driverWriteUrl, driverData, httpHeaders)
+      .pipe(
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+    );
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {

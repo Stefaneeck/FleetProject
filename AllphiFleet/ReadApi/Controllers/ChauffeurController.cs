@@ -22,7 +22,6 @@ namespace ReadApi.Controllers
         // GET: api/chauffeur
         [HttpGet(Name = "getAllChauffeurs")]
         //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
-
         public IActionResult Get()
         {
 

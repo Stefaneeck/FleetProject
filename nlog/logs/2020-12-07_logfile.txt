@@ -1,0 +1,10 @@
+2020-12-07 12:03:35.6592 INFO Alle chauffeurs aan het ophalen.
+2020-12-07 12:03:36.4650 INFO Ophalen van 7 records.
+2020-12-07 12:03:45.2107 INFO Alle chauffeurs aan het ophalen.
+2020-12-07 12:03:45.2361 INFO Ophalen van 7 records.
+2020-12-07 12:14:21.4611 INFO Alle chauffeurs aan het ophalen.
+2020-12-07 12:14:22.2098 INFO Ophalen van 7 records.
+2020-12-07 13:52:36.8591 INFO Alle chauffeurs aan het ophalen.
+2020-12-07 13:52:37.6024 INFO Ophalen van 8 records.
+2020-12-07 13:52:44.2125 INFO Alle chauffeurs aan het ophalen.
+2020-12-07 13:52:44.2304 INFO Ophalen van 8 records.

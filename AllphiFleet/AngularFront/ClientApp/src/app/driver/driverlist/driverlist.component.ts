@@ -16,22 +16,7 @@ export class DriverlistComponent implements OnInit {
   constructor(private driverService: DriverService) {
 
   }
-    /*
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-  
-      http.get<Driver[]>(this.tempUrl).subscribe(result => {
-      this.drivers = result;
-      console.log(this.drivers);
-    }, error => console.error(error));
-
-    http.get<Driver[]>(baseUrl + 'drivers').subscribe(result => {
-      this.drivers = result;
-    }, error => console.error(error));
     
-
-    console.log(baseUrl + 'drivers');
-  }*/
-
   ngOnInit(): void {
 
     this.driverService.getDrivers().subscribe({

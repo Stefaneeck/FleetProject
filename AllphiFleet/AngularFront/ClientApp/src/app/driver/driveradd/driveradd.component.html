@@ -1,0 +1,73 @@
+<form [formGroup]="driverForm">
+  <div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" id="inputName" formControlName="Naam">
+  </div>
+  <div class="form-group">
+    <label for="inputFirstName">First Name</label>
+    <input type="text" class="form-control" id="inputFirstName" formControlName="Voornaam">
+  </div>
+
+  <div class="form-group" formGroupName="Adres">
+    <label>Adres</label>
+    <div class="form-group">
+      <label for="inputAddressStreet">Street</label>
+      <input type="text" class="form-control" id="inputAddressStreet" formControlName="Straat">
+    </div>
+    <div class="form-group">
+      <label for="inputAddressNumber">Number</label>
+      <input type="number" class="form-control" id="inputAddressNumber" formControlName="Nummer">
+    </div>
+    <div class="form-group">
+      <label for="inputAddressCity">City</label>
+      <input type="text" class="form-control" id="inputAddressCity" formControlName="Stad">
+    </div>
+    <div class="form-group">
+      <label for="inputAddressZipCode">Zipcode</label>
+      <input type="number" class="form-control" id="inputAddressZipCode" formControlName="Postcode">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputDateOfBirth">Date of birth</label>
+    <input type="date" class="form-control" id="inputDateOfBirth" formControlName="GeboorteDatum">
+  </div>
+  <div class="form-group">
+    <label for="inputSocialSecNumber">Social security number</label>
+    <input type="text" class="form-control" id="inputSocialSecNumber" formControlName="RijksRegisterNummer">
+  </div>
+  <div class="form-group">
+    <label for="inputDriverLicenseType">Driver license type</label>
+    <input type="number" class="form-control" id="inputDriverLicenseType" formControlName="TypeRijbewijs">
+  </div>
+
+  <div class="form-group" formGroupName="Tankkaart">
+    <label>Tankkaart</label>
+    <div class="form-group">
+      <label for="inputCardCardNumber">Kaartnummer</label>
+      <input type="number" class="form-control" id="inputCardCardNumber" formControlName="Kaartnummer">
+    </div>
+    <div class="form-group">
+      <label for="inputCardValidUntil">Geldigheidsdatum</label>
+      <input type="date" class="form-control" id="inputCardValidUntil" formControlName="GeldigheidsDatum">
+    </div>
+    <div class="form-group">
+      <label for="inputCardPin">Pincode</label>
+      <input type="number" class="form-control" id="inputCardPin" formControlName="Pincode">
+    </div>
+    <div class="form-group">
+      <label for="inputCardAuthType">Authtype</label>
+      <input type="number" class="form-control" id="inputCardAuthType" formControlName="AuthType">
+    </div>
+    <div class="form-group">
+      <label for="inputCardOptions">Opties</label>
+      <input type="text" class="form-control" id="inputCardOptions" formControlName="Opties">
+    </div>
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="checkActief" formControlName="Actief">
+    <label class="form-check-label" for="checkActief">Active</label>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="postDriver(driverForm.value)">Submit</button>
+</form>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DriverlistComponent } from './driver/driverlist/driverlist.component';
 import { DriverdetailComponent } from './driver/driverdetail/driverdetail.component';
+import { DriveraddComponent } from './driver/driveradd/driveradd.component';
 
 @NgModule({
   declarations: [
@@ -20,18 +21,21 @@ import { DriverdetailComponent } from './driver/driverdetail/driverdetail.compon
     CounterComponent,
     FetchDataComponent,
     DriverlistComponent,
-    DriverdetailComponent
+    DriverdetailComponent,
+    DriveraddComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'driverlist', component: DriverlistComponent },
-      { path: 'driver/:id', component: DriverdetailComponent }
+      { path: 'driver/:id', component: DriverdetailComponent },
+      { path: 'driveradd', component: DriveraddComponent }
     ])
   ],
   providers: [],

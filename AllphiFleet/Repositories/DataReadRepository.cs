@@ -25,11 +25,16 @@ namespace ReadRepositories
 
         public TEntity Get(long id)
         {
+            //werkt niet omdat we met generic werken, hoe oplossen?
+            /*
+            Item item = table
+                .Include(c => c.Adres)
+                .Include(c => c.Tankkaart);
+                .FirstOrDefault(e => e.Id == id);
+            */
             //werkt nu wel, want e zal sowiso een id hebben (interface iidentifiable)
-            return table
-                  .FirstOrDefault(e => e.Id == id);
 
-            //find gebruiken ipv firstordefault om id te omzeilen?
+            return table.FirstOrDefault(e => e.Id == id);
         }
     }
 }

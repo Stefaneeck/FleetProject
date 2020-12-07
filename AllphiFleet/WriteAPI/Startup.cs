@@ -42,6 +42,22 @@ namespace WriteAPI
 
             //services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
 
+            //cross origin requests enablen voor angular project
+            /*
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+            */
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllWriteApi",
+                    builder => builder.AllowAnyOrigin()
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod());
+            });
+
             services.AddControllers();
         }
 
@@ -58,6 +74,10 @@ namespace WriteAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //cors (angular)
+            //app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors("AllowAllWriteApi");
 
             app.UseEndpoints(endpoints =>
             {

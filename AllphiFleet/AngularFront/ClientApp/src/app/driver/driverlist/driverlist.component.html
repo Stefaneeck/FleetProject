@@ -10,10 +10,10 @@
         <th>Id</th>
         <th>Naam</th>
         <th>Voornaam</th>
-        <th>AdresId</th>
+        <th>Adres</th>
         <th>Geboortedatum</th>
         <th>Rijksregisternummer</th>
-        <th>Tankkaart Id</th>
+        <th>Tankkaartnummer</th>
         <th>Type rijbewijs</th>
         <th>Actief</th>
       </tr>
@@ -31,10 +31,11 @@
         </td>
         <td>{{ driver.naam }}</td>
         <td>{{ driver.voornaam }}</td>
-        <td>{{ driver.adres.id }}</td>
+        <td>{{ driver.adres.straat + ' '+ driver.adres.nummer + ', ' + driver.adres.postcode + ' ' + driver.adres.stad }}</td>
         <td>{{ driver.geboorteDatum | date:'dd/MM/yyyy' }}</td>
         <td>{{ driver.rijksRegisterNummer }}</td>
-        <td>{{ driver.tankkaart.id }}</td>
+        <!-- tankkaart string representatie maken of tankkaartnummer genoeg? -->
+        <td>{{ driver.tankkaart.kaartnummer }}</td>
         <td>{{ driver.typeRijbewijs }}</td>
         <td>{{ driver.actief }}</td>
       </tr>
