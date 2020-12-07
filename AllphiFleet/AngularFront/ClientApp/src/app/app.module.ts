@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DriverlistComponent } from './driver/driverlist/driverlist.component';
 import { DriverdetailComponent } from './driver/driverdetail/driverdetail.component';
 import { DriveraddComponent } from './driver/driveradd/driveradd.component';
+import { DrivereditComponent } from './driver/driveredit/driveredit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DriveraddComponent } from './driver/driveradd/driveradd.component';
     FetchDataComponent,
     DriverlistComponent,
     DriverdetailComponent,
-    DriveraddComponent
+    DriveraddComponent,
+    DrivereditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,7 +37,8 @@ import { DriveraddComponent } from './driver/driveradd/driveradd.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'driverlist', component: DriverlistComponent },
       { path: 'driver/:id', component: DriverdetailComponent },
-      { path: 'driveradd', component: DriveraddComponent }
+      { path: 'driveradd', component: DriveraddComponent },
+      { path: 'driveredit/:id', component: DrivereditComponent },
     ])
   ],
   providers: [],

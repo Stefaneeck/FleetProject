@@ -16,11 +16,13 @@ export class DriveraddComponent implements OnInit {
   driver: IDriver;
   driverForm: any;
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
-    private driverService: DriverService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,
+    private driverService: DriverService) { }
 
   ngOnInit() {
+
     this.driverForm = this.formBuilder.group({
+      //linkse kolom waar nu '' staat, daar kan je default value instellen
       Naam: ['', [Validators.required]],
       Voornaam: ['', [Validators.required]],
 

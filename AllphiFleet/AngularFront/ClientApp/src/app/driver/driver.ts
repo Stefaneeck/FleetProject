@@ -1,8 +1,10 @@
+//todo
+//nested adres en tankkaart object
 export interface IDriver {
 
   id: number;
   naam: string;
-  voorNaam: number;
+  voornaam: number;
   geboorteDatum: Date;
   rijksregisterNummer: number;
   typeRijbewijs: number;

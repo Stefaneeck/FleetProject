@@ -19,6 +19,11 @@ export class DriverlistComponent implements OnInit {
     
   ngOnInit(): void {
 
+    //casten naar IDriver in TS doet niets, is illusie van controle
+    //drivers type unknown geven om validatie te kunnen uitvoeren, daarna dan tonen dat het een driver is
+
+    //this in javascript is niet hetzelfde als in C#. Zolang het in lamdbas gebruikt wordt, is het ongeveer hetzelfde.
+    //subscribe hoort bij rxjs (+- de linq van javascript)
     this.driverService.getDrivers().subscribe({
       next: drivers => {
         this.drivers = drivers;

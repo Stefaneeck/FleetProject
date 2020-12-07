@@ -11,8 +11,8 @@ import { IDriver } from '../driver';
 export class DriverdetailComponent implements OnInit {
   pageTitle: string = 'Driver Detail';
   errorMessage = "";
-  //driver : IDriver | undefined
-  driver: IDriver;
+  //driver mag idriver of undefined zijn
+  driver: IDriver | undefined;
 
   constructor(private route: ActivatedRoute, private driverService: DriverService, private router: Router) {
     //id variabele die we in url hebben meegegeven, id omdat we in app.module bij de route path: 'driver/:id' hebben gezet
@@ -24,6 +24,7 @@ export class DriverdetailComponent implements OnInit {
     let id = +this.route.snapshot.paramMap.get('id');
 
     //getDriver methode vanuit driver service rechtstreeks gebruiken?
+    //if id is truthy
     if (id) {
       this.getDriver(id);
     }
@@ -32,6 +33,7 @@ export class DriverdetailComponent implements OnInit {
 
   getDriver(id: number): void {
     this.driverService.getDriver(id).subscribe({
+      //opgehaalde waarde in lokale driver variabele opslaan
       next: result => this.driver = result,
       error: err => this.errorMessage = err
     });

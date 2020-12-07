@@ -1,11 +1,10 @@
-<div class='table-responsive'>
+  <div class='table-responsive'>
+  <!-- wachten tot drivers toekomen, async oplossing-->
   <table class='table'
          *ngIf='drivers && drivers.length'>
     <thead>
       <tr>
         <th>
-          <button class='btn btn-primary'>
-          </button>
         </th>
         <th>Id</th>
         <th>Naam</th>
@@ -21,10 +20,13 @@
     <tbody>
       <tr *ngFor='let driver of drivers'>
         <td>
+          <a [routerLink]="['/driveredit', driver.id]">
+            Edit
+          </a>
         </td>
         <td>
           <!-- driver is een route van app.module
-            driver is de route, driver.id is de parameter -->
+          driver is de route, driver.id is de parameter -->
           <a [routerLink]="['/driver', driver.id]">
             {{ driver.id }}
           </a>
