@@ -14,3 +14,33 @@
 2020-12-08 13:29:53.8482 INFO Ophalen van 10 records.
 2020-12-08 13:30:02.0307 INFO Alle chauffeurs aan het ophalen.
 2020-12-08 13:30:02.0472 INFO Ophalen van 10 records.
+2020-12-08 13:49:07.7040 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 13:49:08.5683 INFO Ophalen van 10 records.
+2020-12-08 14:01:46.4134 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:01:47.2788 INFO Ophalen van 10 records.
+2020-12-08 14:04:18.3547 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:04:19.0861 INFO Ophalen van 10 records.
+2020-12-08 14:04:27.9864 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:04:28.0196 INFO Ophalen van 10 records.
+2020-12-08 14:04:50.3438 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:04:50.3772 INFO Ophalen van 10 records.
+2020-12-08 14:05:05.9740 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:05:05.9950 INFO Ophalen van 10 records.
+2020-12-08 14:06:30.4697 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:06:30.4937 INFO Ophalen van 10 records.
+2020-12-08 14:06:47.3389 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:06:47.3651 INFO Ophalen van 10 records.
+2020-12-08 14:13:08.0790 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:13:09.0496 INFO Ophalen van 10 records.
+2020-12-08 14:14:24.8161 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:14:24.8583 INFO Ophalen van 10 records.
+2020-12-08 14:14:37.7056 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:14:37.7357 INFO Ophalen van 10 records.
+2020-12-08 14:18:53.5665 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:18:53.6749 INFO Ophalen van 11 records.
+2020-12-08 14:20:42.2330 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:20:42.2663 INFO Ophalen van 11 records.
+2020-12-08 14:21:38.3870 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:21:38.4198 INFO Ophalen van 11 records.
+2020-12-08 14:21:43.0054 INFO Alle chauffeurs aan het ophalen.
+2020-12-08 14:21:43.0256 INFO Ophalen van 11 records.

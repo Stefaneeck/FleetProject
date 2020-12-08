@@ -16,8 +16,8 @@ export class DriveraddComponent implements OnInit {
   driver: IDriver;
   driverForm: any;
 
-  constructor(private formBuilder: FormBuilder,
-    private driverService: DriverService) { }
+  constructor(private formBuilder: FormBuilder, private driverService: DriverService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -57,7 +57,11 @@ export class DriveraddComponent implements OnInit {
 
     this.driverService.postDriver(driverDataFromForm).subscribe({
       //next: result => this.driver = result,
-      error: err => this.errorMessage = err
+      error: err => this.errorMessage = err,
+      complete: () => {
+        //doet hij enkel als er geen error is
+        this.router.navigate(['/driverlist']);
+      }
     });
   }
 

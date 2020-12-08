@@ -46,6 +46,15 @@ export class DriverService {
     );
   }
 
+  updateDriver(driverData: IDriver): Observable<IDriver> {
+    const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.put<IDriver>(this.driverWriteUrl + '/update' + '/' + driverData.id, driverData, httpHeaders)
+      .pipe(
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
   private handleError(err: HttpErrorResponse): Observable<never> {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console

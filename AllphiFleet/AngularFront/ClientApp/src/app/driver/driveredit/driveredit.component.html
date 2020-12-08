@@ -1,4 +1,5 @@
-<form [formGroup]="driverForm" *ngIf='driver'>
+<!-- inline style nog apart zetten -->
+<form style="margin-bottom: 50px;" [formGroup]="driverForm" *ngIf='driver'>
   <div class="form-group">
     <label for="inputName">Name</label>
     <input type="text" class="form-control" id="inputName" formControlName="Naam">
@@ -70,5 +71,5 @@
     <input type="checkbox" class="form-check-input" id="checkActief" formControlName="Actief">
     <label class="form-check-label" for="checkActief">Active</label>
   </div>
-  <button type="submit" class="btn btn-primary" (click)="postDriver(driverForm.value)">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="updateDriver(driverForm.value)">Submit</button>
 </form>
