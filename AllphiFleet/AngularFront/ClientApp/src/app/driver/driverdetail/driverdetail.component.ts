@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DriverService } from '../driver.service';
-import { IDriver } from '../driver';
+import { IDriver } from '../IDriver';
 
 @Component({
   selector: 'app-driverdetail',

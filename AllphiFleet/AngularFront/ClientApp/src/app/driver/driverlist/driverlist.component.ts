@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { DriverService } from '../driver.service';
-import { IDriver } from '../driver'
+import { IDriver } from '../IDriver'
 
 @Component({
   selector: 'app-driverlist',

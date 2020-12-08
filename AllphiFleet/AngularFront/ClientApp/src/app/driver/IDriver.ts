@@ -1,16 +1,17 @@
-//todo
-//nested adres en tankkaart object
+import { IAdres } from "./IAdres";
+import { ITankkaart } from "./ITankkaart";
+
 export interface IDriver {
 
   id: number;
   naam: string;
   voornaam: number;
   geboorteDatum: Date;
-  rijksregisterNummer: number;
+  rijksRegisterNummer: number;
   typeRijbewijs: number;
-  Actief: boolean;
-  AdresId: number;
-  TankkaartId: number;
+  actief: boolean;
+  adres: IAdres;
+  tankkaart: ITankkaart;
   /*
   id: number;
   name: string;
