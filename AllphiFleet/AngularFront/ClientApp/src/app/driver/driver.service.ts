@@ -18,30 +18,31 @@ export class DriverService {
 
   constructor(private http: HttpClient) { }
 
+  //You have to subscribe to the call if you want it to execute
+  //we subscriben hier niet, maar wel waar we de methode aanroepen
   getDrivers(): Observable<IDriver[]> {
     return this.http.get<IDriver[]>(this.driverReadUrl)
       .pipe(
-        tap(data => console.log('All: ' + JSON.stringify(data))),
+        tap(data => console.log('getDrivers: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
 
-  //undefined pipe uitzoeken
   getDriver(id: number): Observable<IDriver | undefined> {
     //creatie van url voor chauffeur op te halen nog opschonen
     return this.http.get<IDriver>(this.driverReadUrl + '/' + id)
       .pipe(
-        tap(data => console.log('All: ' + JSON.stringify(data))),
+        tap(data => console.log('getDriver: ' + JSON.stringify(data))),
         catchError(this.handleError)
     );
 
   }
 
-  postDriver(driverData: IDriver): Observable<IDriver> {
+  addDriver(driverData: IDriver): Observable<IDriver> {
     const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.post<IDriver>(this.driverWriteUrl, driverData, httpHeaders)
       .pipe(
-        tap(data => console.log('All: ' + JSON.stringify(data))),
+        tap(data => console.log('postDriver: ' + JSON.stringify(data))),
         catchError(this.handleError)
     );
   }
@@ -49,6 +50,15 @@ export class DriverService {
   updateDriver(driverData: IDriver): Observable<IDriver> {
     const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.put<IDriver>(this.driverWriteUrl + '/update' + '/' + driverData.id, driverData, httpHeaders)
+      .pipe(
+        tap(data => console.log('updateDriver: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
+  deleteDriver(id: number): Observable<IDriver> {
+    console.log('delete driver');
+    return this.http.delete<IDriver>(this.driverWriteUrl + '/delete' + '/' + id)
       .pipe(
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)

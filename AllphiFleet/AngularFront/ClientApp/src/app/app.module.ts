@@ -38,7 +38,7 @@ import { DrivereditComponent } from './driver/driveredit/driveredit.component';
       { path: 'driverlist', component: DriverlistComponent },
       { path: 'driver/:id', component: DriverdetailComponent },
       { path: 'driveradd', component: DriveraddComponent },
-      { path: 'driveredit/:id', component: DrivereditComponent },
+      { path: 'driveredit/:id', component: DrivereditComponent }
     ])
   ],
   providers: [],

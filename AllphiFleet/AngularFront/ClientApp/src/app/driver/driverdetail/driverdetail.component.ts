@@ -39,6 +39,22 @@ export class DriverdetailComponent implements OnInit {
     });
   }
 
+  deleteDriver(id: number): void {
+    this.driverService.deleteDriver(id).subscribe({
+
+      error: err => {
+        this.errorMessage = err;
+        console.log("errormessage");
+        console.log(this.errorMessage);
+      },
+      complete: () => {
+        //doet hij enkel als er geen error is, hij doet altijd maar 1 van de 3 (next, error of complete).
+        this.router.navigate(['/driverlist']);
+      }
+    });
+    
+  }
+
   onBack(): void {
     this.router.navigate(['/driverlist']);
   }

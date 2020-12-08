@@ -1,0 +1,7 @@
+.marginButton{
+    margin: 0 5px 0 5px;
+}
+
+.notClickable {
+  pointer-events: none
+}

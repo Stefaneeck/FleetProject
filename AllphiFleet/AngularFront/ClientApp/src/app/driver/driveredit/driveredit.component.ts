@@ -103,16 +103,12 @@ export class DrivereditComponent implements OnInit {
       //next: result => this.driver = result,
       error: err => {
         this.errorMessage = err;
-        console.log("errormessage 1");
         console.log(this.errorMessage);
       },
       complete: () => {
         //doet hij enkel als er geen error is
         this.router.navigate(['/driverlist']);
       }
-
-
-
     });
 
   }

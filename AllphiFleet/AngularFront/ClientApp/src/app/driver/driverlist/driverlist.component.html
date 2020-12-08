@@ -4,8 +4,6 @@
          *ngIf='drivers && drivers.length'>
     <thead>
       <tr>
-        <th>
-        </th>
         <th>Id</th>
         <th>Naam</th>
         <th>Voornaam</th>
@@ -18,19 +16,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let driver of drivers'>
-        <td>
-          <a [routerLink]="['/driveredit', driver.id]">
-            Edit
-          </a>
-        </td>
-        <td>
-          <!-- driver is een route van app.module
-          driver is de route, driver.id is de parameter -->
-          <a [routerLink]="['/driver', driver.id]">
-            {{ driver.id }}
-          </a>
-        </td>
+      <!-- driver is een route van app.module
+  driver is de route, driver.id is de parameter -->
+      <tr *ngFor='let driver of drivers' [routerLink]="['/driver', driver.id]" class="pointer">
+        <td>{{ driver.id }}</td>
         <td>{{ driver.naam }}</td>
         <td>{{ driver.voornaam }}</td>
         <td>{{ driver.adres.straat + ' '+ driver.adres.nummer + ', ' + driver.adres.postcode + ' ' + driver.adres.stad }}</td>
@@ -39,7 +28,9 @@
         <!-- tankkaart string representatie maken of tankkaartnummer genoeg? -->
         <td>{{ driver.tankkaart.kaartnummer }}</td>
         <td>{{ driver.typeRijbewijs }}</td>
-        <td>{{ driver.actief }}</td>
+        <td>
+          <input type="checkbox" [checked]="driver.actief" class="notClickable">
+        </td>
       </tr>
     </tbody>
   </table>

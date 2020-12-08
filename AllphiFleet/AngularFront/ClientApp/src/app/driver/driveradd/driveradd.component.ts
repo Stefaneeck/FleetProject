@@ -52,10 +52,12 @@ export class DriveraddComponent implements OnInit {
     });
   }
 
-  postDriver(driver: IDriver): void {
+  //nog op te lossen: als je actief niet op checked zet, dan geeft hij ipv false, "" mee aan de post request.
+  //bij edit driver werkt dit nochtans wel.
+  addDriver(driver: IDriver): void {
     const driverDataFromForm = this.driverForm.value;
 
-    this.driverService.postDriver(driverDataFromForm).subscribe({
+    this.driverService.addDriver(driverDataFromForm).subscribe({
       //next: result => this.driver = result,
       error: err => this.errorMessage = err,
       complete: () => {

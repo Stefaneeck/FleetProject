@@ -1,0 +1,7 @@
+.pointer {
+  cursor: pointer;
+}
+
+.notClickable {
+  pointer-events: none
+}
