@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { IAddress } from '../../domain/IAddress';
+import { IAddress } from '../domain/IAddress';
+
 
 @Injectable({
   providedIn: 'root'

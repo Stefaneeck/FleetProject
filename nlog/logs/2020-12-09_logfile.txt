@@ -33,3 +33,5 @@
    at ReadApi.CustomExceptionMiddleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\ReadApi\CustomExceptionMiddleware\ExceptionMiddleware.cs:line 33
 2020-12-09 12:51:32.6102 INFO Alle tankkaarten aan het ophalen.
 2020-12-09 12:51:33.5021 INFO Ophalen van 19 records.
+2020-12-09 17:37:30.7643 INFO Alle adressen aan het ophalen.
+2020-12-09 17:37:31.3742 INFO Ophalen van 20 records.

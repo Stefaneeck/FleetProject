@@ -40,7 +40,8 @@ import { AddresslistComponent } from './address/addresslist/addresslist.componen
       { path: 'driverlist', component: DriverlistComponent },
       { path: 'driver/:id', component: DriverdetailComponent },
       { path: 'driveradd', component: DriveraddComponent },
-      { path: 'driveredit/:id', component: DrivereditComponent }
+      { path: 'driveredit/:id', component: DrivereditComponent },
+      { path: 'addresslist', component: AddresslistComponent }
     ])
   ],
   providers: [],

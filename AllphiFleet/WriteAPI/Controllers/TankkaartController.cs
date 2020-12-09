@@ -14,12 +14,8 @@ namespace WriteApi.Controllers
     [ApiController]
     public class TankkaartController : ControllerBase
     {
-
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public TankkaartController()
-        {
-        }
 
         [HttpPost("/writeapi/tankkaart")]
         public async Task<IActionResult> CreateTankkaart(CreateTankkaartDTO createTankkaartDTO)

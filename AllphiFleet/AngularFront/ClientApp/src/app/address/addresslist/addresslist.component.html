@@ -1,1 +1,26 @@
-<p>addresslist works!</p>
+<div class='table-responsive'>
+  <!-- wachten tot adressen toekomen, async oplossing-->
+  <table class='table'
+         *ngIf='addresses && addresses.length'>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Straat</th>
+        <th>Nummer</th>
+        <th>Stad</th>
+        <th>Postcode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- driver is een route van app.module
+      driver is de route, driver.id is de parameter -->
+      <tr *ngFor='let address of addresses' class="pointer">
+        <td>{{ address.id }}</td>
+        <td>{{ address.straat }}</td>
+        <td>{{ address.nummer }}</td>
+        <td>{{ address.stad }}</td>
+        <td>{{ address.postcode }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

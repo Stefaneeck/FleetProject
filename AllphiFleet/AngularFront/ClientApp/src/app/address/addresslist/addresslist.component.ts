@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAddress } from '../../domain/IAddress';
+import { AddressService } from '../address.service';
 
 @Component({
   selector: 'app-addresslist',
