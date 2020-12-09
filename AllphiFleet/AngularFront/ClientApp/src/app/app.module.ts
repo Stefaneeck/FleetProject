@@ -13,6 +13,7 @@ import { DriverlistComponent } from './driver/driverlist/driverlist.component';
 import { DriverdetailComponent } from './driver/driverdetail/driverdetail.component';
 import { DriveraddComponent } from './driver/driveradd/driveradd.component';
 import { DrivereditComponent } from './driver/driveredit/driveredit.component';
+import { AddresslistComponent } from './address/addresslist/addresslist.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DrivereditComponent } from './driver/driveredit/driveredit.component';
     DriverlistComponent,
     DriverdetailComponent,
     DriveraddComponent,
-    DrivereditComponent
+    DrivereditComponent,
+    AddresslistComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

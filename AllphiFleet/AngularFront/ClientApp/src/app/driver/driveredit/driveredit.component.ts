@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DriverService } from '../driver.service';
-import { IDriver } from '../IDriver';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { formatDate } from '@angular/common';
+import { IDriver } from '../../domain/IDriver';
 
 @Component({
   selector: 'app-driveredit',

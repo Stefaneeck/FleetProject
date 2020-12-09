@@ -2,60 +2,60 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { IDriver } from '../domain/IDriver';
+import { IAddress } from '../../domain/IAddress';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DriverService {
+export class AddressService {
   // If using Stackblitz, replace the url with this line
   // because Stackblitz can't find the api folder.
   // private productUrl = 'assets/products/products.json';
-  private driverReadUrl = 'https://localhost:44334/api/chauffeur';
-  private driverWriteUrl ='https://localhost:44358/writeapi/chauffeur'
+  private addressReadUrl = 'https://localhost:44334/api/adres';
+  private addressWriteUrl = 'https://localhost:44358/writeapi/adres'
 
   constructor(private http: HttpClient) { }
 
   //You have to subscribe to the call if you want it to execute
   //we subscriben hier niet, maar wel waar we de methode aanroepen
-  getDrivers(): Observable<IDriver[]> {
-    return this.http.get<IDriver[]>(this.driverReadUrl)
+  getAddresses(): Observable<IAddress[]> {
+    return this.http.get<IAddress[]>(this.addressReadUrl)
       .pipe(
-        tap(data => console.log('getDrivers: ' + JSON.stringify(data))),
+        tap(data => console.log('getAddresses: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
 
-  getDriver(id: number): Observable<IDriver | undefined> {
+  getAddress(id: number): Observable<IAddress | undefined> {
     //creatie van url voor chauffeur op te halen nog opschonen
-    return this.http.get<IDriver>(this.driverReadUrl + '/' + id)
+    return this.http.get<IAddress>(this.addressReadUrl + '/' + id)
       .pipe(
-        tap(data => console.log('getDriver: ' + JSON.stringify(data))),
+        tap(data => console.log('getAddress: ' + JSON.stringify(data))),
         catchError(this.handleError)
-    );
+      );
 
   }
 
-  addDriver(driverData: IDriver): Observable<IDriver> {
+  addAddress(addressData: IAddress): Observable<IAddress> {
     const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.post<IDriver>(this.driverWriteUrl, driverData, httpHeaders)
+    return this.http.post<IAddress>(this.addressWriteUrl, addressData, httpHeaders)
       .pipe(
-        tap(data => console.log('addDriver: ' + JSON.stringify(data))),
-        catchError(this.handleError)
-    );
-  }
-
-  updateDriver(driverData: IDriver): Observable<IDriver> {
-    const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.put<IDriver>(this.driverWriteUrl + '/update' + '/' + driverData.id, driverData, httpHeaders)
-      .pipe(
-        tap(data => console.log('updateDriver: ' + JSON.stringify(data))),
+        tap(data => console.log('addAddress: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
 
-  deleteDriver(id: number): Observable<IDriver> {
-    return this.http.delete<IDriver>(this.driverWriteUrl + '/delete' + '/' + id)
+  updateAddress(addressData: IAddress): Observable<IAddress> {
+    const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.put<IAddress>(this.addressWriteUrl + '/update' + '/' + addressData.id, addressData, httpHeaders)
+      .pipe(
+        tap(data => console.log('updateAddress: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
+  deleteAddress(id: number): Observable<IAddress> {
+    return this.http.delete<IAddress>(this.addressWriteUrl + '/delete' + '/' + id)
       .pipe(
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)

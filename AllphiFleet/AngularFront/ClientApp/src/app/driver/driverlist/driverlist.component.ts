@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { DriverService } from '../driver.service';
-import { IDriver } from '../IDriver'
+import { IDriver } from '../../domain/IDriver';
 
 @Component({
   selector: 'app-driverlist',
@@ -9,6 +9,7 @@ import { IDriver } from '../IDriver'
   styleUrls: ['./driverlist.component.css']
 })
 export class DriverlistComponent implements OnInit {
+
   public drivers: IDriver[];
   //public tempUrl: string = "https://localhost:44334/api/chauffeur";
   errorMessage = '';

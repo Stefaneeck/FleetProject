@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IDriver } from '../IDriver';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DriverService } from '../driver.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { IDriver } from '../../domain/IDriver';
 
 @Component({
   selector: 'app-driveradd',

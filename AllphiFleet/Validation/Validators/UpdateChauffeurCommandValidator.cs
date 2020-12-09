@@ -7,7 +7,7 @@ namespace Validation.Validators
     {
         public UpdateChauffeurCommandValidator()
         {
-            RuleFor(c => c.UpdateChauffeurDTO.Id).NotEmpty();
+            RuleFor(updateChauffeurCommand => updateChauffeurCommand.UpdateChauffeurDTO.Id).NotEmpty();
         }
     }
 }

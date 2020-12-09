@@ -1,5 +1,6 @@
-import { IAdres } from "./IAdres";
 import { ITankkaart } from "./ITankkaart";
+import { IAddress } from "./IAddress";
+
 
 export interface IDriver {
 
@@ -10,7 +11,7 @@ export interface IDriver {
   rijksRegisterNummer: number;
   typeRijbewijs: number;
   actief: boolean;
-  adres: IAdres;
+  adres: IAddress;
   tankkaart: ITankkaart;
   /*
   id: number;
