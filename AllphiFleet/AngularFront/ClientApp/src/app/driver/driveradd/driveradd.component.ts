@@ -50,21 +50,34 @@ export class DriveraddComponent implements OnInit {
       Actief: ['', [Validators.required]]
 
     });
+
+    console.log(this.driverForm.value);
   }
 
   //nog op te lossen: als je actief niet op checked zet, dan geeft hij ipv false, "" mee aan de post request.
   //bij edit driver werkt dit nochtans wel.
   addDriver(driver: IDriver): void {
-    const driverDataFromForm = this.driverForm.value;
+    if (this.driverForm.valid) {
+      console.log("valid.");
 
-    this.driverService.addDriver(driverDataFromForm).subscribe({
-      //next: result => this.driver = result,
-      error: err => this.errorMessage = err,
-      complete: () => {
-        //doet hij enkel als er geen error is
-        this.router.navigate(['/driverlist']);
-      }
-    });
+      const driverDataFromForm = this.driverForm.value;
+
+      this.driverService.addDriver(driverDataFromForm).subscribe({
+        //next: result => this.driver = result,
+        error: err => this.errorMessage = err,
+        complete: () => {
+          //doet hij enkel als er geen error is
+          this.router.navigate(['/driverlist']);
+        }
+      });
+    }
+    else {
+      console.log("not valid.");
+    }
+  }
+
+  get driverFormControl() {
+    return this.driverForm.controls;
   }
 
 }
