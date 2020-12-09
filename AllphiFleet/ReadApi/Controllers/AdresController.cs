@@ -19,7 +19,7 @@ namespace ReadApi.Controllers
             _adresService = adresService;
             _logger = logger;
         }
-        // GET: api/aanvraag
+        // GET: api/adres
         [HttpGet(Name = "getAllAdressen")]
         //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
 

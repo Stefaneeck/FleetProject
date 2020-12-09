@@ -13,7 +13,7 @@ export class DriveraddComponent implements OnInit {
 
   errorMessage = "";
   //driver : IDriver | undefined
-  driver: IDriver;
+  driver: IDriver | undefined;
   driverForm: any;
 
   constructor(private formBuilder: FormBuilder, private driverService: DriverService,
