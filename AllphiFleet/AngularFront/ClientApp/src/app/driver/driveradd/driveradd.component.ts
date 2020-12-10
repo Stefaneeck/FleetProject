@@ -50,8 +50,6 @@ export class DriveraddComponent implements OnInit {
       Actief: ['', [Validators.required]]
 
     });
-
-    console.log(this.driverForm.value);
   }
 
   //nog op te lossen: als je actief niet op checked zet, dan geeft hij ipv false, "" mee aan de post request.
@@ -75,9 +73,4 @@ export class DriveraddComponent implements OnInit {
       console.log("not valid.");
     }
   }
-
-  get driverFormControl() {
-    return this.driverForm.controls;
-  }
-
 }
