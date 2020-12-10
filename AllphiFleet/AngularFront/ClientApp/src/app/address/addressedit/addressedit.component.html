@@ -1,0 +1,20 @@
+<form class="marginBottom" [formGroup]="addressForm" *ngIf='address'>
+  <div class="form-group">
+    <label for="inputStreet">Street</label>
+    <input type="text" class="form-control" id="inputStraat" formControlName="Straat">
+  </div>
+  <div class="form-group">
+    <label for="inputNumber">Number</label>
+    <input type="text" class="form-control" id="inputNumber" formControlName="Nummer">
+  </div>
+  <div class="form-group">
+    <label for="inputZipcode">Zipcode</label>
+    <input type="text" class="form-control" id="inputZipcode" formControlName="Postcode">
+  </div>
+  <div class="form-group">
+    <label for="inputCity">City</label>
+    <input type="text" class="form-control" id="inputCity" formControlName="Stad">
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="updateAddress(addressForm.value)">Submit</button>
+</form>

@@ -12,9 +12,9 @@
       </tr>
     </thead>
     <tbody>
-      <!-- driver is een route van app.module
-      driver is de route, driver.id is de parameter -->
-      <tr *ngFor='let address of addresses' class="pointer">
+      <!-- address is een route van app.module
+      address is de route, address.id is de parameter -->
+      <tr *ngFor='let address of addresses' [routerLink]="['/address', address.id]" class="pointer">
         <td>{{ address.id }}</td>
         <td>{{ address.straat }}</td>
         <td>{{ address.nummer }}</td>

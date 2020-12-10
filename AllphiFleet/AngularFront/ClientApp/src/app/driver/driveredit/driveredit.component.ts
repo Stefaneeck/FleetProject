@@ -43,8 +43,6 @@ export class DrivereditComponent implements OnInit {
     promise.then((data:IDriver) => {
 
       this.driver = data;
-      console.log('data output');
-      console.log(this.driver);
 
       //formulier hier pas aanmaken, in de then van de promise (dan hebben we de data)
       //de naam voor het : komt overeen met de waarde van formControlName in het html formulier

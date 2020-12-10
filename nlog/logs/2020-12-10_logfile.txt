@@ -1,0 +1,28 @@
+2020-12-10 10:43:40.5923 INFO Alle adressen aan het ophalen.
+2020-12-10 10:43:41.1817 INFO Ophalen van 20 records.
+2020-12-10 10:46:19.9604 INFO Alle adressen aan het ophalen.
+2020-12-10 10:46:20.5191 INFO Ophalen van 20 records.
+2020-12-10 10:48:55.9156 INFO Alle adressen aan het ophalen.
+2020-12-10 10:48:55.9156 INFO Ophalen van 20 records.
+2020-12-10 10:48:58.7246 INFO Alle adressen aan het ophalen.
+2020-12-10 10:48:58.7289 INFO Ophalen van 20 records.
+2020-12-10 10:51:47.7337 INFO Alle adressen aan het ophalen.
+2020-12-10 10:51:48.2701 INFO Ophalen van 20 records.
+2020-12-10 10:51:59.2303 INFO Alle chauffeurs aan het ophalen.
+2020-12-10 10:51:59.4337 INFO Ophalen van 12 records.
+2020-12-10 10:52:00.8139 INFO Alle adressen aan het ophalen.
+2020-12-10 10:52:00.8139 INFO Ophalen van 20 records.
+2020-12-10 10:52:16.0763 INFO Alle adressen aan het ophalen.
+2020-12-10 10:52:16.0763 INFO Ophalen van 19 records.
+2020-12-10 10:52:26.5332 INFO Alle adressen aan het ophalen.
+2020-12-10 10:52:26.5332 INFO Ophalen van 19 records.
+2020-12-10 11:04:55.2257 INFO Alle adressen aan het ophalen.
+2020-12-10 11:04:55.8091 INFO Ophalen van 19 records.
+2020-12-10 11:06:14.2746 INFO Alle adressen aan het ophalen.
+2020-12-10 11:06:14.8782 INFO Ophalen van 19 records.
+2020-12-10 11:06:21.6233 INFO Alle adressen aan het ophalen.
+2020-12-10 11:06:21.6233 INFO Ophalen van 19 records.
+2020-12-10 11:07:59.4134 INFO Alle adressen aan het ophalen.
+2020-12-10 11:08:00.0119 INFO Ophalen van 19 records.
+2020-12-10 11:08:10.5498 INFO Alle adressen aan het ophalen.
+2020-12-10 11:08:10.5575 INFO Ophalen van 19 records.

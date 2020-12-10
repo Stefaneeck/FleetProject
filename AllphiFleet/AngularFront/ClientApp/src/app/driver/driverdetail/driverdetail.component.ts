@@ -9,7 +9,8 @@ import { IDriver } from '../../domain/IDriver';
   styleUrls: ['./driverdetail.component.css']
 })
 export class DriverdetailComponent implements OnInit {
-  pageTitle: string = 'Driver Detail';
+
+  pageTitle: string = 'Driver detail';
   errorMessage = "";
   //driver mag idriver of undefined zijn
   driver: IDriver | undefined;
@@ -23,7 +24,8 @@ export class DriverdetailComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
 
-    //getDriver methode vanuit driver service rechtstreeks gebruiken?
+    //getDriver methode vanuit driver service rechtstreeks gebruiken? dit zou wel handig zijn als je vanuit de html code een driver wil ophalen bij bv. onlick
+    //, dan is het makkelijk te refereren naar een methode in de code behind ipv naar code in een oninit
     //if id is truthy
     if (id) {
       this.getDriver(id);

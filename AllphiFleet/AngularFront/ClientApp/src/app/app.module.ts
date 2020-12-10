@@ -14,6 +14,8 @@ import { DriverdetailComponent } from './driver/driverdetail/driverdetail.compon
 import { DriveraddComponent } from './driver/driveradd/driveradd.component';
 import { DrivereditComponent } from './driver/driveredit/driveredit.component';
 import { AddresslistComponent } from './address/addresslist/addresslist.component';
+import { AddressdetailComponent } from './address/addressdetail/addressdetail.component';
+import { AddresseditComponent } from './address/addressedit/addressedit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AddresslistComponent } from './address/addresslist/addresslist.componen
     DriverdetailComponent,
     DriveraddComponent,
     DrivereditComponent,
-    AddresslistComponent
+    AddresslistComponent,
+    AddressdetailComponent,
+    AddresseditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,7 +45,9 @@ import { AddresslistComponent } from './address/addresslist/addresslist.componen
       { path: 'driver/:id', component: DriverdetailComponent },
       { path: 'driveradd', component: DriveraddComponent },
       { path: 'driveredit/:id', component: DrivereditComponent },
-      { path: 'addresslist', component: AddresslistComponent }
+      { path: 'addresslist', component: AddresslistComponent },
+      { path: 'address/:id', component: AddressdetailComponent },
+      { path: 'addressedit/:id', component: AddresseditComponent }
     ])
   ],
   providers: [],
