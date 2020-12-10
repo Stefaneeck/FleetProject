@@ -2,10 +2,20 @@
   <div class="form-group">
     <label for="inputName">Name</label>
     <input type="text" class="form-control" id="inputName" formControlName="Naam">
+
+    <span class="text-danger"
+          *ngIf="(driverForm.controls.Naam.touched || submitted) && driverForm.controls.Naam.errors?.required">
+      Name is required.
+    </span>
   </div>
   <div class="form-group">
     <label for="inputFirstName">First Name</label>
     <input type="text" class="form-control" id="inputFirstName" formControlName="Voornaam">
+
+    <span class="text-danger"
+          *ngIf="(driverForm.controls.Voornaam.touched || submitted) && driverForm.controls.Voornaam.errors?.required">
+      First name is required.
+    </span>
   </div>
 
   <!-- formGroupName niet vergeten voor nested object-->
@@ -14,32 +24,67 @@
     <div class="form-group">
       <label for="inputAddressStreet">Street</label>
       <input type="text" class="form-control" id="inputAddressStreet" formControlName="Straat">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Adres.controls.Straat.touched || submitted) && driverForm.controls.Adres.controls.Straat.errors?.required">
+        Street is required.
+      </span>
     </div>
     <div class="form-group">
       <label for="inputAddressNumber">Number</label>
       <input type="number" class="form-control" id="inputAddressNumber" formControlName="Nummer">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Adres.controls.Nummer.touched || submitted) && driverForm.controls.Adres.controls.Nummer.errors?.required">
+        House number is required.
+      </span>
     </div>
     <div class="form-group">
       <label for="inputAddressCity">City</label>
       <input type="text" class="form-control" id="inputAddressCity" formControlName="Stad">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Adres.controls.Stad.touched || submitted) && driverForm.controls.Adres.controls.Stad.errors?.required">
+        City is required.
+      </span>
     </div>
     <div class="form-group">
       <label for="inputAddressZipCode">Zipcode</label>
       <input type="number" class="form-control" id="inputAddressZipCode" formControlName="Postcode">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Adres.controls.Postcode.touched || submitted) && driverForm.controls.Adres.controls.Postcode.errors?.required">
+        Zipcode is required.
+      </span>
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputDateOfBirth">Date of birth</label>
     <input type="date" class="form-control" id="inputDateOfBirth" formControlName="GeboorteDatum">
+
+    <span class="text-danger"
+          *ngIf="(driverForm.controls.GeboorteDatum.touched || submitted) && driverForm.controls.GeboorteDatum.errors?.required">
+      Date of birth is required.
+    </span>
   </div>
   <div class="form-group">
     <label for="inputSocialSecNumber">Social security number</label>
     <input type="text" class="form-control" id="inputSocialSecNumber" formControlName="RijksRegisterNummer">
+
+    <span class="text-danger"
+          *ngIf="(driverForm.controls.RijksRegisterNummer.touched || submitted) && driverForm.controls.RijksRegisterNummer.errors?.required">
+      Social security number is required.
+    </span>
   </div>
   <div class="form-group">
     <label for="inputDriverLicenseType">Driver license type</label>
     <input type="number" class="form-control" id="inputDriverLicenseType" formControlName="TypeRijbewijs">
+
+    <span class="text-danger"
+          *ngIf="(driverForm.controls.TypeRijbewijs.touched || submitted) && driverForm.controls.TypeRijbewijs.errors?.required">
+      Driver license type is required.
+    </span>
   </div>
 
   <div class="form-group" formGroupName="Tankkaart">
@@ -47,22 +92,47 @@
     <div class="form-group">
       <label for="inputCardCardNumber">Kaartnummer</label>
       <input type="number" class="form-control" id="inputCardCardNumber" formControlName="Kaartnummer">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Tankkaart.controls.Kaartnummer.touched || submitted) && driverForm.controls.Tankkaart.controls.Kaartnummer.errors?.required">
+        Card number is required.
+      </span>
     </div>
     <div class="form-group">
       <label for="inputCardValidUntil">Geldigheidsdatum</label>
       <input type="date" class="form-control" id="inputCardValidUntil" formControlName="GeldigheidsDatum">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Tankkaart.controls.GeldigheidsDatum.touched || submitted) && driverForm.controls.Tankkaart.controls.GeldigheidsDatum.errors?.required">
+        Valid until date is required.
+      </span>
     </div>
     <div class="form-group">
       <label for="inputCardPin">Pincode</label>
       <input type="number" class="form-control" id="inputCardPin" formControlName="Pincode">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Tankkaart.controls.Pincode.touched || submitted) && driverForm.controls.Tankkaart.controls.Pincode.errors?.required">
+        Pincode is required.
+      </span>
     </div>
     <div class="form-group">
       <label for="inputCardAuthType">Authtype</label>
       <input type="number" class="form-control" id="inputCardAuthType" formControlName="AuthType">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Tankkaart.controls.AuthType.touched || submitted) && driverForm.controls.Tankkaart.controls.AuthType.errors?.required">
+        Auth type is required.
+      </span>
     </div>
     <div class="form-group">
       <label for="inputCardOptions">Opties</label>
       <input type="text" class="form-control" id="inputCardOptions" formControlName="Opties">
+
+      <span class="text-danger"
+            *ngIf="(driverForm.controls.Tankkaart.controls.Opties.touched || submitted) && driverForm.controls.Tankkaart.controls.Opties.errors?.required">
+        Options is required.
+      </span>
     </div>
   </div>
 

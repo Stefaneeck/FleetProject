@@ -94,21 +94,28 @@ export class DrivereditComponent implements OnInit {
     //id manueel toevoegen
     driverDataFromForm.id = this.driver.id;
 
-    this.driverService.updateDriver(driverDataFromForm).subscribe({
-      //info https://rxjs-dev.firebaseapp.com/guide/observer
-      //Observers are just objects with three callbacks, one for each type of notification that an Observable may deliver. (next, error or complete)
+    if (this.driverForm.valid) {
+      console.log("valid.");
 
-      //next: result => this.driver = result,
-      error: err => {
-        this.errorMessage = err;
-        console.log(this.errorMessage);
-      },
-      complete: () => {
-        //doet hij enkel als er geen error is
-        this.router.navigate(['/driverlist']);
-      }
-    });
+      this.driverService.updateDriver(driverDataFromForm).subscribe({
+        //info https://rxjs-dev.firebaseapp.com/guide/observer
+        //Observers are just objects with three callbacks, one for each type of notification that an Observable may deliver. (next, error or complete)
 
+        //next: result => this.driver = result,
+        error: err => {
+          this.errorMessage = err;
+          console.log(this.errorMessage);
+        },
+        complete: () => {
+          //doet hij enkel als er geen error is
+          this.router.navigate(['/driverlist']);
+        }
+      });
+
+    }
+    else {
+      console.log("not valid.");
+    }
   }
 
 }

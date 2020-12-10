@@ -57,20 +57,28 @@ export class AddresseditComponent implements OnInit {
     //id manueel toevoegen
     addressDataFromForm.id = this.address.id;
 
-    this.addressService.updateAddress(addressDataFromForm).subscribe({
-      //info https://rxjs-dev.firebaseapp.com/guide/observer
-      //Observers are just objects with three callbacks, one for each type of notification that an Observable may deliver. (next, error or complete)
+    if (this.addressForm.valid) {
+      console.log("valid.");
 
-      //next: result => this.driver = result,
-      error: err => {
-        this.errorMessage = err;
-        console.log(this.errorMessage);
-      },
-      complete: () => {
-        //doet hij enkel als er geen error is
-        this.router.navigate(['/addresslist']);
-      }
-    });
+      this.addressService.updateAddress(addressDataFromForm).subscribe({
+        //info https://rxjs-dev.firebaseapp.com/guide/observer
+        //Observers are just objects with three callbacks, one for each type of notification that an Observable may deliver. (next, error or complete)
+
+        //next: result => this.driver = result,
+        error: err => {
+          this.errorMessage = err;
+          console.log(this.errorMessage);
+        },
+        complete: () => {
+          //doet hij enkel als er geen error is
+          this.router.navigate(['/addresslist']);
+        }
+      });
+    }
+
+    else {
+      console.log("not valid");
+    }
 
   }
 }

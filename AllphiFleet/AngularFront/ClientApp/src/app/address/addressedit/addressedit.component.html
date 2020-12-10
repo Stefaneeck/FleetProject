@@ -2,19 +2,39 @@
   <div class="form-group">
     <label for="inputStreet">Street</label>
     <input type="text" class="form-control" id="inputStraat" formControlName="Straat">
+
+    <span class="text-danger"
+          *ngIf="(addressForm.controls.Straat.touched || submitted) && addressForm.controls.Straat.errors?.required">
+      Street is required.
+    </span>
   </div>
   <div class="form-group">
     <label for="inputNumber">Number</label>
-    <input type="text" class="form-control" id="inputNumber" formControlName="Nummer">
+    <input type="number" class="form-control" id="inputNumber" formControlName="Nummer">
+
+    <span class="text-danger"
+          *ngIf="(addressForm.controls.Nummer.touched || submitted) && addressForm.controls.Nummer.errors?.required">
+      House number is required.
+    </span>
   </div>
   <div class="form-group">
     <label for="inputZipcode">Zipcode</label>
-    <input type="text" class="form-control" id="inputZipcode" formControlName="Postcode">
+    <input type="number" class="form-control" id="inputZipcode" formControlName="Postcode">
+
+    <span class="text-danger"
+          *ngIf="(addressForm.controls.Postcode.touched || submitted) && addressForm.controls.Postcode.errors?.required">
+      Zipcode is required.
+    </span>
   </div>
   <div class="form-group">
     <label for="inputCity">City</label>
     <input type="text" class="form-control" id="inputCity" formControlName="Stad">
   </div>
+
+  <span class="text-danger"
+        *ngIf="(addressForm.controls.Stad.touched || submitted) && addressForm.controls.Stad.errors?.required">
+    City is required.
+  </span>
 
   <button type="submit" class="btn btn-primary" (click)="updateAddress(addressForm.value)">Submit</button>
 </form>
