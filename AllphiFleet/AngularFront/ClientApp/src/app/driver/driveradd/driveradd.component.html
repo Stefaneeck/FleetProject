@@ -1,4 +1,4 @@
-<form [formGroup]="driverForm" class="marginBottom">
+<form [formGroup]="driverForm" class="marginBottom" (ngSubmit)="addDriver(driverForm.value)">
   <div class="form-group">
     <label for="inputName">Name</label>
     <input type="text" class="form-control" id="inputName" formControlName="Naam">
@@ -79,8 +79,22 @@
     </span>
   </div>
   <div class="form-group">
-    <label for="inputDriverLicenseType">Driver license type</label>
-    <input type="number" class="form-control" id="inputDriverLicenseType" formControlName="TypeRijbewijs">
+    <label for="selectDriverLicenseType">Driver license type</label>
+
+    <select id="selectDriverLicenseType" class="form-control" formControlName="TypeRijbewijs" >
+      <option [ngValue]="null">-- Choose one --</option>
+      <!-- eerste uitroepteken: als falsy, maak true en omgekeerd-->
+      <!-- 2de maakt van true dan false en omgekeerd -->
+      <option *ngFor="let type of enumDriverLicenseTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+    </select>
+
+
+    <!--<input type="number" class="form-control" id="inputCardAuthType" formControlName="AuthType">  -->
+
+    <span class="text-danger"
+          *ngIf="(driverForm.controls.Tankkaart.controls.AuthType.touched || submitted) && driverForm.controls.Tankkaart.controls.AuthType.errors?.required">
+      Auth type is required.
+    </span>
 
     <span class="text-danger"
           *ngIf="(driverForm.controls.TypeRijbewijs.touched || submitted) && driverForm.controls.TypeRijbewijs.errors?.required">
@@ -118,8 +132,14 @@
       </span>
     </div>
     <div class="form-group">
-      <label for="inputCardAuthType">Authtype</label>
-      <input type="number" class="form-control" id="inputCardAuthType" formControlName="AuthType">
+      <label for="selectAuthType">Authtype</label>
+
+      <select id="selectAuthType" formControlName="AuthType" class="form-control">
+        <option [ngValue]="null">-- Choose one --</option>
+        <!-- eerste uitroepteken: als falsy, maak true en omgekeerd-->
+        <!-- 2de maakt van true dan false en omgekeerd -->
+        <option *ngFor="let type of enumAuthTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+      </select>
 
       <span class="text-danger"
             *ngIf="(driverForm.controls.Tankkaart.controls.AuthType.touched || submitted) && driverForm.controls.Tankkaart.controls.AuthType.errors?.required">
@@ -141,5 +161,6 @@
     <input type="checkbox" class="form-check-input" id="checkActief" formControlName="Actief">
     <label class="form-check-label" for="checkActief">Active</label>
   </div>
-  <button type="submit" class="btn btn-primary" (click)="addDriver(driverForm.value)">Submit</button>
+  <!-- hier hebben we ngSubmit gebruikt om het form te submitten, zie boven bij form tag-->
+  <button type="submit" class="btn btn-primary" >Submit</button>
 </form>
