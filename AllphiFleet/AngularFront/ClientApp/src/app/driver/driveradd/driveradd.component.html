@@ -83,18 +83,8 @@
 
     <select id="selectDriverLicenseType" class="form-control" formControlName="TypeRijbewijs" >
       <option [ngValue]="null">-- Choose one --</option>
-      <!-- eerste uitroepteken: als falsy, maak true en omgekeerd-->
-      <!-- 2de maakt van true dan false en omgekeerd -->
       <option *ngFor="let type of enumDriverLicenseTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
     </select>
-
-
-    <!--<input type="number" class="form-control" id="inputCardAuthType" formControlName="AuthType">  -->
-
-    <span class="text-danger"
-          *ngIf="(driverForm.controls.Tankkaart.controls.AuthType.touched || submitted) && driverForm.controls.Tankkaart.controls.AuthType.errors?.required">
-      Auth type is required.
-    </span>
 
     <span class="text-danger"
           *ngIf="(driverForm.controls.TypeRijbewijs.touched || submitted) && driverForm.controls.TypeRijbewijs.errors?.required">
@@ -133,11 +123,8 @@
     </div>
     <div class="form-group">
       <label for="selectAuthType">Authtype</label>
-
       <select id="selectAuthType" formControlName="AuthType" class="form-control">
         <option [ngValue]="null">-- Choose one --</option>
-        <!-- eerste uitroepteken: als falsy, maak true en omgekeerd-->
-        <!-- 2de maakt van true dan false en omgekeerd -->
         <option *ngFor="let type of enumAuthTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
       </select>
 

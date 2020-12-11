@@ -78,8 +78,10 @@
     </span>
   </div>
   <div class="form-group">
-    <label for="inputDriverLicenseType">Driver license type</label>
-    <input type="number" class="form-control" id="inputDriverLicenseType" formControlName="TypeRijbewijs">
+    <label for="selectDriverLicenseType">Driver license type</label>
+    <select id="selectDriverLicenseType" class="form-control" formControlName="TypeRijbewijs">
+      <option *ngFor="let type of enumDriverLicenseTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+    </select>
 
     <span class="text-danger"
           *ngIf="(driverForm.controls.TypeRijbewijs.touched || submitted) && driverForm.controls.TypeRijbewijs.errors?.required">
@@ -117,8 +119,10 @@
       </span>
     </div>
     <div class="form-group">
-      <label for="inputCardAuthType">Authtype</label>
-      <input type="number" class="form-control" id="inputCardAuthType" formControlName="AuthType">
+      <label for="selectAuthType">Authtype</label>
+      <select id="selectAuthType" formControlName="AuthType" class="form-control">
+        <option *ngFor="let type of authTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+      </select>
 
       <span class="text-danger"
             *ngIf="(driverForm.controls.Tankkaart.controls.AuthType.touched || submitted) && driverForm.controls.Tankkaart.controls.AuthType.errors?.required">

@@ -70,7 +70,6 @@ export class DriveraddComponent implements OnInit {
 
       //omzetten naar nummer, hij gaf string door als value voor de option "0" of "1" ipv 0 of 1
       driverDataFromForm.Tankkaart.AuthType = Number(driverDataFromForm.Tankkaart.AuthType);
-
       driverDataFromForm.TypeRijbewijs = Number(driverDataFromForm.TypeRijbewijs);
 
       this.driverService.addDriver(driverDataFromForm).subscribe({
