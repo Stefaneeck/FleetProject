@@ -9,12 +9,11 @@ namespace Validation.Validators
     {
         public CreateTankkaartCommandValidator()
         {
-            RuleFor(c => c.CreateTankkaartDTO.AuthType).NotEmpty();
-            RuleFor(c => c.CreateTankkaartDTO.GeldigheidsDatum).NotEmpty();
             RuleFor(c => c.CreateTankkaartDTO.Kaartnummer).NotEmpty();
-            RuleFor(c => c.CreateTankkaartDTO.Opties).NotEmpty();
             RuleFor(c => c.CreateTankkaartDTO.Pincode).NotEmpty();
-
+            RuleFor(c => c.CreateTankkaartDTO.AuthType).IsInEnum();
+            RuleFor(c => c.CreateTankkaartDTO.GeldigheidsDatum).NotEmpty();
+            RuleFor(c => c.CreateTankkaartDTO.Opties).NotEmpty();
         }
     }
 }

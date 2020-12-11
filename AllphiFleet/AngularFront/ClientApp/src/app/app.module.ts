@@ -19,6 +19,8 @@ import { AddresseditComponent } from './address/addressedit/addressedit.componen
 import { AddressaddComponent } from './address/addressadd/addressadd.component';
 import { FuelcardlistComponent } from './fuelcard/fuelcardlist/fuelcardlist.component';
 import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetail.component';
+import { FuelcardaddComponent } from './fuelcard/fuelcardadd/fuelcardadd.component';
+import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetai
     AddresseditComponent,
     AddressaddComponent,
     FuelcardlistComponent,
-    FuelcarddetailComponent
+    FuelcarddetailComponent,
+    FuelcardaddComponent,
+    FuelcardeditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,7 +59,10 @@ import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetai
       { path: 'address/:id', component: AddressdetailComponent },
       { path: 'addressedit/:id', component: AddresseditComponent },
       { path: 'addressadd', component: AddressaddComponent },
-      { path: 'fuelcardlist', component: FuelcardlistComponent }
+      { path: 'fuelcardlist', component: FuelcardlistComponent },
+      { path: 'fuelcard/:id', component: FuelcarddetailComponent },
+      { path: 'fuelcardadd', component: FuelcardaddComponent },
+      { path: 'fuelcardedit/:id', component: FuelcardeditComponent }
     ])
   ],
   providers: [],

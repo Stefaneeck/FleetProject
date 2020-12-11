@@ -1,7 +1,7 @@
 export interface IFuelcard {
 
   id: number;
-  kaartNummer: number;
+  kaartnummer: number;
   geldigheidsDatum: Date;
   pincode: number;
   authType: number;

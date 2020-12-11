@@ -14,15 +14,14 @@ import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseType
 export class DriveraddComponent implements OnInit {
 
   errorMessage = "";
+  driver: IDriver | undefined;
+  driverForm: any;
+
   // Make a variable reference to our Enum
   //'dubbele' waarden verwijderen
   //keys zijn 0, 1, pin, pinkmstand
-
   enumAuthTypes = Object.keys(EnumAuthenticationTypes).filter(key => !isNaN(Number(EnumAuthenticationTypes[key])));
   enumDriverLicenseTypes = Object.keys(EnumDriverLicenseTypes).filter(key => !isNaN(Number(EnumDriverLicenseTypes[key])));
-
-  driver: IDriver | undefined;
-  driverForm: any;
 
   constructor(private formBuilder: FormBuilder, private driverService: DriverService,
     private router: Router) { }

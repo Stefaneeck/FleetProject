@@ -28,3 +28,49 @@
 2020-12-11 16:14:20.9445 INFO Ophalen van 18 records.
 2020-12-11 16:27:26.6474 INFO Alle chauffeurs aan het ophalen.
 2020-12-11 16:27:27.3835 INFO Ophalen van 18 records.
+2020-12-11 17:09:15.4482 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 17:09:16.0312 INFO Ophalen van 29 records.
+2020-12-11 17:11:25.6506 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 17:11:25.6654 INFO Ophalen van 29 records.
+2020-12-11 17:11:30.7609 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 17:11:30.7609 INFO Ophalen van 29 records.
+2020-12-11 17:14:04.3512 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 17:14:04.8997 INFO Ophalen van 29 records.
+2020-12-11 17:14:42.0445 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 17:14:42.0563 INFO Ophalen van 28 records.
+2020-12-11 17:15:50.5408 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 17:15:50.5408 INFO Ophalen van 28 records.
+2020-12-11 17:15:54.9481 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 17:15:54.9481 INFO Ophalen van 28 records.
+2020-12-11 21:23:45.1412 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:23:45.8346 INFO Ophalen van 28 records.
+2020-12-11 21:23:54.3965 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:23:54.4340 INFO Ophalen van 28 records.
+2020-12-11 21:34:02.7140 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:34:03.4359 INFO Ophalen van 29 records.
+2020-12-11 21:34:10.4897 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:34:10.5081 INFO Ophalen van 28 records.
+2020-12-11 21:34:40.2904 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:34:40.3223 INFO Ophalen van 28 records.
+2020-12-11 21:35:37.4184 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:35:37.4357 INFO Ophalen van 29 records.
+2020-12-11 21:36:00.9189 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:36:00.9358 INFO Ophalen van 29 records.
+2020-12-11 21:36:25.0822 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:36:25.0965 INFO Ophalen van 30 records.
+2020-12-11 21:51:27.7150 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:51:28.3401 INFO Ophalen van 30 records.
+2020-12-11 21:55:43.9461 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:55:44.5261 INFO Ophalen van 30 records.
+2020-12-11 21:55:48.7061 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:55:48.7215 INFO Ophalen van 30 records.
+2020-12-11 21:58:23.3543 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 21:58:24.0066 INFO Ophalen van 30 records.
+2020-12-11 22:01:45.3392 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 22:01:45.9283 INFO Ophalen van 30 records.
+2020-12-11 22:04:18.0352 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 22:04:18.0632 INFO Ophalen van 30 records.
+2020-12-11 22:04:40.4676 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 22:04:40.4849 INFO Ophalen van 30 records.
+2020-12-11 22:04:49.7679 INFO Alle tankkaarten aan het ophalen.
+2020-12-11 22:04:49.7874 INFO Ophalen van 30 records.

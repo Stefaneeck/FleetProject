@@ -20,7 +20,7 @@ export class AddressdetailComponent implements OnInit {
 
     let id = +this.route.snapshot.paramMap.get('id');
 
-    //getDriver methode vanuit driver service rechtstreeks gebruiken?
+    //getAddress methode vanuit driver service rechtstreeks gebruiken?
     //if id is truthy
     if (id) {
       this.getAddress(id);
@@ -30,7 +30,7 @@ export class AddressdetailComponent implements OnInit {
 
   getAddress(id: number): void {
     this.addressService.getAddress(id).subscribe({
-      //opgehaalde waarde in lokale driver variabele opslaan
+      //opgehaalde waarde in lokale address variabele opslaan
       next: result => this.address = result,
       error: err => this.errorMessage = err
     });

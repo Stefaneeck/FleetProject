@@ -1,0 +1,52 @@
+<!-- ngif fuelcard, enkel laden wanneer fuelcard is opgehaald -->
+<form class="marginBottom" [formGroup]="fuelcardForm" *ngIf='fuelcard'>
+  <div class="form-group">
+    <label for="inputCardNumber">Card Number</label>
+    <input type="number" class="form-control" id="inputCardNumber" formControlName="KaartNummer">
+
+    <span class="text-danger"
+          *ngIf="(fuelcardForm.controls.KaartNummer.touched || submitted) && fuelcardForm.controls.KaartNummer.errors?.required">
+      Card number is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputPincode">Pincode</label>
+    <input type="number" class="form-control" id="inputPincode" formControlName="Pincode">
+
+    <span class="text-danger"
+          *ngIf="(fuelcardForm.controls.Pincode.touched || submitted) && fuelcardForm.controls.Pincode.errors?.required">
+      Pincode is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="selectAuthType">Auth type</label>
+    <select id="selectAuthType" class="form-control" formControlName="AuthType">
+      <option *ngFor="let type of enumAuthTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+    </select>
+
+    <span class="text-danger"
+          *ngIf="(fuelcardForm.controls.AuthType.touched || submitted) && fuelcardForm.controls.AuthType.errors?.required">
+      Auth type is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputCardValidUntil">Geldigheidsdatum</label>
+    <input type="date" class="form-control" id="inputCardValidUntil" formControlName="GeldigheidsDatum">
+
+    <span class="text-danger"
+          *ngIf="(fuelcardForm.controls.GeldigheidsDatum.touched || submitted) && fuelcardForm.controls.GeldigheidsDatum.errors?.required">
+      Valid until date is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputOptions">Options</label>
+    <input type="text" class="form-control" id="inputOptions" formControlName="Opties">
+
+    <span class="text-danger"
+          *ngIf="(fuelcardForm.controls.Opties.touched || submitted) && fuelcardForm.controls.Opties.errors?.required">
+      Options field is required.
+    </span>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="updateFuelcard(fuelcardForm.value)">Submit</button>
+</form>

@@ -36,9 +36,6 @@ export class AddresseditComponent implements OnInit {
 
       this.address = data;
 
-      //we spreken hier het json object eigenlijk aan, we moeten zien dat onze domeinklasse de data ervan matcht. als we this.driver.Naam ipv this.driver.naam zouden gebruiken, zou het niet werken
-      //omdat het json object met kleine letters uit de api komt. we moeten dus hier de syntax van onze domeinklasse aanpassen aan hoe het in het json object zit, er wordt niets intern automatisch gemapt.
-
       this.addressForm = this.formBuilder.group({
         Straat: [this.address.straat, [Validators.required]],
         Nummer: [this.address.nummer, [Validators.required]],
