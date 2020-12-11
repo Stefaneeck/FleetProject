@@ -1,0 +1,53 @@
+<div class='card' *ngIf='address'>
+  <div class='card-header'>
+    {{ pageTitle + ': ' + fuelcard.kaartnummer }}
+  </div>
+
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class='row'>
+          <div class='col-md-4'>Id:</div>
+          <div class='col-md-8'>{{ fuelcard.id }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Card Number:</div>
+          <div class='col-md-8'>{{ fuelcard.kaartnummer }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Pincode:</div>
+          <div class='col-md-8'>{{ fuelcard.pincode }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Auth type:</div>
+          <div class='col-md-8'>{{ fuelcard.authType }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Options:</div>
+          <div class='col-md-8'>{{ fuelcard.opties }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Valid until:</div>
+          <div class='col-md-8'>{{ fuelcard.geldigheidsDatum | date:'dd/MM/yyyy' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary marginButton'
+            [routerLink]="">
+      <i class='fa fa-chevron-left'></i> Edit
+    </button>
+    <button class='btn btn-outline-secondary marginButton'
+            (click)=''
+            style='width: 80px'>
+      <i class='fa fa-chevron-left'></i> Delete
+    </button>
+    <button class='btn btn-outline-secondary marginButton'
+            (click)='onBack()'
+            style='width:80px'>
+      <i class='fa fa-chevron-left'></i> Back
+    </button>
+  </div>
+</div>

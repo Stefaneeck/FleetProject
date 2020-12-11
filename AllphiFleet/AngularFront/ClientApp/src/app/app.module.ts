@@ -18,6 +18,7 @@ import { AddressdetailComponent } from './address/addressdetail/addressdetail.co
 import { AddresseditComponent } from './address/addressedit/addressedit.component';
 import { AddressaddComponent } from './address/addressadd/addressadd.component';
 import { FuelcardlistComponent } from './fuelcard/fuelcardlist/fuelcardlist.component';
+import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FuelcardlistComponent } from './fuelcard/fuelcardlist/fuelcardlist.comp
     AddressdetailComponent,
     AddresseditComponent,
     AddressaddComponent,
-    FuelcardlistComponent
+    FuelcardlistComponent,
+    FuelcarddetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
