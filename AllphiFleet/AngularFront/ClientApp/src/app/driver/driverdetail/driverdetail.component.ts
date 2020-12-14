@@ -14,6 +14,7 @@ export class DriverdetailComponent implements OnInit {
   errorMessage = "";
   //driver mag idriver of undefined zijn
   driver: IDriver | undefined;
+  typeRijbewijsViewValue = "";
 
   constructor(private route: ActivatedRoute, private driverService: DriverService, private router: Router) {
     //id variabele die we in url hebben meegegeven, id omdat we in app.module bij de route path: 'driver/:id' hebben gezet
@@ -36,7 +37,31 @@ export class DriverdetailComponent implements OnInit {
   getDriver(id: number): void {
     this.driverService.getDriver(id).subscribe({
       //opgehaalde waarde in lokale driver variabele opslaan
-      next: result => this.driver = result,
+      next: result => {
+        this.driver = result;
+
+        //om rijbewijs duidelijk weer te geven, correcte manier?
+        switch (this.driver.typeRijbewijs) {
+          case 0:
+            this.typeRijbewijsViewValue = "AM";
+            break;
+          case 1:
+            this.typeRijbewijsViewValue = "A";
+            break;
+          case 2:
+            this.typeRijbewijsViewValue = "B";
+            break;
+          case 3:
+            this.typeRijbewijsViewValue = "C";
+            break;
+          case 4:
+            this.typeRijbewijsViewValue = "D";
+            break;
+          case 5:
+            this.typeRijbewijsViewValue = "G";
+            break;
+        }
+      },
       error: err => this.errorMessage = err
     });
   }
