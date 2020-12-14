@@ -96,3 +96,11 @@
 2020-12-14 13:35:49.0166 INFO Ophalen van 17 records.
 2020-12-14 13:36:03.7097 INFO Alle chauffeurs aan het ophalen.
 2020-12-14 13:36:03.7339 INFO Ophalen van 17 records.
+2020-12-14 14:44:54.3735 INFO Alle adressen aan het ophalen.
+2020-12-14 14:44:54.8956 INFO Ophalen van 27 records.
+2020-12-14 14:45:16.2319 INFO Alle adressen aan het ophalen.
+2020-12-14 14:45:16.2756 INFO Ophalen van 27 records.
+2020-12-14 14:45:19.1759 INFO Alle chauffeurs aan het ophalen.
+2020-12-14 14:45:19.4047 INFO Ophalen van 17 records.
+2020-12-14 14:45:30.1800 INFO Alle chauffeurs aan het ophalen.
+2020-12-14 14:45:30.1960 INFO Ophalen van 17 records.

@@ -13,7 +13,6 @@ export class DriverlistComponent implements OnInit {
   public drivers: IDriver[];
   //public tempUrl: string = "https://localhost:44334/api/chauffeur";
   errorMessage = '';
-  typeRijbewijsViewValue = "";
 
   constructor(private driverService: DriverService) {
 
@@ -30,10 +29,6 @@ export class DriverlistComponent implements OnInit {
       next: drivers => {
         this.drivers = drivers;
         //this.filteredProducts = this.products;
-        for (let driver of drivers) {
-          this.typeRijbewijsViewValue = this.driverService.showEnumValueDriverLicenseType(driver.typeRijbewijs);
-          //lokaal in variabele opslaan gaat niet lukken, propery bijmaken in klasse driver?
-        }
         
       },
       error: err => this.errorMessage = err

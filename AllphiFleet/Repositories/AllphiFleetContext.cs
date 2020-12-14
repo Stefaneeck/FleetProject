@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.Auth;
 using ReadRepositories.Mappings;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ReadRepositories
 {
-    public class AllphiFleetContext : DbContext
+    public class AllphiFleetContext : IdentityDbContext<User>
+    //public class AllphiFleetContext : DbContext
     {
         public AllphiFleetContext(DbContextOptions options)
             : base(options)
@@ -17,6 +20,10 @@ namespace ReadRepositories
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //ChauffeurModelConstraints.OnModelCreatingChauffeur(modelBuilder);
+
+            //identity
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.OnModelCreatingChauffeur();
             modelBuilder.OnModelCreatingAdres();
             modelBuilder.OnModelCreatingFactuur();

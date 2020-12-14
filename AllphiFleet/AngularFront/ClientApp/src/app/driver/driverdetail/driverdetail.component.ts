@@ -14,7 +14,6 @@ export class DriverdetailComponent implements OnInit {
   errorMessage = "";
   //driver mag idriver of undefined zijn
   driver: IDriver | undefined;
-  typeRijbewijsViewValue = "";
 
   constructor(private route: ActivatedRoute, private driverService: DriverService, private router: Router) {
     //id variabele die we in url hebben meegegeven, id omdat we in app.module bij de route path: 'driver/:id' hebben gezet

@@ -13,6 +13,7 @@ using ReadRepositories;
 using ReadServices;
 using ReadServices.Interfaces;
 using System.IO;
+using System.Reflection;
 
 namespace ReadApi
 {
@@ -31,8 +32,14 @@ namespace ReadApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //added stefan
-            services.AddDbContext<AllphiFleetContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]));
+            //zeggen dat onze migrations assembly in het readrepositories project zit
+            services.AddDbContext<AllphiFleetContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]
+                    //,
+                    //builder => builder.MigrationsAssembly(Assembly.GetAssembly(typeof(AllphiFleetContext)).FullName)
+                );
+            });
 
             //added stefan (addscoped voor DI van IDataRepository)
             //hier bepalen welke concrete interface hij zal gebruiken
