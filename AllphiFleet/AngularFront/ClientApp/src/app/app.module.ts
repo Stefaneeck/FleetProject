@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DriverlistComponent } from './driver/driverlist/driverlist.component';
 import { DriverdetailComponent } from './driver/driverdetail/driverdetail.component';
 import { DriveraddComponent } from './driver/driveradd/driveradd.component';
@@ -27,8 +25,6 @@ import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.comp
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     DriverlistComponent,
     DriverdetailComponent,
     DriveraddComponent,
@@ -49,8 +45,6 @@ import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.comp
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'driverlist', component: DriverlistComponent },
       { path: 'driver/:id', component: DriverdetailComponent },
       { path: 'driveradd', component: DriveraddComponent },

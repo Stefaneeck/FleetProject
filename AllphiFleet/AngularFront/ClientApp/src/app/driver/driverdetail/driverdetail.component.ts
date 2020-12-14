@@ -39,28 +39,6 @@ export class DriverdetailComponent implements OnInit {
       //opgehaalde waarde in lokale driver variabele opslaan
       next: result => {
         this.driver = result;
-
-        //om rijbewijs duidelijk weer te geven, correcte manier?
-        switch (this.driver.typeRijbewijs) {
-          case 0:
-            this.typeRijbewijsViewValue = "AM";
-            break;
-          case 1:
-            this.typeRijbewijsViewValue = "A";
-            break;
-          case 2:
-            this.typeRijbewijsViewValue = "B";
-            break;
-          case 3:
-            this.typeRijbewijsViewValue = "C";
-            break;
-          case 4:
-            this.typeRijbewijsViewValue = "D";
-            break;
-          case 5:
-            this.typeRijbewijsViewValue = "G";
-            break;
-        }
       },
       error: err => this.errorMessage = err
     });
@@ -80,6 +58,11 @@ export class DriverdetailComponent implements OnInit {
       }
     });
     
+  }
+
+  getDriverLicenseViewValue(enumValue: number): string {
+
+    return this.driverService.showEnumValueDriverLicenseType(enumValue);
   }
 
   onBack(): void {

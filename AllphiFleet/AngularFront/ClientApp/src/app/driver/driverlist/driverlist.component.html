@@ -27,7 +27,7 @@
         <td>{{ driver.rijksRegisterNummer }}</td>
         <!-- tankkaart string representatie maken of tankkaartnummer genoeg? -->
         <td>{{ driver.tankkaart.kaartnummer }}</td>
-        <td>{{ driver.typeRijbewijs }}</td>
+        <td>{{ getDriverLicenseViewValue(driver.typeRijbewijs) }}</td>
         <td>
           <input type="checkbox" [checked]="driver.actief" class="notClickable">
         </td>

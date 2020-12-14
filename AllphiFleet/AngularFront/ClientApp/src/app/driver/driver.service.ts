@@ -62,6 +62,26 @@ export class DriverService {
       );
   }
 
+  showEnumValueDriverLicenseType(value: number): string {
+
+    switch (value) {
+      case 0:
+        return "AM";
+      case 1:
+        return "A";
+      case 2:
+        return "B";
+      case 3:
+        return "C";
+      case 4:
+        return "D";
+      case 5:
+        return "G";
+      default:
+        return "";
+    }
+  }
+
   private handleError(err: HttpErrorResponse): Observable<never> {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
