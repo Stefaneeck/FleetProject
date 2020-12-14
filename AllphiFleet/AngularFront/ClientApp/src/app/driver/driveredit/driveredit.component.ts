@@ -85,15 +85,18 @@ export class DrivereditComponent implements OnInit {
         Actief: [this.driver.actief, [Validators.required]]
 
       });
-      
-      const stringValue = this.driver.typeRijbewijs.toString() + ": " + (this.driver.typeRijbewijs).toString();
-      this.driverForm.controls['TypeRijbewijs'].setValue(stringValue, { onlySelf: true });
-      console.log("constructor");
-      console.log(this.driver.typeRijbewijs);
-      console.log(stringValue);
+
+      //default values van dropdowns opvullen
+      const stringValueDriverLicenseDropdown = this.driver.typeRijbewijs.toString() + ": " + this.driver.typeRijbewijs.toString();
+      this.driverForm.controls['TypeRijbewijs'].setValue(stringValueDriverLicenseDropdown, { onlySelf: true });
+      const stringValueAuthTypeDropdown = this.driver.tankkaart.authType.toString() + ": " + this.driver.tankkaart.authType.toString();
+      this.driverForm.controls['Tankkaart'].controls['AuthType'].setValue(stringValueAuthTypeDropdown, { onlySelf: true });
+      console.log(stringValueAuthTypeDropdown);
+
 
     }).catch((error) => {
       console.log("promise error");
+      console.log(error);
     });
   }
 
@@ -106,6 +109,17 @@ export class DrivereditComponent implements OnInit {
     //omzetten naar number (hij gaf strings door aan de api)
     driverDataFromForm.Tankkaart.AuthType = Number(driverDataFromForm.Tankkaart.AuthType);
     driverDataFromForm.TypeRijbewijs = Number(driverDataFromForm.TypeRijbewijs);
+
+    //fix voor wanneer je edit, en niet aan de checkbox kwam, stuurde hij NaN als waarde door
+    if (isNaN(driverDataFromForm.Tankkaart.AuthType)) {
+      console.log("authtype NaN");
+      driverDataFromForm.Tankkaart.AuthType = this.driver.tankkaart.authType;
+    }
+
+    if (isNaN(driverDataFromForm.TypeRijbewijs)) {
+      console.log("rijbewijs NaN");
+      driverDataFromForm.TypeRijbewijs = this.driver.typeRijbewijs;
+    }
 
     if (this.driverForm.valid) {
       console.log("valid.");

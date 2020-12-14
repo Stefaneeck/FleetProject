@@ -121,7 +121,7 @@
     <div class="form-group">
       <label for="selectAuthType">Authtype</label>
       <select id="selectAuthType" formControlName="AuthType" class="form-control">
-        <option *ngFor="let type of authTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+        <option *ngFor="let type of enumAuthTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
       </select>
 
       <span class="text-danger"

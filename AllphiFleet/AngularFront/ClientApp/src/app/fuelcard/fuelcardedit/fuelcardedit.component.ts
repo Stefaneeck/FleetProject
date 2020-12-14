@@ -65,6 +65,12 @@ export class FuelcardeditComponent implements OnInit {
 
     fuelcardDataFromForm.AuthType = Number(fuelcardDataFromForm.AuthType);
 
+    //fix voor wanneer je edit, en niet aan de checkbox kwam, stuurde hij NaN als waarde door
+    if (isNaN(fuelcardDataFromForm.AuthType)) {
+      console.log("null");
+      fuelcardDataFromForm.AuthType = this.fuelcard.authType;
+    }
+
     if (this.fuelcardForm.valid) {
       console.log("valid.");
 
