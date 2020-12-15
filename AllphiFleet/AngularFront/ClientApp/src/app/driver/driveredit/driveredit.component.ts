@@ -28,7 +28,7 @@ export class DrivereditComponent implements OnInit {
 
   ngOnInit() {
 
-    //id ophalen uit route parameter (naar hier gestuurd van driverlist componen
+    //id ophalen uit route parameter (naar hier gestuurd van driverlist component)
     let id = +this.route.snapshot.paramMap.get('id');
 
     if (id) {

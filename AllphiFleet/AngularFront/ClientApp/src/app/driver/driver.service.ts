@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IDriver } from '../domain/IDriver';
+import { EnumDriverLicenseTypes } from '../domain/enums/EnumDriverLicenseTypes';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class DriverService {
   // because Stackblitz can't find the api folder.
   // private productUrl = 'assets/products/products.json';
   private driverReadUrl = 'https://localhost:44334/api/chauffeur';
-  private driverWriteUrl ='https://localhost:44358/writeapi/chauffeur'
+  private driverWriteUrl = 'https://localhost:44358/writeapi/chauffeur'
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +33,7 @@ export class DriverService {
       .pipe(
         tap(data => console.log('getDriver: ' + JSON.stringify(data))),
         catchError(this.handleError)
-    );
+      );
 
   }
 
@@ -42,7 +43,7 @@ export class DriverService {
       .pipe(
         tap(data => console.log('addDriver: ' + JSON.stringify(data))),
         catchError(this.handleError)
-    );
+      );
   }
 
   updateDriver(driverData: IDriver): Observable<IDriver> {
@@ -63,23 +64,8 @@ export class DriverService {
   }
 
   showEnumValueDriverLicenseType(value: number): string {
-
-    switch (value) {
-      case 0:
-        return "AM";
-      case 1:
-        return "A";
-      case 2:
-        return "B";
-      case 3:
-        return "C";
-      case 4:
-        return "D";
-      case 5:
-        return "G";
-      default:
-        return "";
-    }
+ 
+    return EnumDriverLicenseTypes[value];
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {

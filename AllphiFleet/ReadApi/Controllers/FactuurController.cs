@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReadApi.Logging;
 using ReadServices.Interfaces;
@@ -21,6 +22,8 @@ namespace ReadApi.Controllers
         }
         // GET: api/factuur
         [HttpGet(Name = "getAllFacturen")]
+        //authorize ter test
+        [Authorize] 
         //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
 
         public IActionResult Get()
