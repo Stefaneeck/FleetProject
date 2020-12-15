@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using Models.Auth;
 using ReadApi.Settings;
 
+//best verplaatsen naar writeapi (wordt post gedaan)
 namespace ReadApi.Controllers
 {
     [Route("api/auth")]

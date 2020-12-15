@@ -52,7 +52,25 @@ export class DriverdetailComponent implements OnInit {
         console.log(this.errorMessage);
       },
       complete: () => {
-        //doet hij enkel als er geen error is, hij doet altijd maar 1 van de 3 (next, error of complete).
+        //doet hij enkel als er geen error is, hij doet altijd maar 1 van de 3 (next, error of complete). (?)
+        //next, error, complete
+        //the first one to process the data which come with the event raised by the Observable
+        //the second one to process any error if it occurs
+        //the third one to do something on completion of the Observable
+
+        /*
+        The third argument of every sequence is the complete handler. It is invoked with no params and just notifies the sequence finished.
+
+        Observable.from([1,3]).subscribe(
+          (v => console.log('value: ', v)),
+          (e => console.log('error: ', e)),
+          (() => console.log('the sequence completed!'))
+
+        would print:
+        value: 1
+        value: 2
+        the sequence completed
+         * */
         this.router.navigate(['/driverlist']);
       }
     });

@@ -103,9 +103,12 @@ namespace ReadApi
             services.ConfigureLoggerService();
 
             //cross origin requests enablen voor angular project
-            services.AddCors(c =>
+            services.AddCors(options =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                options.AddPolicy("AllowAllReadApi",
+                    builder => builder.AllowAnyOrigin()
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod());
             });
 
             services.AddControllers();
@@ -142,7 +145,7 @@ namespace ReadApi
             app.UseAuth();
 
             //om uit angular project data te kunnen ophalen
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors("AllowAllReadApi");
 
             app.UseEndpoints(endpoints =>
             {

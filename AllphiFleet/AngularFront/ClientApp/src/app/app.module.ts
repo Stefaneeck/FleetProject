@@ -19,6 +19,7 @@ import { FuelcardlistComponent } from './fuelcard/fuelcardlist/fuelcardlist.comp
 import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetail.component';
 import { FuelcardaddComponent } from './fuelcard/fuelcardadd/fuelcardadd.component';
 import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.comp
     FuelcardlistComponent,
     FuelcarddetailComponent,
     FuelcardaddComponent,
-    FuelcardeditComponent
+    FuelcardeditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,7 +46,7 @@ import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.comp
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'driverlist', component: DriverlistComponent },
       { path: 'driver/:id', component: DriverdetailComponent },
       { path: 'driveradd', component: DriveraddComponent },
@@ -56,7 +58,8 @@ import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.comp
       { path: 'fuelcardlist', component: FuelcardlistComponent },
       { path: 'fuelcard/:id', component: FuelcarddetailComponent },
       { path: 'fuelcardadd', component: FuelcardaddComponent },
-      { path: 'fuelcardedit/:id', component: FuelcardeditComponent }
+      { path: 'fuelcardedit/:id', component: FuelcardeditComponent },
+      { path: 'login', component: LoginComponent }
     ])
   ],
   providers: [],
