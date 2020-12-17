@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace AuthApi
 {
@@ -26,12 +19,14 @@ namespace AuthApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
+            .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
+            .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
             .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
             .AddTestUsers(InMemoryConfig.GetUsers())
             .AddInMemoryClients(InMemoryConfig.GetClients())
             .AddDeveloperSigningCredential();
 
-            services.AddControllers();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,13 +41,19 @@ namespace AuthApi
 
             app.UseRouting();
 
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
             app.UseIdentityServer();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

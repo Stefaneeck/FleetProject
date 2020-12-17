@@ -41,14 +41,38 @@ public static class InMemoryConfig
   };
 
     public static IEnumerable<Client> GetClients() =>
-    new List<Client>
-    {
-       new Client
-       {
-            ClientId = "company-employee",
-            ClientSecrets = new [] { new Secret("allphisecret".Sha512()) },
-            AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
-            AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId }
-        }
-    };
+        new List<Client>
+        {
+           new Client
+           {
+               //parameters in te geven in post
+                ClientId = "readapi",
+                ClientSecrets = new [] { new Secret("allphisecret".Sha512()) },
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+
+                //specify scopes
+                AllowedScopes = { "api1.read" }
+            }
+        };
+
+    public static IEnumerable<ApiScope> GetApiScopes() =>
+        new List<ApiScope> {
+
+            new ApiScope(name: "api1.read",   displayName: "ReadAPI"),
+
+            new ApiScope(name: "write",  displayName: "WriteAPI")
+        };
+
+    public static IEnumerable<ApiResource> GetApiResources() =>
+        new List<ApiResource>
+        {
+            new ApiResource("api1", "ReadAPI")
+            {
+                Scopes = { "api1.read" }
+            },
+            new ApiResource("write", "WriteAPI")
+            {
+                Scopes = { "WriteAPI" }
+            }
+        };
 }

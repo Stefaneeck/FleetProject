@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Models.Auth;
 using NLog;
 using ReadApi.CustomExceptionMiddleware;
 using ReadApi.Extensions;
@@ -14,8 +13,6 @@ using ReadRepositories;
 using ReadServices;
 using ReadServices.Interfaces;
 using System.IO;
-using Microsoft.AspNetCore.Identity;
-using ReadApi.Settings;
 
 namespace ReadApi
 {
@@ -38,44 +35,9 @@ namespace ReadApi
             services.AddDbContext<AllphiFleetContext>(opts =>
             {
                 opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]
-                //,
-                //builder => builder.MigrationsAssembly(Assembly.GetAssembly(typeof(AllphiFleetContext)).FullName)
                 );
             });
 
-
-            //voorbeeld identity met meer configuratie
-            /*
-            services.AddIdentity<User, IdentityRole>(configuration =>
-            { 
-                //hier kan je wachtwoord vereisten etc instellen
-                configuration.User.RequireUniqueEmail = true;
-                configuration.Password.RequiredLength = 10;
-            })
-            */
-
-            //identity(user is onze eigen child klasse van identityuser, identityrole is de default klasse van identity zelf
-            services.AddIdentity<User, IdentityRole>()
-            //zeggen waar onze entity data opgeslagen zal worden
-            .AddEntityFrameworkStores<AllphiFleetContext>()
-            .AddDefaultTokenProviders();
-
-            //jwt settings van in appsettings.json beschikbaar maken in onze applicatie
-            services.Configure<JwtSettings>(Configuration.GetSection("Jwt"));
-
-            //ophalen uit appsettings.json
-            var jwtSettings = Configuration.GetSection("Jwt").Get<JwtSettings>();
-            //extension method aanroepen in Extensions/AuthExtensions
-            services.AddAuth(jwtSettings);
-
-            //added stefan (addscoped voor DI van IDataRepository)
-            //hier bepalen welke concrete interface hij zal gebruiken
-            //services.AddScoped<IDataReadRepository<Chauffeur>, ChauffeurRepository>();
-
-            //services.AddScoped<IDataReadRepository<Chauffeur>, DataReadRepository<Chauffeur>>();
-
-            //als je dit gebruikt ipv addscoped voor elke entity, hoef je maar 1 lijn te typen
-            //anders moet je bovenstaande addscoped voor elke entiteit gebruiken
             services.AddTransient(typeof(IDataReadRepository<>), typeof(DataReadRepository<>));
 
             services.AddScoped<IChauffeurService, ChauffeurService>();
@@ -87,13 +49,8 @@ namespace ReadApi
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
-            //added Stefan (automapper toevoegen)
             //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet, daarom static klasse gemaakt waarin assembly kan worden opgehaald
-            //werkte niet omdat het in een ander project staat (?)
-
-            //eerste deze manier geprobeerd, maar niet dynamisch genoeg (klassenaam veranderen bvb dan werkt het niet meer)
-            //assembly van klasse chauffeurprofile ophalen
-            //services.AddAutoMapper(typeof(ChauffeurProfile)); 
+            //werkte niet omdat het in een ander project staat
 
             //moet de assembly zijn uit het project dat profile bevat
             //moet dus assembly van services project zijn
@@ -110,6 +67,14 @@ namespace ReadApi
                                         .AllowAnyHeader()
                                         .AllowAnyMethod());
             });
+
+            services.AddAuthentication("Bearer").
+                AddIdentityServerAuthentication("Bearer", opt =>
+               {
+                   //opt.RequireHttpsMetadata = false;
+                   opt.Authority = "https://localhost:44372"; // base-address of your identityserver
+                   opt.ApiName = "api1"; // if you are using API resources, you can specify the name here
+               });
 
             services.AddControllers();
         }
@@ -132,17 +97,9 @@ namespace ReadApi
 
             app.UseRouting();
 
-            /*
-             * identity, vervangen door onze extension method UseAuth
-              enable authentication and authorization middlewares
-
             app.UseAuthentication();
 
             app.UseAuthorization();
-            */
-
-            //identity configuratie uit onze extension method
-            app.UseAuth();
 
             //om uit angular project data te kunnen ophalen
             app.UseCors("AllowAllReadApi");
