@@ -19,22 +19,10 @@ namespace Validation.Validators
 
             //custom validator
             //checken of de chauffeur bestaat
-            //generic extension van maken
 
             this.AddCheckIfExistsInDBValidator(_chauffeurContext);
             //als het zou aangeroepen worden zonder extension, klassieke static manier
             //ValidationExtensions.AddCheckIfExistsInDBValidator(this, _chauffeurContext);
-
-            /*
-            this.RuleFor(x => x.Id)
-            .Must(id =>
-            {
-                var chauffeur = _chauffeurContext.Chauffeurs.FirstOrDefault(a => a.Id == id);
-                return chauffeur != null;
-            })
-            .WithErrorCode("AlreadyExists")
-            .WithMessage("Chauffeur bestaat niet.");
-            */
         }
     }
 }

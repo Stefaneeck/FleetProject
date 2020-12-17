@@ -28,7 +28,6 @@ export class DriverlistComponent implements OnInit {
     this.driverService.getDrivers().subscribe({
       next: drivers => {
         this.drivers = drivers;
-        //this.filteredProducts = this.products;
         
       },
       error: err => this.errorMessage = err

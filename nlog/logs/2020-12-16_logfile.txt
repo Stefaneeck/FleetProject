@@ -1,0 +1,4 @@
+2020-12-16 12:00:59.7311 INFO Alle chauffeurs aan het ophalen.
+2020-12-16 12:01:01.3700 INFO Ophalen van 15 records.
+2020-12-16 12:34:20.0284 INFO Alle chauffeurs aan het ophalen.
+2020-12-16 12:34:20.3206 INFO Ophalen van 15 records.

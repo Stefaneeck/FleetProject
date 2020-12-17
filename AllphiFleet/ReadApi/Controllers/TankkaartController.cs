@@ -11,7 +11,6 @@ namespace ReadApi.Controllers
     [ApiController]
     public class TankkaartController : ControllerBase
     {
-        //DI
         private readonly ITankkaartService _tankkaartService;
         private readonly ILoggerManager _logger;
         public TankkaartController(ITankkaartService tankkaartService, ILoggerManager logger)
@@ -19,18 +18,13 @@ namespace ReadApi.Controllers
             _tankkaartService = tankkaartService;
             _logger = logger;
         }
-        // GET: api/tankkaart
         [HttpGet(Name = "getAllTankkaarten")]
-        //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
-
         public IActionResult Get()
         {
 
             _logger.LogInfo("Alle tankkaarten aan het ophalen.");
 
             IEnumerable<TankkaartDTO> tankkaartDTOs = _tankkaartService.GetTankkaarten(null);
-
-            //throw new Exception("Exception tijdens ophalen van chauffeurs.");
 
             _logger.LogInfo($"Ophalen van {tankkaartDTOs.Count()} records.");
 

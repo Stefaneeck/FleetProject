@@ -11,7 +11,6 @@ namespace ReadApi.Controllers
     [ApiController]
     public class AdresController : ControllerBase
     {
-        //DI
         private readonly IAdresService _adresService;
         private readonly ILoggerManager _logger;
         public AdresController(IAdresService adresService, ILoggerManager logger)
@@ -19,18 +18,13 @@ namespace ReadApi.Controllers
             _adresService = adresService;
             _logger = logger;
         }
-        // GET: api/adres
         [HttpGet(Name = "getAllAdressen")]
-        //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
-
         public IActionResult Get()
         {
 
             _logger.LogInfo("Alle adressen aan het ophalen.");
 
             IEnumerable<AdresDTO> adresDTOs = _adresService.GetAdressen(null);
-
-            //throw new Exception("Exception tijdens ophalen van chauffeurs.");
 
             _logger.LogInfo($"Ophalen van {adresDTOs.Count()} records.");
 

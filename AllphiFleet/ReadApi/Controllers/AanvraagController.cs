@@ -11,7 +11,6 @@ namespace ReadApi.Controllers
     [ApiController]
     public class AanvraagController : ControllerBase
     {
-        //DI
         private readonly IAanvraagService _aanvraagService;
         private readonly ILoggerManager _logger;
         public AanvraagController(IAanvraagService aanvraagService, ILoggerManager logger)
@@ -21,7 +20,7 @@ namespace ReadApi.Controllers
         }
         // GET: api/aanvraag
         [HttpGet(Name = "getAllAanvragen")]
-        //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
+        //async?
 
         public IActionResult Get()
         {
@@ -29,8 +28,6 @@ namespace ReadApi.Controllers
             _logger.LogInfo("Alle aanvragen aan het ophalen.");
 
             IEnumerable<AanvraagDTO> aanvraagDTOs = _aanvraagService.GetAanvragen(null);
-
-            //throw new Exception("Exception tijdens ophalen van chauffeurs.");
 
             _logger.LogInfo($"Ophalen van {aanvraagDTOs.Count()} records.");
 

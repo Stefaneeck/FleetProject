@@ -11,7 +11,6 @@ namespace ReadApi.Controllers
     [ApiController]
     public class ChauffeurController : ControllerBase
     {
-        //DI
         private readonly IChauffeurService _chauffeurService;
         private readonly ILoggerManager _logger;
         public ChauffeurController(IChauffeurService chauffeurService, ILoggerManager logger)
@@ -19,17 +18,14 @@ namespace ReadApi.Controllers
             _chauffeurService = chauffeurService;
             _logger = logger;
         }
-        // GET: api/chauffeur
+
         [HttpGet(Name = "getAllChauffeurs")]
-        //nog omzetten naar async? zie PS API cursus 'returning models instead of entities' hoofdstuk
         public IActionResult Get()
         {
 
             _logger.LogInfo("Alle chauffeurs aan het ophalen.");
 
             IEnumerable<ChauffeurDTO> chauffeurDTOs = _chauffeurService.GetChauffeurs(null);
-
-            //throw new Exception("Exception tijdens ophalen van chauffeurs.");
 
             _logger.LogInfo($"Ophalen van {chauffeurDTOs.Count()} records.");
 
@@ -48,27 +44,5 @@ namespace ReadApi.Controllers
             }
             return Ok(chauffeurDTO);
         }
-
-        /*
-        public IActionResult Get()
-        {
-            try
-            {
-                IEnumerable<ChauffeurDTO> chauffeurDTOs = _chauffeurService.GetChauffeurs(null);
-
-                //automapper, model omzetten naar DTO
-                //hier niet omzetten maar in servicelaag (chauffeurrepository)
-                //ChauffeurDTO[] dtos = _mapper.Map<ChauffeurDTO[]>(chauffeurs);
-
-                return Ok(chauffeurDTOs);
-            }
-            catch (Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database error");
-            }
-            
-        }
-        */
-
     }
 }
