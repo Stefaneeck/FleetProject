@@ -52,7 +52,34 @@ public static class InMemoryConfig
 
                 //specify scopes
                 AllowedScopes = { "api1.read" }
-            }
+            },
+           new Client
+            {
+               /* This configuration adds a new client application that uses the recommended flow for server-side web applications:
+                * the authorization code flow with Proof-Key for Code Exchange (PKCE)
+                * For this client, you have also set a redirect URI. 
+                * Because this flow takes place via the browser, IdentityServer must know an allowed list of URLs to send the user back to,
+                * once user authentication and client authorization is complete;
+                * what URLs it can return the authorization result to. 
+                * */
+                ClientId = "oidcClient",
+                ClientName = "Example Client Application",
+                ClientSecrets = new List<Secret> {new Secret("mvcsecret".Sha256())}, // change me!
+    
+                AllowedGrantTypes = GrantTypes.Hybrid,
+                RedirectUris = new List<string> {"https://localhost:44384/signin-oidc"}, //mvc app port (oidcClient app)
+                AllowedScopes = new List<string>
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.Email,
+                    "role",
+                    "api1.read"
+                },
+
+                RequirePkce = false,
+                //AllowPlainTextPkce = false
+}
         };
 
     public static IEnumerable<ApiScope> GetApiScopes() =>

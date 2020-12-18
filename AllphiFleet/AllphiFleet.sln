@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation", "Validation\Va
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteAPI", "WriteAPI\WriteAPI.csproj", "{CCB3E158-30DD-4B38-BCEA-9396138EC412}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi", "AuthApi\AuthApi.csproj", "{BDDA6A6F-2B71-4A6D-B1C5-8BE6AB109D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthApi", "AuthApi\AuthApi.csproj", "{BDDA6A6F-2B71-4A6D-B1C5-8BE6AB109D0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oidcClient", "oidcClient\oidcClient.csproj", "{8F65D8DB-4FC4-44F3-B469-DA7C5E50FE98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{BDDA6A6F-2B71-4A6D-B1C5-8BE6AB109D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDDA6A6F-2B71-4A6D-B1C5-8BE6AB109D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDDA6A6F-2B71-4A6D-B1C5-8BE6AB109D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F65D8DB-4FC4-44F3-B469-DA7C5E50FE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F65D8DB-4FC4-44F3-B469-DA7C5E50FE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F65D8DB-4FC4-44F3-B469-DA7C5E50FE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F65D8DB-4FC4-44F3-B469-DA7C5E50FE98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
