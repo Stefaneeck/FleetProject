@@ -48,8 +48,6 @@ namespace ReadApi.CustomExceptionMiddleware
             {
                 StatusCode = context.Response.StatusCode,
                 Message = exception.Message
-                //Message = "Internal Server Error from the custom middleware."
-
             }.ToString());;
         }
     }

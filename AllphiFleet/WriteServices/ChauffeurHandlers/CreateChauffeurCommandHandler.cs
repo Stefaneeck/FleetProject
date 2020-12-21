@@ -52,7 +52,6 @@ namespace WriteServices.ChauffeurHandlers
             try
             {
                 //optioneel: contexten apart aanspreken, meer controle over volgorde
-                //await _tankkaartContext.Save(chauffeur.Tankkaart);
                 await _context.Save(chauffeur);
                 await _context.Commit();
             }

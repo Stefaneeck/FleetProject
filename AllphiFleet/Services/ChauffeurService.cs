@@ -19,7 +19,6 @@ namespace ReadServices
             _repository = repository;
         }
      
-        //filter nullable maken?
         public IEnumerable<ChauffeurDTO> GetChauffeurs(DriverFilter filter)
         {
             //eager loading door include erbij te zetten, standaard haalt hij gerelateerde data niet op (dus geen adressen van chauffeurs bvb)
@@ -44,7 +43,6 @@ namespace ReadServices
 
         public ChauffeurDTO GetChauffeur(long id)
         {
-            //niet ideaal, want eerst alles ophalen.. hoe oplossen?
             var result = _repository.GetAll()
                 .Include(c => c.Adres)
                 .Include(c => c.Tankkaart)

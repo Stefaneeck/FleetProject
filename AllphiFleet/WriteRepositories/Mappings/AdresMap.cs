@@ -10,7 +10,6 @@ namespace WriteRepositories.Mappings
         public AdresMap()
         {
             //hier geen aparte delete voor
-
             this.Table("Adressen");
 
             this.Id(a => a.Id, a =>

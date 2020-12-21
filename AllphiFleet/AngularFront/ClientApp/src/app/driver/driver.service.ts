@@ -10,9 +10,6 @@ import { AuthService } from '../shared/services/auth.service';
   providedIn: 'root'
 })
 export class DriverService {
-  // If using Stackblitz, replace the url with this line
-  // because Stackblitz can't find the api folder.
-  // private productUrl = 'assets/products/products.json';
   private driverReadUrl = 'https://localhost:44334/api/chauffeur';
   private driverWriteUrl = 'https://localhost:44358/writeapi/chauffeur'
 

@@ -7,8 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingAdres(this ModelBuilder modelBuilder)
         {
-            //adres
-
             modelBuilder.Entity<Adres>()
                     .HasKey(a => a.Id);
 

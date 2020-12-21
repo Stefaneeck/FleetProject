@@ -7,8 +7,6 @@ namespace Validation.Validators
     //We have n number of similar validators for each command
     public class CreateChauffeurCommandValidator : AbstractValidator<CreateChauffeurCommand>
     {
-        //voor later
-        //checken of al iets bestaat door dbcontext te injecteren bvb.
         public CreateChauffeurCommandValidator()
         {
             RuleFor(c => c.CreateChauffeurDTO.Naam).NotEmpty();
@@ -21,9 +19,6 @@ namespace Validation.Validators
             RuleFor(c => c.CreateChauffeurDTO.RijksRegisterNummer).NotEmpty();
             RuleFor(c => c.CreateChauffeurDTO.TypeRijbewijs).IsInEnum();
             RuleFor(c => c.CreateChauffeurDTO.Tankkaart.AuthType).IsInEnum();
-
-            //RuleFor(c => c.createChauffeurDTO.Adres).NotEmpty();
-            //RuleFor(c => c.createChauffeurDTO.Tankkaart).NotEmpty();
         }
     }
 }

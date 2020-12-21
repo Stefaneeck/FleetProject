@@ -7,7 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingNummerplaat(this ModelBuilder modelBuilder)
         {
-            //nummerplaat
             modelBuilder.Entity<Nummerplaat>()
                .HasKey(n => n.Id);
 

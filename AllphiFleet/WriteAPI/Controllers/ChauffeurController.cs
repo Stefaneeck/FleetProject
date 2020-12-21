@@ -15,24 +15,19 @@ namespace WriteApi.Controllers
     public class ChauffeurController : ControllerBase
     {
         private readonly INHRepository<Chauffeur> _chauffeurContext;
-
-        private IMediator _mediator;
-        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        public ChauffeurController(INHRepository<Chauffeur> chauffeurContext)
+        private readonly IMediator _mediator;
+        //protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+        public ChauffeurController(INHRepository<Chauffeur> chauffeurContext, IMediator mediator)
         {
             _chauffeurContext = chauffeurContext;
+            _mediator = mediator;
         }
         // GET: api/chauffeur
 
         [HttpGet(Name = "getAllChauffeursWriteAPI")]
         public IActionResult Get()
         {
-
             var chauffeurs = _chauffeurContext.Chauffeurs.ToList();
-
-            //IEnumerable<ChauffeurDTO> chauffeurDTOs = _chauffeurService.GetChauffeurs(null);
-
-            //throw new Exception("Exception tijdens ophalen van chauffeurs.");
 
             return Ok(chauffeurs);
         }
@@ -42,8 +37,6 @@ namespace WriteApi.Controllers
         [HttpGet("/writeapi/chauffeur/{id}", Name = "GetChauffeurWriteAPI")]
         public IActionResult Get(long id)
         {
-            //ChauffeurDTO chauffeurDTO = _session.Chauffeurs.FirstOrDefault(e => e.Id == id);
-
             ChauffeurDTO chauffeurDTO = null;
             if (chauffeurDTO == null)
             {
@@ -65,20 +58,20 @@ namespace WriteApi.Controllers
             //return Ok(await Mediator.Send(command));
 
             //correcte manier
-            return Ok(await Mediator.Send(new CreateChauffeurCommand { CreateChauffeurDTO = createChauffeurDTO }));
+            return Ok(await _mediator.Send(new CreateChauffeurCommand { CreateChauffeurDTO = createChauffeurDTO }));
         }
 
         //id parameter niet echt nodig, want id is required in json
         [HttpPut("/writeapi/chauffeur/update/{id}")]
         public async Task<IActionResult> UpdateChauffeur(UpdateChauffeurDTO updateChauffeurDTO)
         {
-            return Ok(await Mediator.Send(new UpdateChauffeurCommand { UpdateChauffeurDTO = updateChauffeurDTO }));
+            return Ok(await _mediator.Send(new UpdateChauffeurCommand { UpdateChauffeurDTO = updateChauffeurDTO }));
         }
 
         [HttpDelete("/writeapi/chauffeur/delete/{id}")]
         public async Task<IActionResult> DeleteChauffeur(long id)
         {
-            return Ok(await Mediator.Send(new DeleteChauffeurCommand { Id = id }));
+            return Ok(await _mediator.Send(new DeleteChauffeurCommand { Id = id }));
         }
     }
 }

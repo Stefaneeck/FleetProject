@@ -11,8 +11,6 @@ namespace Models
         //rel verzekeringsmaatschappij
         public virtual long VerzekeringsMaatschappijId { get; set; }
         public virtual VerzekeringsMaatschappij VerzekeringsMaatschappij { get; set; }
-
-        //opslaan als welk type?
         public virtual string Fotos { get; set; }
         public virtual string Documenten { get; set; }
     }

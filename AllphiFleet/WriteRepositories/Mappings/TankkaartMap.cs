@@ -10,7 +10,6 @@ namespace WriteRepositories.Mappings
         public TankkaartMap()
         {
             //hier aparte delete voor
-
             this.Table("Tankkaarten");
 
             this.Id(t => t.Id, t =>

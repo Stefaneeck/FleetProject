@@ -10,7 +10,7 @@ namespace Validation.PipelineBehaviours
 {
     public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
-        //lijst van alle geregistreerde validators
+        //list of all registred validators
         private readonly IEnumerable<IValidator<TRequest>> _validators;
         public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators)
         {

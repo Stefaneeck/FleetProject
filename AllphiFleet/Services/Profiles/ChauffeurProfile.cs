@@ -10,10 +10,7 @@ namespace ReadServices.Profiles
     {
         public ChauffeurProfile()
         {
-            //omzetten van Chauffeur naar ChauffeurDTO
             this.CreateMap<Chauffeur, ChauffeurDTO>();
-
-            //omgekeerde mapping
             this.CreateMap<Chauffeur, ChauffeurDTO>().ReverseMap();
         }
     }

@@ -21,7 +21,6 @@ namespace ReadApi.Controllers
         // GET: api/aanvraag
         [HttpGet(Name = "getAllAanvragen")]
         //async?
-
         public IActionResult Get()
         {
 

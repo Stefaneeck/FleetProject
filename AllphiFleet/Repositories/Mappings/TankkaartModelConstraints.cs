@@ -7,8 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingTankkaart(this ModelBuilder modelBuilder)
         {
-            //tankkaart
-
             modelBuilder.Entity<Tankkaart>()
                 .HasKey(c => c.Id);
 

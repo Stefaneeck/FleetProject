@@ -7,7 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingFactuur(this ModelBuilder modelBuilder)
         {
-            //factuur
             modelBuilder.Entity<Factuur>()
                .HasKey(f => f.Id);
 

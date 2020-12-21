@@ -7,7 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingAanvraag(this ModelBuilder modelBuilder)
         {
-            //aanvraag
             modelBuilder.Entity<Aanvraag>()
                .HasKey(a => a.Id);
 

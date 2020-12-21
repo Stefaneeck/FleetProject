@@ -18,26 +18,10 @@ namespace ReadServices
             _mapper = mapper;
             _repository = repository;
         }
-
-        //filter nullable maken?
         public IEnumerable<AanvraagDTO> GetAanvragen(DriverFilter filter)
         {
-            //eager loading door include erbij te zetten, standaard haalt hij gerelateerde data niet op (dus geen adressen van chauffeurs bvb)
-
-            //logica van include naar datalayer overzetten?
             var results = _repository.GetAll()
                 .Include(a => a.Voertuig);
-
-
-            /*
-            
-            if (!string.IsNullOrWhiteSpace(filter.Name))
-                results = results.Where(x => x.Naam.Contains(filter.Name));
-
-            if (!string.IsNullOrWhiteSpace(filter.st))
-                results = results.Where(x => x.Adres.Contains(filter.st));
-
-            */
 
             return _mapper.Map<IEnumerable<AanvraagDTO>>(results.ToList());
         }

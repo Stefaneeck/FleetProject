@@ -18,7 +18,7 @@ namespace WriteServices.TankkaartHandlers
         }
         public async Task<Unit> Handle(DeleteTankkaartCommand command, CancellationToken cancellationToken)
         {
-            //chauffeur ophalen
+            //tankkaart from db
             var tankkaart = new Tankkaart();
             tankkaart = _tankkaartContext.Tankkaarten.FirstOrDefault(t => t.Id == command.Id);
 

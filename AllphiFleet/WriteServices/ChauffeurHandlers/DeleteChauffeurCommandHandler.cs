@@ -18,7 +18,7 @@ namespace WriteServices.ChauffeurHandlers
         }
         public async Task<Unit> Handle(DeleteChauffeurCommand command, CancellationToken cancellationToken)
         {
-            //chauffeur ophalen
+            //chauffeur from db
             var chauffeur = new Chauffeur();
             chauffeur = _chauffeurContext.Chauffeurs.FirstOrDefault(c => c.Id == command.Id);
 

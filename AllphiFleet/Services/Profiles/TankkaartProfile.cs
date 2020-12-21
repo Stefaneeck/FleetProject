@@ -9,7 +9,6 @@ namespace ReadServices.Profiles
         public TankkaartProfile()
         {
             this.CreateMap<Tankkaart, TankkaartDTO>();
-
             this.CreateMap<Tankkaart, TankkaartDTO>().ReverseMap();
         }
     }

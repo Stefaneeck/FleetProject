@@ -4,7 +4,6 @@ using Models;
 
 namespace ReadRepositories
 {
-    //constraint op TEntity: het moet een klasse en iidentifiable zijn
     public class DataReadRepository<TEntity> : IDataReadRepository<TEntity> where TEntity : class, IIdentifiable
     {
         //moet interface worden
@@ -25,14 +24,6 @@ namespace ReadRepositories
 
         public TEntity Get(long id)
         {
-            //werkt niet omdat we met generic werken, hoe oplossen?
-            /*
-            Item item = table
-                .Include(c => c.Adres)
-                .Include(c => c.Tankkaart);
-                .FirstOrDefault(e => e.Id == id);
-            */
-            //werkt nu wel, want e zal sowiso een id hebben (interface iidentifiable)
 
             return table.FirstOrDefault(e => e.Id == id);
         }

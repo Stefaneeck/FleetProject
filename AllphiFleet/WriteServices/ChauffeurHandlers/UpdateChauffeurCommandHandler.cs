@@ -33,7 +33,7 @@ namespace WriteServices.ChauffeurHandlers
 
                  Adres = new Adres
                 {
-                    //id opgehaald uit db
+                    //id from db
                     Id = chauffeurVanDB.Adres.Id,
 
                     Straat = command.UpdateChauffeurDTO.Adres.Straat,
@@ -44,7 +44,7 @@ namespace WriteServices.ChauffeurHandlers
 
                 Tankkaart = new Tankkaart
                 {
-                    //id uit db
+                    //id from db
                     Id = chauffeurVanDB.Tankkaart.Id,
 
                     Kaartnummer = command.UpdateChauffeurDTO.Tankkaart.Kaartnummer,

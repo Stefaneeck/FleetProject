@@ -9,16 +9,12 @@ import { IFuelcard} from '../domain/IFuelcard';
   providedIn: 'root'
 })
 export class FuelcardService {
-  // If using Stackblitz, replace the url with this line
-  // because Stackblitz can't find the api folder.
-  // private productUrl = 'assets/products/products.json';
   private fuelcardReadUrl = 'https://localhost:44334/api/tankkaart';
   private fuelcardWriteUrl = 'https://localhost:44358/writeapi/tankkaart'
 
   constructor(private http: HttpClient) { }
 
-  //You have to subscribe to the call if you want it to execute
-  //we subscriben hier niet, maar wel waar we de methode aanroepen
+
   getFuelcards(): Observable<IFuelcard[]> {
     return this.http.get<IFuelcard[]>(this.fuelcardReadUrl)
       .pipe(

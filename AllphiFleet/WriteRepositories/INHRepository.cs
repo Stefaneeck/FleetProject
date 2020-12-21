@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 
 namespace WriteRepositories
 {
-    //+- dbcontext
-    //generiek maken
     public interface INHRepository<T> where T : class
     {
         void BeginTransaction();
@@ -13,7 +11,6 @@ namespace WriteRepositories
         Task Rollback();
         void CloseTransaction();
         Task Save(T entity);
-        //Task Delete(long id);
         Task Update(T entity);
         Task Delete(T entity);
         IQueryable<Chauffeur> Chauffeurs { get; }

@@ -10,7 +10,6 @@ namespace WriteRepositories.Mappings
         public VoertuigMap()
         {
             //hier geen aparte delete voor
-
             this.Table("Voertuig");
 
             this.Id(v => v.Id, v =>

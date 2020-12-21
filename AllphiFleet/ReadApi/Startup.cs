@@ -49,8 +49,8 @@ namespace ReadApi
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet, daarom static klasse gemaakt waarin assembly kan worden opgehaald
-            //werkte niet omdat het in een ander project staat
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet omdat het in een ander project staat, 
+            //daarom static klasse gemaakt waarin assembly kan worden opgehaald.
 
             //moet de assembly zijn uit het project dat profile bevat
             //moet dus assembly van services project zijn
@@ -89,7 +89,6 @@ namespace ReadApi
 
             //voor global exceptions
             //vervangen door custom exception middleware
-            //app.ConfigureExceptionHandler(logger);
 
             app.UseMiddleware<ExceptionMiddleware>();
 

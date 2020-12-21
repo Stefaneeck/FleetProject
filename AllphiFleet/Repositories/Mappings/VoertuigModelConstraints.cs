@@ -7,8 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingVoertuig(this ModelBuilder modelBuilder)
         {
-            //voertuig
-
             modelBuilder.Entity<Voertuig>()
                 .HasKey(v => v.Id);
 

@@ -7,7 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingVerzekeringsMaatschappij(this ModelBuilder modelBuilder)
         {
-            //verzekeringsmaatschapij
             modelBuilder.Entity<VerzekeringsMaatschappij>()
                .HasKey(v => v.Id);
 

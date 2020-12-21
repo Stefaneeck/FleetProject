@@ -13,7 +13,6 @@ namespace DTO
         public AanvraagTypes TypeAanvraag { get; set; }
         public string GewensteData { get; set; }
         public AanvraagStatussen StatusAanvraag { get; set; }
-        //moet voertuigDTO worden
         public VoertuigDTO Voertuig { get; set; }
     }
 }

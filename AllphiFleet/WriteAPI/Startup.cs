@@ -26,29 +26,15 @@ namespace WriteAPI
             //var connectionString = Configuration.GetConnectionString("AllphiFleetDB");
             var connectionString = Configuration["ConnectionString:AllphiFleetDB"];
             services.AddNHibernate(connectionString);
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            //op deze manier niet afhankelijk van classenaamveranderingen zoals bij typeof manier
             services.AddMediatR(WriteServices.AssemblyInfoUtil.GetAssembly());
 
             //register all validators in the assembly that also contains startup
-            //services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
-            //is naar andere assembly verhuist, daarom type of validationbehaviour
-            //services.AddValidatorsFromAssembly(typeof(ValidationBehaviour<,>).Assembly);
+
             services.AddValidatorsFromAssembly(Validation.AssemblyInfoUtil.GetAssembly());
 
             //Since we need to validate each and every request, we add it with a Transient Scope to the container
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-
-            //services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
-
-            //cross origin requests enablen voor angular project
-            /*
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-            });
-            */
 
             services.AddCors(options =>
             {
@@ -76,7 +62,6 @@ namespace WriteAPI
             app.UseAuthorization();
 
             //cors (angular)
-            //app.UseCors(options => options.AllowAnyOrigin());
             app.UseCors("AllowAllWriteApi");
 
             app.UseEndpoints(endpoints =>

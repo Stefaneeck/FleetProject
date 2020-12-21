@@ -9,7 +9,6 @@ namespace ReadServices.Profiles
         public FactuurProfile()
         {
             this.CreateMap<Factuur, FactuurDTO>();
-
             this.CreateMap<Factuur, FactuurDTO>().ReverseMap();
         }
     }

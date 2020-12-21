@@ -21,7 +21,7 @@ namespace WriteServices.AdresHandlers
         //unit is void equivalent van mediatr
         public async Task<Unit> Handle(DeleteAdresCommand command, CancellationToken cancellationToken)
         {
-            //adres ophalen
+            //adres from db
             var adres = _adresContext.Adressen.FirstOrDefault(a => a.Id == command.Id);
 
             _adresContext.BeginTransaction();

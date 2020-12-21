@@ -10,7 +10,6 @@ namespace ReadServices.Profiles
         public AanvraagProfile()
         {
             this.CreateMap<Aanvraag, AanvraagDTO>();
-
             this.CreateMap<Aanvraag, AanvraagDTO>().ReverseMap();
         }
     }

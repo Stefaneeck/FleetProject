@@ -9,17 +9,18 @@ import { IAddress } from '../domain/IAddress';
   providedIn: 'root'
 })
 export class AddressService {
-  // If using Stackblitz, replace the url with this line
-  // because Stackblitz can't find the api folder.
-  // private productUrl = 'assets/products/products.json';
   private addressReadUrl = 'https://localhost:44334/api/adres';
   private addressWriteUrl = 'https://localhost:44358/writeapi/adres'
 
   constructor(private http: HttpClient) { }
 
-  //You have to subscribe to the call if you want it to execute
-  //we subscriben hier niet, maar wel waar we de methode aanroepen
   getAddresses(): Observable<IAddress[]> {
+    /*
+     *The pipe() function takes as its arguments the functions you want to combine,
+     and returns a new function that, when executed, runs the composed functions in sequence.
+     tap() - RxJS tap operator will look at the Observable value and do something with that value.
+     In other words, after a successful API request, the tap() operator will do any function you want it to perform with the response.
+     */
     return this.http.get<IAddress[]>(this.addressReadUrl)
       .pipe(
         tap(data => console.log('getAddresses: ' + JSON.stringify(data))),

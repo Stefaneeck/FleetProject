@@ -9,9 +9,9 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingChauffeur(this ModelBuilder modelBuilder)
         {
-            //instellingen voor de tabel in de databank
-            //werken met fluent api manier in plaats van annotations in model klasse zelf, zodat we geen annotions moeten gebruiken en de klassen daar als DTO's kunnen gebruiken
-            
+            //settings for database table
+            //fluent api way instead of annotations in domain classes. Makes it easier to use the domain classes as DTO as well.
+
             modelBuilder.Entity<Chauffeur>()
                 .HasKey(c => c.Id);
 
@@ -50,39 +50,6 @@ namespace ReadRepositories.Mappings
             modelBuilder.Entity<Chauffeur>()
                 .Property(c => c.Actief)
                 .IsRequired();
-
-            
-            //adres en tankkaart kan je hier niet als objecten meegeven, adres en tankkaart apart aanmaken en dan hier enkel verwijzen naar de forgein key id van dat adres
-
-            //data invoeren
-            //id expliciet meegeven hier, desondanks het auto increment is
-            modelBuilder.Entity<Chauffeur>().HasData(new Chauffeur
-            {
-                Id = 1,
-                Naam = "Bob",
-                Voornaam = "Uncle",
-                AdresId = 1,
-
-                GeboorteDatum = new DateTime(1979, 04, 25),
-                RijksRegisterNummer = "999-888-7777",
-                TypeRijbewijs = RijbewijsTypes.B,
-                TankkaartId = 1,
-                Actief = true
-            }, new Chauffeur
-            {
-                Id = 2,
-                Naam = "Breem",
-                Voornaam = "Rik",
-                AdresId = 2,
-                GeboorteDatum = new DateTime(1989, 04, 11),
-                RijksRegisterNummer = "999-888-1111",
-                TypeRijbewijs = RijbewijsTypes.A,
-                TankkaartId = 2,
-                Actief = true
-            }); ;
-            
-            
-
         }
     }
 }

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace ReadRepositories
 {
     public class AllphiFleetContext : IdentityDbContext<User>
-    //public class AllphiFleetContext : DbContext
     {
         public AllphiFleetContext(DbContextOptions options)
             : base(options)
@@ -19,8 +18,6 @@ namespace ReadRepositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //ChauffeurModelConstraints.OnModelCreatingChauffeur(modelBuilder);
-
             //identity
             base.OnModelCreating(modelBuilder);
 
@@ -33,8 +30,6 @@ namespace ReadRepositories
             modelBuilder.OnModelCreatingTankkaart();
             modelBuilder.OnModelCreatingVerzekeringsMaatschappij();
             modelBuilder.OnModelCreatingVoertuig();
-
-            //relaties nog over te zetten
             modelBuilder.OnModelCreatingMaakRelaties();
         }
     }

@@ -10,7 +10,6 @@ namespace Validation.Validators
 {
     public static class ValidationExtensions
     {
-        //elke keer als we this aanroepen, kunnen we het als command aanroepen
         //in plaats van this aan te roepen, roepen we command aan
         public static void AddCheckIfExistsInDBValidator<TCommand, TEntity>(this AbstractValidator<TCommand> validator, INHRepository<TEntity> dbContext)
             where TCommand : class, IIdentifiable

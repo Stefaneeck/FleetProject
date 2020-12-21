@@ -7,7 +7,6 @@
 
         //rel voertuig
         public virtual long VoertuigId { get; set; }
-
         public virtual Voertuig Voertuig { get; set; }
     }
 }

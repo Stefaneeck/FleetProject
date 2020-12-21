@@ -7,7 +7,6 @@ namespace ReadRepositories.Mappings
     {
         public static void OnModelCreatingHerstelling(this ModelBuilder modelBuilder)
         {
-            //herstelling
             modelBuilder.Entity<Herstelling>()
                .HasKey(h => h.Id);
 

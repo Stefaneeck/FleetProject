@@ -30,7 +30,7 @@ namespace WriteServices.AanvraagHandlers
 
                 Voertuig = new Voertuig
                 {
-                    //id opgehaald uit db
+                    //id from db
                     Id = aanvraagVanDB.Voertuig.Id,
 
                     ChassisNr = command.UpdateAanvraagDTO.Voertuig.ChassisNr,

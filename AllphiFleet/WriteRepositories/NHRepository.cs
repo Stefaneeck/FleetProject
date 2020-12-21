@@ -53,19 +53,8 @@ namespace WriteRepositories
 
         public async Task Save(T entity)
         {
-            //_session.Evict(entity);
-
             await _session.SaveOrUpdateAsync(entity);
-            //await _session.FlushAsync();
         }
-
-        /*
-        public async Task Delete(long id)
-        {
-            await _session.DeleteAsync((int)id);
-        }
-
-        */
         public async Task Delete(T entity)
         {
             await _session.DeleteAsync(entity);
@@ -73,9 +62,6 @@ namespace WriteRepositories
 
         public async Task Update(T entity)
         {
-            //hoe Chauffeurs generic maken? moet Adressen.FirstOrDefault zijn als er een adres binnenkomt
-            //var existingEntity = Chauffeurs.FirstOrDefault(c => c.Id == entity.Id);
-
             var existingEntity = GenericRepository.FirstOrDefault(c => c.Id == entity.Id);
 
             if (existingEntity == null)

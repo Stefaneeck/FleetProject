@@ -26,7 +26,6 @@ namespace WriteRepositories.Mappings
             this.Property(a => a.StatusAanvraag);
 
             //rel voertuig
-            //this.Property(a => a.VoertuigId);
             ManyToOne(a => a.Voertuig, map =>
             {
                 map.Column("VoertuigId");

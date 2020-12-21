@@ -16,8 +16,6 @@ namespace Validation.Validators
             //RuleFor(c => c.Id).NotEmpty();
 
             this.AddCheckIfExistsInDBValidator(_tankkaartContext);
-            //als het zou aangeroepen worden zonder extension, klassieke static manier
-            //ValidationExtensions.AddCheckIfExistsInDBValidator(this, _tankkaartContext);
 
         }
     }

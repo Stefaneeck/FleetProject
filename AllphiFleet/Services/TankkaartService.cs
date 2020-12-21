@@ -18,11 +18,9 @@ namespace ReadServices
             _repository = repository;
         }
 
-        //filter nullable maken?
         public IEnumerable<TankkaartDTO> GetTankkaarten(DriverFilter filter)
         {
             var results = _repository.GetAll();
-
             return _mapper.Map<IEnumerable<TankkaartDTO>>(results.ToList());
         }
 
