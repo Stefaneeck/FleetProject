@@ -20,7 +20,6 @@ import { FuelcardlistComponent } from './fuelcard/fuelcardlist/fuelcardlist.comp
 import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetail.component';
 import { FuelcardaddComponent } from './fuelcard/fuelcardadd/fuelcardadd.component';
 import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.component';
-import { LoginComponent } from './auth/login/login.component';
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
@@ -42,7 +41,6 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
     FuelcarddetailComponent,
     FuelcardaddComponent,
     FuelcardeditComponent,
-    LoginComponent,
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent
   ],
@@ -52,7 +50,7 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: LoginComponent, pathMatch: 'full' },
+      { path: '', component: DriverlistComponent, pathMatch: 'full' },
       { path: 'driverlist', component: DriverlistComponent },
       { path: 'driver/:id', component: DriverdetailComponent },
       { path: 'driveradd', component: DriveraddComponent },
@@ -65,7 +63,6 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
       { path: 'fuelcard/:id', component: FuelcarddetailComponent },
       { path: 'fuelcardadd', component: FuelcardaddComponent },
       { path: 'fuelcardedit/:id', component: FuelcardeditComponent },
-      { path: 'login', component: LoginComponent },
       //The value of the path property must match the value we assigned to the redirect_uri property of the UserManager settings in the AuthService class.
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent }
