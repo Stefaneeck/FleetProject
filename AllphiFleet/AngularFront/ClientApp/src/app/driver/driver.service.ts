@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, from } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IDriver } from '../domain/IDriver';
 import { EnumDriverLicenseTypes } from '../domain/enums/EnumDriverLicenseTypes';
+import { AuthService } from '../shared/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,11 @@ export class DriverService {
   private driverReadUrl = 'https://localhost:44334/api/chauffeur';
   private driverWriteUrl = 'https://localhost:44358/writeapi/chauffeur'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService : AuthService) { }
 
   //You have to subscribe to the call if you want it to execute
   //we subscriben hier niet, maar wel waar we de methode aanroepen
+
   getDrivers(): Observable<IDriver[]> {
     return this.http.get<IDriver[]>(this.driverReadUrl)
       .pipe(
@@ -27,8 +29,37 @@ export class DriverService {
       );
   }
 
+
+  /* Example: manually add token to request
+   * 
+   * We need access to the getAccessToken function and for that, we have to inject the _authService object.
+   * Then, inside the getData function, we call the getAccessToken function and attach a callback with the then function to resolve the promise.
+   * Inside the callback, we create a headers property by instantiating the HttpHeaders class
+   * and calling the set function where we pass the name of the header and the token itself with the Bearer prefix.
+   *
+   * After that, we have an http get request but this time with the headers object included and converted to promise.
+   * If we leave it like this, we are going to return a Promise<object> from this function, and for our current setup,
+   * the getData function should return the Observable<object>. So, to do that, we have to wrap this body inside the from() function from rxjs.
+   *
+   * note:
+   * Right now, we only have one HTTP call to the Web API. But in a real-world application, we would have more than one repository file and for sure more HTTP calls.
+   * With the solution, as we have it now, we have to make the same changes on each HTTP function all over the project and duplicate the same code.
+   * To improve this solution, we are going to create a centralized place to inject the access token in the request and use that logic in our HTTP calls without the code repetition.
+   
+
+  getDrivers(): Observable<IDriver[]> {
+    return from(
+      this.authService.getAccessToken()
+        .then(token => {
+          const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+          return this.http.get<IDriver[]>(this.driverReadUrl, { headers: headers }).toPromise();
+        })
+    );
+
+  }
+  */
+
   getDriver(id: number): Observable<IDriver | undefined> {
-    //creatie van url voor chauffeur op te halen nog opschonen
     return this.http.get<IDriver>(this.driverReadUrl + '/' + id)
       .pipe(
         tap(data => console.log('getDriver: ' + JSON.stringify(data))),

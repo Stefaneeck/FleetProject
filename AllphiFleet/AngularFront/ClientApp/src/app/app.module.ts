@@ -23,6 +23,7 @@ import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.comp
 import { LoginComponent } from './auth/login/login.component';
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
+import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,13 @@ import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/si
     ]),
     OAuthModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    /*
+     * Providers are usually singleton (one instance) objects, that other objects have access to through dependency injection (DI).
+      If you plan to use an object multiple times, for example Http service in different components, you can ask for same instance of that service.
+     */
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
