@@ -1,89 +1,182 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
-import { LoginDTO } from '../domain/DTO/LoginDTO';
+import { Injectable, OnDestroy, Inject } from '@angular/core';
+import { OidcSecurityService, OpenIdConfiguration, AuthWellKnownEndpoints, AuthorizationResult, AuthorizationState } from 'angular-auth-oidc-client';
+import { Observable, Subscription, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
+@Injectable()
+export class AuthService implements OnDestroy {
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-  // If using Stackblitz, replace the url with this line
-  // because Stackblitz can't find the api folder.
-  // private productUrl = 'assets/products/products.json';
-  private apiLoginUrl = 'https://localhost:44334/api/auth/SignIn';
+  isAuthorized = false;
+  authUrl = "https://localhost:44372";
 
-  constructor(private http: HttpClient) { }
-
-
-  validateLoginAndGetToken(loginDTO: LoginDTO): Observable<string | undefined> {
-    //as 'text' moest want anders error
-    let httpOptionsPlain = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      responseType: 'text' as 'text'
-    };
-    return this.http.post(this.apiLoginUrl, loginDTO, httpOptionsPlain)
-      //pipe laat ons meerdere functies combineren
-      //The pipe() function takes as its arguments the functions you want to combine,
-      //and returns a new function that, when executed, runs the composed functions in sequence.
-
-     //tap() - RxJS tap operator will look at the Observable value and do something with that value.
-     //In other words, after a successful API request, the tap() operator will do any function you want it to perform with the response.In the example, it will just log that string.
-      .pipe(
-        tap(data => {
-          console.log('validateLogin: ' + JSON.stringify(data));
-         
-        }),
-        catchError(this.handleError)
-      );
-
-  }
-  /*
-
-  addFuelcard(fuelcardData: IFuelcard): Observable<IFuelcard> {
-    const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.post<IFuelcard>(this.fuelcardWriteUrl, fuelcardData, httpHeaders)
-      .pipe(
-        tap(data => console.log('addFuelcard: ' + JSON.stringify(data))),
-        catchError(this.handleError)
-      );
+  constructor(
+    private oidcSecurityService: OidcSecurityService,
+    private http: HttpClient,
+    private router: Router,
+    //@Inject('BASE_URL') private originUrl: string,
+    //@Inject('AUTH_URL') private authUrl: string,
+  ) {
   }
 
-  updateFuelcard(fuelcardData: IFuelcard): Observable<IFuelcard> {
-    const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.put<IFuelcard>(this.fuelcardWriteUrl + '/update' + '/' + fuelcardData.id, fuelcardData, httpHeaders)
-      .pipe(
-        tap(data => console.log('updateFuelcard: ' + JSON.stringify(data))),
-        catchError(this.handleError)
-      );
-  }
+  private isAuthorizedSubscription: Subscription = new Subscription;
 
-  deleteFuelcard(id: number): Observable<IFuelcard> {
-    return this.http.delete<IFuelcard>(this.fuelcardWriteUrl + '/delete' + '/' + id)
-      .pipe(
-        tap(data => console.log('All: ' + JSON.stringify(data))),
-        catchError(this.handleError)
-      );
-  }
-
-*/
-
-  private handleError(err: HttpErrorResponse): Observable<never> {
-    // in a real world app, we may send the server to some remote logging infrastructure
-    // instead of just logging it to the console
-    let errorMessage = '';
-    if (err.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      errorMessage = `An error occurred: ${err.error.message}`;
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+  ngOnDestroy(): void {
+    if (this.isAuthorizedSubscription) {
+      this.isAuthorizedSubscription.unsubscribe();
     }
-    console.error(errorMessage);
-    return throwError(errorMessage);
+  }
+
+  public initAuth() {
+    /*
+     * Notice, how we set the silent_renew and silent_renew_url for the OIDC client configuration.
+       This creating a hidden iframe in the DOM, which will update the tokens when the ID token has expired.
+       That is why we made that shorter than the access token in the Authorization server configuration for the PKCE client.
+     */
+    const openIdConfiguration: OpenIdConfiguration = {
+      stsServer: this.authUrl,
+      redirect_url: window.location.origin + 'callback',
+      client_id: 'angularApp',
+      response_type: 'code',
+      scope: 'openid profile api1.read',
+      post_logout_redirect_uri: window.location.origin,
+      forbidden_route: '/forbidden',
+      unauthorized_route: '/unauthorized',
+      silent_renew: true,
+      silent_renew_url: window.location.origin + '/silent-renew.html',
+      history_cleanup_off: true,
+      auto_userinfo: true,
+      log_console_warning_active: true,
+      log_console_debug_active: true,
+      max_id_token_iat_offset_allowed_in_seconds: 10,
+    };
+
+    const authWellKnownEndpoints: AuthWellKnownEndpoints = {
+      issuer: this.authUrl,
+      jwks_uri: this.authUrl + '/.well-known/openid-configuration/jwks',
+      authorization_endpoint: this.authUrl + '/connect/authorize',
+      token_endpoint: this.authUrl + '/connect/token',
+      userinfo_endpoint: this.authUrl + '/connect/userinfo',
+      end_session_endpoint: this.authUrl + '/connect/endsession',
+      check_session_iframe: this.authUrl + '/connect/checksession',
+      revocation_endpoint: this.authUrl + '/connect/revocation',
+      introspection_endpoint: this.authUrl + '/connect/introspect',
+    };
+
+    this.oidcSecurityService.setupModule(openIdConfiguration, authWellKnownEndpoints);
+
+    if (this.oidcSecurityService.moduleSetup) {
+      this.doCallbackLogicIfRequired();
+    } else {
+      this.oidcSecurityService.onModuleSetup.subscribe(() => {
+        this.doCallbackLogicIfRequired();
+      });
+    }
+    this.isAuthorizedSubscription = this.oidcSecurityService.getIsAuthorized().subscribe((isAuthorized => {
+      this.isAuthorized = isAuthorized;
+    }));
+
+    this.oidcSecurityService.onAuthorizationResult.subscribe(
+      (authorizationResult: AuthorizationResult) => {
+        this.onAuthorizationResultComplete(authorizationResult);
+      });
+  }
+
+  private onAuthorizationResultComplete(authorizationResult: AuthorizationResult) {
+
+    console.log('Auth result received AuthorizationState:'
+      + authorizationResult.authorizationState
+      + ' validationResult:' + authorizationResult.validationResult);
+
+    if (authorizationResult.authorizationState === AuthorizationState.unauthorized) {
+      if (window.parent) {
+        // sent from the child iframe, for example the silent renew
+        this.router.navigate(['/unauthorized']);
+      } else {
+        window.location.href = '/unauthorized';
+      }
+    }
+  }
+
+  private doCallbackLogicIfRequired() {
+
+    this.oidcSecurityService.authorizedCallbackWithCode(window.location.toString());
+  }
+
+  getIsAuthorized(): Observable<boolean> {
+    return this.oidcSecurityService.getIsAuthorized();
+  }
+
+  login() {
+    console.log('start login');
+    this.oidcSecurityService.authorize();
+  }
+
+  logout() {
+    console.log('start logoff');
+    this.oidcSecurityService.logoff();
+  }
+
+  get(url: string): Observable<any> {
+    return this.http.get(url, { headers: this.getHeaders() })
+      .pipe(catchError((error) => {
+        this.oidcSecurityService.handleError(error);
+        return throwError(error);
+        
+      }));
+  }
+
+  put(url: string, data: any): Observable<any> {
+    const body = JSON.stringify(data);
+    return this.http.put(url, body, { headers: this.getHeaders() })
+      .pipe(catchError((error) => {
+        this.oidcSecurityService.handleError(error);
+        return throwError(error);
+      }));
+  }
+
+  delete(url: string): Observable<any> {
+    return this.http.delete(url, { headers: this.getHeaders() })
+      .pipe(catchError((error) => {
+        this.oidcSecurityService.handleError(error);
+        return throwError(error);
+      }));
+  }
+
+  post(url: string, data: any): Observable<any> {
+    const body = JSON.stringify(data);
+    return this.http.post(url, body, { headers: this.getHeaders() })
+      .pipe(catchError((error) => {
+        this.oidcSecurityService.handleError(error);
+        return throwError(error);
+      }));
+  }
+
+  private getHeaders() {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Access-Control-Allow-Origin', '*');
+    return this.appendAuthHeader(headers);
+  }
+
+  public getToken() {
+    const token = this.oidcSecurityService.getToken();
+    return token;
+  }
+
+  private appendAuthHeader(headers: HttpHeaders) {
+    const token = this.oidcSecurityService.getToken();
+
+    if (token === '') {
+      console.log("token empty");
+      return headers;
+    }
+
+    const tokenValue = 'Bearer ' + token;
+    console.log("token");
+    console.log(tokenValue);
+    return headers.set('Authorization', tokenValue);
+
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 
 import { DriverService } from '../driver.service';
 import { IDriver } from '../../domain/IDriver';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-driverlist',

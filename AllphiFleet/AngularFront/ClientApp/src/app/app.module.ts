@@ -20,6 +20,7 @@ import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetai
 import { FuelcardaddComponent } from './fuelcard/fuelcardadd/fuelcardadd.component';
 import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.component';
 import { LoginComponent } from './auth/login/login.component';
+import { CoreModule } from './auth/core.module';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { LoginComponent } from './auth/login/login.component';
       { path: 'fuelcardadd', component: FuelcardaddComponent },
       { path: 'fuelcardedit/:id', component: FuelcardeditComponent },
       { path: 'login', component: LoginComponent }
-    ])
+    ]),
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

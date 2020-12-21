@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IDriver } from '../domain/IDriver';
 import { EnumDriverLicenseTypes } from '../domain/enums/EnumDriverLicenseTypes';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,12 @@ export class DriverService {
   private driverReadUrl = 'https://localhost:44334/api/chauffeur';
   private driverWriteUrl = 'https://localhost:44358/writeapi/chauffeur'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   //You have to subscribe to the call if you want it to execute
   //we subscriben hier niet, maar wel waar we de methode aanroepen
   getDrivers(): Observable<IDriver[]> {
-    return this.http.get<IDriver[]>(this.driverReadUrl)
+    return this.authService.get(this.driverReadUrl)
       .pipe(
         tap(data => console.log('getDrivers: ' + JSON.stringify(data))),
         catchError(this.handleError)

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReadApi.Logging;
 using ReadServices.Interfaces;
@@ -19,6 +20,7 @@ namespace ReadApi.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpGet(Name = "getAllChauffeurs")]
         public IActionResult Get()
         {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthServiceOld } from '../auth.service.old';
 import { LoginDTO } from '../../domain/DTO/LoginDTO';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   jwToken: any | undefined;
   loginForm: any;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+  constructor(private formBuilder: FormBuilder, private authService: AuthServiceOld,
     private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

@@ -6,6 +6,8 @@ using System.Security.Claims;
 
 public static class InMemoryConfig
 {
+    private static string spaClientUrl = "https://localhost:44329";
+
     public static IEnumerable<IdentityResource> GetIdentityResources() =>
       new List<IdentityResource>
       {
@@ -51,20 +53,45 @@ public static class InMemoryConfig
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
 
                 //specify scopes
-                AllowedScopes = { "api1.read" }
+                AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "api1.read" }
             },
-           new Client
-            {
-               /* This configuration adds a new client application that uses the recommended flow for server-side web applications:
+
+           //code flow with PCKE example
+           /* This configuration adds a new client application that uses the recommended flow for server-side web applications:
                 * the authorization code flow with Proof-Key for Code Exchange (PKCE)
                 * For this client, you have also set a redirect URI. 
                 * Because this flow takes place via the browser, IdentityServer must know an allowed list of URLs to send the user back to,
                 * once user authentication and client authorization is complete;
                 * what URLs it can return the authorization result to. 
-                * */
+                * 
+           new Client
+            {
                 ClientId = "oidcClient",
                 ClientName = "Example Client Application",
-                ClientSecrets = new List<Secret> {new Secret("mvcsecret".Sha256())}, // change me!
+                ClientSecrets = new List<Secret> {new Secret("SuperSecretPassword".Sha256())}, // change me!
+    
+                AllowedGrantTypes = GrantTypes.Code,
+                RedirectUris = new List<string> {"https://localhost:5002/signin-oidc"},
+                AllowedScopes = new List<string>
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.Email,
+                    "role",
+                    "api1.read"
+                },
+
+                RequirePkce = true,
+                AllowPlainTextPkce = false
+            }
+           ,*/
+           new Client
+            {
+
+               //hybrid flow
+                ClientId = "oidcClient",
+                ClientName = "Example Client Application",
+                ClientSecrets = new List<Secret> {new Secret("mvcsecret".Sha256())},
     
                 AllowedGrantTypes = GrantTypes.Hybrid,
                 RedirectUris = new List<string> {"https://localhost:44384/signin-oidc"}, //mvc app port (oidcClient app)
@@ -79,7 +106,54 @@ public static class InMemoryConfig
 
                 RequirePkce = false,
                 //AllowPlainTextPkce = false
-}
+            },
+           new Client
+            {
+               //code flow with pkce
+               /*
+                * As mentioned in the first part, we are using code flow with PKCE here because we are using an Angular app, 
+                * which runs in the browser and can’t keep a client secret so we use PKCE to generate a dynamic secret.
+                * 
+                * Note, that the RequirePkce is set to enable PKCE and that the access token and ID token is very shortlived 
+                * because we are going to be using silent renewal to periodically renew these tokens in the background.
+                */
+                ClientId = "angularApp",
+                ClientName = "AngularFront",
+                AccessTokenType = AccessTokenType.Jwt,
+                AccessTokenLifetime = 330,// 330 seconds, default 60 minutes
+                IdentityTokenLifetime = 30,
+
+                RequireClientSecret = false,
+                AllowedGrantTypes = GrantTypes.Code,
+                RequirePkce = true,
+
+                AllowAccessTokensViaBrowser = true,
+                RedirectUris = new List<string>
+                {
+                    $"{spaClientUrl}/callback",
+                    $"{spaClientUrl}/silent-renew.html",
+                    //"https://localhost:4200",
+                    //"https://localhost:4200/silent-renew.html"
+                },
+                PostLogoutRedirectUris = new List<string>
+                {
+                    $"{spaClientUrl}/unauthorized",
+                    $"{spaClientUrl}",
+                    //"https://localhost:4200/unauthorized",
+                    //"https://localhost:4200"
+                },
+                AllowedCorsOrigins = new List<string>
+                {
+                    $"{spaClientUrl}",
+                    "https://localhost:44329"
+                },
+                AllowedScopes = new List<string>
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    "api1.read"
+                }
+            },
         };
 
     public static IEnumerable<ApiScope> GetApiScopes() =>

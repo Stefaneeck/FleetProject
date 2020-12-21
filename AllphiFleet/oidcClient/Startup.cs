@@ -29,6 +29,14 @@ namespace oidcClient
              * This local cookie is necessary because even though you’ll be using IdentityServer to authenticate the user and create a Single Sign-On (SSO) session,
              * every individual client application will maintain its own, shorter-lived session. 
              * */
+
+            /* hybrid flow
+             * The Hybrid flow has several steps. Our client sends a request for the code and id_token to the /authorization endpoint. 
+             * IdentityServer returns them to the client. Then the client validates the id_token and if it’s valid it sends another request with the code to the /token endpoint. 
+             * IdentityServer issues the access_token and id_token.
+                So, the client has the access_token, but it must provide that token as a Bearer token in the Authorization header
+             * */
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies";
@@ -37,13 +45,6 @@ namespace oidcClient
             .AddCookie("Cookies")
             .AddOpenIdConnect("oidc", options =>
             {
-                /*
-                 * By default, the ASP.NET Core OpenID Connect handler will use the implicit flow with the form post response mode. 
-                 * The implicit flow is in the process of being deprecated, 
-                 * and the form post response is becoming unreliable thanks to 3rd party cookies policies being rolled out by browsers. 
-                 * As a result, you have updated these to use the authorization code flow, PKCE, and the query string response mode. 
-                 * */
-
                 options.SignInScheme = "Cookies";
                 options.Authority = "https://localhost:44372";
                 options.ClientId = "oidcClient";
@@ -54,9 +55,6 @@ namespace oidcClient
                 //options.ResponseMode = "query";
 
                 // options.CallbackPath = "/signin-oidc"; // default redirect URI
-
-                //      wi options.Scope.Add("oidc"); // default scope
-                // options.Scope.Add("profile"); // default scope
 
                 options.Scope.Add("api1.read");
                 options.SaveTokens = true;
