@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -7,12 +7,26 @@ import { AuthService } from '../shared/services/auth.service';
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent {
+export class NavMenuComponent implements OnInit {
 
-  constructor(private authService: AuthService) {}
+  public isUserAuthenticated: boolean = false;
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.authService.loginChanged
+      .subscribe(res => {
+        //needed to display the correct link (login or logout)
+        this.isUserAuthenticated = res;
+      })
+  }
 
   public login = () => {
     this.authService.login();
+  }
+
+  public logout = () => {
+    this.authService.logout();
   }
 
 }

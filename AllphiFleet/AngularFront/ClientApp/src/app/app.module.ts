@@ -21,6 +21,8 @@ import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetai
 import { FuelcardaddComponent } from './fuelcard/fuelcardadd/fuelcardadd.component';
 import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.component';
 import { LoginComponent } from './auth/login/login.component';
+import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
+import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { LoginComponent } from './auth/login/login.component';
     FuelcarddetailComponent,
     FuelcardaddComponent,
     FuelcardeditComponent,
-    LoginComponent
+    LoginComponent,
+    SigninRedirectCallbackComponent,
+    SignoutRedirectCallbackComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -60,7 +64,10 @@ import { LoginComponent } from './auth/login/login.component';
       { path: 'fuelcard/:id', component: FuelcarddetailComponent },
       { path: 'fuelcardadd', component: FuelcardaddComponent },
       { path: 'fuelcardedit/:id', component: FuelcardeditComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      //The value of the path property must match the value we assigned to the redirect_uri property of the UserManager settings in the AuthService class.
+      { path: 'signin-callback', component: SigninRedirectCallbackComponent },
+      { path: 'signout-callback', component: SignoutRedirectCallbackComponent }
     ]),
     OAuthModule.forRoot()
   ],

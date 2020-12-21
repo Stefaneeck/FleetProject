@@ -23,32 +23,6 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="ClientApp\src\app\address\addresslist\address.service.ts" />
-    <None Remove="ClientApp\src\app\auth.service.ts" />
-    <None Remove="ClientApp\src\app\auth\login\auth.service.ts" />
-    <None Remove="ClientApp\src\app\domain\DTO\LoginDTO.ts" />
-    <None Remove="ClientApp\src\app\domain\enums\EnumAuthenticationTypes.ts" />
-    <None Remove="ClientApp\src\app\domain\enums\EnumDriverLicenseTypes.ts" />
-    <None Remove="ClientApp\src\app\domain\IFuelcard.ts" />
-    <None Remove="ClientApp\src\app\driver\IAdres.ts" />
-    <None Remove="ClientApp\src\app\driver\ITankkaart.ts" />
-    <None Remove="ClientApp\src\app\fuelcard\fuelcard.service.ts" />
-    <None Remove="ClientApp\src\app\shared\constants.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\address\address.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\domain\DTO\LoginDTO.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumAuthenticationTypes.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumDriverLicenseTypes.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\domain\IAddress.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\domain\IFuelcard.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\domain\ITankkaart.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\fuelcard\fuelcard.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\constants.ts" />
-  </ItemGroup>
-
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

@@ -12,3 +12,5 @@
 2020-12-21 18:14:03.1456 INFO Ophalen van 25 records.
 2020-12-21 18:14:33.7864 INFO Alle adressen aan het ophalen.
 2020-12-21 18:14:33.8062 INFO Ophalen van 25 records.
+2020-12-21 22:09:48.8755 INFO Alle adressen aan het ophalen.
+2020-12-21 22:09:49.5499 INFO Ophalen van 25 records.

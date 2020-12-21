@@ -54,4 +54,28 @@ export class AuthService {
   private checkUser = (user: User): boolean => {
     return !!user && !user.expired;
   }
+
+  /*
+   * In this function, we call the signinRedirectCallback function that processes the response from the /authorization endpoint and returns a promise.
+   * From that promise, we extract the user object and populate the _user property.
+   * Additionally, we call the next function from the observable to inform any subscribed component
+   * about the Angular authentication state change, and finally, return that user.
+   */ 
+  public finishLogin = (): Promise<User> => {
+    return this._userManager.signinRedirectCallback()
+      .then(user => {
+        this._user = user;
+        this._loginChangedSubject.next(this.checkUser(user));
+        return user;
+      })
+  }
+
+  public logout = () => {
+    this._userManager.signoutRedirect();
+  }
+
+  public finishLogout = () => {
+    this._user = null;
+    return this._userManager.signoutRedirectCallback();
+  }
 }
