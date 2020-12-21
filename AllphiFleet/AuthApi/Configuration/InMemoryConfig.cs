@@ -119,32 +119,21 @@ public static class InMemoryConfig
                 */
                 ClientId = "angularApp",
                 ClientName = "AngularFront",
-                AccessTokenType = AccessTokenType.Jwt,
-                AccessTokenLifetime = 330,// 330 seconds, default 60 minutes
-                IdentityTokenLifetime = 30,
 
                 RequireClientSecret = false,
+                RequireConsent = false,
                 AllowedGrantTypes = GrantTypes.Code,
                 RequirePkce = true,
+                AccessTokenLifetime = 600,
 
                 AllowAccessTokensViaBrowser = true,
-                RedirectUris = new List<string>
-                {
-                    $"{spaClientUrl}/callback",
-                    $"{spaClientUrl}/silent-renew.html",
-                    //"https://localhost:4200",
-                    //"https://localhost:4200/silent-renew.html"
-                },
+                RedirectUris = new List<string>{ "https://localhost:44329/signin-callback", "https://localhost:44329/assets/silent-callback.html" },
                 PostLogoutRedirectUris = new List<string>
                 {
-                    $"{spaClientUrl}/unauthorized",
-                    $"{spaClientUrl}",
-                    //"https://localhost:4200/unauthorized",
-                    //"https://localhost:4200"
+                    "https://localhost:44329/signout-callback"
                 },
                 AllowedCorsOrigins = new List<string>
                 {
-                    $"{spaClientUrl}",
                     "https://localhost:44329"
                 },
                 AllowedScopes = new List<string>

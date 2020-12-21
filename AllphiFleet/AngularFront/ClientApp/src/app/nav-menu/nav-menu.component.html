@@ -43,12 +43,9 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/fuelcardadd']">Add fuelcard</a>
           </li>
-          <li *ngIf="!isAuthorized" class="nav-item" [routerLinkActive]="['link-active']">
-            <!-- <a class="nav-link text-dark" (click)="login()" [routerLink]="['/login']">Login</a> -->
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <!--<a class="nav-link text-dark"  [routerLink]="['/login']">Login</a>-->
             <a class="nav-link text-dark" (click)="login()">Login</a>
-          </li>
-          <li *ngIf="isAuthorized" class="nav-item" [routerLinkActive]="['link-active']">
-            <a (click)="logout()" class="nav-link text-dark" href="#">Logout</a>
           </li>
         </ul>
       </div>

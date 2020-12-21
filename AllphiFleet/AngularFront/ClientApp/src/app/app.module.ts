@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -20,7 +21,6 @@ import { FuelcarddetailComponent } from './fuelcard/fuelcarddetail/fuelcarddetai
 import { FuelcardaddComponent } from './fuelcard/fuelcardadd/fuelcardadd.component';
 import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.component';
 import { LoginComponent } from './auth/login/login.component';
-import { CoreModule } from './auth/core.module';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,7 @@ import { CoreModule } from './auth/core.module';
       { path: 'fuelcardedit/:id', component: FuelcardeditComponent },
       { path: 'login', component: LoginComponent }
     ]),
-    CoreModule
+    OAuthModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
