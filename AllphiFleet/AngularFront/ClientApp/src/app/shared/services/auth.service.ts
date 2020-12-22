@@ -85,4 +85,13 @@ export class AuthService {
         return !!user && !user.expired ? user.access_token : null;
       })
   }
+
+  public checkIfUserIsAdmin = (): Promise<boolean> => {
+    return this._userManager.getUser()
+      .then(user => {
+        if (user !== null) {
+          return user.profile.role === 'Admin';
+        }
+      })
+  }
 }

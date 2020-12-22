@@ -2,6 +2,7 @@
 using System.Linq;
 using DTO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ReadApi.Logging;
 using ReadServices.Interfaces;
@@ -45,6 +46,18 @@ namespace ReadApi.Controllers
                 return NotFound("Chauffeur niet gevonden.");
             }
             return Ok(chauffeurDTO);
+        }
+
+        //testing
+        [HttpGet("Privacy")]
+        //without roles, returns 401 if not authorized. With roles, returns 403 if wrong role.
+        [Authorize(Roles = "Admin")]
+        //[EnableCors("AllowAllReadApi")]
+        public IActionResult Privacy()
+        {
+            var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
+            //Response.Headers.Add("Access - Control - Allow - Origin", "*");
+            return Ok(claims);
         }
     }
 }

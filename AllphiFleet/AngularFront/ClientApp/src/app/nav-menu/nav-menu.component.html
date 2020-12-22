@@ -50,6 +50,10 @@
               <button *ngIf="isUserAuthenticated" class="btn btn-link" style="color:gray" (click)="logout()">Logout</button>
             </section>
           </li>
+          <li class="nav-item">
+            <a *ngIf="isUserAdmin" class="nav-link" [routerLink]="['/privacy']" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact: true}"> Privacy </a>
+          </li>
         </ul>
       </div>
     </div>

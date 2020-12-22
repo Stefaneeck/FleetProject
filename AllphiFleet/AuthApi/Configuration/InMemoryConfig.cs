@@ -6,8 +6,6 @@ using System.Security.Claims;
 
 public static class InMemoryConfig
 {
-    private static string spaClientUrl = "https://localhost:44329";
-
     public static IEnumerable<IdentityResource> GetIdentityResources() =>
       new List<IdentityResource>
       {
@@ -26,7 +24,11 @@ public static class InMemoryConfig
               Claims = new List<Claim>
               {
                   new Claim("given_name", "Mick"),
-                  new Claim("family_name", "Mining")
+                  new Claim("family_name", "Mining"),
+                  new Claim("address", "Sunny Street 4"),
+                  new Claim("role", "Admin"),
+                  new Claim("position", "Administrator"),
+                  new Claim("country", "USA")
               }
           },
           new TestUser
@@ -37,7 +39,11 @@ public static class InMemoryConfig
               Claims = new List<Claim>
               {
                   new Claim("given_name", "Jane"),
-                  new Claim("family_name", "Downing")
+                  new Claim("family_name", "Downing"),
+                  new Claim("address", "Long Avenue 289"),
+                  new Claim("role", "Visitor"),
+                  new Claim("position", "Viewer"),
+                  new Claim("country", "USA")
               }
           }
   };
@@ -92,7 +98,7 @@ public static class InMemoryConfig
                 ClientId = "oidcClient",
                 ClientName = "Example Client Application",
                 ClientSecrets = new List<Secret> {new Secret("mvcsecret".Sha256())},
-    
+
                 AllowedGrantTypes = GrantTypes.Hybrid,
                 RedirectUris = new List<string> {"https://localhost:44384/signin-oidc"}, //mvc app port (oidcClient app)
                 AllowedScopes = new List<string>

@@ -10,6 +10,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class NavMenuComponent implements OnInit {
 
   public isUserAuthenticated: boolean = false;
+  public isUserAdmin: boolean = false;
 
   constructor(private authService: AuthService) { }
 
@@ -18,6 +19,7 @@ export class NavMenuComponent implements OnInit {
       .subscribe(res => {
         //needed to display the correct link (login or logout)
         this.isUserAuthenticated = res;
+        this.isAdmin();
       })
   }
 
@@ -27,6 +29,13 @@ export class NavMenuComponent implements OnInit {
 
   public logout = () => {
     this.authService.logout();
+  }
+
+  public isAdmin = () => {
+    return this.authService.checkIfUserIsAdmin()
+      .then(res => {
+        this.isUserAdmin = res;
+      })
   }
 
 }

@@ -91,6 +91,14 @@ export class DriverService {
       );
   }
 
+  getClaims(): Observable<any> {
+    return this.http.get(this.driverReadUrl + '/privacy')
+      .pipe(
+        tap(data => console.log('getClaims: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
   showEnumValueDriverLicenseType(value: number): string {
  
     return EnumDriverLicenseTypes[value];

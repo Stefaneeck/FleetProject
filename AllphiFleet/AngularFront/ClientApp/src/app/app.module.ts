@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { OAuthModule } from 'angular-oauth2-oidc';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +22,8 @@ import { FuelcardeditComponent } from './fuelcard/fuelcardedit/fuelcardedit.comp
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/signout-redirect-callback.component';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,9 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
     FuelcardaddComponent,
     FuelcardeditComponent,
     SigninRedirectCallbackComponent,
-    SignoutRedirectCallbackComponent
+    SignoutRedirectCallbackComponent,
+    PrivacyComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -65,7 +68,9 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
       { path: 'fuelcardedit/:id', component: FuelcardeditComponent },
       //The value of the path property must match the value we assigned to the redirect_uri property of the UserManager settings in the AuthService class.
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
-      { path: 'signout-callback', component: SignoutRedirectCallbackComponent }
+      { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
+      { path: 'privacy', component: PrivacyComponent },
+      { path: 'unauthorized', component: UnauthorizedComponent }
     ]),
     OAuthModule.forRoot()
   ],

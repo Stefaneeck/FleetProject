@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Constants } from '../constants';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ import { Constants } from '../constants';
  */
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
   /*With this function, we can intercept any HTTP call, modify it, and then let it continue its journey to the Web API.
    * Here, we get the access token from the authentication service, create the header object, and then clone the request passing the headers parameter to it.
    * The req parameter contains the request that we can inspect and modify before we pass it out to the Web API.
@@ -34,14 +36,39 @@ export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     /* Right now, our Angular application communicates only with a single Web API project, but maybe in the future, it may communicate with multiple Web Apis. Maybe some of those APIs will not require secure access to the resources since they are not protected.
      * That said, we don’t have to pass the access token to all the APIs, just to the one we have a token generated for (check with apiRoot which we set in Constants file).
-     */ 
+     */
+
+    //let headers = new HttpHeaders();
+    let headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*'
+    })
     if (req.url.startsWith(Constants.apiRoot)) {
       return from(
         this.authService.getAccessToken()
           .then(token => {
-            const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+            //fix: 500 instead of 401 when token was null
+            if (token !== null) {
+              headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+            }
             const authRequest = req.clone({ headers });
-            return next.handle(authRequest).toPromise();
+
+            return next.handle(authRequest)
+              /*We inject the router and use the catchError operator from the rxjs/operators location.
+               * Inside the catchError operator, we check the error response and if the value of the status property is 401 or 403,
+               * we redirect the user to the unauthorized page. Then we just throw an error message.
+               */
+              .pipe(
+                catchError((err: HttpErrorResponse) => {
+                  console.log("http response error");
+                  ; console.log(err);
+                  console.log(err.status);
+                  if (err && (err.status === 401 || err.status === 403)) {
+                    this.router.navigate(['/unauthorized']);
+                  }
+                  throw 'error in a request ' + err.status;
+                })
+              ).toPromise();
           })
       );
     }

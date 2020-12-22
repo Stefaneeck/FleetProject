@@ -24,7 +24,8 @@ namespace AuthApi
             .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
             .AddTestUsers(InMemoryConfig.GetUsers())
             .AddInMemoryClients(InMemoryConfig.GetClients())
-            .AddDeveloperSigningCredential();
+            .AddDeveloperSigningCredential()
+            .AddProfileService<CustomProfileService>();
 
             services.AddControllersWithViews();
         }
