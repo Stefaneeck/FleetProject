@@ -20,12 +20,22 @@ export class AuthService {
       redirect_uri: `${Constants.clientRoot}/signin-callback`,
       scope: "openid profile api1.read",
       response_type: "code",
-      post_logout_redirect_uri: `${Constants.clientRoot}/signout-callback`
+      post_logout_redirect_uri: `${Constants.clientRoot}/signout-callback`,
+      //silent renewal
+      automaticSilentRenew: true,
+      //Pay attention that this URI must be the same as the one in the client configuration on the IDP level
+      silent_redirect_uri: `${Constants.clientRoot}/assets/silent-callback.html`
     }
   }
 
   constructor() {
     this._userManager = new UserManager(this.idpSettings);
+    //show the login button as soon as token expires
+    //we subscribe to an event as soon as the access token expires.
+    //There, we just fire the loginChanged observable through its subject.
+    this._userManager.events.addAccessTokenExpired(_ => {
+      this._loginChangedSubject.next(false);
+    });
   }
 
   /*
@@ -76,6 +86,8 @@ export class AuthService {
 
   public finishLogout = () => {
     this._user = null;
+    //needed to show login button when token expires (together with the code in the constructor)
+    this._loginChangedSubject.next(false);
     return this._userManager.signoutRedirectCallback();
   }
 

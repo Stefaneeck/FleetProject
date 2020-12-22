@@ -117,7 +117,7 @@ public static class InMemoryConfig
             {
                //code flow with pkce
                /*
-                * As mentioned in the first part, we are using code flow with PKCE here because we are using an Angular app, 
+                * We are using code flow with PKCE here because we are using an Angular app, 
                 * which runs in the browser and can’t keep a client secret so we use PKCE to generate a dynamic secret.
                 * 
                 * Note, that the RequirePkce is set to enable PKCE and that the access token and ID token is very shortlived 
@@ -130,7 +130,7 @@ public static class InMemoryConfig
                 RequireConsent = false,
                 AllowedGrantTypes = GrantTypes.Code,
                 RequirePkce = true,
-                AccessTokenLifetime = 600,
+                AccessTokenLifetime = 120,
 
                 AllowAccessTokensViaBrowser = true,
                 RedirectUris = new List<string>{ "https://localhost:44329/signin-callback", "https://localhost:44329/assets/silent-callback.html" },
