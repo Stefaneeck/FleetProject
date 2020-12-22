@@ -24,6 +24,7 @@ import { SignoutRedirectCallbackComponent } from './signout-redirect-callback/si
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { AuthGuardService } from './shared/guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -54,22 +55,24 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: DriverlistComponent, pathMatch: 'full' },
-      { path: 'driverlist', component: DriverlistComponent },
-      { path: 'driver/:id', component: DriverdetailComponent },
-      { path: 'driveradd', component: DriveraddComponent },
-      { path: 'driveredit/:id', component: DrivereditComponent },
+      //canActivate from route guard, user must be logged in or client side redirect
+      { path: 'driverlist', component: DriverlistComponent, canActivate: [AuthGuardService] },
+      { path: 'driver/:id', component: DriverdetailComponent, canActivate: [AuthGuardService] },
+      { path: 'driveradd', component: DriveraddComponent, canActivate: [AuthGuardService] },
+      { path: 'driveredit/:id', component: DrivereditComponent, canActivate: [AuthGuardService] },
       { path: 'addresslist', component: AddresslistComponent },
-      { path: 'address/:id', component: AddressdetailComponent },
-      { path: 'addressedit/:id', component: AddresseditComponent },
-      { path: 'addressadd', component: AddressaddComponent },
-      { path: 'fuelcardlist', component: FuelcardlistComponent },
-      { path: 'fuelcard/:id', component: FuelcarddetailComponent },
-      { path: 'fuelcardadd', component: FuelcardaddComponent },
-      { path: 'fuelcardedit/:id', component: FuelcardeditComponent },
+      { path: 'address/:id', component: AddressdetailComponent, canActivate: [AuthGuardService] },
+      { path: 'addressedit/:id', component: AddresseditComponent, canActivate: [AuthGuardService] },
+      { path: 'addressadd', component: AddressaddComponent, canActivate: [AuthGuardService] },
+      { path: 'fuelcardlist', component: FuelcardlistComponent, canActivate: [AuthGuardService] },
+      { path: 'fuelcard/:id', component: FuelcarddetailComponent, canActivate: [AuthGuardService] },
+      { path: 'fuelcardadd', component: FuelcardaddComponent, canActivate: [AuthGuardService] },
+      { path: 'fuelcardedit/:id', component: FuelcardeditComponent, canActivate: [AuthGuardService] },
       //The value of the path property must match the value we assigned to the redirect_uri property of the UserManager settings in the AuthService class.
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
-      { path: 'privacy', component: PrivacyComponent },
+      //routeguard, user must be logged in and role admin
+      { path: 'privacy', component: PrivacyComponent, canActivate: [AuthGuardService], data: { roles: ['Admin'] } },
       { path: 'unauthorized', component: UnauthorizedComponent }
     ]),
     OAuthModule.forRoot()
