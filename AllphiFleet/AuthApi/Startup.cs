@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using ReadApi;
+using Microsoft.AspNetCore.Identity;
 
 namespace AuthApi
 {
@@ -28,13 +29,26 @@ namespace AuthApi
             var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             //var migrationAssembly = AssemblyInfoUtil.GetAssembly().GetName().Name;
 
+            services.AddDbContext<ApplicationDbContext>(builder =>
+            builder.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"], sqlOptions => sqlOptions.MigrationsAssembly(migrationAssembly)));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddIdentityServer()/*
+             //moved to db
+
             .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
             .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
             .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
             .AddInMemoryClients(InMemoryConfig.GetClients())
                 */
+
             .AddTestUsers(InMemoryConfig.GetUsers())
+            //Now using asp identity users instead of IdentityServer4 testusers
+            //Calling AddIdentity will change your application’s default cookie scheme to IdentityConstants.ApplicationScheme. 
+            //This configures IdentityServer to use the ASP.NET Identity implementations
+            //.AddAspNetIdentity<IdentityUser>()
             .AddDeveloperSigningCredential()
             .AddProfileService<CustomProfileService>()
             .AddConfigurationStore(opt =>

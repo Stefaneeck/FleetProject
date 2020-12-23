@@ -40,3 +40,5 @@ Models.Chauffeur -> DTO.ChauffeurDTO
 2020-12-23 15:39:48.0038 INFO Alle chauffeurs aan het ophalen.
 2020-12-23 15:42:58.0389 INFO Alle chauffeurs aan het ophalen.
 2020-12-23 15:42:58.8620 INFO Ophalen van 16 records.
+2020-12-23 16:40:25.8043 INFO Alle chauffeurs aan het ophalen.
+2020-12-23 16:40:26.5672 INFO Ophalen van 16 records.
