@@ -1,0 +1,42 @@
+2020-12-23 10:41:50.2684 INFO Alle adressen aan het ophalen.
+2020-12-23 10:41:50.9162 INFO Ophalen van 26 records.
+2020-12-23 15:33:39.6127 INFO Alle chauffeurs aan het ophalen.
+2020-12-23 15:35:09.2881 ERROR Something went wrong: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[DTO.ChauffeurDTO, DTO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Chauffeur -> ChauffeurDTO
+Models.Chauffeur -> DTO.ChauffeurDTO
+   at lambda_method(Closure , Chauffeur , ChauffeurDTO , ResolutionContext )
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at ReadServices.ChauffeurService.GetChauffeurs(DriverFilter filter) in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\Services\ChauffeurService.cs:line 31
+   at ReadApi.Controllers.ChauffeurController.Get() in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\ReadApi\Controllers\ChauffeurController.cs:line 31
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ReadApi.CustomExceptionMiddleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\ReadApi\CustomExceptionMiddleware\ExceptionMiddleware.cs:line 33
+2020-12-23 15:35:09.3183 INFO Alle tankkaarten aan het ophalen.
+2020-12-23 15:35:09.3183 INFO Alle tankkaarten aan het ophalen.
+2020-12-23 15:37:02.0168 INFO Alle chauffeurs aan het ophalen.
+2020-12-23 15:39:48.0038 INFO Alle chauffeurs aan het ophalen.
+2020-12-23 15:42:58.0389 INFO Alle chauffeurs aan het ophalen.
+2020-12-23 15:42:58.8620 INFO Ophalen van 16 records.

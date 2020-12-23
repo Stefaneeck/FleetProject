@@ -11,6 +11,7 @@ namespace ReadServices.Profiles
         public ChauffeurProfile()
         {
             this.CreateMap<Chauffeur, ChauffeurDTO>();
+
             this.CreateMap<Chauffeur, ChauffeurDTO>().ReverseMap();
         }
     }
