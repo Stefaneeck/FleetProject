@@ -2,22 +2,47 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace AuthApi.Configuration
 {
+    //ref
+    //https://github.com/kevinrjones/SettingUpIdentityServer/blob/master/recordeddemo/identity/ids/SeedData.cs
     public class SeedData
     {
+        public static void EnsureRoles(IServiceCollection serviceCollection)
+        {
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            if (!roleManager.RoleExistsAsync
+            ("Testrole").Result)
+            {
+                IdentityRole role = new IdentityRole();
+                role.Name = "Testrole";
+                IdentityResult roleResult = roleManager.CreateAsync(role).Result;
+            }
+
+
+            if (!roleManager.RoleExistsAsync
+            ("Administrator").Result)
+            {
+                IdentityRole role = new IdentityRole();
+                role.Name = "Administrator";
+                IdentityResult roleResult = roleManager.CreateAsync(role).Result;
+            }
+        }
         public static void EnsureUsers(IServiceCollection serviceCollection)
         {
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
-            var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            var alice = userMgr.FindByNameAsync("alice").Result;
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            var alice = userManager.FindByNameAsync("alice").Result;
             if (alice == null)
             {
                 alice = new IdentityUser
@@ -26,13 +51,28 @@ namespace AuthApi.Configuration
                     Email = "AliceSmith@email.com",
                     EmailConfirmed = true,
                 };
-                var result = userMgr.CreateAsync(alice, "Pass123$").Result;
+                var result = userManager.CreateAsync(alice, "Pass123$").Result;
+                
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
 
-                result = userMgr.AddClaimsAsync(alice, new Claim[]
+                var roleResult = userManager.AddToRoleAsync(alice, "admin").Result;
+
+                if (!roleResult.Succeeded)
+                {
+                    throw new Exception(result.Errors.First().Description);
+                }
+
+                /* ze kan de role nog niet hebben, want we maken haar hier pas aan. 
+                 * als je toch wil controleren:
+                 * 
+                var roles = userManager.GetRolesAsync(alice).Result;
+                if(!roles.Contains("admin"))
+
+                */
+                result = userManager.AddClaimsAsync(alice, new Claim[]
                 {
                   new Claim(JwtClaimTypes.Name, "Alice Smith"),
                   new Claim(JwtClaimTypes.GivenName, "Alice"),
@@ -51,7 +91,7 @@ namespace AuthApi.Configuration
                 Console.WriteLine("alice already exists");
             }
 
-            var bob = userMgr.FindByNameAsync("bob").Result;
+            var bob = userManager.FindByNameAsync("bob").Result;
             if (bob == null)
             {
                 bob = new IdentityUser
@@ -60,13 +100,13 @@ namespace AuthApi.Configuration
                     Email = "BobSmith@email.com",
                     EmailConfirmed = true
                 };
-                var result = userMgr.CreateAsync(bob, "Pass123$").Result;
+                var result = userManager.CreateAsync(bob, "Pass123$").Result;
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
 
-                result = userMgr.AddClaimsAsync(bob, new Claim[]
+                result = userManager.AddClaimsAsync(bob, new Claim[]
                 {
                     new Claim(JwtClaimTypes.Name, "Bob Smith"),
                     new Claim(JwtClaimTypes.GivenName, "Bob"),

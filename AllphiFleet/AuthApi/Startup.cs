@@ -5,10 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
-using ReadApi;
 using Microsoft.AspNetCore.Identity;
 using AuthApi.Configuration;
-using Models.Auth;
 
 namespace AuthApi
 {
@@ -23,13 +21,10 @@ namespace AuthApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //for seeding
-            services.AddTransient<RoleConfiguration>();
 
             //db config support identity
             //inform EF Core that our project will contain the migration code
             var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-            //var migrationAssembly = AssemblyInfoUtil.GetAssembly().GetName().Name;
 
             services.AddDbContext<ApplicationDbContext>(builder =>
             builder.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"], sqlOptions => sqlOptions.MigrationsAssembly(migrationAssembly)));
@@ -37,22 +32,11 @@ namespace AuthApi
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentityServer()/*
-             //moved to db
-
-            .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
-            .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
-            .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
-            .AddInMemoryClients(InMemoryConfig.GetClients())
-                */
-
-            //.AddTestUsers(InMemoryConfig.GetUsers())
-            //.AddProfileService<CustomProfileService>()
-
             //Now using asp identity users instead of IdentityServer4 testusers
             //Calling AddIdentity will change your application’s default cookie scheme to IdentityConstants.ApplicationScheme. 
             //This configures IdentityServer to use the ASP.NET Identity implementations
             //If we are working with a custom IdentityUser class, change it here
+            services.AddIdentityServer()
             .AddAspNetIdentity<IdentityUser>()
             .AddDeveloperSigningCredential()
             .AddConfigurationStore(opt =>
@@ -69,10 +53,11 @@ namespace AuthApi
                 services.AddControllersWithViews();
 
             SeedData.EnsureUsers(services);
+            SeedData.EnsureRoles(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleConfiguration seeder)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
