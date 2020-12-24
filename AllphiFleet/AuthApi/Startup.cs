@@ -28,8 +28,6 @@ namespace AuthApi
 
             //db config support identity
             //inform EF Core that our project will contain the migration code
-
-            //overzetten naar ef core project? (readapi)
             var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             //var migrationAssembly = AssemblyInfoUtil.GetAssembly().GetName().Name;
 
@@ -40,7 +38,7 @@ namespace AuthApi
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()/*
-             //moved to dbcant
+             //moved to db
 
             .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
             .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
@@ -49,13 +47,14 @@ namespace AuthApi
                 */
 
             //.AddTestUsers(InMemoryConfig.GetUsers())
+            //.AddProfileService<CustomProfileService>()
+
             //Now using asp identity users instead of IdentityServer4 testusers
             //Calling AddIdentity will change your application’s default cookie scheme to IdentityConstants.ApplicationScheme. 
             //This configures IdentityServer to use the ASP.NET Identity implementations
             //If we are working with a custom IdentityUser class, change it here
             .AddAspNetIdentity<IdentityUser>()
             .AddDeveloperSigningCredential()
-            //.AddProfileService<CustomProfileService>()
             .AddConfigurationStore(opt =>
                 {
                     opt.ConfigureDbContext = c => c.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"],
@@ -68,6 +67,8 @@ namespace AuthApi
                 });
 
                 services.AddControllersWithViews();
+
+            SeedData.EnsureUsers(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,10 +78,6 @@ namespace AuthApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            //seeder.SeedAdminUser();
-
-            seeder.EnsureSeedData(Configuration["ConnectionString:AllphiFleetDB"]);
 
             app.UseHttpsRedirection();
 
