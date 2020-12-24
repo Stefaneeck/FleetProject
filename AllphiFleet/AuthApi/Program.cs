@@ -16,7 +16,7 @@ namespace AuthApi
         {
             CreateHostBuilder(args).Build()
                 //seed database
-                .MigrateDatabase()
+                //.MigrateDatabase()
                 .Run();
         }
 

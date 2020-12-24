@@ -72,7 +72,8 @@ import { AuthGuardService } from './shared/guards/auth-guard.service';
       { path: 'signin-callback', component: SigninRedirectCallbackComponent },
       { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
       //routeguard, user must be logged in and role admin
-      { path: 'privacy', component: PrivacyComponent, canActivate: [AuthGuardService], data: { roles: ['Admin'] } },
+      //{ path: 'privacy', component: PrivacyComponent, canActivate: [AuthGuardService], data: { roles: ['Admin'] } },
+      { path: 'privacy', component: PrivacyComponent },
       { path: 'unauthorized', component: UnauthorizedComponent }
     ]),
     OAuthModule.forRoot()
