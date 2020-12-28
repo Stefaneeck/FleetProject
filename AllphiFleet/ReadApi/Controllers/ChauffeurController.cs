@@ -36,7 +36,6 @@ namespace ReadApi.Controllers
         }
 
         //Get: api/chauffeur/1
-
         [HttpGet("{id}", Name = "GetChauffeur")]
         public IActionResult Get(long id)
         {
@@ -56,7 +55,6 @@ namespace ReadApi.Controllers
         public IActionResult Privacy()
         {
             var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
-            //Response.Headers.Add("Access - Control - Allow - Origin", "*");
             return Ok(claims);
         }
     }

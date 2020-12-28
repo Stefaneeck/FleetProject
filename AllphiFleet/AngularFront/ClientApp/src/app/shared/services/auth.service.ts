@@ -25,8 +25,6 @@ export class AuthService {
       automaticSilentRenew: true,
       //Pay attention that this URI must be the same as the one in the client configuration on the IDP level
       silent_redirect_uri: `${Constants.clientRoot}/assets/silent-callback.html`,
-
-      //neccessary? attempt to save roles in token
       loadUserInfo: true
     }
   }
