@@ -1,0 +1,10 @@
+2020-12-28 13:11:26.8002 INFO Alle chauffeurs aan het ophalen.
+2020-12-28 13:11:27.5600 INFO Ophalen van 16 records.
+2020-12-28 13:11:29.9082 INFO Alle tankkaarten aan het ophalen.
+2020-12-28 13:11:29.9456 INFO Ophalen van 31 records.
+2020-12-28 14:54:40.9467 INFO Alle chauffeurs aan het ophalen.
+2020-12-28 14:54:41.6793 INFO Ophalen van 16 records.
+2020-12-28 14:59:35.8248 INFO Alle chauffeurs aan het ophalen.
+2020-12-28 14:59:36.7413 INFO Ophalen van 16 records.
+2020-12-28 15:09:40.8765 INFO Alle chauffeurs aan het ophalen.
+2020-12-28 15:09:41.6307 INFO Ophalen van 16 records.

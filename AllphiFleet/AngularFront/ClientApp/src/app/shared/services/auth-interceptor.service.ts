@@ -63,7 +63,8 @@ export class AuthInterceptorService implements HttpInterceptor {
                   console.log("http response error");
                   ; console.log(err);
                   console.log(err.status);
-                  if (err && (err.status === 401 || err.status === 403)) {
+                  //error status 0 when cors related error
+                  if (err && (err.status === 401 || err.status === 403 || err.status === 0)) {
                     this.router.navigate(['/unauthorized']);
                   }
                   throw 'error in a request ' + err.status;
