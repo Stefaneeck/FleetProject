@@ -7,24 +7,30 @@
     <input type="hidden" asp-for="ReturnUrl" />
     <div>
         <label>Username</label>
-        <input asp-for="Username" />
+        <input asp-for="Username" class="form-control" />
         <span asp-validation-for="Username"></span>
     </div>
     <div>
         <label>Password</label>
-        <input asp-for="Password" />
+        <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
         <label>Confirm password</label>
-        <input asp-for="ConfirmPassword" />
+        <input asp-for="ConfirmPassword" class="form-control" />
         <span asp-validation-for="ConfirmPassword"></span>
     </div>
     <div>
-        <button type="submit">Register</button>
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
     </div>
     <div>
-        @if(ViewBag.Errors != null)
+        <br />
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+    <div>
+        @if (ViewBag.Errors != null)
         {
             @foreach (IdentityError e in ViewBag.Errors)
             {
@@ -32,6 +38,5 @@
                 <br />
             }
         }
-        
     </div>
 </form>

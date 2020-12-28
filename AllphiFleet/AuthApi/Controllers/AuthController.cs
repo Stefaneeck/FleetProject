@@ -30,7 +30,12 @@ namespace AuthApi.Controllers
                 return View(viewModel);
             }
 
-            var user = new IdentityUser(viewModel.Username);
+            var user = new IdentityUser
+            {
+                UserName = viewModel.Username,
+                Email = viewModel.Email,
+                EmailConfirmed = true
+            };
             var result = await _userManager.CreateAsync(user, viewModel.Password);
 
             if (result.Succeeded)
