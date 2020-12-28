@@ -78,6 +78,8 @@ namespace AuthApi.Configuration
                   new Claim(JwtClaimTypes.GivenName, "Alice"),
                   new Claim(JwtClaimTypes.FamilyName, "Smith"),
                   new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                  //added with AddToRoleAsync
+                  //new Claim(JwtClaimTypes.Role, "admin")
                 }).Result;
                 if (!result.Succeeded)
                 {

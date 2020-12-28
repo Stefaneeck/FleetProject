@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using AuthApi.Configuration;
+using AuthApi.Services;
 
 namespace AuthApi
 {
@@ -38,6 +39,7 @@ namespace AuthApi
             //If we are working with a custom IdentityUser class, change it here
             services.AddIdentityServer()
             .AddAspNetIdentity<IdentityUser>()
+            .AddProfileService<ProfileService>()
             .AddDeveloperSigningCredential()
             .AddConfigurationStore(opt =>
                 {
