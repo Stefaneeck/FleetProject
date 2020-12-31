@@ -27,20 +27,20 @@ namespace WCFReadEntities
         [DataMember]
         public bool Active { get; set; }
 
-        [DataMember]
+        //[DataMember]
 
         //rel adres
-        public long AddressId { get; set; }
-
-        //[DataMember]
-        //public Adres Adres { get; set; }
+        //public long AddressId { get; set; }
 
         [DataMember]
-
-        //rel tankkaart
-        public long FuelCardId { get; set; }
+        public Address Address { get; set; }
 
         //[DataMember]
-        //public Tankkaart Tankkaart { get; set; }
+
+        //rel tankkaart
+        //public long FuelCardId { get; set; }
+
+        [DataMember]
+        public FuelCard FuelCard { get; set; }
     }
 }

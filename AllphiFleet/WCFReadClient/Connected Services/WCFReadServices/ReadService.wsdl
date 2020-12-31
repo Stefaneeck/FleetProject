@@ -42,20 +42,60 @@
   <wsdl:message name="IReadService_GetDrivers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDriversResponse" />
   </wsdl:message>
+  <wsdl:message name="IReadService_GetDriverById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriverById" />
+  </wsdl:message>
+  <wsdl:message name="IReadService_GetDriverById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriverByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IReadService_GetAddresses_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAddresses" />
   </wsdl:message>
   <wsdl:message name="IReadService_GetAddresses_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAddressesResponse" />
   </wsdl:message>
+  <wsdl:message name="IReadService_GetAddressById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressById" />
+  </wsdl:message>
+  <wsdl:message name="IReadService_GetAddressById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReadService_GetFuelCards_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuelCards" />
+  </wsdl:message>
+  <wsdl:message name="IReadService_GetFuelCards_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuelCardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReadService_GetFuelCardById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuelCardById" />
+  </wsdl:message>
+  <wsdl:message name="IReadService_GetFuelCardById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuelCardByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IReadService">
     <wsdl:operation name="GetDrivers">
       <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetDrivers" message="tns:IReadService_GetDrivers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetDriversResponse" message="tns:IReadService_GetDrivers_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetDriverById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetDriverById" message="tns:IReadService_GetDriverById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetDriverByIdResponse" message="tns:IReadService_GetDriverById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAddresses">
       <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetAddresses" message="tns:IReadService_GetAddresses_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetAddressesResponse" message="tns:IReadService_GetAddresses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetAddressById" message="tns:IReadService_GetAddressById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetAddressByIdResponse" message="tns:IReadService_GetAddressById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFuelCards">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetFuelCards" message="tns:IReadService_GetFuelCards_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetFuelCardsResponse" message="tns:IReadService_GetFuelCards_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFuelCardById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetFuelCardById" message="tns:IReadService_GetFuelCardById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetFuelCardByIdResponse" message="tns:IReadService_GetFuelCardById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReadService" type="tns:IReadService">
@@ -69,8 +109,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetDriverById">
+      <soap:operation soapAction="http://tempuri.org/IReadService/GetDriverById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAddresses">
       <soap:operation soapAction="http://tempuri.org/IReadService/GetAddresses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressById">
+      <soap:operation soapAction="http://tempuri.org/IReadService/GetAddressById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFuelCards">
+      <soap:operation soapAction="http://tempuri.org/IReadService/GetFuelCards" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFuelCardById">
+      <soap:operation soapAction="http://tempuri.org/IReadService/GetFuelCardById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -91,8 +167,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetDriverById">
+      <soap12:operation soapAction="http://tempuri.org/IReadService/GetDriverById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAddresses">
       <soap12:operation soapAction="http://tempuri.org/IReadService/GetAddresses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressById">
+      <soap12:operation soapAction="http://tempuri.org/IReadService/GetAddressById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFuelCards">
+      <soap12:operation soapAction="http://tempuri.org/IReadService/GetFuelCards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFuelCardById">
+      <soap12:operation soapAction="http://tempuri.org/IReadService/GetFuelCardById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

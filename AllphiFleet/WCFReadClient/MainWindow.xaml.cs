@@ -12,7 +12,8 @@ namespace WCFReadClient
     public partial class MainWindow : Window
     {
         List<Address> addressList;
-        //List<Driver> driverList;
+        List<Driver> driverList;
+        List<FuelCard> fuelCardList;
         public MainWindow()
         {
             InitializeComponent();
@@ -26,7 +27,9 @@ namespace WCFReadClient
             try
             {
                 addressList = proxy.GetAddresses();
-                //driverList = proxy.GetDrivers();
+                driverList = proxy.GetDrivers();
+                fuelCardList = proxy.GetFuelCards();
+                var driver = proxy.GetDriverById(1);
                 
                 
                 foreach(Address item in addressList)

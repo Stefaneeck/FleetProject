@@ -12,6 +12,18 @@ namespace WCFReadServices
         List<Driver> GetDrivers();
 
         [OperationContract]
+        Driver GetDriverById(int id);
+
+        [OperationContract]
         List<Address> GetAddresses();
+
+        [OperationContract]
+        Address GetAddressById(int id);
+
+        [OperationContract]
+        List<FuelCard> GetFuelCards();
+
+        [OperationContract]
+        FuelCard GetFuelCardById(int id);
     }
 }

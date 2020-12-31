@@ -8,23 +8,17 @@
   <xs:element name="ArrayOfDriver" nillable="true" type="tns:ArrayOfDriver" />
   <xs:complexType name="Driver">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Actief" type="xs:boolean" />
-      <xs:element minOccurs="0" name="AdresId" type="xs:long" />
-      <xs:element minOccurs="0" name="GeboorteDatum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FuelCard" nillable="true" type="tns:FuelCard" />
       <xs:element minOccurs="0" name="Id" type="xs:long" />
-      <xs:element minOccurs="0" name="Naam" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RijksRegisterNummer" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TankkaartId" type="xs:long" />
-      <xs:element minOccurs="0" name="Voornaam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SocSecNumber" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Driver" nillable="true" type="tns:Driver" />
-  <xs:complexType name="ArrayOfAddress">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Address" nillable="true" type="tns:Address" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAddress" nillable="true" type="tns:ArrayOfAddress" />
   <xs:complexType name="Address">
     <xs:sequence>
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
@@ -35,4 +29,27 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:complexType name="FuelCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthType" type="xs:int" />
+      <xs:element minOccurs="0" name="CardNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Options" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pincode" type="xs:int" />
+      <xs:element minOccurs="0" name="ValidUntilDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FuelCard" nillable="true" type="tns:FuelCard" />
+  <xs:complexType name="ArrayOfAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Address" nillable="true" type="tns:Address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddress" nillable="true" type="tns:ArrayOfAddress" />
+  <xs:complexType name="ArrayOfFuelCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FuelCard" nillable="true" type="tns:FuelCard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFuelCard" nillable="true" type="tns:ArrayOfFuelCard" />
 </xs:schema>
