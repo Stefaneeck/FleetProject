@@ -37,11 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oidcClient", "oidcClient\oi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WCFReadEntities", "WCFReadEntities\WCFReadEntities.csproj", "{A9A2C08B-677F-4381-B2B9-EE5923EE7783}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WCFReadData", "WCFReadData\WCFReadData.csproj", "{8A3BC247-1602-4407-B082-FEFE7A07A82A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFReadServices", "WCFReadServices\WCFReadServices.csproj", "{9A66A35B-0786-4A2D-91D0-5BB50209C2D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFReadClient", "WCFReadClient\WCFReadClient.csproj", "{7D184E74-0FC1-4C41-9EE8-6B2BB9433DA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFReadData", "WCFReadData\WCFReadData.csproj", "{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,10 +105,6 @@ Global
 		{A9A2C08B-677F-4381-B2B9-EE5923EE7783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9A2C08B-677F-4381-B2B9-EE5923EE7783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9A2C08B-677F-4381-B2B9-EE5923EE7783}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A3BC247-1602-4407-B082-FEFE7A07A82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A3BC247-1602-4407-B082-FEFE7A07A82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A3BC247-1602-4407-B082-FEFE7A07A82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A3BC247-1602-4407-B082-FEFE7A07A82A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A66A35B-0786-4A2D-91D0-5BB50209C2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A66A35B-0786-4A2D-91D0-5BB50209C2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A66A35B-0786-4A2D-91D0-5BB50209C2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -117,6 +113,10 @@ Global
 		{7D184E74-0FC1-4C41-9EE8-6B2BB9433DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D184E74-0FC1-4C41-9EE8-6B2BB9433DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D184E74-0FC1-4C41-9EE8-6B2BB9433DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

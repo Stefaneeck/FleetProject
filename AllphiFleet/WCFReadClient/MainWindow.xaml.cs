@@ -36,11 +36,17 @@ namespace WCFReadClient
             try
             {
                 addressList = proxy.GetAddresses();
-                txtAddresses.Text = addressList.ToString();
+                
+                foreach(Address item in addressList)
+                {
+                    txtAddresses.Text += item.Street + item.Number + ", " + item.Zipcode + item.City;
+                    txtAddresses.Text += "\n";
+                }
+
             }
             catch(Exception ex)
             {
-                
+                txtAddresses.Text = ex.Message.ToString();
             }
             finally
             {
