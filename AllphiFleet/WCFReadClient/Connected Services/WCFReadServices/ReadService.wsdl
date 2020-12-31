@@ -36,6 +36,12 @@
       <xsd:import schemaLocation="http://localhost:2112/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFReadEntities" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IReadService_GetDrivers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDrivers" />
+  </wsdl:message>
+  <wsdl:message name="IReadService_GetDrivers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDriversResponse" />
+  </wsdl:message>
   <wsdl:message name="IReadService_GetAddresses_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAddresses" />
   </wsdl:message>
@@ -43,6 +49,10 @@
     <wsdl:part name="parameters" element="tns:GetAddressesResponse" />
   </wsdl:message>
   <wsdl:portType name="IReadService">
+    <wsdl:operation name="GetDrivers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetDrivers" message="tns:IReadService_GetDrivers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetDriversResponse" message="tns:IReadService_GetDrivers_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAddresses">
       <wsdl:input wsaw:Action="http://tempuri.org/IReadService/GetAddresses" message="tns:IReadService_GetAddresses_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReadService/GetAddressesResponse" message="tns:IReadService_GetAddresses_OutputMessage" />
@@ -50,6 +60,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReadService" type="tns:IReadService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDrivers">
+      <soap:operation soapAction="http://tempuri.org/IReadService/GetDrivers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAddresses">
       <soap:operation soapAction="http://tempuri.org/IReadService/GetAddresses" style="document" />
       <wsdl:input>
@@ -63,6 +82,15 @@
   <wsdl:binding name="NetTcpBinding_IReadService" type="tns:IReadService">
     <wsp:PolicyReference URI="#NetTcpBinding_IReadService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetDrivers">
+      <soap12:operation soapAction="http://tempuri.org/IReadService/GetDrivers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAddresses">
       <soap12:operation soapAction="http://tempuri.org/IReadService/GetAddresses" style="document" />
       <wsdl:input>

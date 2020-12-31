@@ -8,8 +8,8 @@ namespace WCFReadServices
     [ServiceContract]
     public interface IReadService
     {
-        //[OperationContract]
-        //List<Driver> GetDrivers();
+        [OperationContract]
+        List<Driver> GetDrivers();
 
         [OperationContract]
         List<Address> GetAddresses();

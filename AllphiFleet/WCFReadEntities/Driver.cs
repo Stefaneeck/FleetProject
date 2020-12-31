@@ -10,27 +10,27 @@ namespace WCFReadEntities
         public long Id { get; set; }
 
         [DataMember]
-        public string Naam { get; set; }
+        public string Name { get; set; }
 
         [DataMember]
-        public string Voornaam { get; set; }
+        public string FirstName { get; set; }
 
         [DataMember]
-        public DateTime GeboorteDatum { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         [DataMember]
-        public string RijksRegisterNummer { get; set; }
+        public string SocSecNumber { get; set; }
 
         //[DataMember]
         //public RijbewijsTypes TypeRijbewijs { get; set; }
 
         [DataMember]
-        public bool Actief { get; set; }
+        public bool Active { get; set; }
 
         [DataMember]
 
         //rel adres
-        public long AdresId { get; set; }
+        public long AddressId { get; set; }
 
         //[DataMember]
         //public Adres Adres { get; set; }
@@ -38,7 +38,7 @@ namespace WCFReadEntities
         [DataMember]
 
         //rel tankkaart
-        public long TankkaartId { get; set; }
+        public long FuelCardId { get; set; }
 
         //[DataMember]
         //public Tankkaart Tankkaart { get; set; }

@@ -104,6 +104,7 @@
     </None>
     <None Include="Connected Services\WCFReadServices\ReadService.wsdl" />
     <None Include="Properties\DataSources\WCFReadEntities.Address.datasource" />
+    <None Include="Properties\DataSources\WCFReadEntities.Driver.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,6 +135,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WCFReadData\WCFReadData.csproj">
+      <Project>{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}</Project>
+      <Name>WCFReadData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCFReadEntities\WCFReadEntities.csproj">
       <Project>{a9a2c08b-677f-4381-b2b9-ee5923ee7783}</Project>
       <Name>WCFReadEntities</Name>

@@ -15,6 +15,12 @@ namespace WCFReadClient.WCFReadServices {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFReadServices.IReadService")]
     public interface IReadService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReadService/GetDrivers", ReplyAction="http://tempuri.org/IReadService/GetDriversResponse")]
+        System.Collections.Generic.List<WCFReadEntities.Driver> GetDrivers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReadService/GetDrivers", ReplyAction="http://tempuri.org/IReadService/GetDriversResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<WCFReadEntities.Driver>> GetDriversAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReadService/GetAddresses", ReplyAction="http://tempuri.org/IReadService/GetAddressesResponse")]
         System.Collections.Generic.List<WCFReadEntities.Address> GetAddresses();
         
@@ -47,6 +53,14 @@ namespace WCFReadClient.WCFReadServices {
         
         public ReadServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public System.Collections.Generic.List<WCFReadEntities.Driver> GetDrivers() {
+            return base.Channel.GetDrivers();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<WCFReadEntities.Driver>> GetDriversAsync() {
+            return base.Channel.GetDriversAsync();
         }
         
         public System.Collections.Generic.List<WCFReadEntities.Address> GetAddresses() {
