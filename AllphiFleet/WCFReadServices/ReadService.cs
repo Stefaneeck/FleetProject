@@ -79,7 +79,17 @@ namespace WCFReadServices
 
         public FuelCard GetFuelCardById(int id)
         {
-            throw new NotImplementedException();
+            var fuelCard = dbContext.Tankkaartens.FirstOrDefault(t => t.Id == id);
+
+            return new FuelCard()
+            {
+                Id = fuelCard.Id,
+                AuthType = fuelCard.AuthType,
+                CardNumber = fuelCard.Kaartnummer,
+                Pincode = fuelCard.Pincode,
+                ValidUntilDate = fuelCard.GeldigheidsDatum,
+                Options = fuelCard.Opties
+            };
         }
 
         public Driver MapChauffeurToDriver(Chauffeur c)

@@ -7,8 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Get Addresses" Name="btnAddresses" HorizontalAlignment="Left" Margin="689,362,0,0" VerticalAlignment="Top" Width="75" Click="btnAddresses_Click"/>
-        <TextBox Name="txtAddresses" HorizontalAlignment="Left" Height="278" Margin="219,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278"/>
+        <Button Content="Addresses" Name="btnAddresses" HorizontalAlignment="Left" Margin="75,185,0,0" VerticalAlignment="Top" Width="75" Click="btnAddresses_Click"/>
+        <TextBox Name="txtContent" HorizontalAlignment="Left" Height="278" Margin="219,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278"/>
+        <Button Content="Drivers" Name="btnDrivers" HorizontalAlignment="Left" Margin="75,53,0,0" VerticalAlignment="Top" Width="75" Click="btnDrivers_Click"/>
+        <Button Content="Fuelcards" Name="btnFuelCards" HorizontalAlignment="Left" Margin="75,311,0,0" VerticalAlignment="Top" Width="75" Click="btnFuelCards_Click"/>
+        <TextBox Text="Driver id"  Name="txtDriverId" HorizontalAlignment="Left" Height="23" Margin="539,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+        <TextBox Text="Address id"  Name="txtAddressId" HorizontalAlignment="Left" Height="23" Margin="539,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.618,7.043"/>
+        <TextBox Text="Fuelcard id"  Name="txtFuelCardId" HorizontalAlignment="Left" Height="23" Margin="539,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.218,9.348"/>
+        <Button Content="Get info" Name="btnGetDriverById" HorizontalAlignment="Left" Margin="644,53,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.44,-0.1" Click="btnGetDriverById_Click"/>
+        <Button Content="Get info" Name="btnAddressById" HorizontalAlignment="Left" Margin="644,182,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.44,-0.1" Click="btnAddressById_Click"/>
+        <Button Content="Get info" Name="btnFuelcardById" HorizontalAlignment="Left" Margin="644,308,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.44,-0.1" Click="btnFuelcardById_Click"/>
 
     </Grid>
 </Window>
