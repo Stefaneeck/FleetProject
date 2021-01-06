@@ -1,4 +1,4 @@
-﻿using Models.Enums;
+﻿using ModelsStandard.Enums;
 using System;
 
 namespace ModelsStandard
