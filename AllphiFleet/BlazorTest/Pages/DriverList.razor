@@ -3,7 +3,7 @@
 <h1 class="page-title">All drivers</h1>
 
 <!-- Show loading while employee list is not loaded yet. Will be null as long as the data hasn't arrived. Will be detected automatically when the data changes from null -->
-@if (Employees == null)
+@if (Drivers == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -13,22 +13,22 @@ else
     <thead>
         <tr>
             <th></th>
-            <th>Employee ID</th>
+            <th>Driver ID</th>
             <th>First name</th>
             <th>Last name</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var employee in Employees)
+        @foreach (var driver in Drivers)
         {
         <tr>
-            <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{employee.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
-            <td>@employee.EmployeeId</td>
-            <td>@employee.FirstName</td>
-            <td>@employee.LastName</td>
+            <td></td>
+            <td>@driver.Id</td>
+            <td>@driver.Voornaam</td>
+            <td>@driver.Naam</td>
             <td>
-                <a href="@($"driverdetail/{employee.EmployeeId}")" class="btn btn-primary table-btn">Detail</a>
+                <a href="@($"driverdetail/{driver.Id}")" class="btn btn-primary table-btn">Detail</a>
                     <!-- font awesome -->
                     <i class="fas fa-info-circle"></i>
             </td>

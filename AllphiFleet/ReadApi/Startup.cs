@@ -53,17 +53,23 @@ namespace ReadApi
             //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet omdat het in een ander project staat, 
             //daarom static klasse gemaakt waarin assembly kan worden opgehaald.
 
-            //moet de assembly zijn uit het project dat profile bevat
-            //moet dus assembly van services project zijn
+            //moet de assembly zijn uit het project dat profile bevat, moet dus assembly van services project zijn
             services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
 
             //extension method uit ExceptionMiddlewareExtensions klasse
+
             services.ConfigureLoggerService();
             //cross origin requests enablen voor angular project
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllReadApi",
                     builder => builder.WithOrigins("https://localhost:44329")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod());
+
+                //Blazor app
+                options.AddPolicy("AllowAllReadApi",
+                    builder => builder.WithOrigins("https://localhost:44338")
                                         .AllowAnyHeader()
                                         .AllowAnyMethod());
             });

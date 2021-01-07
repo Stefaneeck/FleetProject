@@ -21,7 +21,8 @@ namespace ReadApi.Controllers
             _logger = logger;
         }
 
-        [Authorize]
+        //currently disabled for blazor
+        //[Authorize]
         [HttpGet(Name = "getAllChauffeurs")]
         public IActionResult Get()
         {

@@ -4,11 +4,10 @@ namespace ModelsStandard
 {
     public class Adres : IIdentifiable
     {
-        public virtual long Id { get; set; }
-        public virtual string Straat { get; set; }
-        public virtual int Nummer { get; set; }
-        public virtual string Stad { get; set; }
-        public virtual int Postcode { get; set; }
-        public virtual ICollection<Chauffeur> Chauffeurs { get; set; }
+        public long Id { get; set; }
+        public string Straat { get; set; }
+        public int Nummer { get; set; }
+        public string Stad { get; set; }
+        public int Postcode { get; set; }
     }
 }

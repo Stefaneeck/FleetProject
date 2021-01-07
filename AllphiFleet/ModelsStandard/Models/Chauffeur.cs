@@ -5,22 +5,16 @@ namespace ModelsStandard
 {
     public class Chauffeur : IIdentifiable
     {
-        //virtual to support nhibernate lazy loading
-        public virtual long Id { get; set; }
-        public virtual string Naam { get; set; }
-        public virtual string Voornaam { get; set; }
-        public virtual DateTime GeboorteDatum { get; set; }
-        public virtual string RijksRegisterNummer { get; set; }
-        public virtual RijbewijsTypes TypeRijbewijs { get; set; }
-        public virtual bool Actief { get; set; }
-
-        //rel adres
-        public virtual long AdresId { get; set; }
-        public virtual Adres Adres { get; set; }
-
-        //rel tankkaart
-        public virtual long TankkaartId { get; set; }
-        public virtual Tankkaart Tankkaart { get; set; }
+        //cannot yet translate, coming in readapi in dutch 
+        public long Id { get; set; }
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public DateTime GeboorteDatum { get; set; }
+        public string RijksRegisterNummer { get; set; }
+        public RijbewijsTypes TypeRijbewijs { get; set; }
+        public bool Actief { get; set; }
+        public Adres Adres { get; set; }
+        public Tankkaart Tankkaart { get; set; }
 
     }
 }
