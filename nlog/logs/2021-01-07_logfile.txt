@@ -34,3 +34,17 @@
 2021-01-07 12:12:15.4082 INFO Ophalen van 16 records.
 2021-01-07 12:12:20.4791 INFO Alle chauffeurs aan het ophalen.
 2021-01-07 12:12:20.5014 INFO Ophalen van 16 records.
+2021-01-07 12:24:18.1893 INFO Alle chauffeurs aan het ophalen.
+2021-01-07 12:24:19.1294 INFO Ophalen van 16 records.
+2021-01-07 12:24:23.2389 INFO Alle chauffeurs aan het ophalen.
+2021-01-07 12:24:23.2635 INFO Ophalen van 16 records.
+2021-01-07 12:25:39.0723 INFO Alle chauffeurs aan het ophalen.
+2021-01-07 12:25:39.9562 INFO Ophalen van 16 records.
+2021-01-07 12:25:41.9221 INFO Alle chauffeurs aan het ophalen.
+2021-01-07 12:25:41.9460 INFO Ophalen van 16 records.
+2021-01-07 12:26:00.7146 INFO Alle chauffeurs aan het ophalen.
+2021-01-07 12:26:01.5907 INFO Ophalen van 16 records.
+2021-01-07 12:26:04.6115 INFO Alle chauffeurs aan het ophalen.
+2021-01-07 12:26:04.6385 INFO Ophalen van 16 records.
+2021-01-07 12:26:08.6819 INFO Alle chauffeurs aan het ophalen.
+2021-01-07 12:26:08.7094 INFO Ophalen van 16 records.

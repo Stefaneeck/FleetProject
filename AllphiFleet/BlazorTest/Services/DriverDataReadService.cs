@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace BlazorTest.Services
 {
+    //splitted in read and write because of builder.Services.AddHttpClient<IDriverDataReadService, DriverDataReadService>(client => client.BaseAddress = new Uri("https://localhost:44334/")); in program.cs
+    //need 2 different uri's, but can only add one per statement, so splitted in 2
     public class DriverDataReadService : IDriverDataReadService
     {
         private readonly HttpClient _httpClient;
@@ -16,21 +18,6 @@ namespace BlazorTest.Services
         public DriverDataReadService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-        }
-
-        public async Task<Chauffeur> AddDriver(Chauffeur driver)
-        {
-            var driverJson =
-                new StringContent(JsonSerializer.Serialize(driver), Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync("writeapi/chauffeur", driverJson);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return await JsonSerializer.DeserializeAsync<Chauffeur>(await response.Content.ReadAsStreamAsync());
-            }
-
-            return null;
         }
 
         public async Task DeleteDriver(int driverId)
@@ -48,14 +35,6 @@ namespace BlazorTest.Services
         {
             return await JsonSerializer.DeserializeAsync<Chauffeur>
                 (await _httpClient.GetStreamAsync($"api/chauffeur/{driverId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-        }
-
-        public async Task UpdateDriver(Chauffeur driver)
-        {
-            var driverJson =
-                new StringContent(JsonSerializer.Serialize(driver), Encoding.UTF8, "application/json");
-
-            await _httpClient.PutAsync("writeapi/chauffeur", driverJson);
         }
     }
 }
