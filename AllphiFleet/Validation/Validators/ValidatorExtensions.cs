@@ -1,9 +1,6 @@
 ﻿using FluentValidation;
 using Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WriteRepositories;
 
 namespace Validation.Validators
@@ -16,7 +13,7 @@ namespace Validation.Validators
             where TEntity : class, IIdentifiable
 
         {
-            string boodschap = typeof(TEntity).Name.ToString() + " bestaat niet";
+            string message = typeof(TEntity).Name.ToString() + " does not exist.";
 
             //als we een command hebben met een id, moet er ook een chauffeur bestaan met die id in de database
             //lamdba, input is TCommand, output is id
@@ -29,7 +26,7 @@ namespace Validation.Validators
                 return obj != null;
             })
             .WithErrorCode("AlreadyExists")
-            .WithMessage(boodschap);
+            .WithMessage(message);
         }
     }
 }

@@ -8,8 +8,6 @@ namespace BlazorTest.Services
     {
         Task<IEnumerable<Chauffeur>> GetAllDrivers();
         Task<Chauffeur> GetDriverDetails(int driverId);
-        Task<Chauffeur> AddDriver(Chauffeur driver);
-        Task UpdateDriver(Chauffeur driver);
-        Task DeleteDriver(int driverId);
+
     }
 }

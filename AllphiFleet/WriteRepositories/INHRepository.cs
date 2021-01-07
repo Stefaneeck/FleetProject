@@ -13,10 +13,10 @@ namespace WriteRepositories
         Task Save(T entity);
         Task Update(T entity);
         Task Delete(T entity);
-        IQueryable<Chauffeur> Chauffeurs { get; }
-        IQueryable<Aanvraag> Aanvragen { get; }
-        IQueryable<Adres> Adressen { get; }
-        IQueryable<Tankkaart> Tankkaarten { get; }
+        IQueryable<Driver> Drivers { get; }
+        IQueryable<Application> Applications { get; }
+        IQueryable<Address> Addresses { get; }
+        IQueryable<FuelCard> FuelCards { get; }
         IQueryable<T> GenericRepository { get; }
     }
 }

@@ -8,8 +8,8 @@ namespace WriteRepositories
 {
     public static class NHibernateExtensions
     {
-        //normaal in configureservices(?)
-        //maakt session factory, configureert het en registreert DI types
+        //normally in configureservices, better here
+        //creates session factory, configures it and registers DI types
         public static IServiceCollection AddNHibernate(this IServiceCollection services, string connectionString)
         {
             var mapper = new ModelMapper();
@@ -32,11 +32,6 @@ namespace WriteRepositories
 
             services.AddSingleton(sessionFactory);
             services.AddScoped(factory => sessionFactory.OpenSession());
-
-            //old
-            //services.AddScoped<IMapperSession, NHibernateMapperSession>();
-
-            //new
             services.AddTransient(typeof(INHRepository<>), typeof(NHRepository<>));
 
             return services;

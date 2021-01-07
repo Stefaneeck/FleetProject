@@ -16,11 +16,11 @@ namespace WriteRepositories
             _session = session;
         }
 
-        public IQueryable<Chauffeur> Chauffeurs => _session.Query<Chauffeur>();
-        public IQueryable<Aanvraag> Aanvragen => _session.Query<Aanvraag>();
-        public IQueryable<Adres> Adressen => _session.Query<Adres>();
+        public IQueryable<Driver> Drivers => _session.Query<Driver>();
+        public IQueryable<Application> Applications => _session.Query<Application>();
+        public IQueryable<Address> Addresses => _session.Query<Address>();
 
-        public IQueryable<Tankkaart> Tankkaarten => _session.Query<Tankkaart>();
+        public IQueryable<FuelCard> FuelCards => _session.Query<FuelCard>();
 
         public IQueryable<T> GenericRepository => _session.Query<T>();
 

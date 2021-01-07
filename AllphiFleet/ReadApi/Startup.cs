@@ -41,11 +41,11 @@ namespace ReadApi
 
             services.AddTransient(typeof(IDataReadRepository<>), typeof(DataReadRepository<>));
 
-            services.AddScoped<IChauffeurService, ChauffeurService>();
-            services.AddScoped<IAanvraagService, AanvraagService>();
-            services.AddScoped<IAdresService, AdresService>();
-            services.AddScoped<IFactuurService, FactuurService>();
-            services.AddScoped<ITankkaartService, TankkaartService>();
+            services.AddScoped<IDriverService, DriverService>();
+            services.AddScoped<IApplicationService, ApplicationService>();
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
+            services.AddScoped<IFuelCardService, FuelCardService>();
 
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();

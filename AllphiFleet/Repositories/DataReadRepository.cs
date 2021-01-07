@@ -6,7 +6,7 @@ namespace ReadRepositories
 {
     public class DataReadRepository<TEntity> : IDataReadRepository<TEntity> where TEntity : class, IIdentifiable
     {
-        //moet interface worden
+        //todo: make interface
         readonly AllphiFleetContext _fleetContext;
         readonly DbSet<TEntity> table;
         public DataReadRepository(AllphiFleetContext context)
@@ -15,8 +15,9 @@ namespace ReadRepositories
             table = _fleetContext.Set<TEntity>();
         }
 
-        //best iqueryable gebruiken, ienumerable eerder voor in memory data (gaat gegevens eerst lokaal ophalen en dan query'en).
-        //iqueryable voert de sql rechtstreeks op de db uit
+        //iqueriable best choice here, executes sql directly on db.
+        //ienumerable for in memory data (will transfer data locally and query after).
+
         public IQueryable<TEntity> GetAll()
         {
             return table;
