@@ -43,9 +43,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFReadClient", "WCFReadCli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFReadData", "WCFReadData\WCFReadData.csproj", "{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTest", "BlazorTest\BlazorTest.csproj", "{5A9E28D4-C515-4C7A-A53C-FA42292CE6D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTest", "BlazorTest\BlazorTest.csproj", "{5A9E28D4-C515-4C7A-A53C-FA42292CE6D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsStandard", "ModelsStandard\ModelsStandard.csproj", "{38C87CFB-C7D4-44BD-9BC0-521321BED6C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsStandard", "ModelsStandard\ModelsStandard.csproj", "{38C87CFB-C7D4-44BD-9BC0-521321BED6C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
