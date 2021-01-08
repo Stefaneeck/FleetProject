@@ -15,7 +15,7 @@ namespace WCFReadServices
         }
         public List<WCFReadEntities.Address> GetAddresses()
         {
-
+            //convert EF address to WCF address
             return dbContext.Addresses.Select(a =>
 
                 new WCFReadEntities.Address()
@@ -32,9 +32,9 @@ namespace WCFReadServices
 
         public List<WCFReadEntities.Driver> GetDrivers()
         {
-            /* not working (linq will try to find MapChauffeurToDriver at db level. Only after ToList() you are working outside of db.
+            /* not working (linq will try to find MapDriver at db level. Only after ToList() you are working outside of db.
             return dbContext.Chauffeurs.Select(c =>
-           MapChauffeurToDriver(c)).ToList();
+           MapDriver(c)).ToList();
             */
 
             //solution with ToList()
@@ -44,16 +44,18 @@ namespace WCFReadServices
 
         public List<WCFReadEntities.FuelCard> GetFuelCards()
         {
-            return dbContext.FuelCards.Select( t =>
+            //convert EF address to WCF address
+
+            return dbContext.FuelCards.Select(f =>
 
            new WCFReadEntities.FuelCard()
            {
-               Id = t.Id,
-               AuthType = t.AuthType,
-               CardNumber = t.CardNumber,
-               Pincode = t.Pincode,
-               ValidUntilDate = t.ValidUntilDate,
-               Options = t.Options
+               Id = f.Id,
+               AuthType = f.AuthType,
+               CardNumber = f.CardNumber,
+               Pincode = f.Pincode,
+               ValidUntilDate = f.ValidUntilDate,
+               Options = f.Options
            })
                 .ToList();
         }
@@ -92,34 +94,34 @@ namespace WCFReadServices
             };
         }
 
-        public WCFReadEntities.Driver MapDriver(WCFReadData.Driver c)
+        public WCFReadEntities.Driver MapDriver(WCFReadData.Driver d)
         {
             //convert from EF type to WCF type
             return new WCFReadEntities.Driver()
             {
-                Active = c.Active,
-                DateOfBirth = c.BirthDate,
-                Id = c.Id,
-                Name = c.Name,
-                FirstName = c.FirstName,
-                SocSecNumber = c.SocSecNr,
+                Active = d.Active,
+                DateOfBirth = d.BirthDate,
+                Id = d.Id,
+                Name = d.Name,
+                FirstName = d.FirstName,
+                SocSecNumber = d.SocSecNr,
 
                 Address = new WCFReadEntities.Address()
                 {
-                    Id = c.Address.Id,
-                    Street = c.Address.Street,
-                    Number = c.Address.Number,
-                    Zipcode = c.Address.Zipcode,
-                    City = c.Address.City
+                    Id = d.Address.Id,
+                    Street = d.Address.Street,
+                    Number = d.Address.Number,
+                    Zipcode = d.Address.Zipcode,
+                    City = d.Address.City
                 },
                 FuelCard = new WCFReadEntities.FuelCard()
                 {
-                    Id = c.FuelCard.Id,
-                    AuthType = c.FuelCard.AuthType,
-                    CardNumber = c.FuelCard.CardNumber,
-                    Pincode = c.FuelCard.Pincode,
-                    ValidUntilDate = c.FuelCard.ValidUntilDate,
-                    Options = c.FuelCard.Options
+                    Id = d.FuelCard.Id,
+                    AuthType = d.FuelCard.AuthType,
+                    CardNumber = d.FuelCard.CardNumber,
+                    Pincode = d.FuelCard.Pincode,
+                    ValidUntilDate = d.FuelCard.ValidUntilDate,
+                    Options = d.FuelCard.Options
                 }
             };
         }
