@@ -14,7 +14,7 @@ namespace BlazorTest.Pages
         [Parameter]
         public string Id { get; set; }
 
-        public Chauffeur Driver { get; set; }
+        public Driver Driver { get; set; }
 
         [Inject]
         public IDriverDataReadService DriverDataReadService { get; set; }

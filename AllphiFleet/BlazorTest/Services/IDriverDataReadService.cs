@@ -6,8 +6,8 @@ namespace BlazorTest.Services
 {
     public interface IDriverDataReadService
     {
-        Task<IEnumerable<Chauffeur>> GetAllDrivers();
-        Task<Chauffeur> GetDriverDetails(int driverId);
+        Task<IEnumerable<Driver>> GetAllDrivers();
+        Task<Driver> GetDriverDetails(int driverId);
 
     }
 }

@@ -7,7 +7,7 @@
     }
     else
     {
-    <h1 class="page-title">Details for @Driver.Voornaam @Driver.Naam</h1>
+    <h1 class="page-title">Details for @Driver.FirstName @Driver.Name</h1>
         <div class="col-12 row">
             <div class="col-xs-12 col-sm-8">
                 <div class="form-group row">
@@ -19,49 +19,49 @@
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">First name</label>
                     <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@Driver.Voornaam</label>
+                        <label type="text" readonly class="form-control-plaintext">@Driver.FirstName</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Last name</label>
                     <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@Driver.Naam</label>
+                        <label type="text" readonly class="form-control-plaintext">@Driver.Name</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Birthdate</label>
                     <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@Driver.GeboorteDatum.ToShortDateString()</label>
+                        <label type="text" readonly class="form-control-plaintext">@Driver.BirthDate.ToShortDateString()</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Email</label>
                     <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@Driver.RijksRegisterNummer</label>
+                        <label type="text" readonly class="form-control-plaintext">@Driver.SocSecNr</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Street</label>
                     <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@Driver.Adres.Straat</label>
+                        <label type="text" readonly class="form-control-plaintext">@Driver.Address.Street</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Zip</label>
                     <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@Driver.Adres.Nummer</label>
+                        <label type="text" readonly class="form-control-plaintext">@Driver.Address.Number</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">City</label>
                     <div class="col-sm-8">
-                        <label type="text" readonly class="form-control-plaintext">@Driver.Actief</label>
+                        <label type="text" readonly class="form-control-plaintext">@Driver.Active</label>
                     </div>
                 </div>
 

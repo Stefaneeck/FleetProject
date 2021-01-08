@@ -18,16 +18,16 @@ namespace BlazorTest.Services
             _httpClient = httpClient;
         }
 
-        public async Task<Chauffeur> AddDriver(Chauffeur driver)
+        public async Task<Driver> AddDriver(Driver driver)
         {
             var driverJson =
                 new StringContent(JsonSerializer.Serialize(driver), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("writeapi/chauffeur", driverJson);
+            var response = await _httpClient.PostAsync("writeapi/driver", driverJson);
 
             if (response.IsSuccessStatusCode)
             {
-                return await JsonSerializer.DeserializeAsync<Chauffeur>(await response.Content.ReadAsStreamAsync());
+                return await JsonSerializer.DeserializeAsync<Driver>(await response.Content.ReadAsStreamAsync());
             }
 
             return null;
@@ -35,15 +35,15 @@ namespace BlazorTest.Services
 
         public async Task DeleteDriver(int driverId)
         {
-            await _httpClient.DeleteAsync($"writeapi/chauffeur/delete/{driverId}");
+            await _httpClient.DeleteAsync($"writeapi/driver/delete/{driverId}");
         }
 
-        public async Task UpdateDriver(Chauffeur driver)
+        public async Task UpdateDriver(Driver driver)
         {
             var driverJson =
                 new StringContent(JsonSerializer.Serialize(driver), Encoding.UTF8, "application/json");
 
-            await _httpClient.PutAsync("writeapi/chauffeur", driverJson);
+            await _httpClient.PutAsync("writeapi/driver", driverJson);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace BlazorTest.Pages
 {
     public partial class DriverList
     {
-		public IEnumerable<Chauffeur> Drivers { get; set; }
+		public IEnumerable<Driver> Drivers { get; set; }
 
 		[Inject]
 		public IDriverDataReadService DriverDataReadService { get; set; }

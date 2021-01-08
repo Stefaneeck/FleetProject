@@ -5,8 +5,8 @@ namespace BlazorTest.Services
 {
     public interface IDriverDataWriteService
     {
-        Task<Chauffeur> AddDriver(Chauffeur driver);
-        Task UpdateDriver(Chauffeur driver);
+        Task<Driver> AddDriver(Driver driver);
+        Task UpdateDriver(Driver driver);
         Task DeleteDriver(int driverId);
     }
 }
