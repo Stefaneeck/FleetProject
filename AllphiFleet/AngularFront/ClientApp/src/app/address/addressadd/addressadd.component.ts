@@ -13,7 +13,6 @@ export class AddressaddComponent implements OnInit {
 
   errorMessage = "";
   address: IAddress | undefined;
-  //datatype nog veranderen naar concreter type
   addressForm: any;
 
   constructor(private formBuilder: FormBuilder, private addressService: AddressService,
@@ -23,10 +22,10 @@ export class AddressaddComponent implements OnInit {
 
     this.addressForm = this.formBuilder.group({
 
-      Straat: ['', [Validators.required]],
-      Nummer: ['', [Validators.required]],
-      Postcode: ['', [Validators.required]],
-      Stad: ['', [Validators.required]]
+      Street: ['', [Validators.required]],
+      Number: ['', [Validators.required]],
+      Zipcode: ['', [Validators.required]],
+      City: ['', [Validators.required]]
     });
   }
 
@@ -40,7 +39,7 @@ export class AddressaddComponent implements OnInit {
         //next: result => this.driver = result,
         error: err => this.errorMessage = err,
         complete: () => {
-          //doet hij enkel als er geen error is
+          //only executed when there is no error
           this.router.navigate(['/addresslist']);
         }
       });

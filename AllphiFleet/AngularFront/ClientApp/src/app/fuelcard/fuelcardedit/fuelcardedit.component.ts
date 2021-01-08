@@ -41,11 +41,11 @@ export class FuelcardeditComponent implements OnInit {
 
       this.fuelcardForm = this.formBuilder.group({
 
-        KaartNummer: [this.fuelcard.kaartnummer, [Validators.required]],
+        CardNumber: [this.fuelcard.cardNumber, [Validators.required]],
         Pincode: [this.fuelcard.pincode, [Validators.required]],
         AuthType: [this.fuelcard.authType, [Validators.required]],
-        GeldigheidsDatum: [formatDate(this.fuelcard.geldigheidsDatum, 'yyyy-MM-dd', 'en'), [Validators.required]],
-        Opties: [this.fuelcard.opties, [Validators.required]]
+        ValidUntilDate: [formatDate(this.fuelcard.validUntilDate, 'yyyy-MM-dd', 'en'), [Validators.required]],
+        Options: [this.fuelcard.options, [Validators.required]]
       });
 
       const stringValue = this.fuelcard.authType.toString() + ": " + (this.fuelcard.authType).toString();

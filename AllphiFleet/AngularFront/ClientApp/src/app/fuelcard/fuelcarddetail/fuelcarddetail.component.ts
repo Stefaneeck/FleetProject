@@ -54,4 +54,9 @@ export class FuelcarddetailComponent implements OnInit {
     this.router.navigate(['/fuelcardlist']);
   }
 
+  getAuthTypeViewValue(enumValue: number): string {
+
+    return this.fuelcardService.showEnumValueAuthType(enumValue);
+  }
+
 }

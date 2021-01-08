@@ -19,7 +19,7 @@ export class DrivereditComponent implements OnInit {
   driverForm: any;
   pageTitle: string = 'Edit driver';
 
-  //dubbele waarden er uithalen voor dropdown te populeren met goede data, enum geeft dubbele binding
+  //enum caused double values, remove double values to populate dropdown with good data
   enumAuthTypes = Object.keys(EnumAuthenticationTypes).filter(key => !isNaN(Number(EnumAuthenticationTypes[key])));
   enumDriverLicenseTypes = Object.keys(EnumDriverLicenseTypes).filter(key => !isNaN(Number(EnumDriverLicenseTypes[key])));
 
@@ -28,7 +28,7 @@ export class DrivereditComponent implements OnInit {
 
   ngOnInit() {
 
-    //id ophalen uit route parameter (naar hier gestuurd van driverlist component)
+    //get id from route parameter (sent here driverlist component)
     let id = +this.route.snapshot.paramMap.get('id');
 
     if (id) {
@@ -45,7 +45,7 @@ export class DrivereditComponent implements OnInit {
     const promise = this.driverService.getDriver(id).toPromise();
 
     //zeggen dat data een IDriver is
-    //doet eigenlijk niets in JS, geen validatie ofzo. enkel met type unkown en dan 'bewijzen' dat het een IDriver is.
+    //doet eigenlijk niets in JS, geen validatie. enkel met type unkown en dan 'bewijzen' dat het een IDriver is.
     promise.then((data:IDriver) => {
 
       this.driver = data;
@@ -60,37 +60,37 @@ export class DrivereditComponent implements OnInit {
       //omdat het json object met kleine letters uit de api komt. we moeten dus hier de syntax van onze domeinklasse aanpassen aan hoe het in het json object zit, er wordt niets intern automatisch gemapt.
 
       this.driverForm = this.formBuilder.group({
-        Naam: [this.driver.naam, [Validators.required]],
-        Voornaam: [this.driver.voornaam, [Validators.required]],
+        Name: [this.driver.name, [Validators.required]],
+        FirstName: [this.driver.firstName, [Validators.required]],
 
-        Adres: this.formBuilder.group({
-          Straat: [this.driver.adres.straat, [Validators.required]],
-          Nummer: [this.driver.adres.nummer, [Validators.required]],
-          Stad: [this.driver.adres.stad, [Validators.required]],
-          Postcode: [this.driver.adres.postcode, [Validators.required]],
+        Address: this.formBuilder.group({
+          Street: [this.driver.address.street, [Validators.required]],
+          Number: [this.driver.address.number, [Validators.required]],
+          City: [this.driver.address.city, [Validators.required]],
+          Zipcode: [this.driver.address.zipcode, [Validators.required]],
         }),
 
-        GeboorteDatum: [formatDate(this.driver.geboorteDatum, 'yyyy-MM-dd', 'en'), [Validators.required]],
-        RijksRegisterNummer: [this.driver.rijksRegisterNummer, [Validators.required]],
-        TypeRijbewijs: [this.driver.typeRijbewijs, [Validators.required]],
+        BirthDate: [formatDate(this.driver.birthDate, 'yyyy-MM-dd', 'en'), [Validators.required]],
+        SocSecNr: [this.driver.socSecNr, [Validators.required]],
+        DriverLicenseType: [this.driver.driverLicenseType, [Validators.required]],
 
-        Tankkaart: this.formBuilder.group({
-          Kaartnummer: [this.driver.tankkaart.kaartnummer, [Validators.required]],
-          GeldigheidsDatum: [formatDate(this.driver.tankkaart.geldigheidsDatum, 'yyyy-MM-dd', 'en'), [Validators.required]],
-          Pincode: [this.driver.tankkaart.pincode, [Validators.required]],
-          AuthType: [this.driver.tankkaart.authType, [Validators.required]],
-          Opties: [this.driver.tankkaart.opties, [Validators.required]],
+        FuelCard: this.formBuilder.group({
+          CardNumber: [this.driver.fuelCard.cardNumber, [Validators.required]],
+          ValidUntilDate: [formatDate(this.driver.fuelCard.validUntilDate, 'yyyy-MM-dd', 'en'), [Validators.required]],
+          Pincode: [this.driver.fuelCard.pincode, [Validators.required]],
+          AuthType: [this.driver.fuelCard.authType, [Validators.required]],
+          Options: [this.driver.fuelCard.options, [Validators.required]],
         }),
 
-        Actief: [this.driver.actief, [Validators.required]]
+        Active: [this.driver.active, [Validators.required]]
 
       });
 
       //default values van dropdowns opvullen
-      const stringValueDriverLicenseDropdown = this.driver.typeRijbewijs.toString() + ": " + this.driver.typeRijbewijs.toString();
-      this.driverForm.controls['TypeRijbewijs'].setValue(stringValueDriverLicenseDropdown, { onlySelf: true });
-      const stringValueAuthTypeDropdown = this.driver.tankkaart.authType.toString() + ": " + this.driver.tankkaart.authType.toString();
-      this.driverForm.controls['Tankkaart'].controls['AuthType'].setValue(stringValueAuthTypeDropdown, { onlySelf: true });
+      const stringValueDriverLicenseDropdown = this.driver.driverLicenseType.toString() + ": " + this.driver.driverLicenseType.toString();
+      this.driverForm.controls['DriverLicenseType'].setValue(stringValueDriverLicenseDropdown, { onlySelf: true });
+      const stringValueAuthTypeDropdown = this.driver.fuelCard.authType.toString() + ": " + this.driver.fuelCard.authType.toString();
+      this.driverForm.controls['FuelCard'].controls['AuthType'].setValue(stringValueAuthTypeDropdown, { onlySelf: true });
       console.log(stringValueAuthTypeDropdown);
 
 
@@ -107,18 +107,18 @@ export class DrivereditComponent implements OnInit {
     driverDataFromForm.id = this.driver.id;
 
     //omzetten naar number (hij gaf strings door aan de api)
-    driverDataFromForm.Tankkaart.AuthType = Number(driverDataFromForm.Tankkaart.AuthType);
-    driverDataFromForm.TypeRijbewijs = Number(driverDataFromForm.TypeRijbewijs);
+    driverDataFromForm.FuelCard.AuthType = Number(driverDataFromForm.FuelCard.AuthType);
+    driverDataFromForm.DriverLicenseType = Number(driverDataFromForm.DriverLicenseType);
 
     //fix voor wanneer je edit, en niet aan de checkbox kwam, stuurde hij NaN als waarde door
-    if (isNaN(driverDataFromForm.Tankkaart.AuthType)) {
+    if (isNaN(driverDataFromForm.FuelCard.AuthType)) {
       console.log("authtype NaN");
-      driverDataFromForm.Tankkaart.AuthType = this.driver.tankkaart.authType;
+      driverDataFromForm.FuelCard.AuthType = this.driver.fuelCard.authType;
     }
 
-    if (isNaN(driverDataFromForm.TypeRijbewijs)) {
-      console.log("rijbewijs NaN");
-      driverDataFromForm.TypeRijbewijs = this.driver.typeRijbewijs;
+    if (isNaN(driverDataFromForm.DriverLicenseType)) {
+      console.log("driver license type NaN");
+      driverDataFromForm.DriverLicenseType = this.driver.driverLicenseType;
     }
 
     if (this.driverForm.valid) {

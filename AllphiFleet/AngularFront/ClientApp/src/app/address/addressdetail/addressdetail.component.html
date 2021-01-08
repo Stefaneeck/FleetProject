@@ -1,6 +1,6 @@
 <div class='card' *ngIf='address'>
   <div class='card-header'>
-    {{ pageTitle + ': ' + address.straat + ' ' + address.stad }}
+    {{ pageTitle + ': ' + address.street + ' ' + address.city }}
   </div>
 
   <div class='card-body'>
@@ -12,15 +12,19 @@
         </div>
         <div class='row'>
           <div class='col-md-4'>Street:</div>
-          <div class='col-md-8'>{{ address.straat }}</div>
+          <div class='col-md-8'>{{ address.street }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Number:</div>
+          <div class='col-md-8'>{{ address.number }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>Zipcode:</div>
-          <div class='col-md-8'>{{ address.postcode }}</div>
+          <div class='col-md-8'>{{ address.zipcode }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>City:</div>
-          <div class='col-md-8'>{{ address.stad }}</div>
+          <div class='col-md-8'>{{ address.city }}</div>
         </div>
       </div>
     </div>

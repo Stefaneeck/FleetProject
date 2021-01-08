@@ -3,14 +3,15 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IFuelcard} from '../domain/IFuelcard';
+import { EnumAuthenticationTypes } from '../domain/enums/EnumAuthenticationTypes';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuelcardService {
-  private fuelcardReadUrl = 'https://localhost:44334/api/tankkaart';
-  private fuelcardWriteUrl = 'https://localhost:44358/writeapi/tankkaart'
+  private fuelcardReadUrl = 'https://localhost:44334/api/fuelcard';
+  private fuelcardWriteUrl = 'https://localhost:44358/writeapi/fuelcard'
 
   constructor(private http: HttpClient) { }
 
@@ -57,6 +58,11 @@ export class FuelcardService {
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
+  }
+
+  showEnumValueAuthType(value: number): string {
+
+    return EnumAuthenticationTypes[value];
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {

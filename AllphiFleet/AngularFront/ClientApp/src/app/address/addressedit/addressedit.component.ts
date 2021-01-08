@@ -37,10 +37,10 @@ export class AddresseditComponent implements OnInit {
       this.address = data;
 
       this.addressForm = this.formBuilder.group({
-        Straat: [this.address.straat, [Validators.required]],
-        Nummer: [this.address.nummer, [Validators.required]],
-        Postcode: [this.address.postcode, [Validators.required]],
-        Stad: [this.address.stad, [Validators.required]],
+        Street: [this.address.street, [Validators.required]],
+        Number: [this.address.number, [Validators.required]],
+        Zipcode: [this.address.zipcode, [Validators.required]],
+        City: [this.address.city, [Validators.required]],
 
       });
 
@@ -51,7 +51,7 @@ export class AddresseditComponent implements OnInit {
 
   updateAddress(address: IAddress): void {
     let addressDataFromForm = this.addressForm.value;
-    //id manueel toevoegen
+    //add id manually
     addressDataFromForm.id = this.address.id;
 
     if (this.addressForm.valid) {

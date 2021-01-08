@@ -62,22 +62,24 @@ namespace ReadApi
             //cross origin requests enablen voor angular project
             services.AddCors(options =>
             {
+                //angular app
                 options.AddPolicy("AllowAllReadApi",
-                    builder => builder.WithOrigins("https://localhost:44329")
+                    builder => builder.WithOrigins("https://localhost:44329", "https://localhost:44338")
                                         .AllowAnyHeader()
                                         .AllowAnyMethod());
-
+                
                 //Blazor app
-                options.AddPolicy("AllowAllReadApi",
+                /*
+                options.AddPolicy("AllowAllReadApiBlazor",
                     builder => builder.WithOrigins("https://localhost:44338")
                                         .AllowAnyHeader()
-                                        .AllowAnyMethod());
+                                        .AllowAnyMethod()); 
+                */
             });
 
             services.AddAuthentication("Bearer").
                 AddIdentityServerAuthentication("Bearer", opt =>
                {
-                   //opt.RequireHttpsMetadata = false;
                    opt.Authority = "https://localhost:44372"; // base-address of your identityserver
                    opt.ApiName = "api1"; // if you are using API resources, you can specify the name here
                });

@@ -29,32 +29,32 @@ export class DriveraddComponent implements OnInit {
   ngOnInit() {
 
     this.driverForm = this.formBuilder.group({
-      //linkse kolom waar nu '' staat, daar kan je default value instellen
-      Naam: ['', [Validators.required]],
-      Voornaam: ['', [Validators.required]],
+      //left column (first argument) = default value
+      Name: ['', [Validators.required]],
+      FirstName: ['', [Validators.required]],
 
-      //nested group: adres
-      Adres: this.formBuilder.group({ 
-        Straat: ['', [Validators.required]],
-        Nummer: ['', [Validators.required]],
-        Stad: ['', [Validators.required]],
-        Postcode: ['', [Validators.required]],
+      //nested group: address
+      Address: this.formBuilder.group({ 
+        Street: ['', [Validators.required]],
+        Number: ['', [Validators.required]],
+        City: ['', [Validators.required]],
+        Zipcode: ['', [Validators.required]],
       }),
 
-      GeboorteDatum: ['', [Validators.required]],
-      RijksRegisterNummer: ['', [Validators.required]],
-      TypeRijbewijs: [null, [Validators.required]],
+      BirthDate: ['', [Validators.required]],
+      SocSecNr: ['', [Validators.required]],
+      DriverLicenseType: [null, [Validators.required]],
 
-      //nested group: tankkaart
-      Tankkaart: this.formBuilder.group({
-        Kaartnummer: ['', [Validators.required]],
-        GeldigheidsDatum: ['', [Validators.required]],
+      //nested group: fuelcard
+      FuelCard: this.formBuilder.group({
+        CardNumber: ['', [Validators.required]],
+        ValidUntilDate: ['', [Validators.required]],
         Pincode: ['', [Validators.required]],
         AuthType: [null, [Validators.required]],
-        Opties: ['', [Validators.required]],
+        Options: ['', [Validators.required]],
       }),
 
-      Actief: [false, [Validators.required]]
+      Active: [false, [Validators.required]]
 
     });
   }

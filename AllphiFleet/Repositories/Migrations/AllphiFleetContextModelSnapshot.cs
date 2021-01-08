@@ -150,59 +150,59 @@ namespace Repositories.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Models.Aanvraag", b =>
+            modelBuilder.Entity("Models.Address", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("DatumAanvraag")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("GewensteData")
+                    b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StatusAanvraag")
+                    b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<int>("TypeAanvraag")
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Zipcode")
                         .HasColumnType("int");
 
-                    b.Property<long>("VoertuigId")
+                    b.HasKey("Id");
+
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("Models.Application", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("ApplicationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ApplicationStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ApplicationType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PossibleDates")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("VehicleId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VoertuigId");
+                    b.HasIndex("VehicleId");
 
-                    b.ToTable("Aanvraag");
-                });
-
-            modelBuilder.Entity("Models.Adres", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("Nummer")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Postcode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Stad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Straat")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Adressen");
+                    b.ToTable("Application");
                 });
 
             modelBuilder.Entity("Models.Auth.User", b =>
@@ -213,8 +213,14 @@ namespace Repositories.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -224,7 +230,13 @@ namespace Repositories.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FamilyName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GivenName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -253,6 +265,12 @@ namespace Repositories.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Position")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -276,175 +294,50 @@ namespace Repositories.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Models.Chauffeur", b =>
+            modelBuilder.Entity("Models.Driver", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<bool>("Actief")
+                    b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<long>("AdresId")
+                    b.Property<long>("AddressId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("GeboorteDatum")
+                    b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Naam")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RijksRegisterNummer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("TankkaartId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("TypeRijbewijs")
+                    b.Property<int>("DriverLicenseType")
                         .HasColumnType("int");
 
-                    b.Property<string>("Voornaam")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdresId");
-
-                    b.HasIndex("TankkaartId");
-
-                    b.ToTable("Chauffeurs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Actief = true,
-                            AdresId = 1L,
-                            GeboorteDatum = new DateTime(1979, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Naam = "Bob",
-                            RijksRegisterNummer = "999-888-7777",
-                            TankkaartId = 1L,
-                            TypeRijbewijs = 2,
-                            Voornaam = "Uncle"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Actief = true,
-                            AdresId = 2L,
-                            GeboorteDatum = new DateTime(1989, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Naam = "Breem",
-                            RijksRegisterNummer = "999-888-1111",
-                            TankkaartId = 2L,
-                            TypeRijbewijs = 1,
-                            Voornaam = "Rik"
-                        });
-                });
-
-            modelBuilder.Entity("Models.Factuur", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("NaamGefactureerde")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Factuur");
-                });
-
-            modelBuilder.Entity("Models.Herstelling", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("DatumHerstelling")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Documenten")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Fotos")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SchadeOmschrijving")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("VerzekeringsMaatschappijId")
+                    b.Property<long>("FuelCardId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("VerzekeringsMaatschappijId");
-
-                    b.ToTable("Herstelling");
-                });
-
-            modelBuilder.Entity("Models.Nummerplaat", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("NummerPlaatTekens")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("VoertuigId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VoertuigId");
-
-                    b.ToTable("Nummerplaat");
-                });
-
-            modelBuilder.Entity("Models.Onderhoud", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("DatumOnderhoud")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long>("FactuurId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Garage")
+                    b.Property<string>("SocSecNr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Prijs")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<long>("VoertuigId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("FactuurId");
+                    b.HasIndex("AddressId");
 
-                    b.HasIndex("VoertuigId");
+                    b.HasIndex("FuelCardId");
 
-                    b.ToTable("Onderhoud");
+                    b.ToTable("Drivers");
                 });
 
-            modelBuilder.Entity("Models.Tankkaart", b =>
+            modelBuilder.Entity("Models.FuelCard", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -454,40 +347,139 @@ namespace Repositories.Migrations
                     b.Property<int>("AuthType")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("GeldigheidsDatum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Kaartnummer")
+                    b.Property<int>("CardNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("Opties")
+                    b.Property<string>("Options")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Pincode")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("ValidUntilDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Tankkaarten");
+                    b.ToTable("FuelCards");
                 });
 
-            modelBuilder.Entity("Models.VerzekeringsMaatschappij", b =>
+            modelBuilder.Entity("Models.InsuranceCompany", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ReferentieNrVerzekeringsMaatschappij")
+                    b.Property<int>("RefNrInsuranceCompany")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("VerzekeringsMaatschappij");
+                    b.ToTable("InsuranceCompany");
                 });
 
-            modelBuilder.Entity("Models.Voertuig", b =>
+            modelBuilder.Entity("Models.Invoice", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ClientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invoice");
+                });
+
+            modelBuilder.Entity("Models.LicensePlate", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("LicensePlateCharacters")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("VehicleId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("LicensePlate");
+                });
+
+            modelBuilder.Entity("Models.Maintenance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("DealerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("InvoiceId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("MaintenanceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long>("VehicleId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("Maintenance");
+                });
+
+            modelBuilder.Entity("Models.Repair", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("DamageDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Documents")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("InsuranceCompanyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Photos")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RepairDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InsuranceCompanyId");
+
+                    b.ToTable("Repair");
+                });
+
+            modelBuilder.Entity("Models.Vehicle", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -497,18 +489,18 @@ namespace Repositories.Migrations
                     b.Property<long>("ChassisNr")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("KilometerStand")
+                    b.Property<int>("FuelType")
                         .HasColumnType("int");
 
-                    b.Property<int>("TypeBrandStof")
+                    b.Property<int>("Mileage")
                         .HasColumnType("int");
 
-                    b.Property<int>("TypeWagen")
+                    b.Property<int>("VehicleType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Voertuig");
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -562,104 +554,104 @@ namespace Repositories.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.Aanvraag", b =>
+            modelBuilder.Entity("Models.Application", b =>
                 {
-                    b.HasOne("Models.Voertuig", "Voertuig")
-                        .WithMany("Aanvragen")
-                        .HasForeignKey("VoertuigId")
+                    b.HasOne("Models.Vehicle", "Vehicle")
+                        .WithMany("Applications")
+                        .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Voertuig");
+                    b.Navigation("Vehicle");
                 });
 
-            modelBuilder.Entity("Models.Chauffeur", b =>
+            modelBuilder.Entity("Models.Driver", b =>
                 {
-                    b.HasOne("Models.Adres", "Adres")
-                        .WithMany("Chauffeurs")
-                        .HasForeignKey("AdresId")
+                    b.HasOne("Models.Address", "Address")
+                        .WithMany("Drivers")
+                        .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Models.Tankkaart", "Tankkaart")
-                        .WithMany("Chauffeurs")
-                        .HasForeignKey("TankkaartId")
+                    b.HasOne("Models.FuelCard", "FuelCard")
+                        .WithMany("Drivers")
+                        .HasForeignKey("FuelCardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Adres");
+                    b.Navigation("Address");
 
-                    b.Navigation("Tankkaart");
+                    b.Navigation("FuelCard");
                 });
 
-            modelBuilder.Entity("Models.Herstelling", b =>
+            modelBuilder.Entity("Models.LicensePlate", b =>
                 {
-                    b.HasOne("Models.VerzekeringsMaatschappij", "VerzekeringsMaatschappij")
-                        .WithMany("Herstellingen")
-                        .HasForeignKey("VerzekeringsMaatschappijId")
+                    b.HasOne("Models.Vehicle", "Vehicle")
+                        .WithMany("LicensePlates")
+                        .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("VerzekeringsMaatschappij");
+                    b.Navigation("Vehicle");
                 });
 
-            modelBuilder.Entity("Models.Nummerplaat", b =>
+            modelBuilder.Entity("Models.Maintenance", b =>
                 {
-                    b.HasOne("Models.Voertuig", "Voertuig")
-                        .WithMany("Nummerplaten")
-                        .HasForeignKey("VoertuigId")
+                    b.HasOne("Models.Invoice", "Invoice")
+                        .WithMany("MaintenancesOnInvoice")
+                        .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Voertuig");
-                });
-
-            modelBuilder.Entity("Models.Onderhoud", b =>
-                {
-                    b.HasOne("Models.Factuur", "Factuur")
-                        .WithMany("OnderhoudenOpFactuur")
-                        .HasForeignKey("FactuurId")
+                    b.HasOne("Models.Vehicle", "Vehicle")
+                        .WithMany("Maintenances")
+                        .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Models.Voertuig", "Voertuig")
-                        .WithMany("OnderhoudsBeurten")
-                        .HasForeignKey("VoertuigId")
+                    b.Navigation("Invoice");
+
+                    b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("Models.Repair", b =>
+                {
+                    b.HasOne("Models.InsuranceCompany", "InsuranceCompany")
+                        .WithMany("Repairs")
+                        .HasForeignKey("InsuranceCompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Factuur");
-
-                    b.Navigation("Voertuig");
+                    b.Navigation("InsuranceCompany");
                 });
 
-            modelBuilder.Entity("Models.Adres", b =>
+            modelBuilder.Entity("Models.Address", b =>
                 {
-                    b.Navigation("Chauffeurs");
+                    b.Navigation("Drivers");
                 });
 
-            modelBuilder.Entity("Models.Factuur", b =>
+            modelBuilder.Entity("Models.FuelCard", b =>
                 {
-                    b.Navigation("OnderhoudenOpFactuur");
+                    b.Navigation("Drivers");
                 });
 
-            modelBuilder.Entity("Models.Tankkaart", b =>
+            modelBuilder.Entity("Models.InsuranceCompany", b =>
                 {
-                    b.Navigation("Chauffeurs");
+                    b.Navigation("Repairs");
                 });
 
-            modelBuilder.Entity("Models.VerzekeringsMaatschappij", b =>
+            modelBuilder.Entity("Models.Invoice", b =>
                 {
-                    b.Navigation("Herstellingen");
+                    b.Navigation("MaintenancesOnInvoice");
                 });
 
-            modelBuilder.Entity("Models.Voertuig", b =>
+            modelBuilder.Entity("Models.Vehicle", b =>
                 {
-                    b.Navigation("Aanvragen");
+                    b.Navigation("Applications");
 
-                    b.Navigation("Nummerplaten");
+                    b.Navigation("LicensePlates");
 
-                    b.Navigation("OnderhoudsBeurten");
+                    b.Navigation("Maintenances");
                 });
 #pragma warning restore 612, 618
         }

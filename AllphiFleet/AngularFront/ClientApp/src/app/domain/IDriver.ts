@@ -1,9 +1,21 @@
-import { ITankkaart } from "./ITankkaart";
 import { IAddress } from "./IAddress";
+import { IFuelcard } from "./IFuelcard";
 
 
 export interface IDriver {
 
+  id: number;
+  name: string;
+  firstName: number;
+  birthDate: Date;
+  socSecNr: number;
+  driverLicenseType: number;
+  active: boolean;
+  address: IAddress;
+  fuelCard: IFuelcard;
+  
+  /*
+   *
   id: number;
   naam: string;
   voornaam: number;
@@ -13,15 +25,6 @@ export interface IDriver {
   actief: boolean;
   adres: IAddress;
   tankkaart: ITankkaart;
-  /*
-  id: number;
-  name: string;
-  firstName: number;
-  dateOfBirth: Date;
-  SocialSecurityNumber: number;
-  DriverLicenceType: number;
-  Active: boolean;
-  AddressId: number;
-  GasCardId: number;
+
   */
 }

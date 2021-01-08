@@ -1,111 +1,111 @@
 <form class="marginBottom" [formGroup]="driverForm" *ngIf='driver'>
   <div class="form-group">
     <label for="inputName">Name</label>
-    <input type="text" class="form-control" id="inputName" formControlName="Naam">
+    <input type="text" class="form-control" id="inputName" formControlName="Name">
 
     <span class="text-danger"
-          *ngIf="(driverForm.controls.Naam.touched || submitted) && driverForm.controls.Naam.errors?.required">
+          *ngIf="(driverForm.controls.Name.touched || submitted) && driverForm.controls.Name.errors?.required">
       Name is required.
     </span>
   </div>
   <div class="form-group">
     <label for="inputFirstName">First Name</label>
-    <input type="text" class="form-control" id="inputFirstName" formControlName="Voornaam">
+    <input type="text" class="form-control" id="inputFirstName" formControlName="FirstName">
 
     <span class="text-danger"
-          *ngIf="(driverForm.controls.Voornaam.touched || submitted) && driverForm.controls.Voornaam.errors?.required">
+          *ngIf="(driverForm.controls.FirstName.touched || submitted) && driverForm.controls.FirstName.errors?.required">
       First name is required.
     </span>
   </div>
 
-  <!-- formGroupName niet vergeten voor nested object-->
-  <div class="form-group" formGroupName="Adres">
-    <label>Adres</label>
+  <!-- dont't forget formGroupName for nested object-->
+  <div class="form-group" formGroupName="Address">
+    <label>Address</label>
     <div class="form-group">
       <label for="inputAddressStreet">Street</label>
-      <input type="text" class="form-control" id="inputAddressStreet" formControlName="Straat">
+      <input type="text" class="form-control" id="inputAddressStreet" formControlName="Street">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Adres.controls.Straat.touched || submitted) && driverForm.controls.Adres.controls.Straat.errors?.required">
+            *ngIf="(driverForm.controls.Address.controls.Street.touched || submitted) && driverForm.controls.Address.controls.Street.errors?.required">
         Street is required.
       </span>
     </div>
     <div class="form-group">
       <label for="inputAddressNumber">Number</label>
-      <input type="number" class="form-control" id="inputAddressNumber" formControlName="Nummer">
+      <input type="number" class="form-control" id="inputAddressNumber" formControlName="Number">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Adres.controls.Nummer.touched || submitted) && driverForm.controls.Adres.controls.Nummer.errors?.required">
+            *ngIf="(driverForm.controls.Address.controls.Number.touched || submitted) && driverForm.controls.Address.controls.Number.errors?.required">
         House number is required.
       </span>
     </div>
     <div class="form-group">
       <label for="inputAddressCity">City</label>
-      <input type="text" class="form-control" id="inputAddressCity" formControlName="Stad">
+      <input type="text" class="form-control" id="inputAddressCity" formControlName="City">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Adres.controls.Stad.touched || submitted) && driverForm.controls.Adres.controls.Stad.errors?.required">
+            *ngIf="(driverForm.controls.Address.controls.City.touched || submitted) && driverForm.controls.Address.controls.City.errors?.required">
         City is required.
       </span>
     </div>
     <div class="form-group">
       <label for="inputAddressZipCode">Zipcode</label>
-      <input type="number" class="form-control" id="inputAddressZipCode" formControlName="Postcode">
+      <input type="number" class="form-control" id="inputAddressZipCode" formControlName="Zipcode">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Adres.controls.Postcode.touched || submitted) && driverForm.controls.Adres.controls.Postcode.errors?.required">
+            *ngIf="(driverForm.controls.Address.controls.Zipcode.touched || submitted) && driverForm.controls.Address.controls.Zipcode.errors?.required">
         Zipcode is required.
       </span>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputDateOfBirth">Date of birth</label>
-    <input type="date" class="form-control" id="inputDateOfBirth" formControlName="GeboorteDatum">
+    <label for="inputBirthDate">Birthdate</label>
+    <input type="date" class="form-control" id="inputBirthDate" formControlName="BirthDate">
 
     <span class="text-danger"
-          *ngIf="(driverForm.controls.GeboorteDatum.touched || submitted) && driverForm.controls.GeboorteDatum.errors?.required">
+          *ngIf="(driverForm.controls.BirthDate.touched || submitted) && driverForm.controls.BirthDate.errors?.required">
       Date of birth is required.
     </span>
   </div>
   <div class="form-group">
-    <label for="inputSocialSecNumber">Social security number</label>
-    <input type="text" class="form-control" id="inputSocialSecNumber" formControlName="RijksRegisterNummer">
+    <label for="inputSocSecNumber">Social security number</label>
+    <input type="text" class="form-control" id="inputSocSecNumber" formControlName="SocSecNr">
 
     <span class="text-danger"
-          *ngIf="(driverForm.controls.RijksRegisterNummer.touched || submitted) && driverForm.controls.RijksRegisterNummer.errors?.required">
+          *ngIf="(driverForm.controls.SocSecNr.touched || submitted) && driverForm.controls.SocSecNr.errors?.required">
       Social security number is required.
     </span>
   </div>
   <div class="form-group">
     <label for="selectDriverLicenseType">Driver license type</label>
-    <select id="selectDriverLicenseType" class="form-control" formControlName="TypeRijbewijs">
+    <select id="selectDriverLicenseType" class="form-control" formControlName="DriverLicenseType">
       <option *ngFor="let type of enumDriverLicenseTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
     </select>
 
     <span class="text-danger"
-          *ngIf="(driverForm.controls.TypeRijbewijs.touched || submitted) && driverForm.controls.TypeRijbewijs.errors?.required">
+          *ngIf="(driverForm.controls.DriverLicenseType.touched || submitted) && driverForm.controls.DriverLicenseType.errors?.required">
       Driver license type is required.
     </span>
   </div>
 
-  <div class="form-group" formGroupName="Tankkaart">
-    <label>Tankkaart</label>
+  <div class="form-group" formGroupName="FuelCard">
+    <label>Fuelcard</label>
     <div class="form-group">
-      <label for="inputCardCardNumber">Kaartnummer</label>
-      <input type="number" class="form-control" id="inputCardCardNumber" formControlName="Kaartnummer">
+      <label for="inputCardCardNumber">Card number</label>
+      <input type="number" class="form-control" id="inputCardCardNumber" formControlName="CardNumber">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Tankkaart.controls.Kaartnummer.touched || submitted) && driverForm.controls.Tankkaart.controls.Kaartnummer.errors?.required">
+            *ngIf="(driverForm.controls.FuelCard.controls.CardNumber.touched || submitted) && driverForm.controls.FuelCard.controls.CardNumber.errors?.required">
         Card number is required.
       </span>
     </div>
     <div class="form-group">
-      <label for="inputCardValidUntil">Geldigheidsdatum</label>
-      <input type="date" class="form-control" id="inputCardValidUntil" formControlName="GeldigheidsDatum">
+      <label for="inputCardValidUntilDate">Valid until</label>
+      <input type="date" class="form-control" id="inputCardValidUntilDate" formControlName="ValidUntilDate">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Tankkaart.controls.GeldigheidsDatum.touched || submitted) && driverForm.controls.Tankkaart.controls.GeldigheidsDatum.errors?.required">
+            *ngIf="(driverForm.controls.FuelCard.controls.ValidUntilDate.touched || submitted) && driverForm.controls.FuelCard.controls.ValidUntilDate.errors?.required">
         Valid until date is required.
       </span>
     </div>
@@ -114,7 +114,7 @@
       <input type="number" class="form-control" id="inputCardPin" formControlName="Pincode">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Tankkaart.controls.Pincode.touched || submitted) && driverForm.controls.Tankkaart.controls.Pincode.errors?.required">
+            *ngIf="(driverForm.controls.FuelCard.controls.Pincode.touched || submitted) && driverForm.controls.FuelCard.controls.Pincode.errors?.required">
         Pincode is required.
       </span>
     </div>
@@ -125,24 +125,24 @@
       </select>
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Tankkaart.controls.AuthType.touched || submitted) && driverForm.controls.Tankkaart.controls.AuthType.errors?.required">
+            *ngIf="(driverForm.controls.FuelCard.controls.AuthType.touched || submitted) && driverForm.controls.FuelCard.controls.AuthType.errors?.required">
         Auth type is required.
       </span>
     </div>
     <div class="form-group">
-      <label for="inputCardOptions">Opties</label>
-      <input type="text" class="form-control" id="inputCardOptions" formControlName="Opties">
+      <label for="inputCardOptions">Options</label>
+      <input type="text" class="form-control" id="inputCardOptions" formControlName="Options">
 
       <span class="text-danger"
-            *ngIf="(driverForm.controls.Tankkaart.controls.Opties.touched || submitted) && driverForm.controls.Tankkaart.controls.Opties.errors?.required">
+            *ngIf="(driverForm.controls.FuelCard.controls.Options.touched || submitted) && driverForm.controls.FuelCard.controls.Options.errors?.required">
         Options is required.
       </span>
     </div>
   </div>
 
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="checkActief" formControlName="Actief">
-    <label class="form-check-label" for="checkActief">Active</label>
+    <input type="checkbox" class="form-check-input" id="checkActive" formControlName="Active">
+    <label class="form-check-label" for="checkActive">Active</label>
   </div>
   <button type="submit" class="btn btn-primary" (click)="updateDriver(driverForm.value)">Submit</button>
 </form>
