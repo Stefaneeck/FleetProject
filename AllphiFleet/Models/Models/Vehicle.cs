@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using Models.Enums;
 
 namespace Models
@@ -13,8 +12,6 @@ namespace Models
         public virtual VehicleTypes VehicleType { get; set; }
         public virtual int Mileage { get; set; }
         public virtual ICollection<Maintenance> Maintenances { get; set; }
-
-        [JsonIgnore]
         public virtual ICollection<Application> Applications { get; set; }
     }
 }

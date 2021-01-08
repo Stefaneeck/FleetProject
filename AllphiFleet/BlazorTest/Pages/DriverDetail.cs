@@ -1,6 +1,6 @@
 ﻿using BlazorTest.Services;
 using Microsoft.AspNetCore.Components;
-using ModelsStandard;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
