@@ -9,9 +9,9 @@ namespace Validation.Validators
         {
             RuleFor(a => a.CreateApplicationDTO.ApplicationDate).NotEmpty();
             RuleFor(a => a.CreateApplicationDTO.PossibleDates).NotEmpty();
-            RuleFor(a => a.CreateApplicationDTO.ApplicationStatus).NotEmpty();
-            RuleFor(a => a.CreateApplicationDTO.ApplicationType).NotEmpty();
-            RuleFor(a => a.CreateApplicationDTO.Vehicle).NotEmpty();
+            RuleFor(a => a.CreateApplicationDTO.ApplicationStatus).IsInEnum();
+            RuleFor(a => a.CreateApplicationDTO.ApplicationType).IsInEnum();
+            RuleFor(a => a.CreateApplicationDTO.Vehicle.Id).NotEmpty();
         }
     }
 }
