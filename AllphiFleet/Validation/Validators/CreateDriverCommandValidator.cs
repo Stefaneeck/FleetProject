@@ -19,6 +19,7 @@ namespace Validation.Validators
             RuleFor(c => c.CreateDriverDTO.SocSecNr).NotEmpty();
             RuleFor(c => c.CreateDriverDTO.DriverLicenseType).IsInEnum();
             RuleFor(c => c.CreateDriverDTO.FuelCard.AuthType).IsInEnum();
+            RuleFor(c => c.CreateDriverDTO.Email).NotEmpty();
         }
     }
 }

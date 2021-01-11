@@ -318,6 +318,9 @@ namespace Repositories.Migrations
                     b.Property<int>("DriverLicenseType")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

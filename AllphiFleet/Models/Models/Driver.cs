@@ -15,6 +15,8 @@ namespace Models
         public virtual DriverLicenseTypes DriverLicenseType { get; set; }
         public virtual bool Active { get; set; }
 
+        public virtual string Email { get; set; }
+
         //rel address
         public virtual long AddressId { get; set; }
         public virtual Address Address { get; set; }

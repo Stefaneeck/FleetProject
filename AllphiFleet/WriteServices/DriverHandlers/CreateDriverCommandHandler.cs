@@ -26,6 +26,7 @@ namespace WriteServices.DriverHandlers
                 SocSecNr = command.CreateDriverDTO.SocSecNr,
                 DriverLicenseType = command.CreateDriverDTO.DriverLicenseType,
                 Active = command.CreateDriverDTO.Active,
+                Email = command.CreateDriverDTO.Email,
 
                 Address = new Address
                 {

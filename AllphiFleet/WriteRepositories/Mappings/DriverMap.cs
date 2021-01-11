@@ -11,21 +11,22 @@ namespace WriteRepositories.Mappings
         {
             this.Table("Drivers");
 
-            this.Id(c => c.Id, c =>
+            this.Id(d => d.Id, d =>
             {
                 //native = what ever is native in underlying db
-                c.Generator(Generators.Native);
-                c.Type(NHibernateUtil.Int64);
-                c.Column("Id");
-                c.UnsavedValue(0);
+                d.Generator(Generators.Native);
+                d.Type(NHibernateUtil.Int64);
+                d.Column("Id");
+                d.UnsavedValue(0);
             });
             
-            this.Property(c => c.Name);
-            this.Property(c => c.FirstName);
-            this.Property(c => c.BirthDate);
-            this.Property(c => c.SocSecNr);
-            this.Property(c => c.DriverLicenseType);
-            this.Property(c => c.Active);
+            this.Property(d => d.Name);
+            this.Property(d => d.FirstName);
+            this.Property(d => d.BirthDate);
+            this.Property(d => d.SocSecNr);
+            this.Property(d => d.DriverLicenseType);
+            this.Property(d => d.Active);
+            this.Property(d => d.Email);
 
             ManyToOne(x => x.Address, map =>
             {

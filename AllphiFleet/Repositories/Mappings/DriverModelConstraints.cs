@@ -49,6 +49,7 @@ namespace ReadRepositories.Mappings
             modelBuilder.Entity<Driver>()
                 .Property(d => d.Active)
                 .IsRequired();
+
         }
     }
 }
