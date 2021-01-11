@@ -26,28 +26,55 @@ namespace WriteServices.ApplicationHandlers
                 PossibleDates = command.CreateApplicationDTO.PossibleDates,
                 ApplicationStatus = command.CreateApplicationDTO.ApplicationStatus,
 
+                //not making objects anyomore because we pass an existing id and altered the NH mapping
+                VehicleId = command.CreateApplicationDTO.VehicleId,
+                DriverId = command.CreateApplicationDTO.DriverId
+
+                /*
                 Vehicle = new Vehicle
                 {
+                    //not creating vehicle anymore from create application, just enter existing vehicle id
+                 
                     Id = 0,
                     FuelType = command.CreateApplicationDTO.Vehicle.FuelType,
                     VehicleType = command.CreateApplicationDTO.Vehicle.VehicleType,
                     ChassisNr = command.CreateApplicationDTO.Vehicle.ChassisNr,
                     Mileage = command.CreateApplicationDTO.Vehicle.Mileage
+                   
+
+                    //Id = command.CreateApplicationDTO.Vehicle.Id
+
+                    Id = command.CreateApplicationDTO.VehicleId
                 },
 
-            };
-            await SendMail(application);
+                
 
+                /*
+                Driver = new Driver
+                {
+                    //Id = command.CreateApplicationDTO.Driver.Id
+
+                    Id = command.CreateApplicationDTO.DriverId
+                },
+                */
+
+            };
+            
             _context.BeginTransaction();
 
             try
             {
                 await _context.Save(application);
                 await _context.Commit();
+
+                //send mail
+                await SendMail(application);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                //added because NH does not write much info in console
+                Console.WriteLine(e.InnerException.ToString());
                 await _context.Rollback();
             }
 

@@ -26,6 +26,7 @@ namespace WriteRepositories.Mappings
             this.Property(v => v.VehicleType);
 
 
+            /*
             Bag(x => x.Applications, map =>
             {
                 map.Key(k =>
@@ -39,6 +40,7 @@ namespace WriteRepositories.Mappings
                 map.Lazy(CollectionLazy.Lazy);
             },
             action => action.OneToMany());
+            */
         }
 
     }

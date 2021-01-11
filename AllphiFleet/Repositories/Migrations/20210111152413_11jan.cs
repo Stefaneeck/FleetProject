@@ -10,6 +10,7 @@ namespace Repositories.Migrations
                 name: "DriverId",
                 table: "Application",
                 type: "bigint",
+                //manually set to true because conflict with existing records
                 nullable: true,
                 defaultValue: 0L);
 

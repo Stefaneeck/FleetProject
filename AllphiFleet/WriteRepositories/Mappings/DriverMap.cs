@@ -43,6 +43,21 @@ namespace WriteRepositories.Mappings
                 //bij het verwijderen van een chauffeur, de tankkaart behouden
                 map.Cascade(Cascade.Refresh | Cascade.Persist | Cascade.Merge);
             });
+
+            /*
+            Bag(x => x.Applications, map =>
+            {
+                map.Key(k =>
+                {
+                    k.Column(col => col.Name("Id"));
+                });
+                map.Cascade(Cascade.None);
+                map.Inverse(true);
+
+                map.Lazy(CollectionLazy.Lazy);
+            },
+            action => action.OneToMany());
+            */
         }
     }
 }

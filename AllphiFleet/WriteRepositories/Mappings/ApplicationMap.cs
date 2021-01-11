@@ -25,14 +25,34 @@ namespace WriteRepositories.Mappings
             this.Property(a => a.PossibleDates);
             this.Property(a => a.ApplicationStatus);
 
-            //rel voertuig
+            //not creating entire new vehicle and driver objects anymore, property instead of manytoone
+            this.Property(a => a.VehicleId);
+            this.Property(a => a.DriverId);
+
+            //this.Property(a => a.Vehicle.Id);
+            //this.Property(a => a.Driver.Id);
+
+            /*
+            //rel vehicle
             ManyToOne(a => a.Vehicle, map =>
             {
                 map.Column("VehicleId");
-                //on delete, delete orphans
                 //cascade merge because we use merge with update, if this is not set only application will be updated
                 map.Cascade(Cascade.Refresh | Cascade.Persist | Cascade.Merge);
             });
+            */
+
+            /*
+            //rel driver
+            ManyToOne(x => x.Driver, map =>
+            {
+                map.Column("DriverId");
+                //cascade all also includes remove, so it would be deleted.. specific cascades because of this
+                //no delete action, you can see this as cascade none for delete
+                //keep driver on delete application
+                map.Cascade(Cascade.Refresh | Cascade.Persist | Cascade.Merge);
+            });
+            */
         }
     }
 }
