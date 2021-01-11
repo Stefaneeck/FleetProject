@@ -1,5 +1,6 @@
 ﻿using Models.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace Models
 {
@@ -14,13 +15,16 @@ namespace Models
         public virtual DriverLicenseTypes DriverLicenseType { get; set; }
         public virtual bool Active { get; set; }
 
-        //rel adres
+        //rel address
         public virtual long AddressId { get; set; }
         public virtual Address Address { get; set; }
 
-        //rel tankkaart
+        //rel fuelcard
         public virtual long FuelCardId { get; set; }
         public virtual FuelCard FuelCard { get; set; }
+
+        //rel application
+        public virtual ICollection<Application> Applications { get; set; }
 
     }
 }

@@ -192,6 +192,9 @@ namespace Repositories.Migrations
                     b.Property<int>("ApplicationType")
                         .HasColumnType("int");
 
+                    b.Property<long>("DriverId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("PossibleDates")
                         .HasColumnType("nvarchar(max)");
 
@@ -199,6 +202,8 @@ namespace Repositories.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DriverId");
 
                     b.HasIndex("VehicleId");
 
@@ -556,11 +561,19 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Models.Application", b =>
                 {
+                    b.HasOne("Models.Driver", "Driver")
+                        .WithMany("Applications")
+                        .HasForeignKey("DriverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Models.Vehicle", "Vehicle")
                         .WithMany("Applications")
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Driver");
 
                     b.Navigation("Vehicle");
                 });
@@ -628,6 +641,11 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Models.Address", b =>
                 {
                     b.Navigation("Drivers");
+                });
+
+            modelBuilder.Entity("Models.Driver", b =>
+                {
+                    b.Navigation("Applications");
                 });
 
             modelBuilder.Entity("Models.FuelCard", b =>

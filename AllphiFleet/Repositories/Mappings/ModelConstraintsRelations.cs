@@ -56,6 +56,13 @@ namespace ReadRepositories.Mappings
             .HasForeignKey(a => a.VehicleId)
             .IsRequired();
 
+            //rel driver fuelcard one many
+            modelBuilder.Entity<Application>()
+            .HasOne<Driver>(a => a.Driver)
+            .WithMany(d => d.Applications)
+            .HasForeignKey(a => a.DriverId)
+            .IsRequired();
+
         }
     }
 }
