@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th>Id</th>
-        <th>Card Number</th>
+        <th>Card number</th>
         <th>Pincode</th>
         <th>Auth type</th>
         <th>Options</th>
@@ -17,11 +17,11 @@
       address is de route, address.id is de parameter -->
       <tr *ngFor='let fuelcard of fuelcards' [routerLink]="['/fuelcard', fuelcard.id]" class="pointer">
         <td>{{ fuelcard.id }}</td>
-        <td>{{ fuelcard.kaartnummer }}</td>
+        <td>{{ fuelcard.cardNumber }}</td>
         <td>{{ fuelcard.pincode }}</td>
-        <td>{{ fuelcard.authType }}</td>
-        <td>{{ fuelcard.opties }}</td>
-        <td>{{ fuelcard.geldigheidsDatum | date:'dd/MM/yyyy' }}</td>
+        <td>{{ getAuthTypeViewValue(fuelcard.authType) }}</td>
+        <td>{{ fuelcard.options }}</td>
+        <td>{{ fuelcard.validUntilDate | date:'dd/MM/yyyy' }}</td>
       </tr>
     </tbody>
   </table>

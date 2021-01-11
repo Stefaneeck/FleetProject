@@ -58,18 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aanvraag.cs" />
-    <Compile Include="Adressen.cs" />
-    <Compile Include="Chauffeur.cs" />
-    <Compile Include="Factuur.cs" />
-    <Compile Include="FleetDBContext.cs" />
-    <Compile Include="Herstelling.cs" />
-    <Compile Include="Nummerplaat.cs" />
-    <Compile Include="Onderhoud.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="AllphiFleetWCFContext.cs" />
+    <Compile Include="Driver.cs" />
+    <Compile Include="FuelCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tankkaarten.cs" />
-    <Compile Include="VerzekeringsMaatschappij.cs" />
-    <Compile Include="Voertuig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

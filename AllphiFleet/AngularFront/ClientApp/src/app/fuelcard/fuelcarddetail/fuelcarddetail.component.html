@@ -1,6 +1,6 @@
 <div class='card' *ngIf='fuelcard'>
   <div class='card-header'>
-    {{ pageTitle}}
+    {{ pageTitle }}
   </div>
 
   <div class='card-body'>
@@ -12,7 +12,7 @@
         </div>
         <div class='row'>
           <div class='col-md-4'>Card Number:</div>
-          <div class='col-md-8'>{{ fuelcard.kaartnummer }}</div>
+          <div class='col-md-8'>{{ fuelcard.cardNumber }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>Pincode:</div>
@@ -20,15 +20,15 @@
         </div>
         <div class='row'>
           <div class='col-md-4'>Auth type:</div>
-          <div class='col-md-8'>{{ fuelcard.authType }}</div>
+          <div class='col-md-8'>{{ getAuthTypeViewValue(fuelcard.authType) }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>Options:</div>
-          <div class='col-md-8'>{{ fuelcard.opties }}</div>
+          <div class='col-md-8'>{{ fuelcard.options }}</div>
         </div>
         <div class='row'>
           <div class='col-md-4'>Valid until:</div>
-          <div class='col-md-8'>{{ fuelcard.geldigheidsDatum | date:'dd/MM/yyyy' }}</div>
+          <div class='col-md-8'>{{ fuelcard.validUntilDate | date:'dd/MM/yyyy' }}</div>
         </div>
       </div>
     </div>

@@ -24,8 +24,6 @@ export class DriverdetailComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
 
-    //getDriver methode vanuit driver service rechtstreeks gebruiken? dit zou wel handig zijn als je vanuit de html code een driver wil ophalen bij bv. onlick
-    //, dan is het makkelijk te refereren naar een methode in de code behind ipv naar code in een oninit
     //if id is truthy
     if (id) {
       this.getDriver(id);
@@ -35,7 +33,7 @@ export class DriverdetailComponent implements OnInit {
 
   getDriver(id: number): void {
     this.driverService.getDriver(id).subscribe({
-      //opgehaalde waarde in lokale driver variabele opslaan
+      //put fetched value in local driver variable
       next: result => {
         this.driver = result;
       },
@@ -52,7 +50,7 @@ export class DriverdetailComponent implements OnInit {
         console.log(this.errorMessage);
       },
       complete: () => {
-        //doet hij enkel als er geen error is, hij doet altijd maar 1 van de 3 (next, error of complete). (?)
+        //only if no error, only does one of the three(?) (next, error of complete). (?)
         //next, error, complete
         //the first one to process the data which come with the event raised by the Observable
         //the second one to process any error if it occurs

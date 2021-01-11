@@ -14,8 +14,8 @@ else
         <tr>
             <th></th>
             <th>Driver ID</th>
+            <th>Name</th>
             <th>First name</th>
-            <th>Last name</th>
             <th></th>
         </tr>
     </thead>
@@ -25,8 +25,8 @@ else
         <tr>
             <td></td>
             <td>@driver.Id</td>
-            <td>@driver.Voornaam</td>
-            <td>@driver.Naam</td>
+            <td>@driver.Name</td>
+            <td>@driver.FirstName</td>
             <td>
                 <a href="@($"driverdetail/{driver.Id}")" class="btn btn-primary table-btn">Detail</a>
             </td>

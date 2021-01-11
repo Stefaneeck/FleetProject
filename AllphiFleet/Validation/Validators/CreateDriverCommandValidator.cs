@@ -1,0 +1,24 @@
+﻿using FluentValidation;
+using Commands.DriverCommands;
+
+namespace Validation.Validators
+{
+    //validatie with fluentvalidation package
+    //We have n number of similar validators for each command
+    public class CreateDriverCommandValidator : AbstractValidator<CreateDriverCommand>
+    {
+        public CreateDriverCommandValidator()
+        {
+            RuleFor(c => c.CreateDriverDTO.Name).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.FirstName).NotEmpty();
+            //doesnt work, notempty bij boolean -> only ok if true
+            //RuleFor(c => c.CreateDriverDTO.Actief).NotEmpty();
+            //not neccessary, if he gets other value he will fail even before this
+            //RuleFor(c => c.CreateDriverDTO.Actief).Must(actief => actief == false || actief == true);
+            RuleFor(c => c.CreateDriverDTO.BirthDate).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.SocSecNr).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.DriverLicenseType).IsInEnum();
+            RuleFor(c => c.CreateDriverDTO.FuelCard.AuthType).IsInEnum();
+        }
+    }
+}

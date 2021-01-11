@@ -1,6 +1,6 @@
 ﻿using BlazorTest.Services;
 using Microsoft.AspNetCore.Components;
-using ModelsStandard;
+using Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -10,7 +10,7 @@ namespace BlazorTest.Pages
 {
     public partial class DriverList
     {
-		public IEnumerable<Chauffeur> Drivers { get; set; }
+		public IEnumerable<Driver> Drivers { get; set; }
 
 		[Inject]
 		public IDriverDataReadService DriverDataReadService { get; set; }

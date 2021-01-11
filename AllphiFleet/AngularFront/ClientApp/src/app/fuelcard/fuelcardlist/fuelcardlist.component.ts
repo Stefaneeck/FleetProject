@@ -24,5 +24,10 @@ export class FuelcardlistComponent implements OnInit {
       error: err => this.errorMessage = err
     });
   }
+
+  getAuthTypeViewValue(enumValue: number): string {
+
+    return this.fuelcardService.showEnumValueAuthType(enumValue);
+  }
 }
 

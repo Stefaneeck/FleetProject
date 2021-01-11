@@ -5,14 +5,14 @@
     <thead>
       <tr>
         <th>Id</th>
-        <th>Naam</th>
-        <th>Voornaam</th>
-        <th>Adres</th>
-        <th>Geboortedatum</th>
-        <th>Rijksregisternummer</th>
-        <th>Tankkaartnummer</th>
-        <th>Type rijbewijs</th>
-        <th>Actief</th>
+        <th>Name</th>
+        <th>First name</th>
+        <th>Address</th>
+        <th>Birthdate</th>
+        <th>Social security number</th>
+        <th>Fuelcard number</th>
+        <th>Driver license type</th>
+        <th>Active</th>
       </tr>
     </thead>
     <tbody>
@@ -20,16 +20,16 @@
   driver is de route, driver.id is de parameter -->
       <tr *ngFor='let driver of drivers' [routerLink]="['/driver', driver.id]" class="pointer">
         <td>{{ driver.id }}</td>
-        <td>{{ driver.naam }}</td>
-        <td>{{ driver.voornaam }}</td>
-        <td>{{ driver.adres.straat + ' '+ driver.adres.nummer + ', ' + driver.adres.postcode + ' ' + driver.adres.stad }}</td>
-        <td>{{ driver.geboorteDatum | date:'dd/MM/yyyy' }}</td>
-        <td>{{ driver.rijksRegisterNummer }}</td>
+        <td>{{ driver.name }}</td>
+        <td>{{ driver.firstName }}</td>
+        <td>{{ driver.address.street + ' '+ driver.address.number + ', ' + driver.address.zipcode + ' ' + driver.address.city }}</td>
+        <td>{{ driver.birthDate | date:'dd/MM/yyyy' }}</td>
+        <td>{{ driver.socSecNr }}</td>
         <!-- tankkaart string representatie maken of tankkaartnummer genoeg? -->
-        <td>{{ driver.tankkaart.kaartnummer }}</td>
-        <td>{{ getDriverLicenseViewValue(driver.typeRijbewijs) }}</td>
+        <td>{{ driver.fuelCard.cardNumber }}</td>
+        <td>{{ getDriverLicenseViewValue(driver.driverLicenseType) }}</td>
         <td>
-          <input type="checkbox" [checked]="driver.actief" class="notClickable">
+          <input type="checkbox" [checked]="driver.active" class="notClickable">
         </td>
       </tr>
     </tbody>

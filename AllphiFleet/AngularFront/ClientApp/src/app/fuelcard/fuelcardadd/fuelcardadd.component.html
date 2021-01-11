@@ -1,10 +1,10 @@
 <form [formGroup]="fuelcardForm" class="marginBottom">
   <div class="form-group">
     <label for="inputCardNumber">Card Number</label>
-    <input type="number" class="form-control" id="inputCardNumber" formControlName="KaartNummer">
+    <input type="number" class="form-control" id="inputCardNumber" formControlName="CardNumber">
 
     <span class="text-danger"
-          *ngIf="(fuelcardForm.controls.KaartNummer.touched || submitted) && fuelcardForm.controls.KaartNummer.errors?.required">
+          *ngIf="(fuelcardForm.controls.CardNumber.touched || submitted) && fuelcardForm.controls.CardNumber.errors?.required">
       Card number is required.
     </span>
   </div>
@@ -29,20 +29,20 @@
     </span>
   </div>
   <div class="form-group">
-    <label for="inputCardValidUntil">Geldigheidsdatum</label>
-    <input type="date" class="form-control" id="inputCardValidUntil" formControlName="GeldigheidsDatum">
+    <label for="inputCardValidUntilDate">Valid until</label>
+    <input type="date" class="form-control" id="inputCardValidUntilDate" formControlName="ValidUntilDate">
 
     <span class="text-danger"
-          *ngIf="(fuelcardForm.controls.GeldigheidsDatum.touched || submitted) && fuelcardForm.controls.GeldigheidsDatum.errors?.required">
+          *ngIf="(fuelcardForm.controls.ValidUntilDate.touched || submitted) && fuelcardForm.controls.ValidUntilDate.errors?.required">
       Valid until date is required.
     </span>
   </div>
   <div class="form-group">
     <label for="inputOptions">Options</label>
-    <input type="text" class="form-control" id="inputOptions" formControlName="Opties">
+    <input type="text" class="form-control" id="inputOptions" formControlName="Options">
 
     <span class="text-danger"
-          *ngIf="(fuelcardForm.controls.Opties.touched || submitted) && fuelcardForm.controls.Opties.errors?.required">
+          *ngIf="(fuelcardForm.controls.Options.touched || submitted) && fuelcardForm.controls.Options.errors?.required">
       Options field is required.
     </span>
   </div>

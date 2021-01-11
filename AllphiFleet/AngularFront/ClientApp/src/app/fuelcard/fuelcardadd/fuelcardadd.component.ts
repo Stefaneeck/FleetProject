@@ -26,11 +26,11 @@ export class FuelcardaddComponent implements OnInit {
 
     this.fuelcardForm = this.formBuilder.group({
 
-      KaartNummer: ['', [Validators.required]],
+      CardNumber: ['', [Validators.required]],
       Pincode: ['', [Validators.required]],
       AuthType: ['', [Validators.required]],
-      GeldigheidsDatum: ['', [Validators.required]],
-      Opties: ['', [Validators.required]]
+      ValidUntilDate: ['', [Validators.required]],
+      Options: ['', [Validators.required]]
     });
   }
 

@@ -9,8 +9,8 @@ import { IAddress } from '../domain/IAddress';
   providedIn: 'root'
 })
 export class AddressService {
-  private addressReadUrl = 'https://localhost:44334/api/adres';
-  private addressWriteUrl = 'https://localhost:44358/writeapi/adres'
+  private addressReadUrl = 'https://localhost:44334/api/address';
+  private addressWriteUrl = 'https://localhost:44358/writeapi/address'
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +29,6 @@ export class AddressService {
   }
 
   getAddress(id: number): Observable<IAddress | undefined> {
-    //creatie van url voor chauffeur op te halen nog opschonen
     return this.http.get<IAddress>(this.addressReadUrl + '/' + id)
       .pipe(
         tap(data => console.log('getAddress: ' + JSON.stringify(data))),

@@ -12,25 +12,25 @@ namespace ReadRepositories
             : base(options)
         {
         }
-        public DbSet<Chauffeur> Chauffeurs { get; set; }
-        public DbSet<Adres> Adressen { get; set; }
-        public DbSet<Tankkaart> Tankkaarten { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<FuelCard> FuelCards { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //identity
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.OnModelCreatingChauffeur();
-            modelBuilder.OnModelCreatingAdres();
-            modelBuilder.OnModelCreatingFactuur();
-            modelBuilder.OnModelCreatingHerstelling();
-            modelBuilder.OnModelCreatingNummerplaat();
-            modelBuilder.OnModelCreatingOnderhoud();
-            modelBuilder.OnModelCreatingTankkaart();
-            modelBuilder.OnModelCreatingVerzekeringsMaatschappij();
-            modelBuilder.OnModelCreatingVoertuig();
-            modelBuilder.OnModelCreatingMaakRelaties();
+            modelBuilder.OnModelCreatingDriver();
+            modelBuilder.OnModelCreatingAddress();
+            modelBuilder.OnModelCreatingInvoice();
+            modelBuilder.OnModelCreatingRepair();
+            modelBuilder.OnModelCreatingLicensePlate();
+            modelBuilder.OnModelCreatingMaintenance();
+            modelBuilder.OnModelCreatingFuelCard();
+            modelBuilder.OnModelCreatingInsuranceCompany();
+            modelBuilder.OnModelCreatingVehicle();
+            modelBuilder.OnModelCreatingCreateRelations();
         }
     }
 }

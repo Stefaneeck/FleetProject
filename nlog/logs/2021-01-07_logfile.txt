@@ -48,3 +48,5 @@
 2021-01-07 12:26:04.6385 INFO Ophalen van 16 records.
 2021-01-07 12:26:08.6819 INFO Alle chauffeurs aan het ophalen.
 2021-01-07 12:26:08.7094 INFO Ophalen van 16 records.
+2021-01-07 17:29:42.1202 INFO Retrieving all drivers.
+2021-01-07 17:29:43.3337 INFO Retrieving 2 records.

@@ -16,10 +16,10 @@
       address is de route, address.id is de parameter -->
       <tr *ngFor='let address of addresses' [routerLink]="['/address', address.id]" class="pointer">
         <td>{{ address.id }}</td>
-        <td>{{ address.straat }}</td>
-        <td>{{ address.nummer }}</td>
-        <td>{{ address.stad }}</td>
-        <td>{{ address.postcode }}</td>
+        <td>{{ address.street }}</td>
+        <td>{{ address.number }}</td>
+        <td>{{ address.city }}</td>
+        <td>{{ address.zipcode }}</td>
       </tr>
     </tbody>
   </table>

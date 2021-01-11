@@ -1,4 +1,4 @@
-﻿using ModelsStandard;
+﻿using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +20,16 @@ namespace BlazorTest.Services
             _httpClient = httpClient;
         }
 
-        public async Task DeleteDriver(int driverId)
+        public async Task<IEnumerable<Driver>> GetAllDrivers()
         {
-            await _httpClient.DeleteAsync($"writeapi/chauffeur/delete/{driverId}");
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Driver>>
+                    (await _httpClient.GetStreamAsync($"api/driver"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<IEnumerable<Chauffeur>> GetAllDrivers()
+        public async Task<Driver> GetDriverDetails(int driverId)
         {
-            return await JsonSerializer.DeserializeAsync<IEnumerable<Chauffeur>>
-                    (await _httpClient.GetStreamAsync($"api/chauffeur"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-        }
-
-        public async Task<Chauffeur> GetDriverDetails(int driverId)
-        {
-            return await JsonSerializer.DeserializeAsync<Chauffeur>
-                (await _httpClient.GetStreamAsync($"api/chauffeur/{driverId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            return await JsonSerializer.DeserializeAsync<Driver>
+                (await _httpClient.GetStreamAsync($"api/driver/{driverId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
     }
 }
