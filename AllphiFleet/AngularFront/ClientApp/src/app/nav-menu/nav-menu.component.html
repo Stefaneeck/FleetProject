@@ -44,6 +44,12 @@
             <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/fuelcardadd']">Add fuelcard</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/applicationlist']">Applications</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <!--<a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/applicationadd']">Add application</a>-->
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
             <!--<a class="nav-link text-dark"  [routerLink]="['/login']">Login</a>-->
             <section>
               <button *ngIf="!isUserAuthenticated" class="btn btn-link" style="color:gray" (click)="login()">Login</button>

@@ -11,7 +11,7 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class DriverService {
   private driverReadUrl = 'https://localhost:44334/api/driver';
-  private driverWriteUrl = 'https://localhost:44358/writeapi/driver'
+  private driverWriteUrl = 'https://localhost:44358/writeapi/driver';
 
   constructor(private http: HttpClient, private authService : AuthService) { }
 

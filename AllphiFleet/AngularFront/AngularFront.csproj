@@ -28,16 +28,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\application\applicationlist\application.service.ts" />
     <None Remove="ClientApp\src\app\auth\auth.service.old.ts" />
     <None Remove="ClientApp\src\app\auth\login\login.component.css" />
     <None Remove="ClientApp\src\app\auth\login\login.component.html" />
     <None Remove="ClientApp\src\app\auth\login\login.component.spec.ts" />
     <None Remove="ClientApp\src\app\auth\login\login.component.ts" />
+    <None Remove="ClientApp\src\app\domain\enums\EnumApplicationStatuses.ts" />
+    <None Remove="ClientApp\src\app\domain\enums\EnumApplicationTypes.ts" />
     <None Remove="ClientApp\src\app\domain\enums\IVehicle.ts" />
     <None Remove="ClientApp\src\app\domain\IApplication.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\application\application.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumApplicationStatuses.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumApplicationTypes.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IVehicle.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IApplication.ts" />
   </ItemGroup>

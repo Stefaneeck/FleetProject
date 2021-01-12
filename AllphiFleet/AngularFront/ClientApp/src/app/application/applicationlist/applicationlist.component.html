@@ -1,0 +1,23 @@
+<div class='table-responsive'>
+  <table class='table'
+         *ngIf='applications && applications.length'>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Application date</th>
+        <th>Application type</th>
+        <th>Possible dates</th>
+        <th>Application status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let application of applications' [routerLink]="['/application', application.id]" class="pointer">
+        <td>{{ application.id }}</td>
+        <td>{{ application.applicationDate | date:'dd/MM/yyyy' }}</td>
+        <td>{{ getApplicationTypeViewValue(application.applicationType) }}</td>
+        <td>{{ application.possibleDates }}</td>
+        <td>{{ getApplicationStatusViewValue(application.applicationStatus) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

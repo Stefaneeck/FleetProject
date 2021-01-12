@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-
 import { DriverService } from '../driver.service';
 import { IDriver } from '../../domain/IDriver';
 
@@ -11,7 +10,6 @@ import { IDriver } from '../../domain/IDriver';
 export class DriverlistComponent implements OnInit {
 
   public drivers: IDriver[];
-  //public tempUrl: string = "https://localhost:44334/api/chauffeur";
   errorMessage = '';
 
   constructor(private driverService: DriverService) {

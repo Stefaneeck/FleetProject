@@ -3,7 +3,7 @@ import { IDriver } from "./IDriver";
 
 export interface IApplication {
 
-  Id: number;
+  id: number;
   applicationDate: Date;
   applicationType: number;
   possibleDates: string;

@@ -25,6 +25,7 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
 import { PrivacyComponent } from './privacy/privacy.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AuthGuardService } from './shared/guards/auth-guard.service';
+import { ApplicationlistComponent } from './application/applicationlist/applicationlist.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AuthGuardService } from './shared/guards/auth-guard.service';
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
     PrivacyComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    ApplicationlistComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -74,7 +76,11 @@ import { AuthGuardService } from './shared/guards/auth-guard.service';
       //routeguard, user must be logged in and role admin
       //{ path: 'privacy', component: PrivacyComponent, canActivate: [AuthGuardService], data: { roles: ['Admin'] } },
       { path: 'privacy', component: PrivacyComponent },
-      { path: 'unauthorized', component: UnauthorizedComponent }
+      { path: 'unauthorized', component: UnauthorizedComponent },
+      { path: 'applicationlist', component: ApplicationlistComponent, canActivate: [AuthGuardService] },
+      //{ path: 'application/:id', component: ApplicationdetailComponent, canActivate: [AuthGuardService] },
+      //{ path: 'applicationadd', component: ApplicationaddComponent, canActivate: [AuthGuardService] },
+      //{ path: 'applicationedit/:id', component: ApplicationeditComponent, canActivate: [AuthGuardService] },
     ]),
     OAuthModule.forRoot()
   ],

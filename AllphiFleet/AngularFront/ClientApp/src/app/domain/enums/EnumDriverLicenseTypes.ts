@@ -1,9 +1,9 @@
-export enum EnumDriverLicenseTypes
-        {
-            AM,
-            A,
-            B,
-            C,
-            D,
-            G
-        }
+export enum EnumDriverLicenseTypes {
+
+  AM,
+  A,
+  B,
+  C,
+  D,
+  G
+}

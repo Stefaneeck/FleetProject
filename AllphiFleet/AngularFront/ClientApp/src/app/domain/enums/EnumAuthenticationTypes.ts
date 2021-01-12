@@ -1,4 +1,5 @@
 export enum EnumAuthenticationTypes {
-    Pin,
-    PinEnKmStand
+
+  Pin,
+  PinEnKmStand
 }
