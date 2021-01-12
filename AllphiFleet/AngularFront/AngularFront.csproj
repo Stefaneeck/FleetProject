@@ -33,6 +33,13 @@
     <None Remove="ClientApp\src\app\auth\login\login.component.html" />
     <None Remove="ClientApp\src\app\auth\login\login.component.spec.ts" />
     <None Remove="ClientApp\src\app\auth\login\login.component.ts" />
+    <None Remove="ClientApp\src\app\domain\enums\IVehicle.ts" />
+    <None Remove="ClientApp\src\app\domain\IApplication.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\domain\IVehicle.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\IApplication.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

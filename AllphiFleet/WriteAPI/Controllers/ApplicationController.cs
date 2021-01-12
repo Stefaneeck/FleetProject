@@ -29,8 +29,9 @@ namespace WriteApi.Controllers
         }
 
         [HttpPut("/writeapi/application/update/{id}")]
-        public async Task<IActionResult> UpdateApplication(UpdateApplicationDTO updateApplicationDTO)
+        public async Task<IActionResult> UpdateApplication(UpdateApplicationDTO updateApplicationDTO, long id)
         {
+            updateApplicationDTO.Id = id;
             return Ok(await _mediator.Send(new UpdateApplicationCommand { UpdateApplicationDTO = updateApplicationDTO }));
         }
 

@@ -31,7 +31,7 @@ namespace WriteServices.DriverHandlers
                 DriverLicenseType = command.UpdateDriverDTO.DriverLicenseType,
                 Active = command.UpdateDriverDTO.Active,
 
-                 Address = new Address
+                Address = new Address
                 {
                     //id from db
                     Id = driverFromDb.Address.Id,
@@ -52,7 +52,9 @@ namespace WriteServices.DriverHandlers
                     Pincode = command.UpdateDriverDTO.FuelCard.Pincode,
                     AuthType = command.UpdateDriverDTO.FuelCard.AuthType,
                     Options = command.UpdateDriverDTO.FuelCard.Options
-                }
+                },
+
+                Email = command.UpdateDriverDTO.Email
 
             };
 
@@ -60,8 +62,6 @@ namespace WriteServices.DriverHandlers
 
             try
             {
-                //_session.Evict(chauffeur);
-
                 await _driverContext.Update(driver);
                 await _driverContext.Commit();
             }

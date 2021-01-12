@@ -62,6 +62,7 @@ export class DrivereditComponent implements OnInit {
       this.driverForm = this.formBuilder.group({
         Name: [this.driver.name, [Validators.required]],
         FirstName: [this.driver.firstName, [Validators.required]],
+        Email: [this.driver.email, [Validators.required]],
 
         Address: this.formBuilder.group({
           Street: [this.driver.address.street, [Validators.required]],

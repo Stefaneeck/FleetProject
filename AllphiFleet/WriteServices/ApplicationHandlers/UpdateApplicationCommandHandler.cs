@@ -23,11 +23,14 @@ namespace WriteServices.ApplicationHandlers
             var application = new Application
             {
                 Id = command.UpdateApplicationDTO.Id,
-
                 ApplicationDate = command.UpdateApplicationDTO.ApplicationDate,
                 PossibleDates = command.UpdateApplicationDTO.PossibleDates,
                 ApplicationStatus = command.UpdateApplicationDTO.ApplicationStatus,
 
+                VehicleId = command.UpdateApplicationDTO.VehicleId,
+                DriverId = command.UpdateApplicationDTO.DriverId,
+
+                /*
                 Vehicle = new Vehicle
                 {
                     //id from db
@@ -38,6 +41,7 @@ namespace WriteServices.ApplicationHandlers
                     FuelType = command.UpdateApplicationDTO.Vehicle.FuelType,
                     VehicleType = command.UpdateApplicationDTO.Vehicle.VehicleType
                 },
+                */
 
                 ApplicationType = command.UpdateApplicationDTO.ApplicationType
 

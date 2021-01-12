@@ -32,6 +32,7 @@ export class DriveraddComponent implements OnInit {
       //left column (first argument) = default value
       Name: ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
+      Email: ['', [Validators.required]],
 
       //nested group: address
       Address: this.formBuilder.group({ 
@@ -67,9 +68,9 @@ export class DriveraddComponent implements OnInit {
 
       const driverDataFromForm = this.driverForm.value;
 
-      //omzetten naar nummer, hij gaf string door als value voor de option "0" of "1" ipv 0 of 1
-      driverDataFromForm.Tankkaart.AuthType = Number(driverDataFromForm.Tankkaart.AuthType);
-      driverDataFromForm.TypeRijbewijs = Number(driverDataFromForm.TypeRijbewijs);
+      //convert to number, string was passed as value for option. "0" instead of 0
+      driverDataFromForm.FuelCard.AuthType = Number(driverDataFromForm.FuelCard.AuthType);
+      driverDataFromForm.DriverLicenseType = Number(driverDataFromForm.DriverLicenseType);
 
       this.driverService.addDriver(driverDataFromForm).subscribe({
         //next: result => this.driver = result,

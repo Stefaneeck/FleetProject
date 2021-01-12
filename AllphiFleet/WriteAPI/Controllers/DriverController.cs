@@ -48,22 +48,16 @@ namespace WriteApi.Controllers
         [HttpPost("/writeapi/driver")]
         public async Task<IActionResult> CreateDriver(CreateDriverDTO createDriverDTO)
         {
-            //we willen dat de validatie in de pipeline gebeurt
-            //vroeger valideren we pas als we al in de applicatielogica zitten
-            //bij dit model: als het geldig is komt het in de applicatielogica, anders niet
+            //We want the validation to take place in the pipline, before mediatr we didnt validate until we had already reached the business logic.
+            //With the mediatr pattern the valdiation takes place before entering the business logic.
 
-
-            //null reference exception indien we command hier niet aanmaken
-            //return Ok(await Mediator.Send(command));
-
-            //correcte manier
             return Ok(await _mediator.Send(new CreateDriverCommand { CreateDriverDTO = createDriverDTO }));
         }
 
-        //id parameter niet echt nodig, want id is required in json
         [HttpPut("/writeapi/driver/update/{id}")]
-        public async Task<IActionResult> UpdateDriver(UpdateDriverDTO updateDriverDTO)
+        public async Task<IActionResult> UpdateDriver(UpdateDriverDTO updateDriverDTO, long id)
         {
+            updateDriverDTO.Id = id;
             return Ok(await _mediator.Send(new UpdateDriverCommand { UpdateDriverDTO = updateDriverDTO }));
         }
 

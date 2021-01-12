@@ -43,17 +43,6 @@ export class DriverService {
    * With the solution, as we have it now, we have to make the same changes on each HTTP function all over the project and duplicate the same code.
    * To improve this solution, we are going to create a centralized place to inject the access token in the request and use that logic in our HTTP calls without the code repetition.
    
-
-  getDrivers(): Observable<IDriver[]> {
-    return from(
-      this.authService.getAccessToken()
-        .then(token => {
-          const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-          return this.http.get<IDriver[]>(this.driverReadUrl, { headers: headers }).toPromise();
-        })
-    );
-
-  }
   */
 
   getDriver(id: number): Observable<IDriver | undefined> {

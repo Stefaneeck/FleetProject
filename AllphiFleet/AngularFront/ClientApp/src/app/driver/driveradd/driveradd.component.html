@@ -17,15 +17,24 @@
       First name is required.
     </span>
   </div>
+  <div class="form-group">
+    <label for="inputFirstName">Email</label>
+    <input type="text" class="form-control" id="inputEmail" formControlName="Email">
 
-  <!-- formGroupName niet vergeten voor nested object-->
+    <span class="text-danger"
+          *ngIf="(driverForm.controls.Email.touched || submitted) && driverForm.controls.Email.errors?.required">
+      Email is required.
+    </span>
+  </div>
+
+  <!-- don't forget formGroupName for nested object-->
   <div class="form-group" formGroupName="Address">
     <label>Address</label>
     <div class="form-group">
       <label for="inputAddressStreet">Street</label>
       <input type="text" class="form-control" id="inputAddressStreet" formControlName="Street">
 
-      <!-- Straat is deel van het inner object Adres, Adres.Straat gaat niet, maar wel Adres.controls.Straat (controls ophalen van child object, en daar verder op gaan) -->
+      <!-- Streetis part of the inner object Address, Address.Street not working, but Address.controls.Street works -->
       <span class="text-danger"
             *ngIf="(driverForm.controls.Address.controls.Street.touched || submitted) && driverForm.controls.Address.controls.Street.errors?.required">
         Street is required.
@@ -81,7 +90,7 @@
   <div class="form-group">
     <label for="selectDriverLicenseType">Driver license type</label>
 
-    <select id="selectDriverLicenseType" class="form-control" formControlName="DriverLicenseType" >
+    <select id="selectDriverLicenseType" class="form-control" formControlName="DriverLicenseType">
       <option [ngValue]="null">-- Choose one --</option>
       <option *ngFor="let type of enumDriverLicenseTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
     </select>
@@ -93,7 +102,7 @@
   </div>
 
   <div class="form-group" formGroupName="FuelCard">
-    <label>Tankkaart</label>
+    <label>FuelCard</label>
     <div class="form-group">
       <label for="inputCardNumber">Card number</label>
       <input type="number" class="form-control" id="inputCardNumber" formControlName="CardNumber">
@@ -149,5 +158,5 @@
     <label class="form-check-label" for="checkActive">Active</label>
   </div>
   <!-- used ngSubmit to submit here, declared at the top form tag-->
-  <button type="submit" class="btn btn-primary" >Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

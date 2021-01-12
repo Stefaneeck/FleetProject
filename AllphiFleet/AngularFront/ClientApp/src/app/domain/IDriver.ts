@@ -13,18 +13,5 @@ export interface IDriver {
   active: boolean;
   address: IAddress;
   fuelCard: IFuelcard;
-  
-  /*
-   *
-  id: number;
-  naam: string;
-  voornaam: number;
-  geboorteDatum: Date;
-  rijksRegisterNummer: number;
-  typeRijbewijs: number;
-  actief: boolean;
-  adres: IAddress;
-  tankkaart: ITankkaart;
-
-  */
+  email: string;
 }
