@@ -28,6 +28,7 @@ import { AuthGuardService } from './shared/guards/auth-guard.service';
 import { ApplicationlistComponent } from './application/applicationlist/applicationlist.component';
 import { ApplicationaddComponent } from './application/applicationadd/applicationadd.component';
 import { ApplicationdetailComponent } from './application/applicationdetail/applicationdetail.component';
+import { ApplicationeditComponent } from './application/applicationedit/applicationedit.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ApplicationdetailComponent } from './application/applicationdetail/appl
     UnauthorizedComponent,
     ApplicationlistComponent,
     ApplicationaddComponent,
-    ApplicationdetailComponent
+    ApplicationdetailComponent,
+    ApplicationeditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -84,7 +86,7 @@ import { ApplicationdetailComponent } from './application/applicationdetail/appl
       { path: 'applicationlist', component: ApplicationlistComponent, canActivate: [AuthGuardService] },
       { path: 'application/:id', component: ApplicationdetailComponent, canActivate: [AuthGuardService] },
       { path: 'applicationadd', component: ApplicationaddComponent, canActivate: [AuthGuardService] },
-      //{ path: 'applicationedit/:id', component: ApplicationeditComponent, canActivate: [AuthGuardService] },
+      { path: 'applicationedit/:id', component: ApplicationeditComponent, canActivate: [AuthGuardService] },
     ]),
     OAuthModule.forRoot()
   ],

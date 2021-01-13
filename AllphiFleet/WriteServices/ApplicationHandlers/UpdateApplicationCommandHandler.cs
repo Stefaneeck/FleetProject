@@ -27,21 +27,9 @@ namespace WriteServices.ApplicationHandlers
                 PossibleDates = command.UpdateApplicationDTO.PossibleDates,
                 ApplicationStatus = command.UpdateApplicationDTO.ApplicationStatus,
 
-                VehicleId = command.UpdateApplicationDTO.VehicleId,
-                DriverId = command.UpdateApplicationDTO.DriverId,
-
-                /*
-                Vehicle = new Vehicle
-                {
-                    //id from db
-                    Id = applicationFromDb.Vehicle.Id,
-
-                    ChassisNr = command.UpdateApplicationDTO.Vehicle.ChassisNr,
-                    Mileage = command.UpdateApplicationDTO.Vehicle.Mileage,
-                    FuelType = command.UpdateApplicationDTO.Vehicle.FuelType,
-                    VehicleType = command.UpdateApplicationDTO.Vehicle.VehicleType
-                },
-                */
+                //from db, for now (to edit later)
+                VehicleId = applicationFromDb.VehicleId,
+                DriverId = applicationFromDb.DriverId,
 
                 ApplicationType = command.UpdateApplicationDTO.ApplicationType
 
@@ -57,6 +45,8 @@ namespace WriteServices.ApplicationHandlers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.InnerException);
+
                 await _applicationContext.Rollback();
             }
 

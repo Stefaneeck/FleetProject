@@ -43,7 +43,7 @@ export class ApplicationService {
       );
   }
 
-  updateDriver(applicationData: IApplication): Observable<IApplication> {
+  updateApplication(applicationData: IApplication): Observable<IApplication> {
     const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.put<IApplication>(this.applicationWriteUrl + '/update' + '/' + applicationData.id, applicationData, httpHeaders)
       .pipe(
