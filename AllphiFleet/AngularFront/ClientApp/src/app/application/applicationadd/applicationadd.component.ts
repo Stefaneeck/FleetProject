@@ -18,8 +18,8 @@ export class ApplicationaddComponent implements OnInit {
   applicationForm: any;
 
   // Make a variable reference to our Enum and delete double values
-  enumAuthTypes = Object.keys(EnumApplicationStatuses).filter(key => !isNaN(Number(EnumApplicationStatuses[key])));
-  enumDriverLicenseTypes = Object.keys(EnumApplicationTypes).filter(key => !isNaN(Number(EnumApplicationTypes[key])));
+  enumApplicationTypes = Object.keys(EnumApplicationStatuses).filter(key => !isNaN(Number(EnumApplicationStatuses[key])));
+  enumApplicationStatuses = Object.keys(EnumApplicationTypes).filter(key => !isNaN(Number(EnumApplicationTypes[key])));
 
   constructor(private formBuilder: FormBuilder,
     private applicationService: ApplicationService,
@@ -28,12 +28,11 @@ export class ApplicationaddComponent implements OnInit {
   ngOnInit() {
 
     this.applicationForm = this.formBuilder.group({
-      Id: ['', [Validators.required]],
       ApplicationDate: [null, [Validators.required]],
       ApplicationType: [null, [Validators.required]],
       PossibleDates: ['', [Validators.required]],
       ApplicationStatus: ['', [Validators.required]],
-      CustomerId: [null, [Validators.required]],
+      DriverId: [null, [Validators.required]],
       VehicleId: [null, [Validators.required]],
     });
   }
@@ -46,7 +45,7 @@ export class ApplicationaddComponent implements OnInit {
 
       //convert to number, string was passed as value for option. "0" instead of 0
       applicationDataFromForm.ApplicationType = Number(applicationDataFromForm.ApplicationType);
-      applicationDataFromForm.ApplicationValue = Number(applicationDataFromForm.ApplicationValue);
+      applicationDataFromForm.ApplicationStatus = Number(applicationDataFromForm.ApplicationStatus);
 
       this.applicationService.addApplication(applicationDataFromForm).subscribe({
         error: err => this.errorMessage = err,

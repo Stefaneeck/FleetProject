@@ -1,5 +1,4 @@
-<!-- added if driver, to only show the data when an application and its driver is loaded-->
-<div class='card' *ngIf='application && driver'>
+<div class='card' *ngIf='application'>
   <div class='card-header'>
     {{ pageTitle + ': ' + getApplicationTypeViewValue(application.applicationType) }}
   </div>
@@ -29,11 +28,11 @@
         </div>
         <div class='row'>
           <div class='col-md-4'>Driver:</div>
-          <div class='col-md-8'>{{ driver.name + ' ' + driver.firstName }}</div>
+          <div class='col-md-8'>{{ application.driver.name + ' ' + application.driver.firstName }}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Vehicle:</div>
-          <div class='col-md-8'>{{ application.vehicle.id }}</div>
+          <div class='col-md-4'>Vehicle chassisnr:</div>
+          <div class='col-md-8'>{{ application.vehicle.chassisNr }}</div>
         </div>
       </div>
     </div>
