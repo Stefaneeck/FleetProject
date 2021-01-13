@@ -12,7 +12,7 @@ export class DriverdetailComponent implements OnInit {
 
   pageTitle: string = 'Driver detail';
   errorMessage = "";
-  //driver mag idriver of undefined zijn
+  //driver can be of type idriver or undefined
   driver: IDriver | undefined;
 
   constructor(private route: ActivatedRoute, private driverService: DriverService, private router: Router) {

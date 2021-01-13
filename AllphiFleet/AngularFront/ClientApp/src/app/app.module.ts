@@ -26,6 +26,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AuthGuardService } from './shared/guards/auth-guard.service';
 import { ApplicationlistComponent } from './application/applicationlist/applicationlist.component';
+import { ApplicationaddComponent } from './application/applicationadd/applicationadd.component';
+import { ApplicationdetailComponent } from './application/applicationdetail/applicationdetail.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ApplicationlistComponent } from './application/applicationlist/applicat
     SignoutRedirectCallbackComponent,
     PrivacyComponent,
     UnauthorizedComponent,
-    ApplicationlistComponent
+    ApplicationlistComponent,
+    ApplicationaddComponent,
+    ApplicationdetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -78,8 +82,8 @@ import { ApplicationlistComponent } from './application/applicationlist/applicat
       { path: 'privacy', component: PrivacyComponent },
       { path: 'unauthorized', component: UnauthorizedComponent },
       { path: 'applicationlist', component: ApplicationlistComponent, canActivate: [AuthGuardService] },
-      //{ path: 'application/:id', component: ApplicationdetailComponent, canActivate: [AuthGuardService] },
-      //{ path: 'applicationadd', component: ApplicationaddComponent, canActivate: [AuthGuardService] },
+      { path: 'application/:id', component: ApplicationdetailComponent, canActivate: [AuthGuardService] },
+      { path: 'applicationadd', component: ApplicationaddComponent, canActivate: [AuthGuardService] },
       //{ path: 'applicationedit/:id', component: ApplicationeditComponent, canActivate: [AuthGuardService] },
     ]),
     OAuthModule.forRoot()
