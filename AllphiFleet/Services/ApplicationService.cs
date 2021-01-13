@@ -21,14 +21,20 @@ namespace ReadServices
         public IEnumerable<ApplicationDTO> GetApplications()
         {
             var results = _repository.GetAll()
-                .Include(a => a.Vehicle);
+                .Include(a => a.Vehicle)
+                .Include(a => a.Driver);
 
             return _mapper.Map<IEnumerable<ApplicationDTO>>(results.ToList());
         }
 
         public ApplicationDTO GetApplication(long id)
         {
-            return _mapper.Map<ApplicationDTO>(_repository.Get(id));
+            var result = _repository.GetAll()
+                .Include(a => a.Vehicle)
+                .Include(a => a.Driver)
+                .FirstOrDefault(x => x.Id == id);
+
+            return _mapper.Map<ApplicationDTO>(result);
         }
     }
 }

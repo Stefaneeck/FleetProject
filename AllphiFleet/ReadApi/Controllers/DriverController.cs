@@ -29,23 +29,23 @@ namespace ReadApi.Controllers
 
             _logger.LogInfo("Retrieving all drivers.");
 
-            IEnumerable<DriverDTO> chauffeurDTOs = _driverService.GetDrivers();
+            IEnumerable<DriverDTO> driverDTOs = _driverService.GetDrivers();
 
-            _logger.LogInfo($"Retrieving {chauffeurDTOs.Count()} records.");
+            _logger.LogInfo($"Retrieving {driverDTOs.Count()} records.");
 
-            return Ok(chauffeurDTOs);
+            return Ok(driverDTOs);
         }
 
         //Get: api/driver/1
         [HttpGet("{id}", Name = "GetDriver")]
         public IActionResult Get(long id)
         {
-            DriverDTO chauffeurDTO = _driverService.GetDriver(id);
-            if (chauffeurDTO == null)
+            DriverDTO driverDTO = _driverService.GetDriver(id);
+            if (driverDTO == null)
             {
-                return NotFound("Chauffeur niet gevonden.");
+                return NotFound("Driver has not been found.");
             }
-            return Ok(chauffeurDTO);
+            return Ok(driverDTO);
         }
 
         //testing

@@ -26,11 +26,11 @@ namespace ReadApi.Controllers
 
             _logger.LogInfo("Retrieving all applications.");
 
-            IEnumerable<ApplicationDTO> aanvraagDTOs = _applicationService.GetApplications();
+            IEnumerable<ApplicationDTO> applicationDTOs = _applicationService.GetApplications();
 
-            _logger.LogInfo($"Retrieving {aanvraagDTOs.Count()} records.");
+            _logger.LogInfo($"Retrieving {applicationDTOs.Count()} records.");
 
-            return Ok(aanvraagDTOs);
+            return Ok(applicationDTOs);
         }
 
         [HttpGet("{id}", Name = "GetApplication")]

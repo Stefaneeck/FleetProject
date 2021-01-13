@@ -10,7 +10,6 @@ namespace ReadServices.Profiles
         public DriverProfile()
         {
             this.CreateMap<Driver, DriverDTO>();
-
             this.CreateMap<Driver, DriverDTO>().ReverseMap();
         }
     }

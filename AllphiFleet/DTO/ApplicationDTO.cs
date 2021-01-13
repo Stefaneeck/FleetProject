@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Enums;
+﻿using Models.Enums;
 using System;
 
 namespace DTO
@@ -11,6 +10,7 @@ namespace DTO
         public ApplicationTypes ApplicationType { get; set; }
         public string PossibleDates { get; set; }
         public ApplicationStatuses ApplicationStatus { get; set; }
-        public VehicleDTO VehicleDTO { get; set; }
+        public VehicleDTO Vehicle { get; set; }
+        public DriverDTO Driver { get; set; }
     }
 }
