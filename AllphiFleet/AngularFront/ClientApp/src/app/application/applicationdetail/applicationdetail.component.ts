@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IApplication } from '../../domain/IApplication';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from '../application.service';
+import { DriverService } from '../../driver/driver.service';
+import { IDriver } from '../../domain/IDriver';
 
 @Component({
   selector: 'app-applicationdetail',
@@ -13,8 +15,10 @@ export class ApplicationdetailComponent implements OnInit {
   pageTitle: string = 'Application detail';
   errorMessage = "";
   application: IApplication | undefined;
+  driver: IDriver | undefined;
 
-  constructor(private route: ActivatedRoute, private applicationService: ApplicationService, private router: Router) {
+  constructor(private route: ActivatedRoute, private applicationService: ApplicationService,
+    private driverService: DriverService, private router: Router, ) {
 
   }
 
@@ -23,6 +27,7 @@ export class ApplicationdetailComponent implements OnInit {
 
     if (id) {
       this.getApplication(id);
+      //this.getDriver(this.application.driver.id);
     }
     this.pageTitle += `: ${id}`;
   }
@@ -31,6 +36,9 @@ export class ApplicationdetailComponent implements OnInit {
     this.applicationService.getApplication(id).subscribe({
       next: result => {
         this.application = result;
+
+        //added to get the applications driver
+        this.getDriver(result.driver.id);
       },
       error: err => this.errorMessage = err
     });
@@ -60,6 +68,17 @@ export class ApplicationdetailComponent implements OnInit {
   getApplicationTypeViewValue(enumValue: number): string {
 
     return this.applicationService.showEnumValueApplicationType(enumValue);
+  }
+
+  getDriver(id: number): void {
+
+    this.driverService.getDriver(id).subscribe({
+      //put fetched value in local driver variable
+      next: result => {
+        this.driver = result;
+      },
+      error: err => this.errorMessage = err
+    });
   }
 
   onBack(): void {
