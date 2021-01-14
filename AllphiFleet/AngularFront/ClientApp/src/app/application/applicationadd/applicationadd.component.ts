@@ -5,6 +5,10 @@ import { EnumApplicationTypes } from '../../domain/enums/EnumApplicationTypes';
 import { ApplicationService } from '../application.service';
 import { FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DriverService } from '../../driver/driver.service';
+import { IDriver } from '../../domain/IDriver';
+import { VehicleService } from '../../vehicle/vehicle.service';
+import { IVehicle } from '../../domain/IVehicle';
 
 @Component({
   selector: 'app-applicationadd',
@@ -16,6 +20,8 @@ export class ApplicationaddComponent implements OnInit {
   errorMessage = "";
   application: IApplication | undefined;
   applicationForm: any;
+  drivers: IDriver[] | undefined;
+  vehicles: IVehicle[] | undefined;
 
   // Make a variable reference to our Enum and delete double values
   enumApplicationTypes = Object.keys(EnumApplicationStatuses).filter(key => !isNaN(Number(EnumApplicationStatuses[key])));
@@ -23,18 +29,16 @@ export class ApplicationaddComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private applicationService: ApplicationService,
-    private router: Router) { }
+    private driverService: DriverService,
+    private vehicleService: VehicleService,
+    private router: Router) {
+
+  }
 
   ngOnInit() {
 
-    this.applicationForm = this.formBuilder.group({
-      ApplicationDate: [null, [Validators.required]],
-      ApplicationType: [null, [Validators.required]],
-      PossibleDates: ['', [Validators.required]],
-      ApplicationStatus: ['', [Validators.required]],
-      DriverId: [null, [Validators.required]],
-      VehicleId: [null, [Validators.required]],
-    });
+    this.getDrivers();
+
   }
 
   addApplication(application: IApplication): void {
@@ -58,6 +62,39 @@ export class ApplicationaddComponent implements OnInit {
       console.log("not valid.");
       this.getFormValidationErrors();
     }
+  }
+
+  getDrivers(): void {
+
+    const promiseDrivers = this.driverService.getDrivers().toPromise();
+
+    promiseDrivers.then((dataDrivers: IDriver[]) => {
+
+      this.drivers = dataDrivers;
+    });
+
+    const promiseVehicles = this.vehicleService.getVehicles().toPromise();
+
+    promiseVehicles.then((dataVehicles: IVehicle[]) => {
+
+      this.vehicles = dataVehicles;
+      console.log('vehicles');
+      console.log(dataVehicles);
+
+      this.applicationForm = this.formBuilder.group({
+        ApplicationDate: [null, [Validators.required]],
+        ApplicationType: [null, [Validators.required]],
+        PossibleDates: ['', [Validators.required]],
+        ApplicationStatus: ['', [Validators.required]],
+        DriverId: [null, [Validators.required]],
+        VehicleId: [null, [Validators.required]],
+      });
+
+    }).catch((error) => {
+      console.log("promise error");
+      console.log(error);
+    });
+    
   }
 
   getFormValidationErrors() {

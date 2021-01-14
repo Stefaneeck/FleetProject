@@ -21,9 +21,7 @@ namespace ReadApi
     {
         public Startup(IConfiguration configuration)
         {
-            //Nlog config
             LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
-
             Configuration = configuration;
         }
 
@@ -32,7 +30,7 @@ namespace ReadApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //zeggen dat onze migrations assembly in het readrepositories project zit
+            //our migrations assembly is in the readrepositories project
             services.AddDbContext<AllphiFleetContext>(opts =>
             {
                 opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]
@@ -46,20 +44,19 @@ namespace ReadApi
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<IInvoiceService, InvoiceService>();
             services.AddScoped<IFuelCardService, FuelCardService>();
+            services.AddScoped<IVehicleService, VehicleService>();
 
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly()); werkte niet omdat het in een ander project staat, 
-            //daarom static klasse gemaakt waarin assembly kan worden opgehaald.
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly()); not working because it is in another project.
+            //workaround: static class from which the assembly can be retrieved.
 
-            //moet de assembly zijn uit het project dat profile bevat, moet dus assembly van services project zijn
+            //must be the assembly from the project that contains automapper profiles, in our case this is the services project
             services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
 
-            //extension method uit ExceptionMiddlewareExtensions klasse
-
             services.ConfigureLoggerService();
-            //cross origin requests enablen voor angular project
+            //enable cross origin requests for apps (44329 = angular app, 44338 = blazor app)
             services.AddCors(options =>
             {
                 //angular app
@@ -67,14 +64,6 @@ namespace ReadApi
                     builder => builder.WithOrigins("https://localhost:44329", "https://localhost:44338")
                                         .AllowAnyHeader()
                                         .AllowAnyMethod());
-                
-                //Blazor app
-                /*
-                options.AddPolicy("AllowAllReadApiBlazor",
-                    builder => builder.WithOrigins("https://localhost:44338")
-                                        .AllowAnyHeader()
-                                        .AllowAnyMethod()); 
-                */
             });
 
             services.AddAuthentication("Bearer").
@@ -95,8 +84,7 @@ namespace ReadApi
                 app.UseDeveloperExceptionPage();
             }
 
-            //voor global exceptions
-            //vervangen door custom exception middleware
+            //for global exceptions, replaced by custom exception middleware
 
             app.UseMiddleware<ExceptionMiddleware>();
 
@@ -108,7 +96,6 @@ namespace ReadApi
 
             app.UseAuthorization();
 
-            //om uit angular project data te kunnen ophalen
             app.UseCors("AllowAllReadApi");
 
             app.UseEndpoints(endpoints =>

@@ -1,4 +1,4 @@
-<form [formGroup]="applicationForm" class="marginBottom" (ngSubmit)="addApplication(applicationForm.value)">
+<form [formGroup]="applicationForm" class="marginBottom" (ngSubmit)="addApplication(applicationForm.value)" *ngIf='drivers && drivers.length'>
   <div class="form-group">
     <label for="inputApplicationDate">Application date</label>
     <input type="date" class="form-control" id="inputApplicationDate" formControlName="ApplicationDate">
@@ -42,22 +42,26 @@
   </div>
 
   <div class="form-group">
-    <label for="inputDriverId">Driver id</label>
-    <input type="number" class="form-control" id="inputDriverId" formControlName="DriverId">
+    <label for="selectDriverId">Driver</label>
+    <select id="selectDriverId" class="form-control" formControlName="DriverId">
+      <option *ngFor="let driver of drivers" [ngValue]="driver.id">{{ driver.name }}</option>
+    </select>
 
     <span class="text-danger"
           *ngIf="(applicationForm.controls.DriverId.touched || submitted) && applicationForm.controls.DriverId.errors?.required">
-      Driver id is required.
+      Driver is required.
     </span>
   </div>
 
   <div class="form-group">
-    <label for="inputApplicationId">Vehicle id</label>
-    <input type="number" class="form-control" id="inputApplicationId" formControlName="VehicleId">
+    <label for="selectVehicleId">Vehicle</label>
+    <select id="selectVehicleId" class="form-control" formControlName="VehicleId">
+      <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.id">{{ vehicle.chassisNr }}</option>
+    </select>
 
     <span class="text-danger"
           *ngIf="(applicationForm.controls.VehicleId.touched || submitted) && applicationForm.controls.VehicleId.errors?.required">
-      Vehicle id is required.
+      Vehicle is required.
     </span>
   </div>
 

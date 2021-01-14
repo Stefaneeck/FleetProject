@@ -1,12 +1,11 @@
 ﻿namespace Models.Enums
-
 {
     public enum FuelTypes
     {
-        Benzine, 
-        Diesel, 
-        HybrideBenzine, 
-        HybrideDiesel, 
+        Benzine,
+        Diesel,
+        HybrideBenzine,
+        HybrideDiesel,
         Elektrisch
     }
 }

@@ -24,22 +24,22 @@ namespace ReadApi.Controllers
 
             _logger.LogInfo("Retrieving all fuelcards.");
 
-            IEnumerable<FuelCardDTO> tankkaartDTOs = _fuelCardService.GetFuelCards();
+            IEnumerable<FuelCardDTO> fuelCardDTOs = _fuelCardService.GetFuelCards();
 
-            _logger.LogInfo($"Retrieving {tankkaartDTOs.Count()} records.");
+            _logger.LogInfo($"Retrieving {fuelCardDTOs.Count()} records.");
 
-            return Ok(tankkaartDTOs);
+            return Ok(fuelCardDTOs);
         }
 
         [HttpGet("{id}", Name = "GetFuelCard")]
         public IActionResult Get(long id)
         {
-            FuelCardDTO tankkaartDTO = _fuelCardService.GetFuelCard(id);
-            if (tankkaartDTO == null)
+            FuelCardDTO fuelCardDTO = _fuelCardService.GetFuelCard(id);
+            if (fuelCardDTO == null)
             {
                 return NotFound("Fuelcard has not been found.");
             }
-            return Ok(tankkaartDTO);
+            return Ok(fuelCardDTO);
         }
 
     }

@@ -1,0 +1,128 @@
+2021-01-14 12:01:41.8220 INFO Retrieving all drivers.
+2021-01-14 12:01:42.6044 INFO Retrieving 12 records.
+2021-01-14 12:01:56.4267 INFO Retrieving all drivers.
+2021-01-14 12:01:56.4507 INFO Retrieving 12 records.
+2021-01-14 12:01:59.5152 INFO Retrieving all drivers.
+2021-01-14 12:01:59.5464 INFO Retrieving 12 records.
+2021-01-14 12:02:52.8123 INFO Retrieving all drivers.
+2021-01-14 12:02:52.8372 INFO Retrieving 12 records.
+2021-01-14 12:03:50.7044 INFO Retrieving all drivers.
+2021-01-14 12:03:50.7316 INFO Retrieving 12 records.
+2021-01-14 12:04:57.1135 INFO Retrieving all drivers.
+2021-01-14 12:04:57.1425 INFO Retrieving 12 records.
+2021-01-14 12:06:01.6118 INFO Retrieving all drivers.
+2021-01-14 12:06:01.6470 INFO Retrieving 12 records.
+2021-01-14 12:06:23.5180 INFO Retrieving all drivers.
+2021-01-14 12:06:23.5499 INFO Retrieving 12 records.
+2021-01-14 12:09:54.0486 INFO Retrieving all drivers.
+2021-01-14 12:09:54.0809 INFO Retrieving 12 records.
+2021-01-14 12:10:06.0602 INFO Retrieving all drivers.
+2021-01-14 12:10:06.0801 INFO Retrieving 12 records.
+2021-01-14 12:10:30.7303 INFO Retrieving all drivers.
+2021-01-14 12:10:30.7541 INFO Retrieving 12 records.
+2021-01-14 12:10:59.6350 INFO Retrieving all applications.
+2021-01-14 12:10:59.7665 INFO Retrieving 8 records.
+2021-01-14 12:11:35.2139 INFO Retrieving all drivers.
+2021-01-14 12:11:35.2352 INFO Retrieving 12 records.
+2021-01-14 12:12:34.5316 INFO Retrieving all applications.
+2021-01-14 12:12:34.5546 INFO Retrieving 8 records.
+2021-01-14 12:12:44.9231 INFO Retrieving all drivers.
+2021-01-14 12:12:44.9412 INFO Retrieving 12 records.
+2021-01-14 12:13:00.3555 INFO Retrieving all applications.
+2021-01-14 12:13:00.3821 INFO Retrieving 8 records.
+2021-01-14 12:13:23.7597 INFO Retrieving all applications.
+2021-01-14 12:13:23.7874 INFO Retrieving 8 records.
+2021-01-14 12:13:28.2005 INFO Retrieving all drivers.
+2021-01-14 12:13:28.2190 INFO Retrieving 12 records.
+2021-01-14 12:13:40.3005 INFO Retrieving all applications.
+2021-01-14 12:13:40.3005 INFO Retrieving 8 records.
+2021-01-14 12:14:04.6600 INFO Retrieving all applications.
+2021-01-14 12:14:04.6894 INFO Retrieving 8 records.
+2021-01-14 12:14:17.6755 INFO Retrieving all applications.
+2021-01-14 12:14:17.7008 INFO Retrieving 8 records.
+2021-01-14 12:14:28.8930 INFO Retrieving all applications.
+2021-01-14 12:14:28.9097 INFO Retrieving 8 records.
+2021-01-14 12:14:30.9250 INFO Retrieving all drivers.
+2021-01-14 12:14:30.9441 INFO Retrieving 12 records.
+2021-01-14 12:15:03.7138 INFO Retrieving all drivers.
+2021-01-14 12:15:03.7331 INFO Retrieving 12 records.
+2021-01-14 12:15:24.7843 INFO Retrieving all applications.
+2021-01-14 12:15:24.7843 INFO Retrieving 9 records.
+2021-01-14 12:35:52.6061 INFO Retrieving all drivers.
+2021-01-14 12:35:53.3727 INFO Retrieving 12 records.
+2021-01-14 12:36:03.2618 INFO Retrieving all drivers.
+2021-01-14 12:36:03.2838 INFO Retrieving 12 records.
+2021-01-14 12:36:05.6909 INFO Retrieving all drivers.
+2021-01-14 12:36:05.6909 INFO Retrieving 12 records.
+2021-01-14 12:37:53.6875 INFO Retrieving all drivers.
+2021-01-14 12:37:53.7168 INFO Retrieving 12 records.
+2021-01-14 12:38:43.2408 INFO Retrieving all drivers.
+2021-01-14 12:38:43.2685 INFO Retrieving 12 records.
+2021-01-14 12:38:53.2468 INFO Retrieving all drivers.
+2021-01-14 12:38:53.2707 INFO Retrieving 12 records.
+2021-01-14 12:48:09.6273 ERROR Something went wrong: System.InvalidOperationException: Unable to resolve service for type 'ReadServices.Interfaces.IVehicleService' while attempting to activate 'ReadApi.Controllers.VehicleController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ReadApi.CustomExceptionMiddleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\ReadApi\CustomExceptionMiddleware\ExceptionMiddleware.cs:line 33
+2021-01-14 12:48:50.3942 INFO Retrieving all vehicles.
+2021-01-14 12:49:19.5610 ERROR Something went wrong: AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[DTO.VehicleDTO, DTO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+FuelCard -> VehicleDTO
+Models.FuelCard -> DTO.VehicleDTO
+   at lambda_method(Closure , FuelCard , VehicleDTO , ResolutionContext )
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at ReadServices.VehicleService.GetVehicles() in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\Services\VehicleService.cs:line 24
+   at ReadApi.Controllers.VehicleController.Get() in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\ReadApi\Controllers\VehicleController.cs:line 27
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|8_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at ReadApi.CustomExceptionMiddleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\ReadApi\CustomExceptionMiddleware\ExceptionMiddleware.cs:line 33
+2021-01-14 12:49:32.6035 INFO Retrieving all vehicles.
+2021-01-14 12:50:17.5677 INFO Retrieving all vehicles.
+2021-01-14 12:50:18.6394 INFO Retrieving 8 records.
+2021-01-14 12:50:38.3404 INFO Retrieving all drivers.
+2021-01-14 12:50:38.5767 INFO Retrieving 12 records.
+2021-01-14 12:50:50.1082 INFO Retrieving all drivers.
+2021-01-14 12:50:50.1347 INFO Retrieving 12 records.
+2021-01-14 12:50:58.5034 INFO Retrieving all vehicles.
+2021-01-14 12:50:58.5034 INFO Retrieving all drivers.
+2021-01-14 12:50:58.5232 INFO Retrieving 8 records.
+2021-01-14 12:50:58.5391 INFO Retrieving 12 records.
+2021-01-14 12:51:15.3083 INFO Retrieving all drivers.
+2021-01-14 12:51:15.3083 INFO Retrieving all vehicles.
+2021-01-14 12:51:15.3594 INFO Retrieving 12 records.
+2021-01-14 12:51:15.3632 INFO Retrieving 8 records.
+2021-01-14 12:52:05.2063 INFO Retrieving all applications.
+2021-01-14 12:52:05.2757 INFO Retrieving 10 records.

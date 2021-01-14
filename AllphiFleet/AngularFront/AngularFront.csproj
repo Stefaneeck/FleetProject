@@ -19,11 +19,15 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\app\auth\**" />
+    <Compile Remove="ClientApp\src\app\NewFolder\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\app\auth\**" />
+    <Content Remove="ClientApp\src\app\NewFolder\**" />
     <EmbeddedResource Remove="ClientApp\src\app\auth\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\NewFolder\**" />
     <None Remove="$(SpaRoot)**" />
     <None Remove="ClientApp\src\app\auth\**" />
+    <None Remove="ClientApp\src\app\NewFolder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -36,16 +40,22 @@
     <None Remove="ClientApp\src\app\auth\login\login.component.ts" />
     <None Remove="ClientApp\src\app\domain\enums\EnumApplicationStatuses.ts" />
     <None Remove="ClientApp\src\app\domain\enums\EnumApplicationTypes.ts" />
+    <None Remove="ClientApp\src\app\domain\enums\EnumFuelTypes.ts" />
+    <None Remove="ClientApp\src\app\domain\enums\EnumVehicleTypes.ts" />
     <None Remove="ClientApp\src\app\domain\enums\IVehicle.ts" />
     <None Remove="ClientApp\src\app\domain\IApplication.ts" />
+    <None Remove="ClientApp\src\app\vehicle\vehicle.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\application\application.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumApplicationStatuses.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumApplicationTypes.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumFuelTypes.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumVehicleTypes.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IVehicle.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IApplication.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\vehicle\vehicle.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

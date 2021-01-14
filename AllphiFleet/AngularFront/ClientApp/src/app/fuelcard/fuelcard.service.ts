@@ -25,7 +25,6 @@ export class FuelcardService {
   }
 
   getFuelcard(id: number): Observable<IFuelcard | undefined> {
-    //creatie van url voor chauffeur op te halen nog opschonen
     return this.http.get<IFuelcard>(this.fuelcardReadUrl + '/' + id)
       .pipe(
         tap(data => console.log('getFuelcard: ' + JSON.stringify(data))),
