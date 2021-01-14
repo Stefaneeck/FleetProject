@@ -22,6 +22,8 @@ namespace WriteRepositories
 
         public IQueryable<FuelCard> FuelCards => _session.Query<FuelCard>();
 
+        public IQueryable<Vehicle> Vehicles => _session.Query<Vehicle>();
+
         public IQueryable<T> GenericRepository => _session.Query<T>();
 
         public void BeginTransaction()

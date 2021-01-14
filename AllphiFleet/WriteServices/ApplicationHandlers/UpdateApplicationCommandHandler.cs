@@ -29,7 +29,6 @@ namespace WriteServices.ApplicationHandlers
                 VehicleId = command.UpdateApplicationDTO.VehicleId,
                 DriverId = command.UpdateApplicationDTO.DriverId,
                 ApplicationType = command.UpdateApplicationDTO.ApplicationType
-
             };
 
             _applicationContext.BeginTransaction();

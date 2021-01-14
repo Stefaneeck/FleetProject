@@ -11,7 +11,6 @@ namespace WriteApi.Controllers
     public class FuelCardController : ControllerBase
     {
         private readonly IMediator _mediator;
-        //protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         public FuelCardController(IMediator mediator)
         {

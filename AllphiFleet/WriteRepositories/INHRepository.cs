@@ -17,6 +17,7 @@ namespace WriteRepositories
         IQueryable<Application> Applications { get; }
         IQueryable<Address> Addresses { get; }
         IQueryable<FuelCard> FuelCards { get; }
+        IQueryable<Vehicle> Vehicles { get; }
         IQueryable<T> GenericRepository { get; }
     }
 }

@@ -24,8 +24,8 @@ export class ApplicationaddComponent implements OnInit {
   vehicles: IVehicle[] | undefined;
 
   // Make a variable reference to our Enum and delete double values
-  enumApplicationTypes = Object.keys(EnumApplicationStatuses).filter(key => !isNaN(Number(EnumApplicationStatuses[key])));
-  enumApplicationStatuses = Object.keys(EnumApplicationTypes).filter(key => !isNaN(Number(EnumApplicationTypes[key])));
+  enumApplicationStatuses = Object.keys(EnumApplicationStatuses).filter(key => !isNaN(Number(EnumApplicationStatuses[key])));
+  enumApplicationTypes = Object.keys(EnumApplicationTypes).filter(key => !isNaN(Number(EnumApplicationTypes[key])));
 
   constructor(private formBuilder: FormBuilder,
     private applicationService: ApplicationService,

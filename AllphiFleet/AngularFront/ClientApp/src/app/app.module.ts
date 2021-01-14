@@ -29,6 +29,8 @@ import { ApplicationlistComponent } from './application/applicationlist/applicat
 import { ApplicationaddComponent } from './application/applicationadd/applicationadd.component';
 import { ApplicationdetailComponent } from './application/applicationdetail/applicationdetail.component';
 import { ApplicationeditComponent } from './application/applicationedit/applicationedit.component';
+import { VehiclelistComponent } from './vehicle/vehiclelist/vehiclelist.component';
+import { VehicleaddComponent } from './vehicle/vehicleadd/vehicleadd.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { ApplicationeditComponent } from './application/applicationedit/applicat
     ApplicationlistComponent,
     ApplicationaddComponent,
     ApplicationdetailComponent,
-    ApplicationeditComponent
+    ApplicationeditComponent,
+    VehiclelistComponent,
+    VehicleaddComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -87,6 +91,10 @@ import { ApplicationeditComponent } from './application/applicationedit/applicat
       { path: 'application/:id', component: ApplicationdetailComponent, canActivate: [AuthGuardService] },
       { path: 'applicationadd', component: ApplicationaddComponent, canActivate: [AuthGuardService] },
       { path: 'applicationedit/:id', component: ApplicationeditComponent, canActivate: [AuthGuardService] },
+      { path: 'vehiclelist', component: VehiclelistComponent, canActivate: [AuthGuardService] },
+      //{ path: 'vehicle/:id', component: VehicledetailComponent, canActivate: [AuthGuardService] },
+      { path: 'vehicleadd', component: VehicleaddComponent, canActivate: [AuthGuardService] },
+      //{ path: 'vehicleedit/:id', component:VehicleeditComponent, canActivate: [AuthGuardService] }
     ]),
     OAuthModule.forRoot()
   ],

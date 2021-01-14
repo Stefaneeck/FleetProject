@@ -35,6 +35,7 @@ namespace WriteServices.AddressHandlers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.InnerException);
                 await _addressContext.Rollback();
             }
 
