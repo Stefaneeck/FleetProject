@@ -8,6 +8,6 @@ export interface IApplication {
   applicationType: number;
   possibleDates: string;
   applicationStatus: string;
-  vehicle: IVehicle;
   driver: IDriver;
+  vehicle: IVehicle; 
 }

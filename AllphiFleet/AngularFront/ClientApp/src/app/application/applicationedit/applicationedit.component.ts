@@ -5,6 +5,11 @@ import { EnumApplicationStatuses } from '../../domain/enums/EnumApplicationStatu
 import { FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from '../application.service';
+import { IDriver } from '../../domain/IDriver';
+import { IVehicle } from '../../domain/IVehicle';
+import { DriverService } from '../../driver/driver.service';
+import { VehicleService } from '../../vehicle/vehicle.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-applicationedit',
@@ -17,12 +22,15 @@ export class ApplicationeditComponent implements OnInit {
   application: IApplication | undefined;
   applicationForm: any;
   pageTitle: string = 'Edit application';
+  drivers: IDriver[] | undefined;
+  vehicles: IVehicle[] | undefined;
 
   //enum caused double values, remove double values to populate dropdown with good data
   enumApplicationTypes = Object.keys(EnumApplicationTypes).filter(key => !isNaN(Number(EnumApplicationTypes[key])));
   enumApplicationStatuses = Object.keys(EnumApplicationStatuses).filter(key => !isNaN(Number(EnumApplicationStatuses[key])));
 
   constructor(private formBuilder: FormBuilder, private applicationService: ApplicationService,
+    private driverService: DriverService, private vehicleService: VehicleService,
     private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -31,7 +39,7 @@ export class ApplicationeditComponent implements OnInit {
 
     if (id) {
       this.getApplication(id);
-
+      
     }
 
     this.pageTitle += `: ${id}`;
@@ -45,22 +53,8 @@ export class ApplicationeditComponent implements OnInit {
 
       this.application = data;
 
-      this.applicationForm = this.formBuilder.group({
-      ApplicationDate: [this.application.applicationDate, [Validators.required]],
-      ApplicationType: [null, [Validators.required]],
-      PossibleDates: [this.application.possibleDates, [Validators.required]],
-        ApplicationStatus: [null, [Validators.required]],
-      //CustomerId: [null],
-      //VehicleId: [null],
-    });
-
-      //default values for dropdowns
-      const stringValueApplicationTypeDropdown = this.application.applicationType.toString() + ": " + this.application.applicationType.toString();
-      this.applicationForm.controls['ApplicationType'].setValue(stringValueApplicationTypeDropdown, { onlySelf: true });
-
-      const stringValueApplicationStatusDropdown = this.application.applicationStatus.toString() + ": " + this.application.applicationStatus.toString();
-      this.applicationForm.controls['ApplicationStatus'].setValue(stringValueApplicationStatusDropdown, { onlySelf: true });
-
+      //call this method after the application data arrives
+      this.getDriversAndVehicles();
 
     }).catch((error) => {
       console.log("promise error");
@@ -104,6 +98,52 @@ export class ApplicationeditComponent implements OnInit {
       console.log("not valid.");
       this.getFormValidationErrors();
     }
+  }
+
+  getDriversAndVehicles(): void {
+
+    const promiseDrivers = this.driverService.getDrivers().toPromise();
+
+    promiseDrivers.then((dataDrivers: IDriver[]) => {
+
+      this.drivers = dataDrivers;
+      const promiseVehicles = this.vehicleService.getVehicles().toPromise();
+
+      promiseVehicles.then((dataVehicles: IVehicle[]) => {
+
+        this.vehicles = dataVehicles;
+
+      });
+
+      this.applicationForm = this.formBuilder.group({
+        ApplicationDate: [formatDate(this.application.applicationDate, 'yyyy-MM-dd', 'en'), [Validators.required]],
+        ApplicationType: [null, [Validators.required]],
+        PossibleDates: [this.application.possibleDates, [Validators.required]],
+        ApplicationStatus: [null, [Validators.required]],
+        DriverId: [null, [Validators.required]],
+        VehicleId: [null, [Validators.required]],
+      });
+
+      this.setDefaultValuesDropdowns();
+
+
+    }).catch((error) => {
+      console.log("promise error");
+      console.log(error);
+    });
+
+  }
+
+  setDefaultValuesDropdowns() {
+    //default values for dropdowns
+    const stringValueApplicationTypeDropdown = this.application.applicationType.toString() + ": " + this.application.applicationType.toString();
+    this.applicationForm.controls['ApplicationType'].setValue(stringValueApplicationTypeDropdown, { onlySelf: true });
+
+    const stringValueApplicationStatusDropdown = this.application.applicationStatus.toString() + ": " + this.application.applicationStatus.toString();
+    this.applicationForm.controls['ApplicationStatus'].setValue(stringValueApplicationStatusDropdown, { onlySelf: true });
+
+    this.applicationForm.controls['DriverId'].setValue(this.application.driver.id, { onlySelf: true });
+    this.applicationForm.controls['VehicleId'].setValue(this.application.vehicle.id, { onlySelf: true });
   }
 
   getFormValidationErrors() {

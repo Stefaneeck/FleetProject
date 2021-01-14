@@ -37,7 +37,7 @@ export class ApplicationaddComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getDrivers();
+    this.getDriversAndVehicles();
 
   }
 
@@ -64,22 +64,21 @@ export class ApplicationaddComponent implements OnInit {
     }
   }
 
-  getDrivers(): void {
+  getDriversAndVehicles(): void {
 
     const promiseDrivers = this.driverService.getDrivers().toPromise();
 
     promiseDrivers.then((dataDrivers: IDriver[]) => {
 
       this.drivers = dataDrivers;
-    });
+      const promiseVehicles = this.vehicleService.getVehicles().toPromise();
 
-    const promiseVehicles = this.vehicleService.getVehicles().toPromise();
+      promiseVehicles.then((dataVehicles: IVehicle[]) => {
 
-    promiseVehicles.then((dataVehicles: IVehicle[]) => {
+        this.vehicles = dataVehicles;
 
-      this.vehicles = dataVehicles;
-      console.log('vehicles');
-      console.log(dataVehicles);
+
+      });
 
       this.applicationForm = this.formBuilder.group({
         ApplicationDate: [null, [Validators.required]],
@@ -89,6 +88,18 @@ export class ApplicationaddComponent implements OnInit {
         DriverId: [null, [Validators.required]],
         VehicleId: [null, [Validators.required]],
       });
+
+
+
+      //default values van dropdowns opvullen
+      /*
+      const stringValueDriverLicenseDropdown = this.driver.driverLicenseType.toString() + ": " + this.driver.driverLicenseType.toString();
+      this.driverForm.controls['DriverLicenseType'].setValue(stringValueDriverLicenseDropdown, { onlySelf: true });
+      const stringValueAuthTypeDropdown = this.driver.fuelCard.authType.toString() + ": " + this.driver.fuelCard.authType.toString();
+      this.driverForm.controls['FuelCard'].controls['AuthType'].setValue(stringValueAuthTypeDropdown, { onlySelf: true });
+      console.log(stringValueAuthTypeDropdown);
+      */
+
 
     }).catch((error) => {
       console.log("promise error");

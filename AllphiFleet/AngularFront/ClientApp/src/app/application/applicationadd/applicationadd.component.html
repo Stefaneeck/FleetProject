@@ -1,3 +1,4 @@
+<!-- added ngif drivers to only show form after driver data arrives -->
 <form [formGroup]="applicationForm" class="marginBottom" (ngSubmit)="addApplication(applicationForm.value)" *ngIf='drivers && drivers.length'>
   <div class="form-group">
     <label for="inputApplicationDate">Application date</label>

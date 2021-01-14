@@ -26,11 +26,8 @@ namespace WriteServices.ApplicationHandlers
                 ApplicationDate = command.UpdateApplicationDTO.ApplicationDate,
                 PossibleDates = command.UpdateApplicationDTO.PossibleDates,
                 ApplicationStatus = command.UpdateApplicationDTO.ApplicationStatus,
-
-                //from db, for now (to edit later)
-                VehicleId = applicationFromDb.VehicleId,
-                DriverId = applicationFromDb.DriverId,
-
+                VehicleId = command.UpdateApplicationDTO.VehicleId,
+                DriverId = command.UpdateApplicationDTO.DriverId,
                 ApplicationType = command.UpdateApplicationDTO.ApplicationType
 
             };
