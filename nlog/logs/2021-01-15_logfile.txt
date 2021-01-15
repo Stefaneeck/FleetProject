@@ -28,3 +28,9 @@
 2021-01-15 12:51:32.4554 INFO Retrieving 10 records.
 2021-01-15 12:54:32.3455 INFO Retrieving all vehicles.
 2021-01-15 12:54:32.3594 INFO Retrieving 10 records.
+2021-01-15 14:07:42.0581 INFO Retrieving all vehicles.
+2021-01-15 14:07:42.8956 INFO Retrieving 10 records.
+2021-01-15 14:08:03.6323 INFO Retrieving all drivers.
+2021-01-15 14:08:03.8898 INFO Retrieving 11 records.
+2021-01-15 14:15:27.0246 INFO Retrieving all drivers.
+2021-01-15 14:15:27.7742 INFO Retrieving 12 records.

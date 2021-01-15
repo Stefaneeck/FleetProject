@@ -19,7 +19,7 @@ namespace WriteServices.VehicleHandlers
         }
         public async Task<Unit> Handle(DeleteVehicleCommand command, CancellationToken cancellationToken)
         {
-            //address from db
+            //vehicle from db
             var vehicle = _context.Vehicles.FirstOrDefault(v => v.Id == command.Id);
 
             _context.BeginTransaction();
