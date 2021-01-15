@@ -1,0 +1,49 @@
+<div class='card' *ngIf='vehicle'>
+  <div class='card-header'>
+    {{ pageTitle }}
+  </div>
+
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class='row'>
+          <div class='col-md-4'>Id:</div>
+          <div class='col-md-8'>{{ vehicle.id }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Chassis nr:</div>
+          <div class='col-md-8'>{{ vehicle.chassisNr }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Vehicle type:</div>
+          <div class='col-md-8'>{{ getVehicleTypeViewValue(vehicle.vehicleType) }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Fuel type:</div>
+          <div class='col-md-8'>{{ getFuelTypeViewValue(vehicle.fuelType) }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Mileage:</div>
+          <div class='col-md-8'>{{ vehicle.mileage }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary marginButton'
+            [routerLink]="['/vehicleedit', vehicle.id]">
+      <i class='fa fa-chevron-left'></i> Edit
+    </button>
+    <button class='btn btn-outline-secondary marginButton'
+            (click)='deleteVehicle(vehicle.id)'
+            style='width: 80px'>
+      <i class='fa fa-chevron-left'></i> Delete
+    </button>
+    <button class='btn btn-outline-secondary marginButton'
+            (click)='onBack()'
+            style='width:80px'>
+      <i class='fa fa-chevron-left'></i> Back
+    </button>
+  </div>
+</div>

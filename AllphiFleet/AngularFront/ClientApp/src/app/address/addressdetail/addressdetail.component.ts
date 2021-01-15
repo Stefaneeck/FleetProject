@@ -30,7 +30,7 @@ export class AddressdetailComponent implements OnInit {
 
   getAddress(id: number): void {
     this.addressService.getAddress(id).subscribe({
-      //opgehaalde waarde in lokale address variabele opslaan
+      //save response data from request in local variable
       next: result => this.address = result,
       error: err => this.errorMessage = err
     });

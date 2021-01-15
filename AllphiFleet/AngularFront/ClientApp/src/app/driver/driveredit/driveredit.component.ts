@@ -87,7 +87,7 @@ export class DrivereditComponent implements OnInit {
 
       });
 
-      //default values van dropdowns opvullen
+      //populate dropdowns with default values
       const stringValueDriverLicenseDropdown = this.driver.driverLicenseType.toString() + ": " + this.driver.driverLicenseType.toString();
       this.driverForm.controls['DriverLicenseType'].setValue(stringValueDriverLicenseDropdown, { onlySelf: true });
       const stringValueAuthTypeDropdown = this.driver.fuelCard.authType.toString() + ": " + this.driver.fuelCard.authType.toString();
@@ -107,7 +107,7 @@ export class DrivereditComponent implements OnInit {
     //id manueel toevoegen
     driverDataFromForm.id = this.driver.id;
 
-    //omzetten naar number (hij gaf strings door aan de api)
+    //convert to number (angular was passing strings to the api)
     driverDataFromForm.FuelCard.AuthType = Number(driverDataFromForm.FuelCard.AuthType);
     driverDataFromForm.DriverLicenseType = Number(driverDataFromForm.DriverLicenseType);
 
