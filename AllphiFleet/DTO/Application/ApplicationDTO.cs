@@ -12,5 +12,6 @@ namespace DTO
         public ApplicationStatuses ApplicationStatus { get; set; }
         public VehicleDTO Vehicle { get; set; }
         public DriverDTO Driver { get; set; }
+        public bool Approved { get; set; }
     }
 }

@@ -14,5 +14,6 @@ namespace Models
         public virtual Vehicle Vehicle { get; set; }
         public virtual long DriverId { get; set; }
         public virtual Driver Driver { get; set; }
+        public virtual bool Approved { get; set; }
     }
 }

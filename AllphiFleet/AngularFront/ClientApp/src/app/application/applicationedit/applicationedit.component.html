@@ -66,5 +66,10 @@
     </span>
   </div>
 
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="checkApproved" formControlName="Approved">
+    <label class="form-check-label" for="checkApproved">Approved</label>
+  </div>
+
   <button type="submit" class="btn btn-primary" (click)="updateApplication(applicationForm.value)">Submit</button>
 </form>

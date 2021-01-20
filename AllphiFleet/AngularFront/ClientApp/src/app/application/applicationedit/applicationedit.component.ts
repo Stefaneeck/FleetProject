@@ -122,6 +122,20 @@ export class ApplicationeditComponent implements OnInit {
         ApplicationStatus: [null, [Validators.required]],
         DriverId: [null, [Validators.required]],
         VehicleId: [null, [Validators.required]],
+        Approved: [this.application.approved, [Validators.required]],
+
+        //added to pass value to the api to be able to send the mail
+        //not visible in html
+        Driver: this.formBuilder.group({
+          Id: [this.application.driver.id],
+          Name: [this.application.driver.name],
+          FirstName: [this.application.driver.firstName],
+          BirthDate: [this.application.driver.birthDate],
+          SocSecNr: [this.application.driver.socSecNr],
+          DriverLicenseType: [this.application.driver.driverLicenseType],
+          Active: [this.application.driver.active],
+          Email: [this.application.driver.email],
+        }),
       });
 
       this.setDefaultValuesDropdowns();

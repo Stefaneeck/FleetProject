@@ -9,5 +9,6 @@ export interface IApplication {
   possibleDates: string;
   applicationStatus: string;
   driver: IDriver;
-  vehicle: IVehicle; 
+  vehicle: IVehicle;
+  approved: boolean;
 }
