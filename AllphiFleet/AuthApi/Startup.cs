@@ -23,7 +23,6 @@ namespace AuthApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //db config support identity
             //inform EF Core that our project will contain the migration code
             var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
@@ -33,10 +32,13 @@ namespace AuthApi
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            #region commentidentity
             //Now using asp identity users instead of IdentityServer4 testusers
             //Calling AddIdentity will change your application’s default cookie scheme to IdentityConstants.ApplicationScheme. 
             //This configures IdentityServer to use the ASP.NET Identity implementations
             //If we are working with a custom IdentityUser class, change it here
+            #endregion
+
             services.AddIdentityServer()
             .AddAspNetIdentity<IdentityUser>()
             .AddProfileService<ProfileService>()

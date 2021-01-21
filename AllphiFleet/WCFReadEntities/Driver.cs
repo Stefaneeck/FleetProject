@@ -4,6 +4,8 @@ using System.Runtime.Serialization;
 namespace WCFReadEntities
 {
     [DataContract]
+
+    //todo: annotations can be added to our shared models, no need for double classes
     public class Driver
     {
         [DataMember]

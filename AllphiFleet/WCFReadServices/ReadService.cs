@@ -32,10 +32,12 @@ namespace WCFReadServices
 
         public List<WCFReadEntities.Driver> GetDrivers()
         {
+            #region commentlinq
             /* not working (linq will try to find MapDriver at db level. Only after ToList() you are working outside of db.
             return dbContext.Chauffeurs.Select(c =>
            MapDriver(c)).ToList();
             */
+            #endregion
 
             //solution with ToList()
             return dbContext.Drivers.ToList().Select(c =>

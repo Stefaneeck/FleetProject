@@ -7,7 +7,7 @@ namespace Validation.Validators
 {
     public static class ValidationExtensions
     {
-        //in plaats van this aan te roepen, roepen we command aan
+        //instead of calling this, we call command (extension)
         public static void AddCheckIfExistsInDBValidator<TCommand, TEntity>(this AbstractValidator<TCommand> validator, INHRepository<TEntity> dbContext)
             where TCommand : class, IIdentifiable
             where TEntity : class, IIdentifiable
@@ -15,10 +15,13 @@ namespace Validation.Validators
         {
             string message = typeof(TEntity).Name.ToString() + " does not exist.";
 
-            //als we een command hebben met een id, moet er ook een chauffeur bestaan met die id in de database
+            #region commentcommand
+            //if we have a command with id, there must exist a driver in db with that id
             //lamdba, input is TCommand, output is id
-            //voor elke command die we als input krijgen, geef zijn id terug
-            //must gaat die id gebruiken om regel te definieren
+            //for each command we have as input, retrieve its id
+            //must will use that id to define rule
+            #endregion
+
             validator.RuleFor(command => command.Id)
             .Must(id =>
             {

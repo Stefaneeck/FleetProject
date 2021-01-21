@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WriteRepositories
 {
-    //+- concrete dbcontext implementatie
+    //+- concrete dbcontext implementation
     public class NHRepository<T> : INHRepository<T> where T : class, IIdentifiable
     {
         private readonly ISession _session;

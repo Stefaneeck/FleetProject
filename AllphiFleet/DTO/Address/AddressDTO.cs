@@ -12,8 +12,5 @@ namespace DTO
         public string City { get; set; }
         public int Zipcode { get; set; }
 
-        //jsonignore voor circular reference bij ophalen van data te omzeilen. betere oplossing zoeken?
-        //[JsonIgnore]
-        //public ICollection<Chauffeur> Chauffeurs { get; set; }
     }
 }

@@ -28,8 +28,10 @@ namespace WriteAPI
             services.AddNHibernate(connectionString);
             services.AddMediatR(WriteServices.AssemblyInfoUtil.GetAssembly());
 
+            #region commentmailingservice
             //register here, not in writeservices project (writeservices project does not have a startup 
             //and it can only be used from within an other project which has a startup (in our case it is running via writeapi project), so register there (=here))
+            #endregion
             services.AddMailingService();
 
             //register all validators in the assembly that also contains startup

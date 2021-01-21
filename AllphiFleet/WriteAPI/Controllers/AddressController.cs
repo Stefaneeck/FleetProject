@@ -36,7 +36,7 @@ namespace WriteApi.Controllers
         [HttpDelete("/writeapi/address/delete/{id}")]
         public async Task<IActionResult> DeleteAddress(long id)
         {
-            //kijken of adres bestaat
+            //check if address exists
             var adres = _addressContext.Addresses.FirstOrDefault(a => a.Id == id);
 
             if (adres == null)

@@ -24,23 +24,6 @@ namespace WriteRepositories.Mappings
             this.Property(v => v.Mileage);
             this.Property(v => v.FuelType);
             this.Property(v => v.VehicleType);
-
-
-            /*
-            Bag(x => x.Applications, map =>
-            {
-                map.Key(k =>
-                {
-                    k.Column(col => col.Name("Id"));
-                });
-
-                map.Cascade(Cascade.None);
-                map.Inverse(true);
-
-                map.Lazy(CollectionLazy.Lazy);
-            },
-            action => action.OneToMany());
-            */
         }
 
     }

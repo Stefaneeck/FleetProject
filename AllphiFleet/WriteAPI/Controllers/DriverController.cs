@@ -49,7 +49,7 @@ namespace WriteApi.Controllers
         public async Task<IActionResult> CreateDriver(CreateDriverDTO createDriverDTO)
         {
             //We want the validation to take place in the pipline, before mediatr we didnt validate until we had already reached the business logic.
-            //With the mediatr pattern the valdiation takes place before entering the business logic.
+            //Using the mediatr pattern the valdiation takes place before entering the business logic.
 
             return Ok(await _mediator.Send(new CreateDriverCommand { CreateDriverDTO = createDriverDTO }));
         }

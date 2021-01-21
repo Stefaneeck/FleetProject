@@ -27,12 +27,14 @@ namespace ReadRepositories.Mappings
                 .Property(d => d.FirstName)
                 .IsRequired();
 
+            #region commentnavproperties
             //navigation properties can't be set via fluent api property, is required is placed at the relation definition (hasone withmany hasforeignkey isrequired)
             /*
             modelBuilder.Entity<Chauffeur>()
                 .Property(c => c.Adres)
                 .IsRequired();
             */
+            #endregion
 
             modelBuilder.Entity<Driver>()
                 .Property(d => d.BirthDate)

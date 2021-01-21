@@ -62,36 +62,39 @@ public static class InMemoryConfig
                 AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "api1.read" }
             },
 
-           //code flow with PCKE example
-           /* This configuration adds a new client application that uses the recommended flow for server-side web applications:
-                * the authorization code flow with Proof-Key for Code Exchange (PKCE)
-                * For this client, you have also set a redirect URI. 
-                * Because this flow takes place via the browser, IdentityServer must know an allowed list of URLs to send the user back to,
-                * once user authentication and client authorization is complete;
-                * what URLs it can return the authorization result to. 
-                * 
-           new Client
-            {
-                ClientId = "oidcClient",
-                ClientName = "Example Client Application",
-                ClientSecrets = new List<Secret> {new Secret("SuperSecretPassword".Sha256())}, // change me!
-    
-                AllowedGrantTypes = GrantTypes.Code,
-                RedirectUris = new List<string> {"https://localhost:5002/signin-oidc"},
-                AllowedScopes = new List<string>
-                {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Email,
-                    "role",
-                    "api1.read"
-                },
+            #region codeflowexample
+            //code flow with PCKE example
+            /* This configuration adds a new client application that uses the recommended flow for server-side web applications:
+                 * the authorization code flow with Proof-Key for Code Exchange (PKCE)
+                 * For this client, you have also set a redirect URI. 
+                 * Because this flow takes place via the browser, IdentityServer must know an allowed list of URLs to send the user back to,
+                 * once user authentication and client authorization is complete;
+                 * what URLs it can return the authorization result to. 
+                 * 
+            new Client
+             {
+                 ClientId = "oidcClient",
+                 ClientName = "Example Client Application",
+                 ClientSecrets = new List<Secret> {new Secret("SuperSecretPassword".Sha256())}, // change me!
 
-                RequirePkce = true,
-                AllowPlainTextPkce = false
-            }
-           ,*/
-           new Client
+                 AllowedGrantTypes = GrantTypes.Code,
+                 RedirectUris = new List<string> {"https://localhost:5002/signin-oidc"},
+                 AllowedScopes = new List<string>
+                 {
+                     IdentityServerConstants.StandardScopes.OpenId,
+                     IdentityServerConstants.StandardScopes.Profile,
+                     IdentityServerConstants.StandardScopes.Email,
+                     "role",
+                     "api1.read"
+                 },
+
+                 RequirePkce = true,
+                 AllowPlainTextPkce = false
+             }
+            ,*/
+            #endregion
+
+            new Client
             {
 
                //hybrid flow
@@ -111,10 +114,10 @@ public static class InMemoryConfig
                 },
 
                 RequirePkce = false,
-                //AllowPlainTextPkce = false
             },
            new Client
             {
+               #region codeflowpkceexplanation
                //code flow with pkce
                /*
                 * We are using code flow with PKCE here because we are using an Angular app, 
@@ -123,7 +126,9 @@ public static class InMemoryConfig
                 * Note, that the RequirePkce is set to enable PKCE and that the access token and ID token is very shortlived 
                 * because we are going to be using silent renewal to periodically renew these tokens in the background.
                 */
-                ClientId = "angularApp",
+                #endregion
+
+               ClientId = "angularApp",
                 ClientName = "AngularFront",
 
                 RequireClientSecret = false,

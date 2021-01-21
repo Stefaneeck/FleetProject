@@ -11,11 +11,12 @@ namespace DTO
         public string PossibleDates { get; set; }
         public ApplicationStatuses ApplicationStatus { get; set; }
 
+        #region commentobjects
         //not working with objects anymore NH, just the 2 properties
         //public Vehicle Vehicle { get; set; }
 
         //public Driver Driver { get; set; }
-
+        #endregion
         public long VehicleId { get; set; }
         public long DriverId { get; set; }
     }

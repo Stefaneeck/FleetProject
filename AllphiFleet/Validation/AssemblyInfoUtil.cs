@@ -1,9 +1,8 @@
 ﻿using System.Reflection;
 
-
 namespace Validation
 {
-    //Klasse om assembly op te halen (voor automapper configuratie)
+    //class to retrieve assembly
     public static class AssemblyInfoUtil
     {
         public static Assembly GetAssembly()

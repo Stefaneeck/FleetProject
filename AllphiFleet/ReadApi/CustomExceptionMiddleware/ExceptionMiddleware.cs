@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace ReadApi.CustomExceptionMiddleware
 {
-    /// <summary>
-    /// After the registration process, we need to create the InvokeAsync() method. 
-    /// RequestDelegate can’t process requests without it.
+    #region commentmiddleware
+    /* After the registration process, we need to create the InvokeAsync() method. 
+    RequestDelegate can’t process requests without it.
 
-    /// If everything goes well, the _next delegate should process the request 
-    /// and the Get action from our controller should generate a successful response. 
-    /// But if a request is unsuccessful (and it is, because we are forcing exception), 
-    /// our middleware will trigger the catch block and call the HandleExceptionAsync method.
-    /// </summary>
+    If everything goes well, the _next delegate should process the request 
+    and the Get action from our controller should generate a successful response. 
+    But if a request is unsuccessful (and it is, because we are forcing exception), 
+    our middleware will trigger the catch block and call the HandleExceptionAsync method.
+    */
+    #endregion
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;

@@ -9,7 +9,7 @@ using System.Net;
 namespace ReadApi.Extensions
 {
     /// <summary>
-    /// definitie van extension method voor global exception handling
+    /// extension method definition for global exception handling
     /// </summary>
     public static class ExceptionMiddlewareExtensions
     {

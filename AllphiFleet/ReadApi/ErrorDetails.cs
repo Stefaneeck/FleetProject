@@ -2,7 +2,7 @@
 
 namespace ReadApi
 {
-    //klasse voor global error handling, voor details van de errormessage
+    //global error handling class, for details of the errormessage
     public class ErrorDetails
     {
         public int StatusCode { get; set; }

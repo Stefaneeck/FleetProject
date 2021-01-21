@@ -9,7 +9,7 @@ namespace WriteRepositories.Mappings
     {
         public FuelCardMap()
         {
-            //hier aparte delete voor
+            //separate delete for this
             this.Table("FuelCards");
 
             this.Id(t => t.Id, t =>

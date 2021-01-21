@@ -65,13 +65,16 @@ namespace AuthApi.Configuration
                     throw new Exception(result.Errors.First().Description);
                 }
 
-                /* ze kan de role nog niet hebben, want we maken haar hier pas aan. 
-                 * als je toch wil controleren:
+                #region commentrole
+                /* cant have the role yet because user has only just been created here
+                 * should you want to check the role:
                  * 
                 var roles = userManager.GetRolesAsync(alice).Result;
                 if(!roles.Contains("admin"))
 
                 */
+                #endregion
+
                 result = userManager.AddClaimsAsync(alice, new Claim[]
                 {
                   new Claim(JwtClaimTypes.Name, "Alice Smith"),

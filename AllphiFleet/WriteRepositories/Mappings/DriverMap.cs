@@ -39,26 +39,13 @@ namespace WriteRepositories.Mappings
             ManyToOne(x => x.FuelCard, map =>
             {
                 map.Column("FuelCardId");
-                //cascade all houdt ook remove in, dus dan wordt hij verwijderd.. daarom specifiekere cascades
-                //geen delete action, dus eigenlijk cascade none voor delete
-                //bij het verwijderen van een chauffeur, de tankkaart behouden
+                #region commentcascade
+                //cascade all includes remove, so it would be deleted, more specific cascades specified because of this
+                //no delete action, this means +- cascade none for delete
+                //on delete driver, do not delete fuelcard
+                #endregion
                 map.Cascade(Cascade.Refresh | Cascade.Persist | Cascade.Merge);
             });
-
-            /*
-            Bag(x => x.Applications, map =>
-            {
-                map.Key(k =>
-                {
-                    k.Column(col => col.Name("Id"));
-                });
-                map.Cascade(Cascade.None);
-                map.Inverse(true);
-
-                map.Lazy(CollectionLazy.Lazy);
-            },
-            action => action.OneToMany());
-            */
         }
     }
 }

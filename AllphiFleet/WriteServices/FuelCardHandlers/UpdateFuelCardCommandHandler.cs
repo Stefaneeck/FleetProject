@@ -2,7 +2,6 @@
 using MediatR;
 using Models;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using WriteRepositories;
@@ -19,9 +18,7 @@ namespace WriteServices.FuelCardHandlers
         }
         public async Task<Unit> Handle(UpdateFuelCardCommand command, CancellationToken cancellationToken)
         {
-            FuelCard tankkaartVanDB = _fuelCardContext.FuelCards.FirstOrDefault(t => t.Id == command.UpdateFuelCardDTO.Id);
-
-            var tankkaart = new FuelCard
+            var fuelCard = new FuelCard
             {
                 Id = command.UpdateFuelCardDTO.Id,
                 AuthType = command.UpdateFuelCardDTO.AuthType,
@@ -35,7 +32,7 @@ namespace WriteServices.FuelCardHandlers
 
             try
             {
-                await _fuelCardContext.Update(tankkaart);
+                await _fuelCardContext.Update(fuelCard);
                 await _fuelCardContext.Commit();
             }
             catch (Exception e)

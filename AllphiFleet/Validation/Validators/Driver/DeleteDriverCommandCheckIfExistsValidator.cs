@@ -12,12 +12,16 @@ namespace Validation.Validators
         {
             _driverContext = driverContext;
 
+            #region commentrulefor
             //not neccessary, by default return 405 not allowed without id parameter
             //RuleFor(c => c.Id).NotEmpty();
+            #endregion
 
             this.AddCheckIfExistsInDBValidator(_driverContext);
+            #region commentclassicway
             //if this would be called using the classic static way
             //ValidationExtensions.AddCheckIfExistsInDBValidator(this, _chauffeurContext);
+            #endregion
         }
     }
 }

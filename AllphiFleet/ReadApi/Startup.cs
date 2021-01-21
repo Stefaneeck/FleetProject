@@ -49,8 +49,10 @@ namespace ReadApi
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
+            #region commentAutomapper
             //services.AddAutoMapper(Assembly.GetExecutingAssembly()); not working because it is in another project.
             //workaround: static class from which the assembly can be retrieved.
+            #endregion
 
             //must be the assembly from the project that contains automapper profiles, in our case this is the services project
             services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());

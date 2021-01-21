@@ -8,11 +8,13 @@ using System.Linq;
 
 namespace AuthApi.Extensions
 {
+    #region commentseeddb
     /* Seed db with our InMemoryConfig class data
      * We create scope and use it to migrate all the tables from the PersistedGrantDbContext class. 
      * After that, we create a context for the ConfigurationDbContext class and use the Migrate method to apply migration. 
      * Then we go through all the clients, identity resources, and api resources, add each of them to the context and call the SaveChanges method.
      */
+    #endregion
     public static class MigrationManager
     {
         public static IHost MigrateDatabase(this IHost host)
