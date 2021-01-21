@@ -26,7 +26,6 @@ export class DriverService {
       );
   }
 
-
   /* Example: manually add token to request
    * 
    * We need access to the getAccessToken function and for that, we have to inject the _authService object.
@@ -44,6 +43,7 @@ export class DriverService {
    * To improve this solution, we are going to create a centralized place to inject the access token in the request and use that logic in our HTTP calls without the code repetition.
    
   */
+
 
   getDriver(id: number): Observable<IDriver | undefined> {
     return this.http.get<IDriver>(this.driverReadUrl + '/' + id)

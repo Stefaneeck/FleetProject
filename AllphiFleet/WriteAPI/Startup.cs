@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WriteRepositories;
 using Validation.PipelineBehaviours;
+using MailingService;
 
 namespace WriteAPI
 {
@@ -22,15 +23,16 @@ namespace WriteAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //nhibernate
-            //var connectionString = Configuration.GetConnectionString("AllphiFleetDB");
+
             var connectionString = Configuration["ConnectionString:AllphiFleetDB"];
             services.AddNHibernate(connectionString);
-
             services.AddMediatR(WriteServices.AssemblyInfoUtil.GetAssembly());
 
-            //register all validators in the assembly that also contains startup
+            //register here, not in writeservices project (writeservices project does not have a startup 
+            //and it can only be used from within an other project which has a startup (in our case it is running via writeapi project), so register there (=here))
+            services.AddMailingService();
 
+            //register all validators in the assembly that also contains startup
             services.AddValidatorsFromAssembly(Validation.AssemblyInfoUtil.GetAssembly());
 
             //Since we need to validate each and every request, we add it with a Transient Scope to the container
