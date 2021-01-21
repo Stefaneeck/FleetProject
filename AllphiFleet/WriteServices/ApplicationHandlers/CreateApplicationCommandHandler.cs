@@ -40,7 +40,7 @@ namespace WriteServices.ApplicationHandlers
                 await _context.Commit();
 
                 //send mail
-                await _mailingService.SendApplicationMail(application);
+                await _mailingService.SendApplicationCreatedMail(application);
             }
             catch (Exception e)
             {

@@ -124,7 +124,7 @@ export class ApplicationeditComponent implements OnInit {
         VehicleId: [null, [Validators.required]],
         Approved: [this.application.approved, [Validators.required]],
 
-        //added to pass value to the api to be able to send the mail
+        //added to pass value to the api to be able to send mail
         //not visible in html
         Driver: this.formBuilder.group({
           Id: [this.application.driver.id],

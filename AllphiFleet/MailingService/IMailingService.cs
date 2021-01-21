@@ -5,6 +5,7 @@ namespace MailingService
 {
     public interface IMailingService
     {
-        Task SendApplicationMail(Application application);
+        Task SendApplicationCreatedMail(Application application);
+        Task SendApplicationApprovedMail(Application application);
     }
 }

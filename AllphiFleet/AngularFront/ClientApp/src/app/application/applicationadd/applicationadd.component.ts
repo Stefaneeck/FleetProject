@@ -85,20 +85,12 @@ export class ApplicationaddComponent implements OnInit {
         ApplicationType: [null, [Validators.required]],
         PossibleDates: ['', [Validators.required]],
         ApplicationStatus: ['', [Validators.required]],
+
+        //driver id should be replaced. The logged in driver who creates the application should automatically be the id, it should not explicitly be added
         DriverId: [null, [Validators.required]],
-        VehicleId: [null, [Validators.required]],
+        VehicleId: [null, [Validators.required]]
       });
 
-
-
-      //default values van dropdowns opvullen
-      /*
-      const stringValueDriverLicenseDropdown = this.driver.driverLicenseType.toString() + ": " + this.driver.driverLicenseType.toString();
-      this.driverForm.controls['DriverLicenseType'].setValue(stringValueDriverLicenseDropdown, { onlySelf: true });
-      const stringValueAuthTypeDropdown = this.driver.fuelCard.authType.toString() + ": " + this.driver.fuelCard.authType.toString();
-      this.driverForm.controls['FuelCard'].controls['AuthType'].setValue(stringValueAuthTypeDropdown, { onlySelf: true });
-      console.log(stringValueAuthTypeDropdown);
-      */
 
 
     }).catch((error) => {

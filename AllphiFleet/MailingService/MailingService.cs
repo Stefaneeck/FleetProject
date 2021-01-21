@@ -8,10 +8,35 @@ namespace MailingService
 {
     public class MailingService : IMailingService
     {
-
-        public async Task SendApplicationMail(Application application)
+        public async Task SendApplicationCreatedMail(Application application)
         {
-            //created in windows, restart VS if null after adding
+            //environment variable created in windows, restart VS if null after adding
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("stefan.eeckhoudt@allphi.eu", "Stefan Eeckhoudt");
+            var subject = "Your application from " + application.ApplicationDate.ToShortDateString() + " has been approved.";
+            var to = new EmailAddress("stefan.eeckhoudt@gmail.com", "Stefan Eeckhoudt");
+            var plainTextContent = $"A new application with type {application.ApplicationType} has been created." +
+                $"Details: " +
+                $"Application type: {application.ApplicationType.ToString()} " +
+                $"Application date: {application.ApplicationDate.ToShortDateString()}" +
+                //todo send the driver who created it from angular
+                //$"Created by: {application.Driver.Name + " " + application.Driver.FirstName}" +
+                $"Application status: {application.ApplicationStatus.ToString()}" +
+                $"Dates possible:  {application.PossibleDates }";
+            var htmlContent = $"A new application with type {application.ApplicationType} has been created. <br /><br />" +
+                $" Details: <br /> " +
+                $"Application type: {application.ApplicationType} <br /> " +
+                $"Application date: {application.ApplicationDate.ToShortDateString()} <br />" +
+                //todo send the driver who created it from angular
+                //$"Created by: {application.Driver.Name + " " + application.Driver.FirstName}" +
+                $"Application status: {application.ApplicationStatus} <br />" +
+                $"Dates possible:  {application.PossibleDates }"; ;
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
+        public async Task SendApplicationApprovedMail(Application application)
+        {
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("stefan.eeckhoudt@allphi.eu", "Stefan Eeckhoudt");
