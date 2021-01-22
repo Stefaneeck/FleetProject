@@ -120,7 +120,7 @@ export class ApplicationeditComponent implements OnInit {
         ApplicationType: [null, [Validators.required]],
         PossibleDates: [this.application.possibleDates, [Validators.required]],
         ApplicationStatus: [null, [Validators.required]],
-        DriverId: [null, [Validators.required]],
+        //DriverId: [null, [Validators.required]],
         VehicleId: [null, [Validators.required]],
         Approved: [this.application.approved, [Validators.required]],
 
@@ -156,7 +156,7 @@ export class ApplicationeditComponent implements OnInit {
     const stringValueApplicationStatusDropdown = this.application.applicationStatus.toString() + ": " + this.application.applicationStatus.toString();
     this.applicationForm.controls['ApplicationStatus'].setValue(stringValueApplicationStatusDropdown, { onlySelf: true });
 
-    this.applicationForm.controls['DriverId'].setValue(this.application.driver.id, { onlySelf: true });
+    this.applicationForm.controls['Driver'].controls['Id'].setValue(this.application.driver.id, { onlySelf: true });
     this.applicationForm.controls['VehicleId'].setValue(this.application.vehicle.id, { onlySelf: true });
   }
 

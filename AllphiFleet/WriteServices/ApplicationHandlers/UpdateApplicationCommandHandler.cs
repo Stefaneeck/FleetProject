@@ -32,8 +32,9 @@ namespace WriteServices.ApplicationHandlers
                 PossibleDates = command.UpdateApplicationDTO.PossibleDates,
                 ApplicationStatus = command.UpdateApplicationDTO.ApplicationStatus,
                 VehicleId = command.UpdateApplicationDTO.VehicleId,
-                //Todo: not needed anymore, driver object passed in
-                DriverId = command.UpdateApplicationDTO.DriverId,
+                //DriverId seperately still needed because otherwise we must change NH mapping to expect a driver object with bag etc.. but only needing id.
+                //driver object here not for db,but to pass on for application email details
+                DriverId = command.UpdateApplicationDTO.Driver.Id,
                 Driver = new Driver {
                     Id = command.UpdateApplicationDTO.Driver.Id,
                     Name = command.UpdateApplicationDTO.Driver.Name,
