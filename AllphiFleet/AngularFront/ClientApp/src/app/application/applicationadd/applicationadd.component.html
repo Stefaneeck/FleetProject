@@ -45,7 +45,7 @@
   <div class="form-group">
     <label for="selectDriverId">Driver</label>
     <select id="selectDriverId" class="form-control" formControlName="DriverId">
-      <option *ngFor="let driver of drivers" [ngValue]="driver.id">{{ driver.name }}</option>
+      <option *ngFor="let driver of drivers" [ngValue]="driver.id">{{ driver.name + " " + driver.firstName }}</option>
     </select>
 
     <span class="text-danger"

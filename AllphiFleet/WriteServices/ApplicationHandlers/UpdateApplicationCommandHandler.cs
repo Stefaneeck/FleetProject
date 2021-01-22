@@ -46,10 +46,10 @@ namespace WriteServices.ApplicationHandlers
                 }
                 ,
                 ApplicationType = command.UpdateApplicationDTO.ApplicationType,
-                Approved = command.UpdateApplicationDTO.Approved
+                //Approved = command.UpdateApplicationDTO.Approved
             };
 
-            if(application.Approved)
+            if(application.ApplicationStatus == Models.Enums.ApplicationStatuses.Approved)
             {
                 await _mailingService.SendApplicationApprovedMail(application);
             }

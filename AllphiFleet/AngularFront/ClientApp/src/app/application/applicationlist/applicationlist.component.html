@@ -8,7 +8,6 @@
         <th>Application type</th>
         <th>Possible dates</th>
         <th>Application status</th>
-        <th>Approved</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +17,6 @@
         <td>{{ getApplicationTypeViewValue(application.applicationType) }}</td>
         <td>{{ application.possibleDates }}</td>
         <td>{{ getApplicationStatusViewValue(application.applicationStatus) }}</td>
-        <td>
-          <input type="checkbox" [checked]="application.approved" class="notClickable">
-        </td>
       </tr>
     </tbody>
   </table>

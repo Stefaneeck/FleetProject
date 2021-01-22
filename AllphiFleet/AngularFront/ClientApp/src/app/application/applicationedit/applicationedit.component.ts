@@ -122,7 +122,7 @@ export class ApplicationeditComponent implements OnInit {
         ApplicationStatus: [null, [Validators.required]],
         //DriverId: [null, [Validators.required]],
         VehicleId: [null, [Validators.required]],
-        Approved: [this.application.approved, [Validators.required]],
+        //Approved: [this.application.approved, [Validators.required]],
 
         //added to pass value to the api to be able to send mail
         //not visible in html

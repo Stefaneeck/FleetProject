@@ -28,7 +28,6 @@ namespace WriteRepositories.Mappings
             //not creating entire new vehicle and driver objects anymore, property instead of manytoone
             this.Property(a => a.VehicleId);
             this.Property(a => a.DriverId);
-            this.Property(a => a.Approved);
 
             #region comments
             //this.Property(a => a.Vehicle.Id);

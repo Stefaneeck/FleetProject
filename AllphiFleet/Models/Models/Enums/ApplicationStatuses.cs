@@ -3,10 +3,10 @@
 {
     public enum ApplicationStatuses
     {
-        Aangekondigd,
-        Goedgekeurd,
-        Afgekeurd,
-        Afgerond,
+        Announced,
+        Approved,
+        Denied,
+        Completed,
         Hold
     }
 }

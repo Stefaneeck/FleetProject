@@ -192,9 +192,6 @@ namespace Repositories.Migrations
                     b.Property<int>("ApplicationType")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Approved")
-                        .HasColumnType("bit");
-
                     b.Property<long>("DriverId")
                         .HasColumnType("bigint");
 

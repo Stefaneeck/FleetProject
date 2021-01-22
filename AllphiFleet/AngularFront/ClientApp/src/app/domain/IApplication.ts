@@ -10,5 +10,4 @@ export interface IApplication {
   applicationStatus: string;
   driver: IDriver;
   vehicle: IVehicle;
-  approved: boolean;
 }
