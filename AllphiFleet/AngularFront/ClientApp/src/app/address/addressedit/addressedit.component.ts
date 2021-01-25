@@ -76,6 +76,9 @@ export class AddresseditComponent implements OnInit {
     else {
       console.log("not valid");
     }
+  }
 
+  onBack(): void {
+    this.router.navigate(['/addresslist']);
   }
 }

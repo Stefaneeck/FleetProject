@@ -111,4 +111,8 @@ export class ApplicationaddComponent implements OnInit {
       }
     });
   }
+
+  onBack(): void {
+    this.router.navigate(['/applicationlist']);
+  }
 }

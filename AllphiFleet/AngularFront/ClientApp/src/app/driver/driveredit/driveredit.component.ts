@@ -159,4 +159,7 @@ export class DrivereditComponent implements OnInit {
     });
   }
 
+  onBack(): void {
+    this.router.navigate(['/driverlist']);
+  }
 }

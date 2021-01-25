@@ -172,4 +172,7 @@ export class ApplicationeditComponent implements OnInit {
     });
   }
 
+  onBack(): void {
+    this.router.navigate(['/applicationlist']);
+  }
 }

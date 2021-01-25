@@ -91,7 +91,6 @@
     <label for="selectDriverLicenseType">Driver license type</label>
 
     <select id="selectDriverLicenseType" class="form-control" formControlName="DriverLicenseType">
-      <option [ngValue]="null">-- Choose one --</option>
       <option *ngFor="let type of enumDriverLicenseTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
     </select>
 
@@ -133,7 +132,6 @@
     <div class="form-group">
       <label for="selectAuthType">Authtype</label>
       <select id="selectAuthType" class="form-control" formControlName="AuthType">
-        <option [ngValue]="null">-- Choose one --</option>
         <option *ngFor="let type of enumAuthTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
       </select>
 
@@ -159,4 +157,6 @@
   </div>
   <!-- used ngSubmit to submit here, declared at the top form tag-->
   <button type="submit" class="btn btn-primary">Submit</button>
+  <button class='btn btn-primary marginLeft'(click)='onBack()'>Back</button>
 </form>
+

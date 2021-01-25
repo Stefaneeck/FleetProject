@@ -92,4 +92,7 @@ export class VehicleeditComponent implements OnInit {
 
   }
 
+  onBack(): void {
+    this.router.navigate(['/vehiclelist']);
+  }
 }

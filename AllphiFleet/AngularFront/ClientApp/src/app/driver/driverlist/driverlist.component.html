@@ -1,8 +1,5 @@
   <div class='table-responsive'>
   <!-- wait until driver objects arrive, async solution -->
-  <div class="nav-item" [routerLinkActive]="['link-active']">
-    <a class="nav-link text-dark" [routerLink]="['/driveradd']">Add driver</a>
-  </div>
   <table class='table'
          *ngIf='drivers && drivers.length'>
     <thead>
@@ -20,8 +17,8 @@
       </tr>
     </thead>
     <tbody>
-      <!-- driver is een route van app.module
-      driver is de route, driver.id is de parameter -->
+      <!-- driver is a route of app.module
+      driver is the route, driver.id is the parameter -->
       <tr *ngFor='let driver of drivers' [routerLink]="['/driver', driver.id]" class="pointer">
         <td>{{ driver.id }}</td>
         <td>{{ driver.name }}</td>
@@ -39,4 +36,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="nav-item marginBottom" [routerLinkActive]="['link-active']">
+    <a class="btn btn-primary" [routerLink]="['/driveradd']">Add driver</a>
+  </div>
 </div>

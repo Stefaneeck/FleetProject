@@ -98,4 +98,8 @@ export class DriveraddComponent implements OnInit {
       }
     });
   }
+
+  onBack(): void {
+    this.router.navigate(['/driverlist']);
+  }
 }

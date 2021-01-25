@@ -92,4 +92,8 @@ export class FuelcardeditComponent implements OnInit {
     }
 
   }
+
+  onBack(): void {
+    this.router.navigate(['/fuelcardlist']);
+  }
 }

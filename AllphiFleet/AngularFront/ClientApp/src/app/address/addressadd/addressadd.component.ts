@@ -48,4 +48,8 @@ export class AddressaddComponent implements OnInit {
       console.log("not valid.");
     }
   }
+
+  onBack(): void {
+    this.router.navigate(['/addresslist']);
+  }
 }

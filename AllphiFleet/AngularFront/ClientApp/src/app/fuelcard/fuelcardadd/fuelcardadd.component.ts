@@ -56,4 +56,7 @@ export class FuelcardaddComponent implements OnInit {
     }
   }
 
+  onBack(): void {
+    this.router.navigate(['/fuelcardlist']);
+  }
 }

@@ -1,5 +1,4 @@
 <div class='table-responsive'>
-  <!-- wachten tot adressen toekomen, async oplossing-->
   <table class='table'
          *ngIf='fuelcards && fuelcards.length'>
     <thead>
@@ -13,8 +12,6 @@
       </tr>
     </thead>
     <tbody>
-      <!-- address is een route van app.module
-      address is de route, address.id is de parameter -->
       <tr *ngFor='let fuelcard of fuelcards' [routerLink]="['/fuelcard', fuelcard.id]" class="pointer">
         <td>{{ fuelcard.id }}</td>
         <td>{{ fuelcard.cardNumber }}</td>
@@ -25,4 +22,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="nav-item marginBottom" [routerLinkActive]="['link-active']">
+    <a class="btn btn-primary" [routerLink]="['/fuelcardadd']">Add fuelcard</a>
+  </div>
 </div>
