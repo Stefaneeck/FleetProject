@@ -48,13 +48,13 @@ namespace ReadApi.Controllers
             return Ok(driverDTO);
         }
 
-        //testing
-        [HttpGet("Privacy")]
+        [HttpGet("Claims")]
         //without roles, returns 401 if not authorized. With roles, returns 403 if wrong role.
         [Authorize(Roles = "admin")]
         //[EnableCors("AllowAllReadApi")]
-        public IActionResult Privacy()
+        public IActionResult Claims()
         {
+            //not returning object since a type can be non unique
             var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
             return Ok(claims);
         }

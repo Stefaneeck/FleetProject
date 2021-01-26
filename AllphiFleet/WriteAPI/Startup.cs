@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using WriteRepositories;
 using Validation.PipelineBehaviours;
 using MailingService;
+using ReadServices;
+using ReadServices.Interfaces;
+using AutoMapper;
 
 namespace WriteAPI
 {

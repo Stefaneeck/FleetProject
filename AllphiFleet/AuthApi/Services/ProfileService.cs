@@ -9,6 +9,8 @@ namespace AuthApi.Services
 {
     //needed to add claims in the token
     //do not forget to register (.AddProfileService<ProfileService>() in Startup.cs)
+
+    //move to seperate project in ServiceLayer?
     public class ProfileService : IProfileService
     {
         private readonly IUserClaimsPrincipalFactory<IdentityUser> _claimsFactory;

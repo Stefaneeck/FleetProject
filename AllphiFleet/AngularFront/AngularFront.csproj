@@ -44,6 +44,7 @@
     <None Remove="ClientApp\src\app\domain\enums\EnumVehicleTypes.ts" />
     <None Remove="ClientApp\src\app\domain\enums\IVehicle.ts" />
     <None Remove="ClientApp\src\app\domain\IApplication.ts" />
+    <None Remove="ClientApp\src\app\domain\IClaim.ts" />
     <None Remove="ClientApp\src\app\vehicle\vehicle.service.ts" />
   </ItemGroup>
 
@@ -53,6 +54,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumApplicationTypes.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumFuelTypes.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumVehicleTypes.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\IClaim.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IVehicle.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IApplication.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\vehicle\vehicle.service.ts" />

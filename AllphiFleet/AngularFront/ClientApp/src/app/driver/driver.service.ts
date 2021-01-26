@@ -44,7 +44,6 @@ export class DriverService {
    
   */
 
-
   getDriver(id: number): Observable<IDriver | undefined> {
     return this.http.get<IDriver>(this.driverReadUrl + '/' + id)
       .pipe(
@@ -80,17 +79,18 @@ export class DriverService {
       );
   }
 
+  showEnumValueDriverLicenseType(value: number): string {
+ 
+    return EnumDriverLicenseTypes[value];
+  }
+
+  //todo: move to auth service? should be placed in auth api as well on c# side and not in driver api
   getClaims(): Observable<any> {
-    return this.http.get(this.driverReadUrl + '/privacy')
+    return this.http.get(this.driverReadUrl + '/claims')
       .pipe(
         tap(data => console.log('getClaims: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
-  }
-
-  showEnumValueDriverLicenseType(value: number): string {
- 
-    return EnumDriverLicenseTypes[value];
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {

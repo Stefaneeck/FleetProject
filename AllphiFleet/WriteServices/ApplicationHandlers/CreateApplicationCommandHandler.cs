@@ -2,6 +2,7 @@
 using MailingService;
 using MediatR;
 using Models;
+using ReadServices.Interfaces;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace WriteServices.ApplicationHandlers
     {
         private readonly INHRepository<Application> _context;
         private readonly IMailingService _mailingService;
+        
         public CreateApplicationCommandHandler(INHRepository<Application> context, IMailingService mailingService)
         {
             _context = context;
@@ -20,6 +22,10 @@ namespace WriteServices.ApplicationHandlers
         }
         public async Task<int> Handle(CreateApplicationCommand command, CancellationToken cancellationToken)
         {
+            //we have driver email, get driver id matching the email
+            //var email = command.CreateApplicationDTO.DriverEmail;
+            //var driverId = _driverService.getDriverIdByEmail(email);
+
             var application = new Application
             {
                 ApplicationDate = command.CreateApplicationDTO.ApplicationDate,
@@ -30,6 +36,7 @@ namespace WriteServices.ApplicationHandlers
                 //not making objects anyomore because we pass an existing id and altered the NH mapping
                 VehicleId = command.CreateApplicationDTO.VehicleId,
                 DriverId = command.CreateApplicationDTO.DriverId
+                //DriverEmail = command.CreateApplicationDTO.DriverEmail
             };
             
             _context.BeginTransaction();

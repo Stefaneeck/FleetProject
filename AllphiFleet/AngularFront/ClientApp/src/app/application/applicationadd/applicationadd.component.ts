@@ -9,6 +9,7 @@ import { DriverService } from '../../driver/driver.service';
 import { IDriver } from '../../domain/IDriver';
 import { VehicleService } from '../../vehicle/vehicle.service';
 import { IVehicle } from '../../domain/IVehicle';
+import { IClaim } from '../../domain/IClaim';
 
 @Component({
   selector: 'app-applicationadd',
@@ -22,6 +23,7 @@ export class ApplicationaddComponent implements OnInit {
   applicationForm: any;
   drivers: IDriver[] | undefined;
   vehicles: IVehicle[] | undefined;
+  claims: any[] | undefined;
 
   // Make a variable reference to our Enum and delete double values
   enumApplicationStatuses = Object.keys(EnumApplicationStatuses).filter(key => !isNaN(Number(EnumApplicationStatuses[key])));
@@ -38,7 +40,6 @@ export class ApplicationaddComponent implements OnInit {
   ngOnInit() {
 
     this.getDriversAndVehicles();
-
   }
 
   addApplication(application: IApplication): void {
@@ -71,27 +72,32 @@ export class ApplicationaddComponent implements OnInit {
     promiseDrivers.then((dataDrivers: IDriver[]) => {
 
       this.drivers = dataDrivers;
-      const promiseVehicles = this.vehicleService.getVehicles().toPromise();
+      return this.vehicleService.getVehicles().toPromise();
 
-      promiseVehicles.then((dataVehicles: IVehicle[]) => {
+    }).then((dataVehicles: IVehicle[]) => {
 
-        this.vehicles = dataVehicles;
+      this.vehicles = dataVehicles;
+      return this.driverService.getClaims().toPromise();
 
+    }).then((dataClaims: any[]) => {
 
-      });
+          this.claims = dataClaims;
 
-      this.applicationForm = this.formBuilder.group({
-        ApplicationDate: [null, [Validators.required]],
-        ApplicationType: [null, [Validators.required]],
-        PossibleDates: ['', [Validators.required]],
-        ApplicationStatus: ['', [Validators.required]],
+          //instantiate here, after getting the data
 
-        //driver id should be replaced. The logged in driver who creates the application should automatically be the id, it should not explicitly be added
-        DriverId: [null, [Validators.required]],
-        VehicleId: [null, [Validators.required]]
-      });
+          this.applicationForm = this.formBuilder.group({
+            ApplicationDate: [null, [Validators.required]],
+            ApplicationType: [null, [Validators.required]],
+            PossibleDates: ['', [Validators.required]],
+            ApplicationStatus: ['', [Validators.required]],
 
-
+            //driver id should be replaced. The logged in driver who creates the application should automatically be the id, it should not explicitly be added
+            //not visible in html
+            DriverEmail: [this.claims.filter(claim => claim.type === "email")[0].value, [Validators.required]],
+            //todo: only vehicle of specific driver
+            //at this moment no link between driver and vehicle, add?
+            VehicleId: [null, [Validators.required]]
+          });
 
     }).catch((error) => {
       console.log("promise error");
@@ -99,6 +105,52 @@ export class ApplicationaddComponent implements OnInit {
     });
     
   }
+
+  /*getDriversAndVehicles(): void {
+
+    const promiseDrivers = this.driverService.getDrivers().toPromise();
+
+    promiseDrivers.then((dataDrivers: IDriver[]) => {
+
+      this.drivers = dataDrivers;
+      const promiseVehicles = this.vehicleService.getVehicles().toPromise();
+
+      promiseVehicles.then((dataVehicles: IVehicle[]) => {
+
+        this.vehicles = dataVehicles;
+        const promiseClaims = this.driverService.getClaims().toPromise();
+
+        promiseClaims.then((dataClaims: any[]) => {
+
+          this.claims = dataClaims;
+          console.log('email');
+          console.log(this.claims);
+
+          //instantiate here, after getting the data
+
+          this.applicationForm = this.formBuilder.group({
+            ApplicationDate: [null, [Validators.required]],
+            ApplicationType: [null, [Validators.required]],
+            PossibleDates: ['', [Validators.required]],
+            ApplicationStatus: ['', [Validators.required]],
+
+            //driver id should be replaced. The logged in driver who creates the application should automatically be the id, it should not explicitly be added
+            //not visible in html
+            DriverEmail: [this.claims.filter(claim => claim.type === "email")[0].value, [Validators.required]],
+            //todo: only vehicle of specific driver
+            //at this moment no link between driver and vehicle, add?
+            VehicleId: [null, [Validators.required]]
+          });
+        });
+
+      });
+
+    }).catch((error) => {
+      console.log("promise error");
+      console.log(error);
+    });
+
+  } */
 
   getFormValidationErrors() {
     Object.keys(this.applicationForm.controls).forEach(key => {
@@ -111,7 +163,7 @@ export class ApplicationaddComponent implements OnInit {
       }
     });
   }
-
+  
   onBack(): void {
     this.router.navigate(['/applicationlist']);
   }

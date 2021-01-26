@@ -40,12 +40,27 @@ namespace ReadServices
 
             return _mapper.Map<DriverDTO>(result);
 
+            #region commentInclude
             //cant do include on domain object, only on iquerable
             /*
             return _mapper.Map<DriverDTO>(_repository.Get(id)
                 .Include(c => c.Address)
                 .Include(c => c.FuelCard));
             */
+            #endregion
+        }
+
+        //needed to link IS4 user to driver by linking IS4 email to driver email
+        public long getDriverIdByEmail(string email)
+        {
+            //not easily possible to filter on email in generic repository, so filtered here
+            var result = _repository.GetAll().First(x => x.Email.Equals(email, System.StringComparison.OrdinalIgnoreCase));
+
+            //same as
+            //var result = _repository.GetAll().Where(x => x.Email.Equals(email, System.StringComparison.OrdinalIgnoreCase)).First();
+
+            //todo: check if 0 or multiple then something went wrong
+            return result.Id;
         }
     }
 
