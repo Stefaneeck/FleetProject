@@ -24,12 +24,12 @@ namespace WriteServices.ApplicationHandlers
         public async Task<int> Handle(CreateApplicationCommand command, CancellationToken cancellationToken)
         {
             Application application = null;
-            //we have driver email, get driver id matching the email
-            //needed to link IS4 user to driver by linking IS4 email to driver email
 
             //application created as normal user, get id by email
             if(command.CreateApplicationDTO.DriverEmail != null)
             {
+                //we have driver email, get driver id matching the email
+                //needed to link IS4 user to driver by linking IS4 email to driver email
                 var driverId = _context.Drivers.First(driver => driver.Email.ToLower() == command.CreateApplicationDTO.DriverEmail.ToLower()).Id;
                 application = new Application
                 {

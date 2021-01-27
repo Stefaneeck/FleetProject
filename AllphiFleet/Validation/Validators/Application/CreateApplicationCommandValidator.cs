@@ -12,7 +12,11 @@ namespace Validation.Validators
             RuleFor(a => a.CreateApplicationDTO.ApplicationStatus).IsInEnum();
             RuleFor(a => a.CreateApplicationDTO.ApplicationType).IsInEnum();
             RuleFor(a => a.CreateApplicationDTO.VehicleId).NotEmpty();
-            RuleFor(a => a.CreateApplicationDTO.DriverEmail).NotEmpty();
+            RuleFor(a => a.CreateApplicationDTO.DriverEmail).NotEmpty()
+                .Unless(a => a.CreateApplicationDTO.DriverEmail == null);
+            //not working
+            // RuleFor(a => a.CreateApplicationDTO.DriverId).NotEmpty()
+              //  .Unless(a => a.CreateApplicationDTO.DriverId == null);
         }
     }
 }
