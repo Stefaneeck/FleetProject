@@ -103,7 +103,7 @@ export class AuthService {
     return this._userManager.getUser()
       .then(user => {
         if (user !== null) {
-          return user.profile.role === 'Admin';
+          return user.profile.role === 'admin';
         }
       })
   }

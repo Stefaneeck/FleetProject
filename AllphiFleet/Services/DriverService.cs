@@ -49,6 +49,21 @@ namespace ReadServices
             */
             #endregion
         }
+
+        public long GetDriverIdByEmail(string email)
+        {
+            return _repository.GetAll().First(driver => driver.Email.ToLower() == email.ToLower()).Id;
+
+            #region commentGetDriverIdByEmail
+            /*
+            not easily possible to filter on email in generic repository, so filtered here
+            todo: check if 0 or multiple then something went wrong
+
+            same as
+            var result = _repository.Drivers.Where(x => x.Email.ToLower() == email.ToLower()).First().Id;
+            */
+            #endregion
+        }
     }
 
 }

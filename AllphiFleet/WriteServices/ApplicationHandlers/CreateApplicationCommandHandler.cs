@@ -23,22 +23,41 @@ namespace WriteServices.ApplicationHandlers
         }
         public async Task<int> Handle(CreateApplicationCommand command, CancellationToken cancellationToken)
         {
+            Application application = null;
             //we have driver email, get driver id matching the email
-            var driverId = GetDriverIdByEmail(command.CreateApplicationDTO.DriverEmail);
+            //needed to link IS4 user to driver by linking IS4 email to driver email
 
-            var application = new Application
+            //application created as normal user, get id by email
+            if(command.CreateApplicationDTO.DriverEmail != null)
             {
-                ApplicationDate = command.CreateApplicationDTO.ApplicationDate,
-                ApplicationType = command.CreateApplicationDTO.ApplicationType,
-                PossibleDates = command.CreateApplicationDTO.PossibleDates,
-                ApplicationStatus = command.CreateApplicationDTO.ApplicationStatus,
+                var driverId = _context.Drivers.First(driver => driver.Email.ToLower() == command.CreateApplicationDTO.DriverEmail.ToLower()).Id;
+                application = new Application
+                {
+                    ApplicationDate = command.CreateApplicationDTO.ApplicationDate,
+                    ApplicationType = command.CreateApplicationDTO.ApplicationType,
+                    PossibleDates = command.CreateApplicationDTO.PossibleDates,
+                    ApplicationStatus = command.CreateApplicationDTO.ApplicationStatus,
 
-                //not making objects anyomore because we pass an existing id and altered the NH mapping
-                VehicleId = command.CreateApplicationDTO.VehicleId,
-                DriverId = driverId
-                //DriverEmail = command.CreateApplicationDTO.DriverEmail
-            };
-            
+                    //not making objects anyomore because we pass an existing id and altered the NH mapping
+                    VehicleId = command.CreateApplicationDTO.VehicleId,
+                    DriverId = driverId
+                };
+            }
+            // application created as admin, id already provided
+            else
+            {
+                application = new Application
+                {
+                    ApplicationDate = command.CreateApplicationDTO.ApplicationDate,
+                    ApplicationType = command.CreateApplicationDTO.ApplicationType,
+                    PossibleDates = command.CreateApplicationDTO.PossibleDates,
+                    ApplicationStatus = command.CreateApplicationDTO.ApplicationStatus,
+
+                    //not making objects anyomore because we pass an existing id and altered the NH mapping
+                    VehicleId = command.CreateApplicationDTO.VehicleId,
+                    DriverId = command.CreateApplicationDTO.DriverId
+                };
+            } 
             _context.BeginTransaction();
 
             try
@@ -58,23 +77,6 @@ namespace WriteServices.ApplicationHandlers
             }
 
             return (int)application.Id;
-        }
-
-        //needed to link IS4 user to driver by linking IS4 email to driver email
-        public long GetDriverIdByEmail(string email)
-        {
-            
-            return _context.Drivers.First(x => x.Email.ToLower() == email.ToLower()).Id;
-
-            #region commentGetDriverIdByEmail
-            /*
-            not easily possible to filter on email in generic repository, so filtered here
-            todo: check if 0 or multiple then something went wrong
-
-            same as
-            var result = _repository.Drivers.Where(x => x.Email.ToLower() == email.ToLower()).First().Id;
-            */
-            #endregion
         }
     }
 }

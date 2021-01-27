@@ -35,6 +35,9 @@ export class NavMenuComponent implements OnInit {
     return this.authService.checkIfUserIsAdmin()
       .then(res => {
         this.isUserAdmin = res;
+
+        console.log('admin?');
+        console.log(res);
       })
   }
 

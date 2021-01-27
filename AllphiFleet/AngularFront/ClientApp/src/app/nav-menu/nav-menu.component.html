@@ -48,6 +48,7 @@
             </section>
           </li>
           <li class="nav-item">
+            <!-- To add the classes only when the URL matches the link exactly, add the option exact: true -->
             <a *ngIf="isUserAdmin" class="nav-link" [routerLink]="['/privacy']" routerLinkActive="active"
                [routerLinkActiveOptions]="{exact: true}"> Privacy </a>
           </li>

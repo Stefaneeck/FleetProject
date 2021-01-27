@@ -50,7 +50,7 @@ namespace ReadApi.Controllers
 
         [HttpGet("Claims")]
         //without roles, returns 401 if not authorized. With roles, returns 403 if wrong role.
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         //[EnableCors("AllowAllReadApi")]
         public IActionResult Claims()
         {

@@ -7,5 +7,6 @@ namespace ReadServices.Interfaces
     {
         public IEnumerable<DriverDTO> GetDrivers();
         public DriverDTO GetDriver(long id);
+        public long GetDriverIdByEmail(string email);
     }
 }

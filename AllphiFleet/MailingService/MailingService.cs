@@ -14,7 +14,7 @@ namespace MailingService
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("stefan.eeckhoudt@allphi.eu", "Stefan Eeckhoudt");
-            var subject = "Your application from " + application.ApplicationDate.ToShortDateString() + " has been approved.";
+            var subject = "Your application from " + application.ApplicationDate.ToShortDateString() + " has been created.";
             var to = new EmailAddress("stefan.eeckhoudt@gmail.com", "Stefan Eeckhoudt");
             var plainTextContent = $"A new application with type {application.ApplicationType} has been created." +
                 $"Details: " +
