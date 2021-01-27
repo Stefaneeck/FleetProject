@@ -94,6 +94,8 @@ export class ApplicationaddComponent implements OnInit {
             //driver id should be replaced. The logged in driver who creates the application should automatically be the id, it should not explicitly be added
             //not visible in html
             DriverEmail: [this.claims.filter(claim => claim.type === "email")[0].value, [Validators.required]],
+
+            //DriverId: ['', [Validators.required]],
             //todo: only vehicle of specific driver
             //at this moment no link between driver and vehicle, add?
             VehicleId: [null, [Validators.required]]

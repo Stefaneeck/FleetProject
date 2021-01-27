@@ -4,6 +4,7 @@ using MediatR;
 using Models;
 using ReadServices.Interfaces;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using WriteRepositories;
@@ -23,8 +24,7 @@ namespace WriteServices.ApplicationHandlers
         public async Task<int> Handle(CreateApplicationCommand command, CancellationToken cancellationToken)
         {
             //we have driver email, get driver id matching the email
-            //var email = command.CreateApplicationDTO.DriverEmail;
-            //var driverId = _driverService.getDriverIdByEmail(email);
+            var driverId = GetDriverIdByEmail(command.CreateApplicationDTO.DriverEmail);
 
             var application = new Application
             {
@@ -35,7 +35,7 @@ namespace WriteServices.ApplicationHandlers
 
                 //not making objects anyomore because we pass an existing id and altered the NH mapping
                 VehicleId = command.CreateApplicationDTO.VehicleId,
-                DriverId = command.CreateApplicationDTO.DriverId
+                DriverId = driverId
                 //DriverEmail = command.CreateApplicationDTO.DriverEmail
             };
             
@@ -58,6 +58,23 @@ namespace WriteServices.ApplicationHandlers
             }
 
             return (int)application.Id;
+        }
+
+        //needed to link IS4 user to driver by linking IS4 email to driver email
+        public long GetDriverIdByEmail(string email)
+        {
+            
+            return _context.Drivers.First(x => x.Email.ToLower() == email.ToLower()).Id;
+
+            #region commentGetDriverIdByEmail
+            /*
+            not easily possible to filter on email in generic repository, so filtered here
+            todo: check if 0 or multiple then something went wrong
+
+            same as
+            var result = _repository.Drivers.Where(x => x.Email.ToLower() == email.ToLower()).First().Id;
+            */
+            #endregion
         }
     }
 }

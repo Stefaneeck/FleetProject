@@ -49,19 +49,6 @@ namespace ReadServices
             */
             #endregion
         }
-
-        //needed to link IS4 user to driver by linking IS4 email to driver email
-        public long getDriverIdByEmail(string email)
-        {
-            //not easily possible to filter on email in generic repository, so filtered here
-            var result = _repository.GetAll().First(x => x.Email.Equals(email, System.StringComparison.OrdinalIgnoreCase));
-
-            //same as
-            //var result = _repository.GetAll().Where(x => x.Email.Equals(email, System.StringComparison.OrdinalIgnoreCase)).First();
-
-            //todo: check if 0 or multiple then something went wrong
-            return result.Id;
-        }
     }
 
 }

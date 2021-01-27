@@ -19,5 +19,7 @@ namespace DTO
         #endregion
         public long VehicleId { get; set; }
         public long DriverId { get; set; }
+
+        public string DriverEmail { get; set; }
     }
 }
