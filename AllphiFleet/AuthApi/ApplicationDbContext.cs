@@ -1,10 +1,6 @@
-﻿using AuthApi.Configuration;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace AuthApi
 {
@@ -24,6 +20,11 @@ namespace AuthApi
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            /*
+            modelBuilder.Entity<AspNetUser>()
+                .HasIndex()
+                .IsUnique();
+            */
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using WCFReadEntities;
 
 namespace WCFReadServices
@@ -12,7 +13,7 @@ namespace WCFReadServices
         List<Driver> GetDrivers();
 
         [OperationContract]
-        Driver GetDriverById(int id);
+        Task<Driver> GetDriverByIdAsync(int id);
 
         [OperationContract]
         List<Address> GetAddresses();

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using WCFReadData;
 using WCFReadEntities;
 
@@ -12,6 +16,20 @@ namespace WCFReadServices
         public ReadService()
         {
 
+        }
+
+        public List<WCFReadEntities.Driver> GetDrivers()
+        {
+            #region commentlinq
+            /* not working (linq will try to find MapDriver at db level. Only after ToList() you are working outside of db.
+            return dbContext.Chauffeurs.Select(c =>
+           MapDriver(c)).ToList();
+            */
+            #endregion
+
+            //solution with ToList()
+            return dbContext.Drivers.ToList().Select(c =>
+           MapDriver(c)).ToList();
         }
         public List<WCFReadEntities.Address> GetAddresses()
         {
@@ -30,19 +48,7 @@ namespace WCFReadServices
 
         }
 
-        public List<WCFReadEntities.Driver> GetDrivers()
-        {
-            #region commentlinq
-            /* not working (linq will try to find MapDriver at db level. Only after ToList() you are working outside of db.
-            return dbContext.Chauffeurs.Select(c =>
-           MapDriver(c)).ToList();
-            */
-            #endregion
-
-            //solution with ToList()
-            return dbContext.Drivers.ToList().Select(c =>
-           MapDriver(c)).ToList();
-        }
+        
 
         public List<WCFReadEntities.FuelCard> GetFuelCards()
         {
@@ -76,9 +82,55 @@ namespace WCFReadServices
             };
         }
 
-        public WCFReadEntities.Driver GetDriverById(int id)
+        public async Task<WCFReadEntities.Driver> GetDriverByIdAsync(int id)
         {
-            return MapDriver(dbContext.Drivers.FirstOrDefault(c => c.Id == id));
+
+            WCFReadEntities.Driver driver = null;
+
+            // HTTP GET
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:44334/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync($"api/driver/{id}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        driver = await response.Content.ReadAsAsync<WCFReadEntities.Driver>();
+                        Console.WriteLine("{0}\t${1}\t{2}", driver.Name, driver.FirstName, driver.Address);
+                    }
+                }
+
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.Write(e.InnerException);
+                }
+
+                /*
+                // HTTP POST
+                var gizmo = new Product() { Name = "Gizmo", Price = 100, Category = "Widget" };
+                response = await client.PostAsJsonAsync("api/products", gizmo);
+                if (response.IsSuccessStatusCode)
+                {
+                    Uri gizmoUrl = response.Headers.Location;
+
+                    // HTTP PUT
+                    gizmo.Price = 80;   // Update price
+                    response = await client.PutAsJsonAsync(gizmoUrl, gizmo);
+
+                    // HTTP DELETE
+                    response = await client.DeleteAsync(gizmoUrl);
+                }
+                */
+            }
+
+            //return MapDriver(dbContext.Drivers.FirstOrDefault(c => c.Id == id));
+
+            return driver;
         }
 
         public WCFReadEntities.FuelCard GetFuelCardById(int id)

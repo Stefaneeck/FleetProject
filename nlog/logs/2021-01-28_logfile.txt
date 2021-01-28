@@ -72,3 +72,9 @@
 2021-01-28 14:38:56.5286 INFO Retrieving 20 records.
 2021-01-28 14:39:07.5579 INFO Retrieving all applications.
 2021-01-28 14:39:07.5864 INFO Retrieving 20 records.
+2021-01-28 17:56:23.9759 INFO Retrieving all drivers.
+2021-01-28 17:56:24.9139 INFO Retrieving 12 records.
+2021-01-28 17:59:11.8668 INFO Retrieving all drivers.
+2021-01-28 17:59:12.7852 INFO Retrieving 12 records.
+2021-01-28 18:03:07.4831 INFO Retrieving all drivers.
+2021-01-28 18:03:08.3942 INFO Retrieving 12 records.
