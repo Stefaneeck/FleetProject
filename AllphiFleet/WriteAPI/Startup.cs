@@ -11,6 +11,8 @@ using MailingService;
 using ReadServices;
 using ReadServices.Interfaces;
 using AutoMapper;
+using ReadRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace WriteAPI
 {
@@ -42,6 +44,19 @@ namespace WriteAPI
 
             //Since we need to validate each and every request, we add it with a Transient Scope to the container
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+
+            #region addedForDriverServiceInjection
+            //our migrations assembly is in the readrepositories project
+            services.AddDbContext<AllphiFleetContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]
+                );
+            });
+            services.AddScoped<IDriverService, DriverService>();
+            services.AddTransient(typeof(IDataReadRepository<>), typeof(DataReadRepository<>));
+            //must be the assembly from the project that contains automapper profiles, in our case this is the services project
+            services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
+            #endregion
 
             services.AddCors(options =>
             {

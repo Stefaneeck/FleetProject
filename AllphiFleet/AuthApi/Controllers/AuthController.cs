@@ -36,8 +36,8 @@ namespace AuthApi.Controllers
             long driverId = _driverService.GetDriverIdByEmail(viewModel.Email);
             if(driverId == 0)
             {
+                //email does not exist, show error
                 ViewBag.ErrorMessage = "Email could not be found. Please enter an existing driver email.";
-                //email does not exist, give error
                 return View(viewModel);
             }
             var user = new IdentityUser

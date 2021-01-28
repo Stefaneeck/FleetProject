@@ -2,6 +2,7 @@
 using MailingService;
 using MediatR;
 using Models;
+using ReadServices.Interfaces;
 using System;
 using System.Linq;
 using System.Threading;
@@ -14,11 +15,13 @@ namespace WriteServices.ApplicationHandlers
     {
         private readonly INHRepository<Application> _context;
         private readonly IMailingService _mailingService;
+        private readonly IDriverService _driverService;
         
-        public CreateApplicationCommandHandler(INHRepository<Application> context, IMailingService mailingService)
+        public CreateApplicationCommandHandler(INHRepository<Application> context, IMailingService mailingService, IDriverService driverService)
         {
             _context = context;
             _mailingService = mailingService;
+            _driverService = driverService;
         }
         public async Task<int> Handle(CreateApplicationCommand command, CancellationToken cancellationToken)
         {
@@ -27,9 +30,17 @@ namespace WriteServices.ApplicationHandlers
             //application created as normal user, get id by email
             if(command.CreateApplicationDTO.DriverEmail != null)
             {
-                //we have driver email, get driver id matching the email
-                //needed to link IS4 user to driver by linking IS4 email to driver email
-                var driverId = _context.Drivers.First(driver => driver.Email.ToLower() == command.CreateApplicationDTO.DriverEmail.ToLower()).Id;
+                #region commentHandle
+                /*
+                we have driver email, get driver id matching the email
+                needed to link IS4 user to driver by linking IS4 email to driver email
+
+                Todo: Inject driverservice here instead of directly calling the db context?
+                */
+                #endregion
+                //var driverId = _context.Drivers.First(driver => driver.Email.ToLower() == command.CreateApplicationDTO.DriverEmail.ToLower()).Id;
+                var driverId = _driverService.GetDriverIdByEmail(command.CreateApplicationDTO.DriverEmail);
+
                 application = new Application
                 {
                     ApplicationDate = command.CreateApplicationDTO.ApplicationDate,
