@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using WCFReadData;
 using WCFReadEntities;
@@ -82,55 +83,61 @@ namespace WCFReadServices
             };
         }
 
-        public async Task<WCFReadEntities.Driver> GetDriverByIdAsync(int id)
+        public WCFReadEntities.Driver GetDriverById(int id)
         {
-
+            /*
             WCFReadEntities.Driver driver = null;
 
             // HTTP GET
-            using (var client = new HttpClient())
+            using(var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12})
             {
-                client.BaseAddress = new Uri("http://localhost:44334/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                try
+                using (var client = new HttpClient(clientHandler, disposeHandler: true))
                 {
-                    HttpResponseMessage response = await client.GetAsync($"api/driver/{id}");
+
+                    client.BaseAddress = new Uri("http://localhost:44334/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    try
+                    {
+                        HttpResponseMessage response = await client.GetAsync($"api/driver/{id}");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            driver = await response.Content.ReadAsAsync<WCFReadEntities.Driver>();
+                            Console.WriteLine("{0}\t${1}\t{2}", driver.Name, driver.FirstName, driver.Address);
+                        }
+                    }
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.Write(e.InnerException);
+                    }
+                    return driver;
+                    /*
+                    // HTTP POST
+                    var gizmo = new Product() { Name = "Gizmo", Price = 100, Category = "Widget" };
+                    response = await client.PostAsJsonAsync("api/products", gizmo);
                     if (response.IsSuccessStatusCode)
                     {
-                        driver = await response.Content.ReadAsAsync<WCFReadEntities.Driver>();
-                        Console.WriteLine("{0}\t${1}\t{2}", driver.Name, driver.FirstName, driver.Address);
+                        Uri gizmoUrl = response.Headers.Location;
+
+                        // HTTP PUT
+                        gizmo.Price = 80;   // Update price
+                        response = await client.PutAsJsonAsync(gizmoUrl, gizmo);
+
+                        // HTTP DELETE
+                        response = await client.DeleteAsync(gizmoUrl);
                     }
+                   
                 }
-
-                catch(Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Console.Write(e.InnerException);
-                }
-
-                /*
-                // HTTP POST
-                var gizmo = new Product() { Name = "Gizmo", Price = 100, Category = "Widget" };
-                response = await client.PostAsJsonAsync("api/products", gizmo);
-                if (response.IsSuccessStatusCode)
-                {
-                    Uri gizmoUrl = response.Headers.Location;
-
-                    // HTTP PUT
-                    gizmo.Price = 80;   // Update price
-                    response = await client.PutAsJsonAsync(gizmoUrl, gizmo);
-
-                    // HTTP DELETE
-                    response = await client.DeleteAsync(gizmoUrl);
-                }
-                */
             }
+             
+             */
 
-            //return MapDriver(dbContext.Drivers.FirstOrDefault(c => c.Id == id));
+            return MapDriver(dbContext.Drivers.FirstOrDefault(c => c.Id == id));
 
-            return driver;
+
         }
 
         public WCFReadEntities.FuelCard GetFuelCardById(int id)

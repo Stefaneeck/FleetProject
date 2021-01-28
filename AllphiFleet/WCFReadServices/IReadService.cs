@@ -13,7 +13,7 @@ namespace WCFReadServices
         List<Driver> GetDrivers();
 
         [OperationContract]
-        Task<Driver> GetDriverByIdAsync(int id);
+        Driver GetDriverById(int id);
 
         [OperationContract]
         List<Address> GetAddresses();

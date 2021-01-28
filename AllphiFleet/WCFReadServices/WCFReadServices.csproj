@@ -81,6 +81,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{60207134-51e1-4399-bed1-a1abf5344fb8}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCFReadData\WCFReadData.csproj">
       <Project>{1e8edcb1-ae87-4366-aa75-6584c4e307ab}</Project>
       <Name>WCFReadData</Name>
