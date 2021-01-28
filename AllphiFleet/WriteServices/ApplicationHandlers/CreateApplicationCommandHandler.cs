@@ -2,7 +2,6 @@
 using MailingService;
 using MediatR;
 using Models;
-using ReadServices.Interfaces;
 using System;
 using System.Linq;
 using System.Threading;
@@ -65,7 +64,6 @@ namespace WriteServices.ApplicationHandlers
                 await _context.Save(application);
                 await _context.Commit();
 
-                //send mail
                 await _mailingService.SendApplicationCreatedMail(application);
             }
             catch (Exception e)

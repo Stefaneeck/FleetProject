@@ -52,6 +52,9 @@ namespace ReadRepositories.Mappings
                 .Property(d => d.Active)
                 .IsRequired();
 
+            modelBuilder.Entity<Driver>()
+                .HasIndex(d => d.Email)
+                .IsUnique();
         }
     }
 }
