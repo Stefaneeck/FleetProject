@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.Auth.ViewModels;
+using ReadServices.Interfaces;
 
 namespace AuthApi.Controllers
 {
@@ -10,11 +11,13 @@ namespace AuthApi.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IDriverService _driverService;
 
-        public AuthController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AuthController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IDriverService driverService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _driverService = driverService;
         }
 
         [HttpGet]
@@ -30,7 +33,13 @@ namespace AuthApi.Controllers
             {
                 return View(viewModel);
             }
-
+            long driverId = _driverService.GetDriverIdByEmail(viewModel.Email);
+            if(driverId == 0)
+            {
+                ViewBag.ErrorMessage = "Email could not be found. Please enter an existing driver email.";
+                //email does not exist, give error
+                return View(viewModel);
+            }
             var user = new IdentityUser
             {
                 UserName = viewModel.Username,

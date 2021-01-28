@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ReadServices.Interfaces;
+using System;
 
 namespace ReadServices
 {
@@ -52,7 +53,26 @@ namespace ReadServices
 
         public long GetDriverIdByEmail(string email)
         {
-            return _repository.GetAll().First(driver => driver.Email.ToLower() == email.ToLower()).Id;
+            //defaultisempty to handle null error when no record found
+            var driver = _repository.GetAll().Where(driver => driver.Email.ToLower() == email.ToLower()).AsEnumerable().DefaultIfEmpty(new Driver()).First();
+
+            #region tryCatchAlternative
+            /*
+            long driverId;
+            try
+            {
+                driverId = _repository.GetAll().FirstOrDefault(driver => driver.Email.ToLower() == email.ToLower()).Id;
+            }
+            catch(Exception e)
+            {
+                driverId = 0;
+            }
+
+            return driverId;
+            */
+            #endregion
+
+            return driver.Id;
 
             #region commentGetDriverIdByEmail
             /*

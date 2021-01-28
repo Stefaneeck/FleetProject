@@ -8,6 +8,10 @@ using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using AuthApi.Configuration;
 using AuthApi.Services;
+using ReadServices.Interfaces;
+using ReadServices;
+using AutoMapper;
+using ReadRepositories;
 
 namespace AuthApi
 {
@@ -55,6 +59,20 @@ namespace AuthApi
                 });
 
                 services.AddControllersWithViews();
+
+            #region addedForDriverServiceInjection
+            //our migrations assembly is in the readrepositories project
+            services.AddDbContext<AllphiFleetContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration["ConnectionString:AllphiFleetDB"]
+                );
+            });
+            services.AddScoped<IDriverService, DriverService>();
+            services.AddTransient(typeof(IDataReadRepository<>), typeof(DataReadRepository<>));
+            //must be the assembly from the project that contains automapper profiles, in our case this is the services project
+            services.AddAutoMapper(AssemblyInfoUtil.GetAssembly());
+            #endregion
+
 
             SeedData.EnsureUsers(services);
             SeedData.EnsureRoles(services);
