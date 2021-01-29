@@ -6,7 +6,7 @@ import { IVehicle } from '../../domain/IVehicle';
 @Component({
   selector: 'app-vehicledetail',
   templateUrl: './vehicledetail.component.html',
-  styleUrls: ['./vehicledetail.component.css']
+  styleUrls: ['./vehicledetail.component.css', '../../shared/shared.css']
 })
 export class VehicledetailComponent implements OnInit {
 

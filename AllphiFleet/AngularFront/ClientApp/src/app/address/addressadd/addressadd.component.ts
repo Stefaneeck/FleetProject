@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-addressadd',
   templateUrl: './addressadd.component.html',
-  styleUrls: ['./addressadd.component.css']
+  styleUrls: ['./addressadd.component.css', '../../shared/shared.css']
 })
 export class AddressaddComponent implements OnInit {
 

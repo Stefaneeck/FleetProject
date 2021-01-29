@@ -9,7 +9,7 @@ import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseType
 @Component({
   selector: 'app-driveradd',
   templateUrl: './driveradd.component.html',
-  styleUrls: ['./driveradd.component.css']
+  styleUrls: ['./driveradd.component.css', '../../shared/shared.css']
 })
 export class DriveraddComponent implements OnInit {
 

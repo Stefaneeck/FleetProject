@@ -7,7 +7,7 @@ import { AddressService } from '../address.service';
 @Component({
   selector: 'app-addressedit',
   templateUrl: './addressedit.component.html',
-  styleUrls: ['./addressedit.component.css']
+  styleUrls: ['./addressedit.component.css', '../../shared/shared.css']
 })
 export class AddresseditComponent implements OnInit {
 

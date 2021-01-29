@@ -10,7 +10,7 @@ import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseType
 @Component({
   selector: 'app-driveredit',
   templateUrl: './driveredit.component.html',
-  styleUrls: ['./driveredit.component.css']
+  styleUrls: ['./driveredit.component.css', '../../shared/shared.css']
 })
 export class DrivereditComponent implements OnInit {
 

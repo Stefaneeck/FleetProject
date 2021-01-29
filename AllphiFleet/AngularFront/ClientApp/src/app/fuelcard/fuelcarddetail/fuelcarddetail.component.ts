@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-fuelcarddetail',
   templateUrl: './fuelcarddetail.component.html',
-  styleUrls: ['./fuelcarddetail.component.css']
+  styleUrls: ['./fuelcarddetail.component.css', '../../shared/shared.css']
 })
 export class FuelcarddetailComponent implements OnInit {
 

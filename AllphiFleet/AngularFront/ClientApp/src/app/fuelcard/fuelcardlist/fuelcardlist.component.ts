@@ -5,7 +5,7 @@ import { FuelcardService } from '../fuelcard.service';
 @Component({
   selector: 'app-fuelcardlist',
   templateUrl: './fuelcardlist.component.html',
-  styleUrls: ['./fuelcardlist.component.css']
+  styleUrls: ['./fuelcardlist.component.css', '../../shared/shared.css']
 })
 export class FuelcardlistComponent implements OnInit {
 

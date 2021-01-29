@@ -5,7 +5,7 @@ import { IDriver } from '../../domain/IDriver';
 @Component({
   selector: 'app-driverlist',
   templateUrl: './driverlist.component.html',
-  styleUrls: ['./driverlist.component.css']
+  styleUrls: ['./driverlist.component.css', '../../shared/shared.css']
 })
 export class DriverlistComponent implements OnInit {
 

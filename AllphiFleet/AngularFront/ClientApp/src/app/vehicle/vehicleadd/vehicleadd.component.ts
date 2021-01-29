@@ -9,7 +9,7 @@ import { EnumFuelTypes } from '../../domain/enums/EnumFuelTypes';
 @Component({
   selector: 'app-vehicleadd',
   templateUrl: './vehicleadd.component.html',
-  styleUrls: ['./vehicleadd.component.css']
+  styleUrls: ['./vehicleadd.component.css', '../../shared/shared.css']
 })
 export class VehicleaddComponent implements OnInit {
 

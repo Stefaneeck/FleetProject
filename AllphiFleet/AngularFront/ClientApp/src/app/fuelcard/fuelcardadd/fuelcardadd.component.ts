@@ -9,7 +9,7 @@ import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTy
 @Component({
   selector: 'app-fuelcardadd',
   templateUrl: './fuelcardadd.component.html',
-  styleUrls: ['./fuelcardadd.component.css']
+  styleUrls: ['./fuelcardadd.component.css', '../../shared/shared.css']
 })
 export class FuelcardaddComponent implements OnInit {
 

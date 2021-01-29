@@ -9,7 +9,7 @@ import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-fuelcardedit',
   templateUrl: './fuelcardedit.component.html',
-  styleUrls: ['./fuelcardedit.component.css']
+  styleUrls: ['./fuelcardedit.component.css', '../../shared/shared.css']
 })
 export class FuelcardeditComponent implements OnInit {
 
