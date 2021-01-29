@@ -68,12 +68,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WCFReadEntities\WCFReadEntities.csproj">
-      <Project>{A9A2C08B-677F-4381-B2B9-EE5923EE7783}</Project>
-      <Name>WCFReadEntities</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

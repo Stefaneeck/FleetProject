@@ -102,7 +102,13 @@
     <None Include="Connected Services\WCFReadServices\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\WCFReadServices\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\WCFReadServices\ReadService.wsdl" />
+    <None Include="Properties\DataSources\Models.Address.datasource" />
+    <None Include="Properties\DataSources\Models.Driver.datasource" />
+    <None Include="Properties\DataSources\Models.FuelCard.datasource" />
     <None Include="Properties\DataSources\WCFReadEntities.Address.datasource" />
     <None Include="Properties\DataSources\WCFReadEntities.Driver.datasource" />
     <None Include="Properties\DataSources\WCFReadEntities.FuelCard.datasource" />
@@ -136,13 +142,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{60207134-51E1-4399-BED1-A1ABF5344FB8}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCFReadData\WCFReadData.csproj">
       <Project>{1E8EDCB1-AE87-4366-AA75-6584C4E307AB}</Project>
       <Name>WCFReadData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WCFReadEntities\WCFReadEntities.csproj">
-      <Project>{a9a2c08b-677f-4381-b2b9-ee5923ee7783}</Project>
-      <Name>WCFReadEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

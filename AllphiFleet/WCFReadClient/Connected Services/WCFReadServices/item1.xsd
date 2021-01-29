@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFReadEntities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFReadEntities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2112/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Models.Enums" />
   <xs:complexType name="ArrayOfDriver">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Driver" nillable="true" type="tns:Driver" />
@@ -10,12 +11,14 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Active" type="xs:boolean" />
       <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
-      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BirthDate" type="xs:dateTime" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Models.Enums" minOccurs="0" name="DriverLicenseType" type="q1:DriverLicenseTypes" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FuelCard" nillable="true" type="tns:FuelCard" />
       <xs:element minOccurs="0" name="Id" type="xs:long" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SocSecNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SocSecNr" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Driver" nillable="true" type="tns:Driver" />
@@ -31,7 +34,7 @@
   <xs:element name="Address" nillable="true" type="tns:Address" />
   <xs:complexType name="FuelCard">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AuthType" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Models.Enums" minOccurs="0" name="AuthType" type="q2:AuthenticationTypes" />
       <xs:element minOccurs="0" name="CardNumber" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:long" />
       <xs:element minOccurs="0" name="Options" nillable="true" type="xs:string" />

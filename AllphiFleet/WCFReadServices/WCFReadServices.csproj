@@ -89,10 +89,6 @@
       <Project>{1e8edcb1-ae87-4366-aa75-6584c4e307ab}</Project>
       <Name>WCFReadData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WCFReadEntities\WCFReadEntities.csproj">
-      <Project>{A9A2C08B-677F-4381-B2B9-EE5923EE7783}</Project>
-      <Name>WCFReadEntities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

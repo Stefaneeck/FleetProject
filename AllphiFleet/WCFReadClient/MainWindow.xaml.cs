@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using WCFReadClient.WCFReadServices;
-using WCFReadEntities;
 
 namespace WCFReadClient
 {
@@ -59,8 +59,8 @@ namespace WCFReadClient
                 foreach (Driver item in driverList)
                 {
                     txtContent.Text += "Name: " + item.Name + " " + item.FirstName + "\n" +
-                        "Date of birth: " + item.DateOfBirth.ToShortDateString() + "\n" 
-                        + "Soc sec nr: " + item.SocSecNumber + "\n"
+                        "Date of birth: " + item.BirthDate.ToShortDateString() + "\n" 
+                        + "Soc sec nr: " + item.SocSecNr + "\n"
                         + "active: " + item.Active;
                     txtContent.Text += "\n \n";
                 }
@@ -119,8 +119,8 @@ namespace WCFReadClient
                     var driver = proxy.GetDriverById(id);
 
                     txtContent.Text += "Name: " + driver.Name + " " + driver.FirstName + "\n" +
-                        "Date of birth: " + driver.DateOfBirth.ToShortDateString() + "\n"
-                        + "Soc sec nr: " + driver.SocSecNumber + "\n"
+                        "Date of birth: " + driver.BirthDate.ToShortDateString() + "\n"
+                        + "Soc sec nr: " + driver.SocSecNr + "\n"
                         + "active: " + driver.Active;
                     txtContent.Text += "\n \n";
                 }

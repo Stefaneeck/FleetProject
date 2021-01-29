@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Models
 {
-    //WCF
+    //annotations for WCF
     [DataContract]
 
     public class Driver : IIdentifiable

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Models;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.Threading.Tasks;
-using WCFReadEntities;
 
 namespace WCFReadServices
 {
@@ -25,6 +25,6 @@ namespace WCFReadServices
         List<FuelCard> GetFuelCards();
 
         [OperationContract]
-        FuelCard GetFuelCardById(int id);
+        Task<FuelCard> GetFuelCardByIdAsync(int id);
     }
 }
