@@ -17,42 +17,26 @@ namespace WCFReadServices
 
         }
 
-        public List<Driver> GetDrivers()
+        public async Task<List<Driver>> GetDriversAsync()
         {
-            #region commentlinq
-            /* not working (linq will try to find MapDriver at db level. Only after ToList() you are working outside of db.
-            return dbContext.Chauffeurs.Select(c =>
-           MapDriver(c)).ToList();
-            */
-            #endregion
-
-            //solution with ToList()
-            return dbContext.Drivers.ToList().Select(c =>
-           MapDriver(c)).ToList();
-        }
-
-        public Driver GetDriverById(int id)
-        {
-            /*
-            WCFReadEntities.Driver driver = null;
+            List<Driver> drivers = new List<Driver>();
 
             // HTTP GET
-            using(var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12})
+            using (var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12 })
             {
                 using (var client = new HttpClient(clientHandler, disposeHandler: true))
                 {
 
-                    client.BaseAddress = new Uri("http://localhost:44334/");
+                    client.BaseAddress = new Uri("https://localhost:44334/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     try
                     {
-                        HttpResponseMessage response = await client.GetAsync($"api/driver/{id}");
+                        HttpResponseMessage response = await client.GetAsync($"api/driver");
                         if (response.IsSuccessStatusCode)
                         {
-                            driver = await response.Content.ReadAsAsync<WCFReadEntities.Driver>();
-                            Console.WriteLine("{0}\t${1}\t{2}", driver.Name, driver.FirstName, driver.Address);
+                            drivers = await response.Content.ReadAsAsync<List<Driver>>();
                         }
                     }
 
@@ -61,68 +45,128 @@ namespace WCFReadServices
                         Console.WriteLine(e.Message);
                         Console.Write(e.InnerException);
                     }
-                    return driver;
-                    /*
-                    // HTTP POST
-                    var gizmo = new Product() { Name = "Gizmo", Price = 100, Category = "Widget" };
-                    response = await client.PostAsJsonAsync("api/products", gizmo);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        Uri gizmoUrl = response.Headers.Location;
-
-                        // HTTP PUT
-                        gizmo.Price = 80;   // Update price
-                        response = await client.PutAsJsonAsync(gizmoUrl, gizmo);
-
-                        // HTTP DELETE
-                        response = await client.DeleteAsync(gizmoUrl);
-                    }
-                   
+                    return drivers;
                 }
             }
-             
-             */
 
-            return MapDriver(dbContext.Drivers.FirstOrDefault(c => c.Id == id));
+            #region commentEF
+            /* should we be using EF6 to retrieve data:
+             * not working (linq will try to find MapDriver at db level. Only after ToList() you are working outside of db.
+               return dbContext.Driver.Select(c =>
+               MapDriver(c)).ToList();
+           
+               solution with ToList():
 
-
-        }
-
-        public List<Address> GetAddresses()
-        {
-            //convert EF address to address
-            return dbContext.Addresses.Select(a =>
-
-                new Address()
-                {
-                    Id = a.Id,
-                    Street = a.Street,
-                    Number = a.Number,
-                    Zipcode = a.Zipcode,
-                    City = a.City
-                })
-                .ToList();
+               return dbContext.Drivers.ToList().Select(c =>
+               MapDriver(c)).ToList();
+            */
+            #endregion
 
         }
 
-        public Address GetAddressById(int id)
+        public async Task<Driver> GetDriverById(int id)
         {
-            var address = dbContext.Addresses.FirstOrDefault(a => a.Id == id);
+            Driver driver = null;
 
-            return new Address()
+            using (var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12 })
             {
-                Id = address.Id,
-                Street = address.Street,
-                Number = address.Number,
-                Zipcode = address.Zipcode,
-                City = address.City
-            };
+                using (var client = new HttpClient(clientHandler, disposeHandler: true))
+                {
+
+                    client.BaseAddress = new Uri("https://localhost:44334/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    try
+                    {
+                        HttpResponseMessage response = await client.GetAsync($"api/driver/{id}");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            driver = await response.Content.ReadAsAsync<Driver>();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.Write(e.InnerException);
+                    }
+                    return driver;
+                }
+            }
+
+            //should we be using EF6
+            //return MapDriver(dbContext.Drivers.FirstOrDefault(c => c.Id == id));
         }
 
-        public List<FuelCard> GetFuelCards()
+        public async Task<List<Address>> GetAddresses()
         {
-            //convert EF address to WCF address
+            List<Address> addressList = new List<Address>();
 
+            using (var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12 })
+            {
+                using (var client = new HttpClient(clientHandler, disposeHandler: true))
+                {
+
+                    client.BaseAddress = new Uri("https://localhost:44334/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    try
+                    {
+                        HttpResponseMessage response = await client.GetAsync($"api/address");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            addressList = await response.Content.ReadAsAsync<List<Address>>();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.Write(e.InnerException);
+                    }
+                    return addressList;
+                }
+            }
+        }
+
+        public async Task<Address> GetAddressById(int id)
+        {
+            Address address = null;
+
+            using (var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12 })
+            {
+                using (var client = new HttpClient(clientHandler, disposeHandler: true))
+                {
+
+                    client.BaseAddress = new Uri("https://localhost:44334/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    try
+                    {
+                        HttpResponseMessage response = await client.GetAsync($"api/address/{id}");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            address = await response.Content.ReadAsAsync<Address>();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.Write(e.InnerException);
+                    }
+                    return address;
+                }
+            }
+        }
+
+        public async Task<List<FuelCard>> GetFuelCards()
+        {
+            #region commentEF6
+            /*
+             * should we be using EF6:
+             * 
+            //convert EF address to WCF address
             return dbContext.FuelCards.Select(f =>
 
            new FuelCard()
@@ -135,11 +179,44 @@ namespace WCFReadServices
                Options = f.Options
            })
                 .ToList();
+            */
+            #endregion
+
+            List<FuelCard> fuelCardList = new List<FuelCard>();
+
+            using (var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12 })
+            {
+                using (var client = new HttpClient(clientHandler, disposeHandler: true))
+                {
+
+                    client.BaseAddress = new Uri("https://localhost:44334/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    try
+                    {
+                        HttpResponseMessage response = await client.GetAsync($"api/fuelcard");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            fuelCardList = await response.Content.ReadAsAsync<List<FuelCard>>();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.Write(e.InnerException);
+                    }
+                    return fuelCardList;
+                }
+            }
         }
 
         public async Task<FuelCard> GetFuelCardByIdAsync(int id)
         {
+            #region commentEF6
             /*
+             * should we be using EF6;
+             * 
             var fuelCard = dbContext.FuelCards.FirstOrDefault(t => t.Id == id);
 
             return new WCFReadEntities.FuelCard()
@@ -152,11 +229,10 @@ namespace WCFReadServices
                 Options = fuelCard.Options
             };
             */
+            #endregion
 
+            FuelCard fuelCard = null;
 
-            Models.FuelCard fuelCard = null;
-
-            // HTTP GET
             using (var clientHandler = new HttpClientHandler { SslProtocols = SslProtocols.Tls12 })
             {
                 using (var client = new HttpClient(clientHandler, disposeHandler: true))
@@ -171,11 +247,9 @@ namespace WCFReadServices
                         HttpResponseMessage response = await client.GetAsync($"api/fuelcard/{id}");
                         if (response.IsSuccessStatusCode)
                         {
-                            fuelCard = await response.Content.ReadAsAsync<Models.FuelCard>();
-                            Console.WriteLine("{0}\t${1}\t{2}", fuelCard.Id, fuelCard.CardNumber);
+                            fuelCard = await response.Content.ReadAsAsync<FuelCard>();
                         }
                     }
-
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);

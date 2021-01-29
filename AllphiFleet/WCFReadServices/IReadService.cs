@@ -10,19 +10,19 @@ namespace WCFReadServices
     public interface IReadService
     {
         [OperationContract]
-        List<Driver> GetDrivers();
+        Task<List<Driver>> GetDriversAsync();
 
         [OperationContract]
-        Driver GetDriverById(int id);
+        Task<Driver> GetDriverById(int id);
 
         [OperationContract]
-        List<Address> GetAddresses();
+        Task<List<Address>> GetAddresses();
 
         [OperationContract]
-        Address GetAddressById(int id);
+        Task<Address> GetAddressById(int id);
 
         [OperationContract]
-        List<FuelCard> GetFuelCards();
+        Task<List<FuelCard>> GetFuelCards();
 
         [OperationContract]
         Task<FuelCard> GetFuelCardByIdAsync(int id);
