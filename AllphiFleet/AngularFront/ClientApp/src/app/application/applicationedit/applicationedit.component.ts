@@ -118,7 +118,8 @@ export class ApplicationeditComponent implements OnInit {
       this.applicationForm = this.formBuilder.group({
         ApplicationDate: [formatDate(this.application.applicationDate, 'yyyy-MM-dd', 'en'), [Validators.required]],
         ApplicationType: [null, [Validators.required]],
-        PossibleDates: [this.application.possibleDates, [Validators.required]],
+        PossibleDate1: [formatDate(this.application.possibleDate1, 'yyyy-MM-dd', 'en'), [Validators.required]],
+        PossibleDate2: [formatDate(this.application.possibleDate2, 'yyyy-MM-dd', 'en'), [Validators.required]],
         ApplicationStatus: [null, [Validators.required]],
         //DriverId: [null, [Validators.required]],
         VehicleId: [null, [Validators.required]],

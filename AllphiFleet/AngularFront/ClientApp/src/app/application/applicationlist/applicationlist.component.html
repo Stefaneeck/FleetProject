@@ -15,7 +15,7 @@
         <td>{{ application.id }}</td>
         <td>{{ application.applicationDate | date:'dd/MM/yyyy' }}</td>
         <td>{{ getApplicationTypeViewValue(application.applicationType) }}</td>
-        <td>{{ application.possibleDates }}</td>
+        <td>{{ (application.possibleDate1 | date:'dd/MM/yyyy') + ', ' + (application.possibleDate2 | date:'dd/MM/yyyy')}}</td>
         <td>{{ getApplicationStatusViewValue(application.applicationStatus) }}</td>
       </tr>
     </tbody>

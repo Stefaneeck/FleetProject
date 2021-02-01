@@ -95,7 +95,8 @@ export class ApplicationaddComponent implements OnInit {
         this.applicationForm = this.formBuilder.group(Object.assign({
           ApplicationDate: [null, [Validators.required]],
           ApplicationType: [null, [Validators.required]],
-          PossibleDates: ['', [Validators.required]],
+          PossibleDate1: [null, [Validators.required]],
+          PossibleDate2: [null, [Validators.required]],
           ApplicationStatus: ['', [Validators.required]],
 
           //todo: only vehicle of specific driver

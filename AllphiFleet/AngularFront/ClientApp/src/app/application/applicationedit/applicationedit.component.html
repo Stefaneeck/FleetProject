@@ -21,13 +21,23 @@
   </div>
 
   <div class="form-group">
-    <label for="inputPossibleDates">Possible dates</label>
-    <input type="text" class="form-control" id="inputPossibleDates" formControlName="PossibleDates">
+    <label for="inputPossibleDate1">Possible date 1</label>
+    <input type="date" class="form-control" id="inputPossibleDate1" formControlName="PossibleDate1">
 
     <span class="text-danger"
-          *ngIf="(applicationForm.controls.PossibleDates.touched || submitted) && applicationForm.controls.PossibleDates.errors?.required">
-      Possible dates is required.
+          *ngIf="(applicationForm.controls.PossibleDate1.touched || submitted) && applicationForm.controls.PossibleDate1.errors?.required">
+      Possible date 1 is required.
     </span>
+  </div>
+
+  <div class="form-group">
+  <label for="inputPossibleDate2">Possible date 2</label>
+  <input type="date" class="form-control" id="inputPossibleDate2" formControlName="PossibleDate2">
+
+  <span class="text-danger"
+        *ngIf="(applicationForm.controls.PossibleDate2.touched || submitted) && applicationForm.controls.PossibleDate2.errors?.required">
+    Possible date 2 is required.
+  </span>
   </div>
 
   <div class="form-group">

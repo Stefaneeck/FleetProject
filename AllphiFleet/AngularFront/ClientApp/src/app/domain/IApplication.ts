@@ -6,7 +6,8 @@ export interface IApplication {
   id: number;
   applicationDate: Date;
   applicationType: number;
-  possibleDates: string;
+  possibleDate1: Date;
+  possibleDate2: Date;
   applicationStatus: string;
   driver: IDriver;
   vehicle: IVehicle;
