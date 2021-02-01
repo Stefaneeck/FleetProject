@@ -1,5 +1,8 @@
 ﻿using FluentValidation;
 using Commands.DriverCommands;
+using WriteRepositories;
+using Models;
+using System.Linq;
 
 namespace Validation.Validators
 {
@@ -7,8 +10,21 @@ namespace Validation.Validators
     //We have n number of similar validators for each command
     public class CreateDriverCommandValidator : AbstractValidator<CreateDriverCommand>
     {
-        public CreateDriverCommandValidator()
+        private readonly INHRepository<Driver> _driverContext;
+
+        public CreateDriverCommandValidator(INHRepository<Driver> driverContext)
         {
+            _driverContext = driverContext;
+
+            RuleFor(command => command.CreateDriverDTO.SocSecNr)
+            .Must(socSecNr =>
+            {
+                var obj = _driverContext.Drivers.FirstOrDefault(driver => driver.SocSecNr.ToLower().Trim() == socSecNr.ToLower().Trim());
+                return obj == null;
+            })
+            .WithErrorCode("AlreadyExists")
+            .WithMessage("Driver already exists.");
+
             RuleFor(c => c.CreateDriverDTO.Name).NotEmpty();
             RuleFor(c => c.CreateDriverDTO.FirstName).NotEmpty();
             #region commentrulefor

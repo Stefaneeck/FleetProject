@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Commands.DriverCommands;
+using FluentValidation;
 using Models;
 using System.Linq;
 using WriteRepositories;
@@ -8,7 +9,7 @@ namespace Validation.Validators
     public static class ValidationExtensions
     {
         //instead of calling this, we call command (extension)
-        public static void AddCheckIfExistsInDBValidator<TCommand, TEntity>(this AbstractValidator<TCommand> validator, INHRepository<TEntity> dbContext)
+        public static void AddCheckIfIdExistsInDBValidator<TCommand, TEntity>(this AbstractValidator<TCommand> validator, INHRepository<TEntity> dbContext)
             where TCommand : class, IIdentifiable
             where TEntity : class, IIdentifiable
 

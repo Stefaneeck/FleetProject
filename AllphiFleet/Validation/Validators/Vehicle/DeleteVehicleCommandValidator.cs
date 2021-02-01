@@ -11,7 +11,7 @@ namespace Validation.Validators
         public DeleteVehicleCommandCheckIfExistsValidator(INHRepository<Vehicle> vehicleContext)
         {
             _vehicleContext = vehicleContext;
-            this.AddCheckIfExistsInDBValidator(_vehicleContext);
+            this.AddCheckIfIdExistsInDBValidator(_vehicleContext);
         }
     }
 }

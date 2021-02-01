@@ -11,7 +11,7 @@ namespace Validation.Validators
         public DeleteApplicationCommandCheckIfExistsValidator(INHRepository<Application> applicationContext)
         {
             _applicationContext = applicationContext;
-            this.AddCheckIfExistsInDBValidator(_applicationContext);
+            this.AddCheckIfIdExistsInDBValidator(_applicationContext);
         }
     }
 }

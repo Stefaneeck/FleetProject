@@ -8,6 +8,7 @@ namespace Validation.Validators
     public class DeleteDriverCommandCheckIfExistsValidator : AbstractValidator<DeleteDriverCommand>
     {
         private readonly INHRepository<Driver> _driverContext;
+
         public DeleteDriverCommandCheckIfExistsValidator(INHRepository<Driver> driverContext)
         {
             _driverContext = driverContext;
@@ -17,7 +18,7 @@ namespace Validation.Validators
             //RuleFor(c => c.Id).NotEmpty();
             #endregion
 
-            this.AddCheckIfExistsInDBValidator(_driverContext);
+            this.AddCheckIfIdExistsInDBValidator(_driverContext);
             #region commentclassicway
             //if this would be called using the classic static way
             //ValidationExtensions.AddCheckIfExistsInDBValidator(this, _chauffeurContext);

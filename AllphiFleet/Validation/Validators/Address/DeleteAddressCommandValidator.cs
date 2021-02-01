@@ -11,7 +11,7 @@ namespace Validation.Validators
         public DeleteAddressCommandCheckIfExistsValidator(INHRepository<Address> addressContext)
         {
             _addressContext = addressContext;
-            this.AddCheckIfExistsInDBValidator(_addressContext);
+            this.AddCheckIfIdExistsInDBValidator(_addressContext);
         }
     }
 }

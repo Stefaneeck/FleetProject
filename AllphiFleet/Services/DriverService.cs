@@ -53,7 +53,7 @@ namespace ReadServices
 
         public long GetDriverIdByEmail(string email)
         {
-            //defaultisempty to handle null error when no record found
+            //default is empty (to handle null error when there is no record found).
             var driver = _repository.GetAll().Where(driver => driver.Email.ToLower() == email.ToLower()).AsEnumerable().DefaultIfEmpty(new Driver()).First();
 
             #region tryCatchAlternative
@@ -83,6 +83,13 @@ namespace ReadServices
             var result = _repository.Drivers.Where(x => x.Email.ToLower() == email.ToLower()).First().Id;
             */
             #endregion
+        }
+
+        public long GetDriverIdBySocSecNr(string socSecNr)
+        {
+            var driver = _repository.GetAll().Where(driver => driver.SocSecNr.ToLower() == socSecNr.ToLower()).AsEnumerable().DefaultIfEmpty(new Driver()).First();
+
+            return driver.Id;
         }
     }
 

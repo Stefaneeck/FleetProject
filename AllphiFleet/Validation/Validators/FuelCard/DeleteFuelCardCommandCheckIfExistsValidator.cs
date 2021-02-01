@@ -12,7 +12,7 @@ namespace Validation.Validators
         {
             _fuelCardContext = fuelCardContext;
 
-            this.AddCheckIfExistsInDBValidator(_fuelCardContext);
+            this.AddCheckIfIdExistsInDBValidator(_fuelCardContext);
 
         }
     }
