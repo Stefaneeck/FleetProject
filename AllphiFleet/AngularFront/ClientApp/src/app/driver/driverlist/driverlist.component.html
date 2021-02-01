@@ -19,24 +19,28 @@
     <tbody>
       <!-- driver is a route of app.module
       driver is the route, driver.id is the parameter -->
-      <tr *ngFor='let driver of drivers' [routerLink]="['/driver', driver.id]" class="pointer">
-        <td>{{ driver.id }}</td>
-        <td>{{ driver.name }}</td>
-        <td>{{ driver.firstName }}</td>
-        <td>{{ driver.email }}</td>
-        <td>{{ driver.address.street + ' '+ driver.address.number + ', ' + driver.address.zipcode + ' ' + driver.address.city }}</td>
-        <td>{{ driver.birthDate | date:'dd/MM/yyyy' }}</td>
-        <td>{{ driver.socSecNr }}</td>
-        <!-- create fuelcard string representation or number enough? -->
-        <td>{{ driver.fuelCard.cardNumber }}</td>
-        <td>{{ getDriverLicenseViewValue(driver.driverLicenseType) }}</td>
-        <td>
-          <input type="checkbox" [checked]="driver.active" class="notClickable">
-        </td>
-      </tr>
+      <ng-container *ngFor='let driver of drivers'>
+        <!-- only show active drivers -->
+        <tr *ngIf='driver.active || showInactive' class="pointer" [routerLink]="['/driver', driver.id]">
+          <td>{{ driver.id }}</td>
+          <td>{{ driver.name }}</td>
+          <td>{{ driver.firstName }}</td>
+          <td>{{ driver.email }}</td>
+          <td>{{ driver.address.street + ' '+ driver.address.number + ', ' + driver.address.zipcode + ' ' + driver.address.city }}</td>
+          <td>{{ driver.birthDate | date:'dd/MM/yyyy' }}</td>
+          <td>{{ driver.socSecNr }}</td>
+          <!-- create fuelcard string representation or number enough? -->
+          <td>{{ driver.fuelCard.cardNumber }}</td>
+          <td>{{ getDriverLicenseViewValue(driver.driverLicenseType) }}</td>
+          <td>
+            <input type="checkbox" [checked]="driver.active" class="notClickable">
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
   <div class="nav-item marginBottomList" [routerLinkActive]="['link-active']">
     <a class="btn btn-primary" [routerLink]="['/driveradd']">Add driver</a>
+    <a class="btn btn-primary marginButton" (click)="showInactiveDrivers()">{{showInactive ? 'Hide inactive drivers' : 'Show inactive drivers'}}</a>
   </div>
 </div>

@@ -11,6 +11,7 @@ export class DriverlistComponent implements OnInit {
 
   public drivers: IDriver[];
   errorMessage = '';
+  showInactive = false;
 
   constructor(private driverService: DriverService) {
 
@@ -35,6 +36,11 @@ export class DriverlistComponent implements OnInit {
   getDriverLicenseViewValue(enumValue: number): string {
 
     return this.driverService.showEnumValueDriverLicenseType(enumValue);
+  }
+
+  showInactiveDrivers(): void {
+
+    this.showInactive = !this.showInactive;
   }
 
 }
