@@ -22,7 +22,8 @@ namespace WriteRepositories.Mappings
 
             this.Property(a => a.ApplicationDate);
             this.Property(a => a.ApplicationType);
-            this.Property(a => a.PossibleDates);
+            this.Property(a => a.PossibleDate1);
+            this.Property(a => a.PossibleDate2);
             this.Property(a => a.ApplicationStatus);
 
             //not creating entire new vehicle and driver objects anymore, property instead of manytoone

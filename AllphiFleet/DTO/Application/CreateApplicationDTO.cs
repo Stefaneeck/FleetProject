@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Enums;
+﻿using Models.Enums;
 using System;
 
 namespace DTO
@@ -8,9 +7,9 @@ namespace DTO
     {
         public DateTime ApplicationDate { get; set; }
         public ApplicationTypes ApplicationType { get; set; }
-        public string PossibleDates { get; set; }
+        public DateTime PossibleDate1 { get; set; }
+        public DateTime PossibleDate2 { get; set; }
         public ApplicationStatuses ApplicationStatus { get; set; }
-
         #region commentobjects
         //not working with objects anymore NH, just the 2 properties
         //public Vehicle Vehicle { get; set; }
@@ -19,7 +18,6 @@ namespace DTO
         #endregion
         public long VehicleId { get; set; }
         public long DriverId { get; set; }
-
         public string DriverEmail { get; set; }
     }
 }

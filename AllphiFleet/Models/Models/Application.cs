@@ -8,7 +8,9 @@ namespace Models
         public virtual long Id { get; set; }
         public virtual DateTime ApplicationDate { get; set; }
         public virtual ApplicationTypes ApplicationType { get; set; }
-        public virtual string PossibleDates { get; set; }
+        //public virtual string PossibleDates { get; set; }
+        public virtual DateTime PossibleDate1 { get; set; }
+        public virtual DateTime PossibleDate2 { get; set; }
         public virtual ApplicationStatuses ApplicationStatus { get; set; }
         public virtual long VehicleId { get; set; }
         public virtual Vehicle Vehicle { get; set; }

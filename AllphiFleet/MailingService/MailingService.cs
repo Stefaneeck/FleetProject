@@ -23,7 +23,7 @@ namespace MailingService
                 //todo send the driver who created it from angular
                 //$"Created by: {application.Driver.Name + " " + application.Driver.FirstName}" +
                 $"Application status: {application.ApplicationStatus.ToString()}" +
-                $"Dates possible:  {application.PossibleDates }";
+                $"Dates possible:  {application.PossibleDate1 + " " + application.PossibleDate2 }";
             var htmlContent = $"A new application with type {application.ApplicationType} has been created. <br /><br />" +
                 $" Details: <br /> " +
                 $"Application type: {application.ApplicationType} <br /> " +
@@ -31,7 +31,7 @@ namespace MailingService
                 //todo send the driver who created it from angular
                 //$"Created by: {application.Driver.Name + " " + application.Driver.FirstName}" +
                 $"Application status: {application.ApplicationStatus} <br />" +
-                $"Dates possible:  {application.PossibleDates }"; ;
+                $"Dates possible:  {application.PossibleDate1 + " " + application.PossibleDate2}"; ;
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
         }
@@ -47,13 +47,13 @@ namespace MailingService
                 $"Application type: {application.ApplicationType.ToString()} " +
                 $"Application date: {application.ApplicationDate.ToShortDateString()}" +
                 $"Application status: {application.ApplicationStatus.ToString()}" +
-                $"Dates possible:  {application.PossibleDates }";
+                $"Dates possible:  {application.PossibleDate1 + " " + application.PossibleDate2 }";
             var htmlContent = $"Dear {application.Driver.FirstName }, <br /><br /> your application with date {application.ApplicationDate.ToShortDateString()} has been approved. <br />" +
                 $" Details: <br /> " +
                 $"Application type: {application.ApplicationType} <br /> " +
                 $"Application date: {application.ApplicationDate.ToShortDateString()} <br />" +
                 $"Application status: {application.ApplicationStatus} <br />" +
-                $"Dates possible:  {application.PossibleDates }"; ;
+                $"Dates possible:  {application.PossibleDate1 + " " + application.PossibleDate2 }"; ;
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
         }

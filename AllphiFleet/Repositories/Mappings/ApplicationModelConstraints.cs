@@ -23,7 +23,11 @@ namespace ReadRepositories.Mappings
                 .IsRequired();
 
             modelBuilder.Entity<Application>()
-                .Property(a => a.PossibleDates)
+                .Property(a => a.PossibleDate1)
+                .IsRequired();
+
+            modelBuilder.Entity<Application>()
+                .Property(a => a.PossibleDate2)
                 .IsRequired();
 
             modelBuilder.Entity<Application>()

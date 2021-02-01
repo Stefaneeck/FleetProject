@@ -45,7 +45,8 @@ namespace WriteServices.ApplicationHandlers
                 {
                     ApplicationDate = command.CreateApplicationDTO.ApplicationDate,
                     ApplicationType = command.CreateApplicationDTO.ApplicationType,
-                    PossibleDates = command.CreateApplicationDTO.PossibleDates,
+                    PossibleDate1 = command.CreateApplicationDTO.PossibleDate1,
+                    PossibleDate2 = command.CreateApplicationDTO.PossibleDate2,
                     ApplicationStatus = command.CreateApplicationDTO.ApplicationStatus,
 
                     //not making objects anyomore because we pass an existing id and altered the NH mapping
@@ -60,7 +61,8 @@ namespace WriteServices.ApplicationHandlers
                 {
                     ApplicationDate = command.CreateApplicationDTO.ApplicationDate,
                     ApplicationType = command.CreateApplicationDTO.ApplicationType,
-                    PossibleDates = command.CreateApplicationDTO.PossibleDates,
+                    PossibleDate1 = command.CreateApplicationDTO.PossibleDate1,
+                    PossibleDate2 = command.CreateApplicationDTO.PossibleDate2,
                     ApplicationStatus = command.CreateApplicationDTO.ApplicationStatus,
 
                     //not making objects anyomore because we pass an existing id and altered the NH mapping

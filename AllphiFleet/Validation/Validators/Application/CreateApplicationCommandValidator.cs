@@ -8,7 +8,8 @@ namespace Validation.Validators
         public CreateApplicationCommandValidator()
         {
             RuleFor(a => a.CreateApplicationDTO.ApplicationDate).NotEmpty();
-            RuleFor(a => a.CreateApplicationDTO.PossibleDates).NotEmpty();
+            RuleFor(a => a.CreateApplicationDTO.PossibleDate1).NotEmpty();
+            RuleFor(a => a.CreateApplicationDTO.PossibleDate2).NotEmpty();
             RuleFor(a => a.CreateApplicationDTO.ApplicationStatus).IsInEnum();
             RuleFor(a => a.CreateApplicationDTO.ApplicationType).IsInEnum();
             RuleFor(a => a.CreateApplicationDTO.VehicleId).NotEmpty();

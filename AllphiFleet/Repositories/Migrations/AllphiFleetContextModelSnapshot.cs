@@ -195,8 +195,11 @@ namespace Repositories.Migrations
                     b.Property<long>("DriverId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("PossibleDates")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("PossibleDate1")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PossibleDate2")
+                        .HasColumnType("datetime2");
 
                     b.Property<long>("VehicleId")
                         .HasColumnType("bigint");

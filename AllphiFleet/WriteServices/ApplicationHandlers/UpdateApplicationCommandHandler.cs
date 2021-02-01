@@ -29,7 +29,8 @@ namespace WriteServices.ApplicationHandlers
             {
                 Id = command.UpdateApplicationDTO.Id,
                 ApplicationDate = command.UpdateApplicationDTO.ApplicationDate,
-                PossibleDates = command.UpdateApplicationDTO.PossibleDates,
+                PossibleDate1 = command.UpdateApplicationDTO.PossibleDate1,
+                PossibleDate2 = command.UpdateApplicationDTO.PossibleDate2,
                 ApplicationStatus = command.UpdateApplicationDTO.ApplicationStatus,
                 VehicleId = command.UpdateApplicationDTO.VehicleId,
                 //DriverId seperately still needed because otherwise we must change NH mapping to expect a driver object with bag etc.. but only needing id.
