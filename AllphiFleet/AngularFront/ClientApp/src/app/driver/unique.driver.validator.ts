@@ -1,23 +1,37 @@
-import { FormBuilder, Validators, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormBuilder, Validators, ValidationErrors, ValidatorFn, AbstractControl, AsyncValidator, FormControl } from '@angular/forms';
 import { DriverService } from './driver.service';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
-
-export function checkDriverUniqueValidator(val: number, driverService: DriverService): ValidatorFn {
-
-  return (control: AbstractControl): ValidationErrors | null => {
-
-    let v: number = +control.value;
-
-    if (isNaN(v)) {
-      return { 'gte': true, 'requiredValue': val }
-    }
-
-    if (v <= +val) {
-      return { 'gte': true, 'requiredValue': val }
-    }
-
-    return null;
-
+/*
+export const uniqueDriverValidator = (driverService: DriverService ) =>
+{
+  console.log('te0');
+  return (input: FormControl) => {
+    console.log('te1');
+    console.log(input.value);
+    return driverService.getDriverBySocSecNr(input.value).pipe(
+      map(driverId => (driverId !== 0 ? { uniqueDriver: true } : null)),
+      catchError(() => of(null))
+    );
   }
+};
+*/
 
+
+@Injectable({ providedIn: 'root' })
+export class UniqueDriverValidator implements AsyncValidator {
+  constructor(private driverService: DriverService) { }
+
+  validate(
+    ctrl: AbstractControl
+  ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    return this.driverService.getDriverBySocSecNr(ctrl.value).pipe(
+      map(driverId => (driverId !== 0 ? { driverTaken: true } : null)),
+      catchError(() => of(null))
+    );
+  }
 }
+
+

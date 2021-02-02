@@ -5,6 +5,7 @@ import { FormBuilder, Validators, ValidationErrors, ValidatorFn, AbstractControl
 import { IDriver } from '../../domain/IDriver';
 import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTypes';
 import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseTypes';
+import { UniqueDriverValidator, uniqueDriverValidator } from '../unique.driver.validator';
 
 @Component({
   selector: 'app-driveradd',
@@ -24,7 +25,7 @@ export class DriveraddComponent implements OnInit {
   enumDriverLicenseTypes = Object.keys(EnumDriverLicenseTypes).filter(key => !isNaN(Number(EnumDriverLicenseTypes[key])));
 
   constructor(private formBuilder: FormBuilder, private driverService: DriverService,
-    private router: Router) { }
+    private router: Router, private uniqueDriverValidator: UniqueDriverValidator) { }
 
   ngOnInit() {
 
@@ -43,7 +44,7 @@ export class DriveraddComponent implements OnInit {
       }),
 
       BirthDate: ['', [Validators.required]],
-      SocSecNr: ['', [this.checkDriverUniqueValidator()]],
+      SocSecNr: ['', [Validators.required], this.uniqueDriverValidator.validate.bind(this.uniqueDriverValidator)],
       DriverLicenseType: [null, [Validators.required]],
 
       //nested group: fuelcard
