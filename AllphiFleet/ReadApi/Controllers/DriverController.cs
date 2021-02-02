@@ -48,6 +48,14 @@ namespace ReadApi.Controllers
             return Ok(driverDTO);
         }
 
+        //Get: api/driver/getBySocSecNr/111-222-333
+        [HttpGet("getBySocSecNr/{socSecNr}")]
+        public IActionResult GetBySocSecNr(string socSecNr)
+        {
+            var driverId = _driverService.GetDriverIdBySocSecNr(socSecNr);
+            return Ok(driverId);
+        }
+
         [HttpGet("Claims")]
         //without roles, returns 401 if not authorized. With roles, returns 403 if wrong role.
         //[Authorize(Roles = "admin")]

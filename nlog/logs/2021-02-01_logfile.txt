@@ -120,3 +120,7 @@
 2021-02-01 19:38:00.8332 INFO Retrieving 13 records.
 2021-02-01 19:38:23.9985 INFO Retrieving all drivers.
 2021-02-01 19:38:24.0173 INFO Retrieving 13 records.
+2021-02-01 19:41:04.8084 INFO Retrieving all drivers.
+2021-02-01 19:41:05.7295 INFO Retrieving 13 records.
+2021-02-01 19:41:39.8036 INFO Retrieving all drivers.
+2021-02-01 19:41:39.8294 INFO Retrieving 13 records.

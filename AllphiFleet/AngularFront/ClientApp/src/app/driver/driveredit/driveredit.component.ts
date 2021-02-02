@@ -50,14 +50,16 @@ export class DrivereditComponent implements OnInit {
 
       this.driver = data;
 
-      //formulier hier pas aanmaken, in de then van de promise (dan hebben we de data)
-      //de naam voor het : komt overeen met de waarde van formControlName in het html formulier
-      //eerste argument is default value
-      //bvb Naam: [this.driver.Naam, [Validators.required]]
+      /*
+      formulier hier pas aanmaken, in de then van de promise (dan hebben we de data)
+      de naam voor het : komt overeen met de waarde van formControlName in het html formulier
+      eerste argument is default value
+      bvb Naam: [this.driver.Naam, [Validators.required]]
 
 
-      //we spreken hier het json object eigenlijk aan, we moeten zien dat onze domeinklasse de data ervan matcht. als we this.driver.Naam ipv this.driver.naam zouden gebruiken, zou het niet werken
-      //omdat het json object met kleine letters uit de api komt. we moeten dus hier de syntax van onze domeinklasse aanpassen aan hoe het in het json object zit, er wordt niets intern automatisch gemapt.
+      we spreken hier het json object eigenlijk aan, we moeten zien dat onze domeinklasse de data ervan matcht. als we this.driver.Naam ipv this.driver.naam zouden gebruiken, zou het niet werken
+      omdat het json object met kleine letters uit de api komt. we moeten dus hier de syntax van onze domeinklasse aanpassen aan hoe het in het json object zit, er wordt niets intern automatisch gemapt.
+      */
 
       this.driverForm = this.formBuilder.group({
         Name: [this.driver.name, [Validators.required]],

@@ -53,6 +53,15 @@ export class DriverService {
 
   }
 
+  getDriverBySocSecNr(socSecNr: string): Observable<number | undefined> {
+    return this.http.get<number>(this.driverReadUrl + '/GetbySocSecNr/' + socSecNr)
+      .pipe(
+        tap(data => console.log('getDriverBySocSecNr: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+
+  }
+
   addDriver(driverData: IDriver): Observable<IDriver> {
     const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.post<IDriver>(this.driverWriteUrl, driverData, httpHeaders)

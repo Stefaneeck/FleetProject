@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DriverService } from '../driver.service';
-import { FormBuilder, Validators, ValidationErrors } from '@angular/forms';
+import { FormBuilder, Validators, ValidationErrors, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
 import { IDriver } from '../../domain/IDriver';
 import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTypes';
 import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseTypes';
@@ -18,8 +18,8 @@ export class DriveraddComponent implements OnInit {
   driverForm: any;
 
   // Make a variable reference to our Enum
-  //'dubbele' waarden verwijderen
-  //keys zijn 0, 1, pin, pinkmstand
+  //'remove' double values
+  //keys are 0, 1, pin, pinkmstand
   enumAuthTypes = Object.keys(EnumAuthenticationTypes).filter(key => !isNaN(Number(EnumAuthenticationTypes[key])));
   enumDriverLicenseTypes = Object.keys(EnumDriverLicenseTypes).filter(key => !isNaN(Number(EnumDriverLicenseTypes[key])));
 
@@ -43,7 +43,7 @@ export class DriveraddComponent implements OnInit {
       }),
 
       BirthDate: ['', [Validators.required]],
-      SocSecNr: ['', [Validators.required]],
+      SocSecNr: ['', [this.checkDriverUniqueValidator()]],
       DriverLicenseType: [null, [Validators.required]],
 
       //nested group: fuelcard
@@ -102,4 +102,45 @@ export class DriveraddComponent implements OnInit {
   onBack(): void {
     this.router.navigate(['/driverlist']);
   }
+
+  checkDriverUniqueValidator(): ValidatorFn {
+
+    //if everythings is fine, this returns null
+    console.log('test0');
+    return (control: AbstractControl): ValidationErrors | null => {
+      let driverId: number;
+
+      console.log('test1');
+
+      console.log('control');
+      console.log(control);
+
+      if (control.value !== "") {
+
+        return this.driverService.getDriverBySocSecNr(control.value).toPromise()
+          .then((data: number) => {
+
+            driverId = data;
+            console.log('driverId');
+            console.log(driverId);
+
+            if (driverId === 0) {
+              console.log('inside if');
+              return { 'checkDriverUniqueValidator': true, 'requiredValue': control.value }
+            }
+
+            return null;
+
+          }).catch((error) => {
+            console.log("promise error");
+            console.log(error);
+          });
+      }
+    //only if errors at start
+    return null;
+  }
+
+}
+
+
 }
