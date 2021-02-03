@@ -24,7 +24,8 @@ namespace WriteServices.FuelCardHandlers
                 ValidUntilDate = command.CreateFuelCardDTO.ValidUntilDate,
                 CardNumber = command.CreateFuelCardDTO.CardNumber,
                 Options = command.CreateFuelCardDTO.Options,
-                Pincode = command.CreateFuelCardDTO.Pincode
+                Pincode = command.CreateFuelCardDTO.Pincode,
+                Active = command.CreateFuelCardDTO.Active
             };
 
             _context.BeginTransaction();

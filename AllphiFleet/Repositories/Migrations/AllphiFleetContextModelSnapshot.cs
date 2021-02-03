@@ -359,6 +359,9 @@ namespace Repositories.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
                     b.Property<int>("AuthType")
                         .HasColumnType("int");
 
@@ -376,6 +379,9 @@ namespace Repositories.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CardNumber")
+                        .IsUnique();
 
                     b.ToTable("FuelCards");
                 });

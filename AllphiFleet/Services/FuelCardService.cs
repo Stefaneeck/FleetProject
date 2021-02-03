@@ -28,5 +28,12 @@ namespace ReadServices
         {
             return _mapper.Map<FuelCardDTO>(_repository.Get(id));
         }
+
+        public long GetFuelCardByCardNumber(int cardNumber)
+        {
+            var fuelCard = _repository.GetAll().Where(fuelCard => fuelCard.CardNumber == cardNumber).AsEnumerable().DefaultIfEmpty(new FuelCard()).First();
+
+            return fuelCard.Id;
+        }
     }
 }

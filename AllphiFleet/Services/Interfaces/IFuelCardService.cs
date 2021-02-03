@@ -7,5 +7,6 @@ namespace ReadServices.Interfaces
     {
         public IEnumerable<FuelCardDTO> GetFuelCards();
         public FuelCardDTO GetFuelCard(long id);
+        public long GetFuelCardByCardNumber(int cardNumber);
     }
 }

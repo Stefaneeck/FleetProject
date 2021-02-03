@@ -3,10 +3,17 @@
     <label for="inputCardNumber">Card Number</label>
     <input type="number" class="form-control" id="inputCardNumber" formControlName="CardNumber">
 
-    <span class="text-danger"
-          *ngIf="(fuelcardForm.controls.CardNumber.touched || submitted) && fuelcardForm.controls.CardNumber.errors?.required">
-      Card number is required.
-    </span>
+    <div *ngIf="fuelcardForm.get('CardNumber').pending">Validating...</div>
+
+    <div class="alert alert-danger" *ngIf="fuelcardForm.get('CardNumber').invalid
+              && fuelcardForm.get('CardNumber').touched">
+      <div *ngIf="fuelcardForm.get('CardNumber').errors?.fuelcardTaken; else elseBlock">
+        Fuelcard already exists.
+      </div>
+      <ng-template #elseBlock>
+        Card number is required.
+      </ng-template>
+    </div>
   </div>
   <div class="form-group">
     <label for="inputPincode">Pincode</label>

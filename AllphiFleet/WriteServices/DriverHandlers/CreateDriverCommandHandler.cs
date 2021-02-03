@@ -44,7 +44,8 @@ namespace WriteServices.DriverHandlers
                     ValidUntilDate = command.CreateDriverDTO.FuelCard.ValidUntilDate,
                     Pincode = command.CreateDriverDTO.FuelCard.Pincode,
                     AuthType = command.CreateDriverDTO.FuelCard.AuthType,
-                    Options = command.CreateDriverDTO.FuelCard.Options
+                    Options = command.CreateDriverDTO.FuelCard.Options,
+                    Active = command.CreateDriverDTO.FuelCard.Active
                 }
             };
 

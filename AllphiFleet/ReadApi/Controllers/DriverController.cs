@@ -48,8 +48,8 @@ namespace ReadApi.Controllers
             return Ok(driverDTO);
         }
 
-        //Get: api/driver/getBySocSecNr/111-222-333
-        [HttpGet("getBySocSecNr/{socSecNr}")]
+        //Get: api/driver/getbysocsecnr/111-222-333
+        [HttpGet("getbysocsecnr/{socSecNr}")]
         public IActionResult GetBySocSecNr(string socSecNr)
         {
             var driverId = _driverService.GetDriverIdBySocSecNr(socSecNr);

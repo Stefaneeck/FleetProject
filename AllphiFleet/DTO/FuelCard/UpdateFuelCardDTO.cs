@@ -11,5 +11,6 @@ namespace DTO
         public int Pincode { get; set; }
         public AuthenticationTypes AuthType { get; set; }
         public string Options { get; set; }
+        public bool Active { get; set; }
     }
 }

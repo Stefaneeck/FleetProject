@@ -19,6 +19,10 @@ namespace ReadRepositories.Mappings
                 .IsRequired();
 
             modelBuilder.Entity<FuelCard>()
+                .HasIndex(f => f.CardNumber)
+                .IsUnique();
+
+            modelBuilder.Entity<FuelCard>()
                 .Property(f => f.ValidUntilDate)
                 .IsRequired();
 
@@ -32,6 +36,10 @@ namespace ReadRepositories.Mappings
 
             modelBuilder.Entity<FuelCard>()
                 .Property(f => f.Options)
+                .IsRequired();
+
+            modelBuilder.Entity<FuelCard>()
+                .Property(f => f.Active)
                 .IsRequired();
         }
     }

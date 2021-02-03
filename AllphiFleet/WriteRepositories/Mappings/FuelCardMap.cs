@@ -12,19 +12,20 @@ namespace WriteRepositories.Mappings
             //separate delete for this
             this.Table("FuelCards");
 
-            this.Id(t => t.Id, t =>
+            this.Id(f => f.Id, f =>
             {
-                t.Generator(Generators.Native);
-                t.Type(NHibernateUtil.Int64);
-                t.Column("Id");
-                t.UnsavedValue(0);
+                f.Generator(Generators.Native);
+                f.Type(NHibernateUtil.Int64);
+                f.Column("Id");
+                f.UnsavedValue(0);
             });
 
-            this.Property(t => t.CardNumber);
-            this.Property(t => t.ValidUntilDate);
-            this.Property(t => t.Pincode);
-            this.Property(t => t.AuthType);
-            this.Property(t => t.Options);
+            this.Property(f => f.CardNumber);
+            this.Property(f => f.ValidUntilDate);
+            this.Property(f => f.Pincode);
+            this.Property(f => f.AuthType);
+            this.Property(f => f.Options);
+            this.Property(f => f.Active);
 
             Bag(x => x.Drivers, map =>
             {

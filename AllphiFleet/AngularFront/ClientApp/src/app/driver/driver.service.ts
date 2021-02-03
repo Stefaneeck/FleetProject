@@ -54,7 +54,7 @@ export class DriverService {
   }
 
   getDriverBySocSecNr(socSecNr: string): Observable<number | undefined> {
-    return this.http.get<number>(this.driverReadUrl + '/GetbySocSecNr/' + socSecNr)
+    return this.http.get<number>(this.driverReadUrl + '/getbysocsecnr/' + socSecNr)
       .pipe(
         tap(data => console.log('getDriverBySocSecNr: ' + JSON.stringify(data))),
         catchError(this.handleError)

@@ -6,6 +6,7 @@ import { IDriver } from '../../domain/IDriver';
 import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTypes';
 import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseTypes';
 import { UniqueDriverValidator } from '../unique.driver.validator';
+import { UniqueFuelcardValidator } from '../../fuelcard/unique.fuelcard.validator';
 
 @Component({
   selector: 'app-driveradd',
@@ -25,7 +26,8 @@ export class DriveraddComponent implements OnInit {
   enumDriverLicenseTypes = Object.keys(EnumDriverLicenseTypes).filter(key => !isNaN(Number(EnumDriverLicenseTypes[key])));
 
   constructor(private formBuilder: FormBuilder, private driverService: DriverService,
-    private router: Router, private uniqueDriverValidator: UniqueDriverValidator) { }
+    private router: Router, private uniqueDriverValidator: UniqueDriverValidator,
+    private uniqueFuelcardValidator: UniqueFuelcardValidator) { }
 
   ngOnInit() {
 
@@ -54,11 +56,17 @@ export class DriveraddComponent implements OnInit {
 
       //nested group: fuelcard
       FuelCard: this.formBuilder.group({
-        CardNumber: ['', [Validators.required]],
+        CardNumber: ['', {
+          validators: [Validators.required],
+          asyncValidators: [this.uniqueFuelcardValidator.validate.bind(this.uniqueFuelcardValidator)],
+          updateOn: 'blur'
+        }],
         ValidUntilDate: ['', [Validators.required]],
         Pincode: ['', [Validators.required]],
         AuthType: [null, [Validators.required]],
         Options: ['', [Validators.required]],
+        //Not visible in html.Not being inputted by user, just default to true
+        Active: [true, [Validators.required]]
       }),
 
       Active: [false, [Validators.required]]
@@ -68,7 +76,7 @@ export class DriveraddComponent implements OnInit {
 
   //nog op te lossen: als je actief niet op checked zet, dan geeft hij ipv false, "" mee aan de post request.
   //bij edit driver werkt dit nochtans wel.
-  addDriver(driver: IDriver): void {
+  addDriver(): void {
     if (this.driverForm.valid) {
       console.log("valid.");
 

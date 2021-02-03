@@ -21,6 +21,8 @@ namespace Models
         public virtual AuthenticationTypes AuthType { get; set; }
         [DataMember]
         public virtual string Options { get; set; }
+        [DataMember]
+        public virtual bool Active { get; set; }
         public virtual ICollection<Driver> Drivers { get; set; }
     }
 }

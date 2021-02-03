@@ -42,5 +42,14 @@ namespace ReadApi.Controllers
             return Ok(fuelCardDTO);
         }
 
+        //Get: api/fuelcard/getbycardnumber/11
+        //int constraint on parameter cardNumber, this route will only be selected if an int is entered
+        [HttpGet("getbycardnumber/{cardNumber:int}")]
+        public IActionResult GetByCardNumber(int cardNumber)
+        {
+            var fuelCardId = _fuelCardService.GetFuelCardByCardNumber(cardNumber);
+            return Ok(fuelCardId);
+        }
+
     }
 }

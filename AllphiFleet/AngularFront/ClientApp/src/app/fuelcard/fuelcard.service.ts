@@ -33,6 +33,15 @@ export class FuelcardService {
 
   }
 
+  getFuelcardByCardNumber(cardNumber: number): Observable<number | undefined> {
+    return this.http.get<number>(this.fuelcardReadUrl + '/getbycardnumber/' + cardNumber)
+      .pipe(
+        tap(data => console.log('getFuelcardByCardNumber: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+
+  }
+
   addFuelcard(fuelcardData: IFuelcard): Observable<IFuelcard> {
     const httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.post<IFuelcard>(this.fuelcardWriteUrl, fuelcardData, httpHeaders)

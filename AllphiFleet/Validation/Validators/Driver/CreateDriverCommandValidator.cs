@@ -26,19 +26,23 @@ namespace Validation.Validators
 
             RuleFor(c => c.CreateDriverDTO.Name).NotEmpty();
             RuleFor(c => c.CreateDriverDTO.FirstName).NotEmpty();
-
-            #region commentrulefor
-            //doesnt work, notempty with boolean -> only ok if true
-            //RuleFor(c => c.CreateDriverDTO.Actief).NotEmpty();
-            //not neccessary, if he gets other value he will fail even before this
-            //RuleFor(c => c.CreateDriverDTO.Actief).Must(actief => actief == false || actief == true);
-            #endregion
-
+            RuleFor(c => c.CreateDriverDTO.Email).NotEmpty();
             RuleFor(c => c.CreateDriverDTO.BirthDate).NotEmpty();
             RuleFor(c => c.CreateDriverDTO.SocSecNr).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.Active).Must(x => x == false || x == true);
             RuleFor(c => c.CreateDriverDTO.DriverLicenseType).IsInEnum();
-            RuleFor(c => c.CreateDriverDTO.FuelCard.AuthType).IsInEnum();
             RuleFor(c => c.CreateDriverDTO.Email).NotEmpty();
+
+            RuleFor(c => c.CreateDriverDTO.Address.Street).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.Address.Number).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.Address.Zipcode).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.Address.City).NotEmpty();
+       
+            RuleFor(c => c.CreateDriverDTO.FuelCard.AuthType).IsInEnum();
+            RuleFor(c => c.CreateDriverDTO.FuelCard.ValidUntilDate).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.FuelCard.Pincode).NotEmpty();
+            RuleFor(c => c.CreateDriverDTO.FuelCard.Active).Must(x => x == false || x == true);
+
         }
     }
 }
