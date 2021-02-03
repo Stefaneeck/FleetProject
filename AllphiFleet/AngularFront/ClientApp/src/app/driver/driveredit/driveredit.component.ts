@@ -71,6 +71,7 @@ export class DrivereditComponent implements OnInit {
         Email: [this.driver.email,
           {
             validators: [Validators.required],
+            //pass driver email to validator to ignore current value
             asyncValidators: [this.uniqueDriverEmailValidator.validate.bind(this.uniqueDriverEmailValidator)],
             updateOn: 'blur'
           }],

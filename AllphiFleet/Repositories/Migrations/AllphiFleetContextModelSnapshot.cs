@@ -470,6 +470,26 @@ namespace Repositories.Migrations
                     b.ToTable("Maintenance");
                 });
 
+            modelBuilder.Entity("Models.MileageHistory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Mileage")
+                        .HasColumnType("int");
+
+                    b.Property<long>("VehicleId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("MileageHistory");
+                });
+
             modelBuilder.Entity("Models.Repair", b =>
                 {
                     b.Property<long>("Id")
@@ -639,6 +659,17 @@ namespace Repositories.Migrations
                         .IsRequired();
 
                     b.Navigation("Invoice");
+
+                    b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("Models.MileageHistory", b =>
+                {
+                    b.HasOne("Models.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Vehicle");
                 });

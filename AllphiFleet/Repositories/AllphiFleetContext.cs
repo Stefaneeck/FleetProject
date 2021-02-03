@@ -30,6 +30,7 @@ namespace ReadRepositories
             modelBuilder.OnModelCreatingFuelCard();
             modelBuilder.OnModelCreatingInsuranceCompany();
             modelBuilder.OnModelCreatingVehicle();
+            modelBuilder.OnModelCreatingMileageHistory();
             modelBuilder.OnModelCreatingCreateRelations();
         }
     }

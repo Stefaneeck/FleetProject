@@ -11,7 +11,9 @@ export class UniqueDriverEmailValidator implements AsyncValidator {
   validate(
     ctrl: AbstractControl
   ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    console.log(ctrl);
     return this.driverService.getDriverByEmail(ctrl.value).pipe(
+      //currentEmail is only applicable when editing
       map(driverId => (driverId !== 0 ? { driverEmailTaken: true } : null)),
       catchError(() => of(null))
     );
