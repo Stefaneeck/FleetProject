@@ -5,7 +5,7 @@ import { FormBuilder, Validators, ValidationErrors, ValidatorFn, AbstractControl
 import { IDriver } from '../../domain/IDriver';
 import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTypes';
 import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseTypes';
-import { UniqueDriverValidator, uniqueDriverValidator } from '../unique.driver.validator';
+import { UniqueDriverValidator } from '../unique.driver.validator';
 
 @Component({
   selector: 'app-driveradd',
@@ -44,7 +44,12 @@ export class DriveraddComponent implements OnInit {
       }),
 
       BirthDate: ['', [Validators.required]],
-      SocSecNr: ['', [Validators.required], this.uniqueDriverValidator.validate.bind(this.uniqueDriverValidator)],
+      //set update on blur so we don't make an api call every time a character changes in the input box
+      SocSecNr: ['', {
+        validators: [Validators.required],
+        asyncValidators: [this.uniqueDriverValidator.validate.bind(this.uniqueDriverValidator)],
+        updateOn: 'blur'
+      }],
       DriverLicenseType: [null, [Validators.required]],
 
       //nested group: fuelcard
