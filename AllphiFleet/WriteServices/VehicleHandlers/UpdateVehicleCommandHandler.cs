@@ -10,11 +10,13 @@ namespace WriteServices.VehicleHandlers
 {
     public class UpdateVehicleCommandHandler : IRequestHandler<UpdateVehicleCommand, Unit>
     {
-        private readonly INHRepository<Vehicle> _context;
+        private readonly INHRepository<Vehicle> _vehicleContext;
+        private readonly INHRepository<MileageHistory> _mileageHistoryContext;
 
-        public UpdateVehicleCommandHandler(INHRepository<Vehicle> context)
+        public UpdateVehicleCommandHandler(INHRepository<Vehicle> vehicleContext, INHRepository<MileageHistory> mileageHistoryContext)
         {
-            _context = context;
+            _vehicleContext = vehicleContext;
+            _mileageHistoryContext = mileageHistoryContext;
         }
         public async Task<Unit> Handle(UpdateVehicleCommand command, CancellationToken cancellationToken)
         {
@@ -27,18 +29,40 @@ namespace WriteServices.VehicleHandlers
                 Mileage = command.UpdateVehicleDTO.Mileage
             };
 
-            _context.BeginTransaction();
+            _vehicleContext.BeginTransaction();
 
             try
             {
-                await _context.Update(vehicle);
-                await _context.Commit();
+                await _vehicleContext.Update(vehicle);
+                await _vehicleContext.Commit();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine(e.InnerException);
-                await _context.Rollback();
+                await _vehicleContext.Rollback();
+            }
+
+            //for mileage history
+            var mileageHistory = new MileageHistory
+            {
+                Id = 0,
+                Mileage = command.UpdateVehicleDTO.Mileage,
+                VehicleId = command.UpdateVehicleDTO.Id
+            };
+
+            _mileageHistoryContext.BeginTransaction();
+
+            try
+            {
+                await _mileageHistoryContext.Save(mileageHistory);
+                await _mileageHistoryContext.Commit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.InnerException);
+                await _mileageHistoryContext.Rollback();
             }
 
             return Unit.Value;

@@ -49,7 +49,7 @@ export class FuelcardeditComponent implements OnInit {
         Active: [this.fuelcard.active, [Validators.required]]
       });
 
-      const stringValue = this.fuelcard.authType.toString() + ": " + (this.fuelcard.authType).toString();
+      const stringValue = this.fuelcard.authType.toString() + ": " + this.fuelcard.authType.toString();
       this.fuelcardForm.controls['AuthType'].setValue(stringValue, { onlySelf: true });
 
       console.log(stringValue);
@@ -62,12 +62,12 @@ export class FuelcardeditComponent implements OnInit {
 
   updateFuelcard(): void {
     let fuelcardDataFromForm = this.fuelcardForm.value;
-    //id manueel toevoegen
+    //add id manually
     fuelcardDataFromForm.id = this.fuelcard.id;
 
     fuelcardDataFromForm.AuthType = Number(fuelcardDataFromForm.AuthType);
 
-    //fix voor wanneer je edit, en niet aan de checkbox kwam, stuurde hij NaN als waarde door
+    //fix for when editing and didnt touch the checkbox, the value was NaN
     if (isNaN(fuelcardDataFromForm.AuthType)) {
       console.log("null");
       fuelcardDataFromForm.AuthType = this.fuelcard.authType;

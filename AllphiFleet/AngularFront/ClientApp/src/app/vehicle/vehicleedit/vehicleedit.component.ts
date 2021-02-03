@@ -58,10 +58,11 @@ export class VehicleeditComponent implements OnInit {
 
     }).catch((error) => {
       console.log("promise error");
+      console.log(error);
     });
   }
 
-  updateVehicle(vehicle: IVehicle): void {
+  updateVehicle(): void {
     let vehicleDataFromForm = this.vehicleForm.value;
     //add id manually
     vehicleDataFromForm.id = this.vehicle.id;
@@ -69,6 +70,15 @@ export class VehicleeditComponent implements OnInit {
     vehicleDataFromForm.VehicleType = Number(vehicleDataFromForm.VehicleType);
     vehicleDataFromForm.FuelType = Number(vehicleDataFromForm.FuelType);
 
+    //fix for when editing and didnt touch the checkbox, the value was NaN
+    if (isNaN(vehicleDataFromForm.VehicleType)) {
+      console.log("null");
+      vehicleDataFromForm.VehicleType = this.vehicle.vehicleType;
+    }
+    if (isNaN(vehicleDataFromForm.FuelType)) {
+      console.log("null");
+      vehicleDataFromForm.FuelType = this.vehicle.fuelType;
+    }
 
     if (this.vehicleForm.valid) {
       console.log("valid.");
@@ -80,7 +90,6 @@ export class VehicleeditComponent implements OnInit {
           console.log(this.errorMessage);
         },
         complete: () => {
-          //doet hij enkel als er geen error is
           this.router.navigate(['/vehiclelist']);
         }
       });
