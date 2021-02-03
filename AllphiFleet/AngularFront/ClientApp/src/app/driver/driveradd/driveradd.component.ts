@@ -5,8 +5,10 @@ import { FormBuilder, Validators, ValidationErrors, ValidatorFn, AbstractControl
 import { IDriver } from '../../domain/IDriver';
 import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTypes';
 import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseTypes';
-import { UniqueDriverValidator } from '../unique.driver.validator';
+import { UniqueDriverSocSecNrValidator } from '../unique.driver.socsecnr.validator';
+import { UniqueDriverEmailValidator } from '../unique.driver.email.validator';
 import { UniqueFuelcardValidator } from '../../fuelcard/unique.fuelcard.validator';
+
 
 @Component({
   selector: 'app-driveradd',
@@ -26,7 +28,8 @@ export class DriveraddComponent implements OnInit {
   enumDriverLicenseTypes = Object.keys(EnumDriverLicenseTypes).filter(key => !isNaN(Number(EnumDriverLicenseTypes[key])));
 
   constructor(private formBuilder: FormBuilder, private driverService: DriverService,
-    private router: Router, private uniqueDriverValidator: UniqueDriverValidator,
+    private router: Router, private uniqueDriverSocSecNrValidator: UniqueDriverSocSecNrValidator,
+    private uniqueDriverEmailValidator: UniqueDriverEmailValidator,
     private uniqueFuelcardValidator: UniqueFuelcardValidator) { }
 
   ngOnInit() {
@@ -35,7 +38,11 @@ export class DriveraddComponent implements OnInit {
       //left column (first argument) = default value
       Name: ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
-      Email: ['', [Validators.required]],
+      Email: ['', {
+        validators: [Validators.required],
+        asyncValidators: [this.uniqueDriverEmailValidator.validate.bind(this.uniqueDriverEmailValidator)],
+        updateOn: 'blur'
+      }],
 
       //nested group: address
       Address: this.formBuilder.group({ 
@@ -49,7 +56,7 @@ export class DriveraddComponent implements OnInit {
       //set update on blur so we don't make an api call every time a character changes in the input box
       SocSecNr: ['', {
         validators: [Validators.required],
-        asyncValidators: [this.uniqueDriverValidator.validate.bind(this.uniqueDriverValidator)],
+        asyncValidators: [this.uniqueDriverSocSecNrValidator.validate.bind(this.uniqueDriverSocSecNrValidator)],
         updateOn: 'blur'
       }],
       DriverLicenseType: [null, [Validators.required]],

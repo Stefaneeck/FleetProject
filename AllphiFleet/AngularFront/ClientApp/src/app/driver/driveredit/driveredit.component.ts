@@ -6,6 +6,8 @@ import { formatDate } from '@angular/common';
 import { IDriver } from '../../domain/IDriver';
 import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTypes';
 import { EnumDriverLicenseTypes } from '../../domain/enums/EnumDriverLicenseTypes';
+import { UniqueDriverSocSecNrValidator } from '../unique.driver.socsecnr.validator';
+import { UniqueDriverEmailValidator } from '../unique.driver.email.validator';
 
 @Component({
   selector: 'app-driveredit',
@@ -24,7 +26,9 @@ export class DrivereditComponent implements OnInit {
   enumDriverLicenseTypes = Object.keys(EnumDriverLicenseTypes).filter(key => !isNaN(Number(EnumDriverLicenseTypes[key])));
 
   constructor(private formBuilder: FormBuilder, private driverService: DriverService,
-    private route: ActivatedRoute, private router: Router) { }
+    private route: ActivatedRoute, private router: Router,
+    private uniqueDriverSocSecNrValidator: UniqueDriverSocSecNrValidator,
+    private uniqueDriverEmailValidator: UniqueDriverEmailValidator) { }
 
   ngOnInit() {
 
@@ -64,7 +68,12 @@ export class DrivereditComponent implements OnInit {
       this.driverForm = this.formBuilder.group({
         Name: [this.driver.name, [Validators.required]],
         FirstName: [this.driver.firstName, [Validators.required]],
-        Email: [this.driver.email, [Validators.required]],
+        Email: [this.driver.email,
+          {
+            validators: [Validators.required],
+            asyncValidators: [this.uniqueDriverEmailValidator.validate.bind(this.uniqueDriverEmailValidator)],
+            updateOn: 'blur'
+          }],
 
         Address: this.formBuilder.group({
           Street: [this.driver.address.street, [Validators.required]],
@@ -74,7 +83,12 @@ export class DrivereditComponent implements OnInit {
         }),
 
         BirthDate: [formatDate(this.driver.birthDate, 'yyyy-MM-dd', 'en'), [Validators.required]],
-        SocSecNr: [this.driver.socSecNr, [Validators.required]],
+        SocSecNr: [this.driver.socSecNr,
+          {
+            validators: [Validators.required],
+            asyncValidators: [this.uniqueDriverSocSecNrValidator.validate.bind(this.uniqueDriverSocSecNrValidator)],
+            updateOn: 'blur'
+          }],
         DriverLicenseType: [this.driver.driverLicenseType, [Validators.required]],
 
         FuelCard: this.formBuilder.group({
@@ -103,17 +117,17 @@ export class DrivereditComponent implements OnInit {
     });
   }
 
-  updateDriver(driver: IDriver): void {
+  updateDriver(): void {
     let driverDataFromForm = this.driverForm.value;
 
-    //id manueel toevoegen
+    //add id manually
     driverDataFromForm.id = this.driver.id;
 
     //convert to number (angular was passing strings to the api)
     driverDataFromForm.FuelCard.AuthType = Number(driverDataFromForm.FuelCard.AuthType);
     driverDataFromForm.DriverLicenseType = Number(driverDataFromForm.DriverLicenseType);
 
-    //fix voor wanneer je edit, en niet aan de checkbox kwam, stuurde hij NaN als waarde door
+    //fix for: when editing and not touching the checkbox, NaN was being sent as value.
     if (isNaN(driverDataFromForm.FuelCard.AuthType)) {
       console.log("authtype NaN");
       driverDataFromForm.FuelCard.AuthType = this.driver.fuelCard.authType;

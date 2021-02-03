@@ -6,5 +6,5 @@ export interface IFuelcard {
   pincode: number;
   authType: number;
   options: string;
-
+  active: boolean;
 }

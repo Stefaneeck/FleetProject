@@ -48,6 +48,14 @@ namespace ReadApi.Controllers
             return Ok(driverDTO);
         }
 
+        //Get: api/driver/getbyemail/test@mail.com
+        [HttpGet("getbyemail/{email}")]
+        public IActionResult GetByEmail(string email)
+        {
+            var driverId = _driverService.GetDriverIdByEmail(email);
+            return Ok(driverId);
+        }
+
         //Get: api/driver/getbysocsecnr/111-222-333
         [HttpGet("getbysocsecnr/{socSecNr}")]
         public IActionResult GetBySocSecNr(string socSecNr)

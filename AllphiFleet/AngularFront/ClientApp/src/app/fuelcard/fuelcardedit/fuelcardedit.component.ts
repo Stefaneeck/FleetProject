@@ -45,7 +45,8 @@ export class FuelcardeditComponent implements OnInit {
         Pincode: [this.fuelcard.pincode, [Validators.required]],
         AuthType: [this.fuelcard.authType, [Validators.required]],
         ValidUntilDate: [formatDate(this.fuelcard.validUntilDate, 'yyyy-MM-dd', 'en'), [Validators.required]],
-        Options: [this.fuelcard.options, [Validators.required]]
+        Options: [this.fuelcard.options, [Validators.required]],
+        Active: [this.fuelcard.active, [Validators.required]]
       });
 
       const stringValue = this.fuelcard.authType.toString() + ": " + (this.fuelcard.authType).toString();
@@ -55,10 +56,11 @@ export class FuelcardeditComponent implements OnInit {
 
     }).catch((error) => {
       console.log("promise error");
+      console.log(error);
     });
   }
 
-  updateFuelcard(fuelcard: IFuelcard): void {
+  updateFuelcard(): void {
     let fuelcardDataFromForm = this.fuelcardForm.value;
     //id manueel toevoegen
     fuelcardDataFromForm.id = this.fuelcard.id;

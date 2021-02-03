@@ -9,6 +9,7 @@
         <th>Auth type</th>
         <th>Options</th>
         <th>Valid until</th>
+        <th>Active</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@
         <td>{{ getAuthTypeViewValue(fuelcard.authType) }}</td>
         <td>{{ fuelcard.options }}</td>
         <td>{{ fuelcard.validUntilDate | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <input type="checkbox" [checked]="fuelcard.active" class="notClickable">
+        </td>
       </tr>
     </tbody>
   </table>

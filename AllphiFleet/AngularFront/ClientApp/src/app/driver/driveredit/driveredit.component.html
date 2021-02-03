@@ -21,10 +21,17 @@
     <label for="inputFirstName">Email</label>
     <input type="text" class="form-control" id="inputEmail" formControlName="Email">
 
-    <span class="text-danger"
-          *ngIf="(driverForm.controls.Email.touched || submitted) && driverForm.controls.Email.errors?.required">
-      Email is required.
-    </span>
+    <div *ngIf="driverForm.get('Email').pending">Validating...</div>
+
+    <div class="alert alert-danger" *ngIf="driverForm.get('Email').invalid
+              && driverForm.get('Email').touched">
+      <div *ngIf="driverForm.get('Email').errors?.driverEmailTaken; else elseBlock">
+        Email already exists.
+      </div>
+      <ng-template #elseBlock>
+        Email is required.
+      </ng-template>
+    </div>
   </div>
 
   <!-- don't forget formGroupName for nested object-->
@@ -81,10 +88,17 @@
     <label for="inputSocSecNumber">Social security number</label>
     <input type="text" class="form-control" id="inputSocSecNumber" formControlName="SocSecNr">
 
-    <span class="text-danger"
-          *ngIf="(driverForm.controls.SocSecNr.touched || submitted) && driverForm.controls.SocSecNr.errors?.required">
-      Social security number is required.
-    </span>
+    <div *ngIf="driverForm.get('SocSecNr').pending">Validating...</div>
+
+    <div class="alert alert-danger" *ngIf="driverForm.get('SocSecNr').invalid
+              && driverForm.get('SocSecNr').touched">
+      <div *ngIf="driverForm.get('SocSecNr').errors?.driverTaken; else elseBlock">
+        Driver already exists.
+      </div>
+      <ng-template #elseBlock>
+        Social security number is required.
+      </ng-template>
+    </div>
   </div>
   <div class="form-group">
     <label for="selectDriverLicenseType">Driver license type</label>

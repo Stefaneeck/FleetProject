@@ -53,6 +53,15 @@ export class DriverService {
 
   }
 
+  getDriverByEmail(email: string): Observable<number | undefined> {
+    return this.http.get<number>(this.driverReadUrl + '/getbyemail/' + email)
+      .pipe(
+        tap(data => console.log('getDriverByEmail: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+
+  }
+
   getDriverBySocSecNr(socSecNr: string): Observable<number | undefined> {
     return this.http.get<number>(this.driverReadUrl + '/getbysocsecnr/' + socSecNr)
       .pipe(
