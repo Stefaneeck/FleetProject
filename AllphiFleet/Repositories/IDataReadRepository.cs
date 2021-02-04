@@ -7,5 +7,6 @@ namespace ReadRepositories
     {
         IQueryable<TEntity> GetAll();
         TEntity Get(long id);
+        IQueryable<MileageHistory> GetHistory(long id);
     }
 }

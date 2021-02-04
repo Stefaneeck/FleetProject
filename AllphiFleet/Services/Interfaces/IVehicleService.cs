@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DTO.MileageHistory;
 using System.Collections.Generic;
 
 namespace ReadServices.Interfaces
@@ -7,5 +8,6 @@ namespace ReadServices.Interfaces
     {
         public IEnumerable<VehicleDTO> GetVehicles();
         public VehicleDTO GetVehicle(long id);
+        public IEnumerable<MileageHistoryDTO> GetVehicleMileageHistory(long vehicleId);
     }
 }

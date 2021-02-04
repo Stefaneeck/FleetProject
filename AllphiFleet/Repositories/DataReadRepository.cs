@@ -28,5 +28,11 @@ namespace ReadRepositories
 
             return table.FirstOrDefault(e => e.Id == id);
         }
+
+        public IQueryable<MileageHistory> GetHistory(long vehicleId)
+        {
+            var mileageHistoryTable = _fleetContext.Set<MileageHistory>();
+            return mileageHistoryTable.Where(e => e.VehicleId == vehicleId);
+        }
     }
 }

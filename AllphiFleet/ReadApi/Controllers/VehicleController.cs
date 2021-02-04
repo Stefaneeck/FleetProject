@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DTO;
+using DTO.MileageHistory;
 using Microsoft.AspNetCore.Mvc;
 using ReadApi.Logging;
 using ReadServices.Interfaces;
@@ -40,6 +41,17 @@ namespace ReadApi.Controllers
                 return NotFound("Vehicle has not been found.");
             }
             return Ok(vehicleDTO);
+        }
+
+        [HttpGet("getmileagehistory/{vehicleId:int}", Name = "GetVehicleMileageHistory")]
+        public IActionResult GetMileageHistory(long vehicleId)
+        {
+            IEnumerable<MileageHistoryDTO> mileageHistoryDTOs = _vehicleService.GetVehicleMileageHistory(vehicleId);
+            if (!mileageHistoryDTOs.Any())
+            {
+                return NotFound("Vehicle has not been found.");
+            }
+            return Ok(mileageHistoryDTOs);
         }
 
     }

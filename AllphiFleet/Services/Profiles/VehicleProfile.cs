@@ -9,7 +9,7 @@ namespace ReadServices.Profiles
         public VehicleProfile()
         {
             this.CreateMap<Vehicle, VehicleDTO>();
-            this.CreateMap<Vehicle, Vehicle>().ReverseMap();
+            this.CreateMap<Vehicle, VehicleDTO>().ReverseMap();
         }
      
     }

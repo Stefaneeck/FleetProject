@@ -1,4 +1,5 @@
-<div class='card' *ngIf='vehicle'>
+<!-- only show after vehicle and mileagehistory has arrived -->
+<div class='card' *ngIf='vehicle && vehicleMileageHistory'>
   <div class='card-header'>
     {{ pageTitle }}
   </div>
@@ -23,8 +24,12 @@
           <div class='col-md-8'>{{ getFuelTypeViewValue(vehicle.fuelType) }}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Mileage:</div>
+          <div class='col-md-4'>Current mileage:</div>
           <div class='col-md-8'>{{ vehicle.mileage }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Mileage history:</div>
+          <div class='col-md-8'><span *ngFor='let item of vehicleMileageHistory'>{{ item.mileage }}<br /></span></div>
         </div>
       </div>
     </div>

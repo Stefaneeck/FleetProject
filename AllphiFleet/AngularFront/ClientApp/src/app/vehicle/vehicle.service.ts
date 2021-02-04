@@ -5,6 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { IVehicle} from '../domain/IVehicle';
 import { EnumVehicleTypes } from '../domain/enums/EnumVehicleTypes';
 import { EnumFuelTypes } from '../domain/enums/EnumFuelTypes';
+import { IMileageHistory } from '../domain/IMileageHistory';
 
 
 @Injectable({
@@ -30,6 +31,15 @@ export class VehicleService {
     return this.http.get<IVehicle>(this.vehicleReadUrl + '/' + id)
       .pipe(
         tap(data => console.log('getVehicle: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+
+  }
+
+  getVehicleMileageHistory(id: number): Observable<IMileageHistory[] | undefined> {
+    return this.http.get<IMileageHistory[]>(this.vehicleReadUrl + '/getmileagehistory/' + id)
+      .pipe(
+        tap(data => console.log('getVehicleMileageHistory: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
 
