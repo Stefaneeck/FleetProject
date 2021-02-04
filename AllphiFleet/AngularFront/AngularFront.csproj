@@ -45,6 +45,7 @@
     <None Remove="ClientApp\src\app\domain\enums\IVehicle.ts" />
     <None Remove="ClientApp\src\app\domain\IApplication.ts" />
     <None Remove="ClientApp\src\app\domain\IClaim.ts" />
+    <None Remove="ClientApp\src\app\domain\ILicensePlate.ts" />
     <None Remove="ClientApp\src\app\domain\IMileageHistory.ts" />
     <None Remove="ClientApp\src\app\driver\unique.driver.email.validator.ts" />
     <None Remove="ClientApp\src\app\driver\unique.driver.socsecnr.validator.ts" />
@@ -59,6 +60,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumFuelTypes.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumVehicleTypes.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IClaim.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\ILicensePlate.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IMileageHistory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IVehicle.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IApplication.ts" />

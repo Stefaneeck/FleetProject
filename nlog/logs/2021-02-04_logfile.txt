@@ -95,3 +95,60 @@
 2021-02-04 14:35:48.9540 INFO Retrieving 10 records.
 2021-02-04 14:35:52.3516 INFO Retrieving all vehicles.
 2021-02-04 14:35:52.3658 INFO Retrieving 10 records.
+2021-02-04 14:40:30.8305 INFO Retrieving all drivers.
+2021-02-04 14:40:31.5410 INFO Retrieving 17 records.
+2021-02-04 14:40:50.5914 INFO Retrieving all drivers.
+2021-02-04 14:40:50.6267 INFO Retrieving 17 records.
+2021-02-04 14:40:51.2307 INFO Retrieving all vehicles.
+2021-02-04 14:40:51.2975 INFO Retrieving 10 records.
+2021-02-04 14:40:52.9060 INFO Retrieving all vehicles.
+2021-02-04 14:40:52.9237 INFO Retrieving 10 records.
+2021-02-04 14:40:55.3731 INFO Retrieving all vehicles.
+2021-02-04 14:40:55.3881 INFO Retrieving 10 records.
+2021-02-04 18:15:16.1183 ERROR Something went wrong: System.InvalidOperationException: Unable to resolve service for type 'ReadServices.Interfaces.ILicensePlateService' while attempting to activate 'ReadApi.Controllers.LicensePlateController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|8_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at ReadApi.CustomExceptionMiddleware.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in C:\Users\StefanEeckhoudt\source\repos\Stefan_eeckhoudt\AllphiFleet\ReadApi\CustomExceptionMiddleware\ExceptionMiddleware.cs:line 34
+2021-02-04 18:16:03.1624 INFO Retrieving all license plates.
+2021-02-04 18:16:04.0630 INFO Retrieving 3 records.
+2021-02-04 18:16:19.1697 INFO Retrieving all license plates.
+2021-02-04 18:16:19.2014 INFO Retrieving 3 records.
+2021-02-04 18:16:28.0865 INFO Retrieving all drivers.
+2021-02-04 18:16:28.2850 INFO Retrieving 17 records.
+2021-02-04 18:25:48.8583 INFO Retrieving all drivers.
+2021-02-04 18:25:49.0753 INFO Retrieving 17 records.
+2021-02-04 18:59:02.9364 INFO Retrieving all drivers.
+2021-02-04 18:59:03.6979 INFO Retrieving 17 records.
+2021-02-04 18:59:45.2993 INFO Retrieving all drivers.
+2021-02-04 18:59:45.3276 INFO Retrieving 17 records.
+2021-02-04 19:00:04.9200 INFO Retrieving all vehicles.
+2021-02-04 19:00:05.0031 INFO Retrieving 10 records.
+2021-02-04 19:00:08.4484 INFO Retrieving all vehicles.
+2021-02-04 19:00:08.4672 INFO Retrieving 10 records.
+2021-02-04 19:03:19.8717 INFO Retrieving all vehicles.
+2021-02-04 19:03:19.8867 INFO Retrieving 10 records.
+2021-02-04 19:03:22.7728 INFO Retrieving all vehicles.
+2021-02-04 19:03:22.7898 INFO Retrieving 10 records.
+2021-02-04 19:04:19.9492 INFO Retrieving all vehicles.
+2021-02-04 19:04:19.9702 INFO Retrieving 10 records.
+2021-02-04 19:05:17.3096 INFO Retrieving all vehicles.
+2021-02-04 19:05:17.3096 INFO Retrieving 10 records.
+2021-02-04 19:05:23.5503 INFO Retrieving all vehicles.
+2021-02-04 19:05:23.5656 INFO Retrieving 10 records.
+2021-02-04 19:06:00.9028 INFO Retrieving all vehicles.
+2021-02-04 19:06:00.9214 INFO Retrieving 10 records.
+2021-02-04 19:06:08.4712 INFO Retrieving all vehicles.
+2021-02-04 19:06:08.4855 INFO Retrieving 10 records.
+2021-02-04 19:07:40.9164 INFO Retrieving all vehicles.
+2021-02-04 19:07:40.9393 INFO Retrieving 10 records.

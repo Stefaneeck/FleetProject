@@ -45,6 +45,7 @@ namespace ReadApi
             services.AddScoped<IInvoiceService, InvoiceService>();
             services.AddScoped<IFuelCardService, FuelCardService>();
             services.AddScoped<IVehicleService, VehicleService>();
+            services.AddScoped<ILicensePlateService, LicensePlateService>();
 
             //Nlog
             services.AddSingleton<ILoggerManager, LoggerManager>();

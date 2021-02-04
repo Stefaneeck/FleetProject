@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from '../vehicle.service';
 import { IVehicle } from '../../domain/IVehicle';
 import { IMileageHistory } from '../../domain/IMileageHistory';
+import { ILicensePlate } from '../../domain/ILicensePlate';
 
 @Component({
   selector: 'app-vehicledetail',
@@ -15,6 +16,7 @@ export class VehicledetailComponent implements OnInit {
   errorMessage = "";
   vehicle: IVehicle | undefined;
   vehicleMileageHistory: IMileageHistory[] | undefined;
+  vehicleLicensePlates: ILicensePlate[] | undefined;
 
   constructor(private route: ActivatedRoute, private vehicleService: VehicleService, private router: Router) { }
 
@@ -25,6 +27,7 @@ export class VehicledetailComponent implements OnInit {
     if (id) {
       this.getVehicle(id);
       this.getVehicleMileageHistory(id);
+      this.getVehicleLicensePlates(id);
     }
     this.pageTitle += `: ${id}`;
   }
@@ -40,6 +43,13 @@ export class VehicledetailComponent implements OnInit {
   getVehicleMileageHistory(id: number): void {
     this.vehicleService.getVehicleMileageHistory(id).subscribe({
       next: result => this.vehicleMileageHistory = result,
+      error: err => this.errorMessage = err
+    });
+  }
+
+  getVehicleLicensePlates(id: number): void {
+    this.vehicleService.getVehicleLicensePlates(id).subscribe({
+      next: result => this.vehicleLicensePlates = result,
       error: err => this.errorMessage = err
     });
   }

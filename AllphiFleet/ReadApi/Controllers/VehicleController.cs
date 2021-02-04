@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DTO;
+using DTO.LicensePlate;
 using DTO.MileageHistory;
 using Microsoft.AspNetCore.Mvc;
 using ReadApi.Logging;
@@ -53,6 +54,17 @@ namespace ReadApi.Controllers
                 return Ok(0);
             }
             return Ok(mileageHistoryDTOs);
+        }
+
+        [HttpGet("getvehiclelicenseplates/{vehicleId:int}", Name = "GetVehicleLicensePlates")]
+        public IActionResult GetVehicleLicensePlates(long vehicleId)
+        {
+            IEnumerable<LicensePlateDTO> licensePlateDTOs = _vehicleService.GetVehicleLicensePlates(vehicleId);
+            if(!licensePlateDTOs.Any())
+            {
+                return Ok(0);
+            }
+            return Ok(licensePlateDTOs);
         }
 
     }

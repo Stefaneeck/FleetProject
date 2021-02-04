@@ -36,5 +36,11 @@ namespace ReadRepositories
             var mileageHistoryTable = _fleetContext.Set<MileageHistory>();
             return mileageHistoryTable.Where(e => e.VehicleId == vehicleId);
         }
+
+        public IQueryable<LicensePlate> GetVehicleLicensePlates(long vehicleId)
+        {
+            var licensePlateTable = _fleetContext.Set<LicensePlate>();
+            return licensePlateTable.Where(l => l.VehicleId == vehicleId);
+        }
     }
 }

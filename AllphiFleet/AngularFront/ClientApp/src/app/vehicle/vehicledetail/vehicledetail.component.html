@@ -1,5 +1,5 @@
 <!-- only show after vehicle and mileagehistory has arrived, if no data API will return 0 -->
-<div class='card' *ngIf='vehicle && vehicleMileageHistory || vehicleMileageHistory === 0 '>
+<div class='card' *ngIf='vehicle && ((vehicleMileageHistory || vehicleMileageHistory === 0) && (vehicleLicensePlates || vehicleLicensePlates === 0))'>
   <div class='card-header'>
     {{ pageTitle }}
   </div>
@@ -31,6 +31,12 @@
           <div class='col-md-4'>Mileage history:</div>
           <div *ngIf='vehicleMileageHistory !== 0' class='col-md-8'><span *ngFor='let item of vehicleMileageHistory'>{{ item.date | date:'dd/MM/yyyy' }} {{ item.mileage }}<br /></span></div>
           <div *ngIf='vehicleMileageHistory === 0' class='col-md-8'><span>No mileage history available for this vehicle.</span></div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>License plate history:</div>
+          <!-- reverse in ngFor, we want the most actual license plates first (added slice to make a copy of the array instead of altering the original) -->
+          <div *ngIf='vehicleLicensePlates !== 0' class='col-md-8'><span *ngFor='let item of vehicleLicensePlates.slice().reverse()'>{{ item.licensePlateCharacters }}<br /></span></div>
+          <div *ngIf='vehicleLicensePlates === 0' class='col-md-8'><span>No license plate history available for this vehicle.</span></div>
         </div>
       </div>
     </div>

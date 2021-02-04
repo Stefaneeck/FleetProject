@@ -6,6 +6,7 @@ import { IVehicle} from '../domain/IVehicle';
 import { EnumVehicleTypes } from '../domain/enums/EnumVehicleTypes';
 import { EnumFuelTypes } from '../domain/enums/EnumFuelTypes';
 import { IMileageHistory } from '../domain/IMileageHistory';
+import { ILicensePlate } from '../domain/ILicensePlate';
 
 
 @Injectable({
@@ -36,10 +37,19 @@ export class VehicleService {
 
   }
 
-  getVehicleMileageHistory(id: number): Observable<IMileageHistory[] | undefined> {
-    return this.http.get<IMileageHistory[]>(this.vehicleReadUrl + '/getmileagehistory/' + id)
+  getVehicleMileageHistory(vehicleId: number): Observable<IMileageHistory[] | undefined> {
+    return this.http.get<IMileageHistory[]>(this.vehicleReadUrl + '/getmileagehistory/' + vehicleId)
       .pipe(
         tap(data => console.log('getVehicleMileageHistory: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+
+  }
+
+  getVehicleLicensePlates(id: number): Observable<ILicensePlate[] | undefined> {
+    return this.http.get<ILicensePlate[]>(this.vehicleReadUrl + '/getvehiclelicenseplates/' + id)
+      .pipe(
+        tap(data => console.log('getVehicleLicensePlates: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
 
