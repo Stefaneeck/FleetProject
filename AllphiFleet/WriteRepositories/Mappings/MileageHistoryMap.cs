@@ -20,6 +20,7 @@ namespace WriteRepositories.Mappings
             });
 
             this.Property(m => m.VehicleId);
+            this.Property(m => m.Date);
             this.Property(m => m.Mileage);
 
         }

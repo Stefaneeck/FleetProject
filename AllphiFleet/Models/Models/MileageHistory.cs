@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Models
 {
     public class MileageHistory : IIdentifiable
@@ -6,6 +8,7 @@ namespace Models
         public virtual long Id { get; set; }
         public virtual Vehicle Vehicle { get; set; }
         public virtual long VehicleId { get; set; }
+        public virtual DateTime Date { get; set; }
         public virtual int Mileage { get; set; }
     }
 }

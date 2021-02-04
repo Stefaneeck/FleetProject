@@ -47,8 +47,9 @@ namespace WriteServices.VehicleHandlers
             var mileageHistory = new MileageHistory
             {
                 Id = 0,
-                Mileage = command.UpdateVehicleDTO.Mileage,
-                VehicleId = command.UpdateVehicleDTO.Id
+                VehicleId = command.UpdateVehicleDTO.Id,
+                Date = DateTime.Now,
+                Mileage = command.UpdateVehicleDTO.Mileage,   
             };
 
             _mileageHistoryContext.BeginTransaction();

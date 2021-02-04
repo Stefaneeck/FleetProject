@@ -31,6 +31,8 @@ namespace ReadRepositories
 
         public IQueryable<MileageHistory> GetHistory(long vehicleId)
         {
+            //ok to create concrete table here?
+
             var mileageHistoryTable = _fleetContext.Set<MileageHistory>();
             return mileageHistoryTable.Where(e => e.VehicleId == vehicleId);
         }

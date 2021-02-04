@@ -477,6 +477,9 @@ namespace Repositories.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Mileage")
                         .HasColumnType("int");
 

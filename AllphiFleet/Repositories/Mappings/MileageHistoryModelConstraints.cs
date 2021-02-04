@@ -23,8 +23,12 @@ namespace ReadRepositories.Mappings
                 .IsRequired();
 
             modelBuilder.Entity<MileageHistory>()
-                .Property(m => m.Mileage)
+                .Property(m => m.Date)
                 .IsRequired();
+
+            modelBuilder.Entity<MileageHistory>()
+                .Property(m => m.Mileage)
+                .IsRequired();  
         }
     }
 }

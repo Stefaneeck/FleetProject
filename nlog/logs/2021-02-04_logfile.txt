@@ -11,3 +11,17 @@
 2021-02-04 12:58:25.3602 INFO Retrieving 10 records.
 2021-02-04 13:01:15.6616 INFO Retrieving all vehicles.
 2021-02-04 13:01:15.6833 INFO Retrieving 10 records.
+2021-02-04 13:57:34.0328 INFO Retrieving all drivers.
+2021-02-04 13:57:34.8642 INFO Retrieving 17 records.
+2021-02-04 13:57:49.5351 INFO Retrieving all drivers.
+2021-02-04 13:57:49.5562 INFO Retrieving 17 records.
+2021-02-04 13:57:51.2089 INFO Retrieving all vehicles.
+2021-02-04 13:57:51.2726 INFO Retrieving 10 records.
+2021-02-04 13:57:59.2281 INFO Retrieving all vehicles.
+2021-02-04 13:57:59.2456 INFO Retrieving 10 records.
+2021-02-04 14:01:37.2814 INFO Retrieving all drivers.
+2021-02-04 14:01:37.5000 INFO Retrieving 17 records.
+2021-02-04 14:01:46.8449 INFO Retrieving all drivers.
+2021-02-04 14:01:46.8636 INFO Retrieving 17 records.
+2021-02-04 14:01:51.0703 INFO Retrieving all vehicles.
+2021-02-04 14:01:51.1373 INFO Retrieving 10 records.
