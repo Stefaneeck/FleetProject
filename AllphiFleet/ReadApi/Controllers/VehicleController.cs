@@ -49,7 +49,8 @@ namespace ReadApi.Controllers
             IEnumerable<MileageHistoryDTO> mileageHistoryDTOs = _vehicleService.GetVehicleMileageHistory(vehicleId);
             if (!mileageHistoryDTOs.Any())
             {
-                return NotFound("Vehicle has not been found.");
+                //not returning notfound because we need to read the 0 value on angular side
+                return Ok(0);
             }
             return Ok(mileageHistoryDTOs);
         }

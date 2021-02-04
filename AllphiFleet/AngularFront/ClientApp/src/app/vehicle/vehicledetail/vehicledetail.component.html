@@ -1,5 +1,5 @@
-<!-- only show after vehicle and mileagehistory has arrived -->
-<div class='card' *ngIf='vehicle && vehicleMileageHistory'>
+<!-- only show after vehicle and mileagehistory has arrived, if no data API will return 0 -->
+<div class='card' *ngIf='vehicle && vehicleMileageHistory || vehicleMileageHistory === 0 '>
   <div class='card-header'>
     {{ pageTitle }}
   </div>
@@ -29,7 +29,8 @@
         </div>
         <div class='row'>
           <div class='col-md-4'>Mileage history:</div>
-          <div class='col-md-8'><span *ngFor='let item of vehicleMileageHistory'>{{ item.date | date:'dd/MM/yyyy' }} {{ item.mileage }}<br /></span></div>
+          <div *ngIf='vehicleMileageHistory !== 0' class='col-md-8'><span *ngFor='let item of vehicleMileageHistory'>{{ item.date | date:'dd/MM/yyyy' }} {{ item.mileage }}<br /></span></div>
+          <div *ngIf='vehicleMileageHistory === 0' class='col-md-8'><span>No mileage history available for this vehicle.</span></div>
         </div>
       </div>
     </div>
