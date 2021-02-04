@@ -13,5 +13,9 @@ namespace Models
         public virtual int Mileage { get; set; }
         public virtual ICollection<Maintenance> Maintenances { get; set; }
         public virtual ICollection<Application> Applications { get; set; }
+        
+        //not working, migration creates 2 columns
+        public virtual LicensePlate ActiveLicensePlate { get; set; }
+        public virtual long ActiveLicensePlateId { get; set; }
     }
 }
