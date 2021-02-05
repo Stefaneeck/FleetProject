@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnumAuthenticationTypes } from '../../domain/enums/EnumAuthenticationTypes';
 import { formatDate } from '@angular/common';
+import { UniqueFuelcardValidator } from '../unique.fuelcard.validator';
 
 @Component({
   selector: 'app-fuelcardedit',
@@ -20,7 +21,7 @@ export class FuelcardeditComponent implements OnInit {
   enumAuthTypes = Object.keys(EnumAuthenticationTypes).filter(key => !isNaN(Number(EnumAuthenticationTypes[key])));
 
   constructor(private formBuilder: FormBuilder, private fuelcardService: FuelcardService,
-    private route: ActivatedRoute, private router: Router) { }
+    private route: ActivatedRoute, private router: Router, private uniqueFuelcardValidator: UniqueFuelcardValidator) { }
 
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
@@ -39,9 +40,16 @@ export class FuelcardeditComponent implements OnInit {
 
       this.fuelcard = data;
 
+      this.uniqueFuelcardValidator.initialValue = this.fuelcard.cardNumber;
+
       this.fuelcardForm = this.formBuilder.group({
 
-        CardNumber: [this.fuelcard.cardNumber, [Validators.required]],
+        CardNumber: [this.fuelcard.cardNumber,
+          {
+            validators: [Validators.required],
+            asyncValidators: [this.uniqueFuelcardValidator.validate.bind(this.uniqueFuelcardValidator)],
+            updateOn: 'blur'
+          }],
         Pincode: [this.fuelcard.pincode, [Validators.required]],
         AuthType: [this.fuelcard.authType, [Validators.required]],
         ValidUntilDate: [formatDate(this.fuelcard.validUntilDate, 'yyyy-MM-dd', 'en'), [Validators.required]],

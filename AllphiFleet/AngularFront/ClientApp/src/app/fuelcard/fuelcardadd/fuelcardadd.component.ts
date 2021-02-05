@@ -16,7 +16,6 @@ export class FuelcardaddComponent implements OnInit {
 
   errorMessage = "";
   fuelcard: IFuelcard | undefined;
-  //datatype nog veranderen naar concreter type
   fuelcardForm: any;
   enumAuthTypes = Object.keys(EnumAuthenticationTypes).filter(key => !isNaN(Number(EnumAuthenticationTypes[key])));
 

@@ -65,7 +65,9 @@ export class DrivereditComponent implements OnInit {
       omdat het json object met kleine letters uit de api komt. we moeten dus hier de syntax van onze domeinklasse aanpassen aan hoe het in het json object zit, er wordt niets intern automatisch gemapt.
       */
 
+      //add extra parameter for validator (we need to be able to ignore the initial value for validation)
       this.uniqueDriverEmailValidator.initialValue = this.driver.email;
+      this.uniqueDriverSocSecNrValidator.initialValue = this.driver.socSecNr;
 
       this.driverForm = this.formBuilder.group({
         Name: [this.driver.name, [Validators.required]],

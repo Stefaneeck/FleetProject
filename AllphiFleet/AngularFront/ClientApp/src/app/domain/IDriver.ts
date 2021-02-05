@@ -8,7 +8,7 @@ export interface IDriver {
   name: string;
   firstName: number;
   birthDate: Date;
-  socSecNr: number;
+  socSecNr: string;
   driverLicenseType: number;
   active: boolean;
   address: IAddress;
