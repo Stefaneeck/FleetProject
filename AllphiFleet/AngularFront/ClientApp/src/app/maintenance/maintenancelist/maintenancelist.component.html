@@ -1,0 +1,31 @@
+<div class='table-responsive'>
+  <!-- wait until driver objects arrive, async solution -->
+  <table class='table'
+         *ngIf='maintenances && maintenances.length'>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Dealername</th>
+        <th>Invoice id</th>
+        <th>Vehicle id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor='let driver of drivers'>
+        <tr class="pointer" [routerLink]="['/mainteance', maintenance.id]">
+          <td>{{ maintenance.id }}</td>
+          <td>{{ maintenance.date }}</td>
+          <td>{{ maintenance.price }}</td>
+          <td>{{ maintenance.dealerName }}</td>
+          <td>{{ maintenance.invoiceId }}</td>
+          <td>{{ maintenance.vehicleId }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <div class="nav-item marginBottomList" [routerLinkActive]="['link-active']">
+    <a class="btn btn-primary" [routerLink]="['/maintenanceadd']">Add maintenance</a>
+  </div>
+</div>

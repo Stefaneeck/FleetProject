@@ -8,3 +8,11 @@
 2021-02-05 15:47:21.6668 INFO Retrieving 17 records.
 2021-02-05 15:57:33.4289 INFO Retrieving all maintenances.
 2021-02-05 15:57:33.4809 INFO Retrieving 1 records.
+2021-02-05 17:25:22.8940 INFO Retrieving all drivers.
+2021-02-05 17:25:23.7795 INFO Retrieving 17 records.
+2021-02-05 17:25:37.2929 INFO Retrieving all drivers.
+2021-02-05 17:25:37.3112 INFO Retrieving 17 records.
+2021-02-05 17:25:41.8149 INFO Retrieving all drivers.
+2021-02-05 17:25:41.8336 INFO Retrieving 17 records.
+2021-02-05 17:25:43.9823 INFO Retrieving all drivers.
+2021-02-05 17:25:43.9984 INFO Retrieving 17 records.

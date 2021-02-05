@@ -19,15 +19,11 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\app\auth\**" />
-    <Compile Remove="ClientApp\src\app\NewFolder\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\app\auth\**" />
-    <Content Remove="ClientApp\src\app\NewFolder\**" />
     <EmbeddedResource Remove="ClientApp\src\app\auth\**" />
-    <EmbeddedResource Remove="ClientApp\src\app\NewFolder\**" />
     <None Remove="$(SpaRoot)**" />
     <None Remove="ClientApp\src\app\auth\**" />
-    <None Remove="ClientApp\src\app\NewFolder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -46,10 +42,12 @@
     <None Remove="ClientApp\src\app\domain\IApplication.ts" />
     <None Remove="ClientApp\src\app\domain\IClaim.ts" />
     <None Remove="ClientApp\src\app\domain\ILicensePlate.ts" />
+    <None Remove="ClientApp\src\app\domain\IMaintenance.ts" />
     <None Remove="ClientApp\src\app\domain\IMileageHistory.ts" />
     <None Remove="ClientApp\src\app\driver\unique.driver.email.validator.ts" />
     <None Remove="ClientApp\src\app\driver\unique.driver.socsecnr.validator.ts" />
     <None Remove="ClientApp\src\app\fuelcard\fuelcardadd\unique.fuelcard.validator.ts" />
+    <None Remove="ClientApp\src\app\maintenance\maintenance.service.ts" />
     <None Remove="ClientApp\src\app\vehicle\vehicle.service.ts" />
   </ItemGroup>
 
@@ -61,12 +59,14 @@
     <TypeScriptCompile Include="ClientApp\src\app\domain\enums\EnumVehicleTypes.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IClaim.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\ILicensePlate.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\domain\IMaintenance.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IMileageHistory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IVehicle.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\domain\IApplication.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\driver\unique.driver.email.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\driver\unique.driver.socsecnr.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\fuelcard\unique.fuelcard.validator.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\maintenance\maintenance.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\vehicle\vehicle.service.ts" />
   </ItemGroup>
 

@@ -33,6 +33,7 @@ import { VehiclelistComponent } from './vehicle/vehiclelist/vehiclelist.componen
 import { VehicleaddComponent } from './vehicle/vehicleadd/vehicleadd.component';
 import { VehicleeditComponent } from './vehicle/vehicleedit/vehicleedit.component';
 import { VehicledetailComponent } from './vehicle/vehicledetail/vehicledetail.component';
+import { MaintenancelistComponent } from './maintenance/maintenancelist/maintenancelist.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { VehicledetailComponent } from './vehicle/vehicledetail/vehicledetail.co
     VehiclelistComponent,
     VehicleaddComponent,
     VehicleeditComponent,
-    VehicledetailComponent
+    VehicledetailComponent,
+    MaintenancelistComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
