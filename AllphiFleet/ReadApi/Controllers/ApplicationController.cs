@@ -28,6 +28,13 @@ namespace ReadApi.Controllers
 
             IEnumerable<ApplicationDTO> applicationDTOs = _applicationService.GetApplications();
 
+            if (!applicationDTOs.Any())
+            {
+                _logger.LogInfo("No application records in database.");
+
+                return NotFound("No applications have been found.");
+            }
+
             _logger.LogInfo($"Retrieving {applicationDTOs.Count()} records.");
 
             return Ok(applicationDTOs);

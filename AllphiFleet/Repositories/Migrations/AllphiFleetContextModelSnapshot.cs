@@ -530,6 +530,12 @@ namespace Repositories.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
+                    b.Property<long>("ActiveLicensePlateId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("ActiveLicensePlateId1")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("ChassisNr")
                         .HasColumnType("bigint");
 
@@ -543,6 +549,8 @@ namespace Repositories.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ActiveLicensePlateId1");
 
                     b.ToTable("Vehicle");
                 });
@@ -686,6 +694,15 @@ namespace Repositories.Migrations
                         .IsRequired();
 
                     b.Navigation("InsuranceCompany");
+                });
+
+            modelBuilder.Entity("Models.Vehicle", b =>
+                {
+                    b.HasOne("Models.LicensePlate", "ActiveLicensePlate")
+                        .WithMany()
+                        .HasForeignKey("ActiveLicensePlateId1");
+
+                    b.Navigation("ActiveLicensePlate");
                 });
 
             modelBuilder.Entity("Models.Address", b =>

@@ -31,6 +31,13 @@ namespace ReadApi.Controllers
 
             IEnumerable<DriverDTO> driverDTOs = _driverService.GetDrivers();
 
+            if (!driverDTOs.Any())
+            {
+                _logger.LogInfo("No driver records in database.");
+
+                return NotFound("No drivers have been found.");
+            }
+
             _logger.LogInfo($"Retrieving {driverDTOs.Count()} records.");
 
             return Ok(driverDTOs);

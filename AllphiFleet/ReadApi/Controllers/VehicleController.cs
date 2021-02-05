@@ -28,6 +28,13 @@ namespace ReadApi.Controllers
 
             IEnumerable<VehicleDTO> vehicleDTOs = _vehicleService.GetVehicles();
 
+            if (!vehicleDTOs.Any())
+            {
+                _logger.LogInfo("No vehicle records in database.");
+
+                return NotFound("No vehicles have been found.");
+            }
+
             _logger.LogInfo($"Retrieving {vehicleDTOs.Count()} records.");
 
             return Ok(vehicleDTOs);

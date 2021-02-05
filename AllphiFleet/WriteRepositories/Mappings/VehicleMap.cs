@@ -24,7 +24,7 @@ namespace WriteRepositories.Mappings
             this.Property(v => v.Mileage);
             this.Property(v => v.FuelType);
             this.Property(v => v.VehicleType);
-            this.Property(v => v.ActiveLicensePlateId);
+            //this.Property(v => v.ActiveLicensePlateId);
         }
 
     }

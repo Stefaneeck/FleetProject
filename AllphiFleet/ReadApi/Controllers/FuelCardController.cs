@@ -26,6 +26,13 @@ namespace ReadApi.Controllers
 
             IEnumerable<FuelCardDTO> fuelCardDTOs = _fuelCardService.GetFuelCards();
 
+            if (!fuelCardDTOs.Any())
+            {
+                _logger.LogInfo("No fuelcard records in database.");
+
+                return NotFound("No fuelcards have been found.");
+            }
+
             _logger.LogInfo($"Retrieving {fuelCardDTOs.Count()} records.");
 
             return Ok(fuelCardDTOs);

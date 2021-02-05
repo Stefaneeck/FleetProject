@@ -8,9 +8,11 @@ namespace Models
         public virtual DateTime RepairDate { get; set; }
         public virtual string DamageDescription { get; set; }
 
-        //rel verzekeringsmaatschappij
+        //rel insurancecompany
         public virtual long InsuranceCompanyId { get; set; }
         public virtual InsuranceCompany InsuranceCompany { get; set; }
+
+        //links to urls
         public virtual string Photos { get; set; }
         public virtual string Documents { get; set; }
     }

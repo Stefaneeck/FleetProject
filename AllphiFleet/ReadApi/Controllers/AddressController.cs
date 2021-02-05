@@ -26,6 +26,13 @@ namespace ReadApi.Controllers
 
             IEnumerable<AddressDTO> adresDTOs = _addressService.GetAddresses();
 
+            if (!adresDTOs.Any())
+            {
+                _logger.LogInfo("No address records in database.");
+
+                return NotFound("No addresses have been found.");
+            }
+
             _logger.LogInfo($"Retrieving {adresDTOs.Count()} records.");
 
             return Ok(adresDTOs);

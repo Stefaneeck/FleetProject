@@ -27,22 +27,29 @@ namespace ReadApi.Controllers
 
             _logger.LogInfo("Retrieving all invoices.");
 
-            IEnumerable<InvoiceDTO> factuurDTOs = _invoiceService.GetInvoices();
+            IEnumerable<InvoiceDTO> invoiceDTOs = _invoiceService.GetInvoices();
 
-            _logger.LogInfo($"retrieving {factuurDTOs.Count()} records.");
+            if (!invoiceDTOs.Any())
+            {
+                _logger.LogInfo("No invoice records in database.");
 
-            return Ok(factuurDTOs);
+                return NotFound("No invoices have been found.");
+            }
+
+            _logger.LogInfo($"retrieving {invoiceDTOs.Count()} records.");
+
+            return Ok(invoiceDTOs);
         }
 
         [HttpGet("{id}", Name = "GetInvoice")]
         public IActionResult Get(long id)
         {
-            InvoiceDTO factuurDTO = _invoiceService.GetInvoice(id);
-            if (factuurDTO == null)
+            InvoiceDTO invoiceDTO = _invoiceService.GetInvoice(id);
+            if (invoiceDTO == null)
             {
                 return NotFound("Invoice has not been found.");
             }
-            return Ok(factuurDTO);
+            return Ok(invoiceDTO);
         }
 
     }

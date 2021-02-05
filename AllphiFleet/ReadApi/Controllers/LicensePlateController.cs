@@ -26,6 +26,13 @@ namespace ReadApi.Controllers
 
             IEnumerable<LicensePlateDTO> licensePlateDTOs = _licensePlateService.GetLicensePlates();
 
+            if (!licensePlateDTOs.Any())
+            {
+                _logger.LogInfo("No license plate records in database.");
+
+                return NotFound("No license plates have been found.");
+            }
+
             _logger.LogInfo($"Retrieving {licensePlateDTOs.Count()} records.");
 
             return Ok(licensePlateDTOs);
