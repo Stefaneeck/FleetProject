@@ -36,6 +36,7 @@ import { VehicledetailComponent } from './vehicle/vehicledetail/vehicledetail.co
 import { MaintenancelistComponent } from './maintenance/maintenancelist/maintenancelist.component';
 import { MaintenanceaddComponent } from './maintenance/maintenanceadd/maintenanceadd.component';
 import { MaintenanceeditComponent } from './maintenance/maintenanceedit/maintenanceedit.component';
+import { MaintenancedetailComponent } from './maintenance/maintenancedetail/maintenancedetail.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MaintenanceeditComponent } from './maintenance/maintenanceedit/maintena
     VehicledetailComponent,
     MaintenancelistComponent,
     MaintenanceaddComponent,
-    MaintenanceeditComponent
+    MaintenanceeditComponent,
+    MaintenancedetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -106,6 +108,9 @@ import { MaintenanceeditComponent } from './maintenance/maintenanceedit/maintena
       { path: 'vehicleadd', component: VehicleaddComponent, canActivate: [AuthGuardService] },
       { path: 'vehicleedit/:id', component: VehicleeditComponent, canActivate: [AuthGuardService] },
       { path: 'maintenancelist', component: MaintenancelistComponent, canActivate: [AuthGuardService] },
+      { path: 'maintenance/:id', component: MaintenancedetailComponent, canActivate: [AuthGuardService] },
+      { path: 'maintenanceadd', component: MaintenanceaddComponent, canActivate: [AuthGuardService] },
+      { path: 'maintenanceedit/:id', component: MaintenanceeditComponent, canActivate: [AuthGuardService] },
     ]),
     OAuthModule.forRoot()
   ],

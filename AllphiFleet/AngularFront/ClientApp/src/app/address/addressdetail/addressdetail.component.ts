@@ -20,7 +20,6 @@ export class AddressdetailComponent implements OnInit {
 
     let id = +this.route.snapshot.paramMap.get('id');
 
-    //getAddress methode vanuit driver service rechtstreeks gebruiken?
     //if id is truthy
     if (id) {
       this.getAddress(id);
@@ -45,7 +44,7 @@ export class AddressdetailComponent implements OnInit {
         console.log(this.errorMessage);
       },
       complete: () => {
-        //doet hij enkel als er geen error is, hij doet altijd maar 1 van de 3 (next, error of complete).
+        //only exectures if no error has occured
         this.router.navigate(['/addresslist']);
       }
     });
@@ -55,5 +54,4 @@ export class AddressdetailComponent implements OnInit {
   onBack(): void {
     this.router.navigate(['/addresslist']);
   }
-
 }
