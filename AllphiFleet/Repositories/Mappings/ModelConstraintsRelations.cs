@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
+using System.Linq;
 
 namespace ReadRepositories.Mappings
 {
@@ -35,12 +36,14 @@ namespace ReadRepositories.Mappings
             .HasForeignKey(m => m.VehicleId)
             .IsRequired();
 
+            /*
             //rel maintentance invoice one many
             modelBuilder.Entity<Maintenance>()
             .HasOne<Invoice>(m => m.Invoice)
             .WithMany(i => i.MaintenancesOnInvoice)
             .HasForeignKey(m => m.InvoiceId)
             .IsRequired();
+            */
 
             //rel repair insurancecompany one many
             modelBuilder.Entity<Repair>()

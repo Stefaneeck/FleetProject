@@ -1,5 +1,4 @@
 <div class='table-responsive'>
-  <!-- wait until driver objects arrive, async solution -->
   <table class='table'
          *ngIf='maintenances && maintenances.length'>
     <thead>
@@ -13,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor='let driver of drivers'>
+      <ng-container *ngFor='let maintenance of maintenances'>
         <tr class="pointer" [routerLink]="['/mainteance', maintenance.id]">
           <td>{{ maintenance.id }}</td>
           <td>{{ maintenance.date }}</td>
           <td>{{ maintenance.price }}</td>
           <td>{{ maintenance.dealerName }}</td>
-          <td>{{ maintenance.invoiceId }}</td>
+          <td>{{ maintenance.invoiceDocumentPath }}</td>
           <td>{{ maintenance.vehicleId }}</td>
         </tr>
       </ng-container>

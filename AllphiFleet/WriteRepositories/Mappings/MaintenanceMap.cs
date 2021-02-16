@@ -22,10 +22,12 @@ namespace WriteRepositories.Mappings
             this.Property(m => m.MaintenanceDate);
             this.Property(m => m.Price);
             this.Property(m => m.DealerName);
+            this.Property(m => m.InvoiceDocumentPath);
 
-            //mapped so that you need to select an existing invoice and existing car.
+            //mapped so that you need to select an existing car.
             this.Property(m => m.VehicleId);
-            this.Property(m => m.InvoiceId);
+            
+            //this.Property(m => m.InvoiceId);
         }
 
     }

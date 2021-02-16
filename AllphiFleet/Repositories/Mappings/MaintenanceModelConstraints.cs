@@ -30,6 +30,10 @@ namespace ReadRepositories.Mappings
                 .Property(m => m.DealerName)
                 .IsRequired();
 
+            modelBuilder.Entity<Maintenance>()
+                .Property(m => m.InvoiceDocumentPath)
+                .IsRequired();
+
             #region navpropertiescomment
             //navigation properties cant be configured via fluent api property
             //is required placed at relation hasone withmany hasforeignkey isrequired

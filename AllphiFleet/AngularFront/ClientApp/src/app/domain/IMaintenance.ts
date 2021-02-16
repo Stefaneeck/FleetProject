@@ -4,7 +4,8 @@ export interface IMaintenance {
   maintenanceDate: Date;
   price: number;
   dealerName: string;
-  invoiceId: number;
+  //invoiceId: number;
+  invoiceDocumentPath: string;
   vehicleId: number;
 
 }

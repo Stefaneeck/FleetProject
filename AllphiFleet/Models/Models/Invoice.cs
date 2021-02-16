@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿/*
+using System.Collections.Generic;
 
 namespace Models
 {
@@ -11,3 +12,4 @@ namespace Models
         public string InvoiceDocumentPath { get; set; }
     }
 }
+*/

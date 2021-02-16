@@ -42,7 +42,7 @@ namespace ReadApi
             services.AddScoped<IDriverService, DriverService>();
             services.AddScoped<IApplicationService, ApplicationService>();
             services.AddScoped<IAddressService, AddressService>();
-            services.AddScoped<IInvoiceService, InvoiceService>();
+            //services.AddScoped<IInvoiceService, InvoiceService>();
             services.AddScoped<IFuelCardService, FuelCardService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<ILicensePlateService, LicensePlateService>();

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿/*
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace ReadRepositories.Mappings
@@ -8,15 +9,24 @@ namespace ReadRepositories.Mappings
         public static void OnModelCreatingInvoice(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Invoice>()
-               .HasKey(f => f.Id);
+               .HasKey(i => i.Id);
 
             modelBuilder.Entity<Invoice>()
-                .Property(f => f.Id)
+                .Property(i => i.Id)
                 .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Invoice>()
-                .Property(f => f.ClientName)
+                .Property(i => i.ClientName)
+                .IsRequired();
+
+            modelBuilder.Entity<Invoice>()
+                .Property(i => i.ClientName)
+                .IsRequired();
+
+            modelBuilder.Entity<Invoice>()
+                .Property(i => i.InvoiceDocumentPath)
                 .IsRequired();
         }
     }
 }
+*/

@@ -23,7 +23,7 @@ namespace ReadRepositories
 
             modelBuilder.OnModelCreatingDriver();
             modelBuilder.OnModelCreatingAddress();
-            modelBuilder.OnModelCreatingInvoice();
+            //modelBuilder.OnModelCreatingInvoice();
             modelBuilder.OnModelCreatingRepair();
             modelBuilder.OnModelCreatingLicensePlate();
             modelBuilder.OnModelCreatingMaintenance();

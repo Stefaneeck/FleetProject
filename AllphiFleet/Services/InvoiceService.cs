@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿/*
+using AutoMapper;
 using DTO;
 using ReadRepositories;
 using Models;
@@ -30,3 +31,4 @@ namespace ReadServices
         }
     }
 }
+*/

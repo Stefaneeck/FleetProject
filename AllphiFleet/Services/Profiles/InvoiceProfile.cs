@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿/*
+using DTO;
 using Models;
 using AutoMapper;
 
@@ -13,3 +14,4 @@ namespace ReadServices.Profiles
         }
     }
 }
+*/
