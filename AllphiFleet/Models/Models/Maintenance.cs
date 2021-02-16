@@ -8,7 +8,7 @@ namespace Models
         public virtual DateTime MaintenanceDate { get; set; }
         public virtual decimal Price { get; set; }
         public virtual string DealerName { get; set; }
-        public string InvoiceDocumentPath { get; set; }
+        public virtual string InvoiceDocumentPath { get; set; }
 
         //rel invoice
         /*
