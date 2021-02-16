@@ -35,6 +35,7 @@ import { VehicleeditComponent } from './vehicle/vehicleedit/vehicleedit.componen
 import { VehicledetailComponent } from './vehicle/vehicledetail/vehicledetail.component';
 import { MaintenancelistComponent } from './maintenance/maintenancelist/maintenancelist.component';
 import { MaintenanceaddComponent } from './maintenance/maintenanceadd/maintenanceadd.component';
+import { MaintenanceeditComponent } from './maintenance/maintenanceedit/maintenanceedit.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { MaintenanceaddComponent } from './maintenance/maintenanceadd/maintenanc
     VehicleeditComponent,
     VehicledetailComponent,
     MaintenancelistComponent,
-    MaintenanceaddComponent
+    MaintenanceaddComponent,
+    MaintenanceeditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

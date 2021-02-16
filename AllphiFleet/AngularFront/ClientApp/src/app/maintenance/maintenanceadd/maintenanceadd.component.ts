@@ -30,7 +30,7 @@ export class MaintenanceaddComponent implements OnInit {
     });
   }
 
-  addMaintenance(maintenance: IMaintenance): void {
+  addMaintenance(): void {
     if (this.maintenanceForm.valid) {
       console.log("valid.");
 

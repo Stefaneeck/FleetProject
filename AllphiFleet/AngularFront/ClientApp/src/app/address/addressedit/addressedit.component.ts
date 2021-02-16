@@ -46,6 +46,7 @@ export class AddresseditComponent implements OnInit {
 
     }).catch((error) => {
       console.log("promise error");
+      console.log(error);
     });
   }
 
