@@ -401,28 +401,15 @@ namespace Repositories.Migrations
                     b.ToTable("InsuranceCompany");
                 });
 
-            modelBuilder.Entity("Models.Invoice", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("ClientName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Invoice");
-                });
-
             modelBuilder.Entity("Models.LicensePlate", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LicensePlateCharacters")
                         .IsRequired()
@@ -449,8 +436,9 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("InvoiceId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("InvoiceDocumentPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("MaintenanceDate")
                         .HasColumnType("datetime2");
@@ -462,8 +450,6 @@ namespace Repositories.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("InvoiceId");
 
                     b.HasIndex("VehicleId");
 
@@ -649,19 +635,11 @@ namespace Repositories.Migrations
 
             modelBuilder.Entity("Models.Maintenance", b =>
                 {
-                    b.HasOne("Models.Invoice", "Invoice")
-                        .WithMany("MaintenancesOnInvoice")
-                        .HasForeignKey("InvoiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Models.Vehicle", "Vehicle")
                         .WithMany("Maintenances")
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Invoice");
 
                     b.Navigation("Vehicle");
                 });
@@ -706,11 +684,6 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Models.InsuranceCompany", b =>
                 {
                     b.Navigation("Repairs");
-                });
-
-            modelBuilder.Entity("Models.Invoice", b =>
-                {
-                    b.Navigation("MaintenancesOnInvoice");
                 });
 
             modelBuilder.Entity("Models.Vehicle", b =>

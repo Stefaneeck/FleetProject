@@ -30,9 +30,11 @@ namespace ReadRepositories.Mappings
                .Property(v => v.ChassisNr)
                .IsRequired();
 
+            /*
             modelBuilder.Entity<Vehicle>()
                 .Property(v => v.ActiveLicensePlateId)
                 .IsRequired();
+            */
         }
     }
 }

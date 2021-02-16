@@ -17,6 +17,10 @@ namespace ReadRepositories.Mappings
             modelBuilder.Entity<LicensePlate>()
                 .Property(l => l.LicensePlateCharacters)
                 .IsRequired();
+
+            modelBuilder.Entity<LicensePlate>()
+                .Property(l => l.Active)
+                .IsRequired();
         }
     }
 }
