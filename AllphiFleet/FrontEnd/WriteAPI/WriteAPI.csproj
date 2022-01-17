@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataLayer\WriteRepositories\WriteRepositories.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\Commands\Commands.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\DTO\DTO.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\ReadServices\ReadServices.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\Validation\Validation.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\WriteServices\WriteServices.csproj" />
+  </ItemGroup>
+
+
+</Project>

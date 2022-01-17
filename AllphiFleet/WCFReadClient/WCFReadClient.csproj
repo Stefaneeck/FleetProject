@@ -142,7 +142,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
+    <ProjectReference Include="..\DataLayer\Models\Models.csproj">
       <Project>{60207134-51E1-4399-BED1-A1ABF5344FB8}</Project>
       <Name>Models</Name>
     </ProjectReference>

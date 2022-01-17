@@ -1,0 +1,62 @@
+<div class='card' *ngIf='application'>
+  <div class='card-header'>
+    {{ pageTitle + ': ' + getApplicationTypeViewValue(application.applicationType) }}
+  </div>
+
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class='row'>
+          <div class='col-md-4'>Id:</div>
+          <div class='col-md-8'>{{ application.id }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Type:</div>
+          <div class='col-md-8'>{{ getApplicationTypeViewValue(application.applicationType) }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Date:</div>
+          <div class='col-md-8'>{{ application.applicationDate | date:'dd/MM/yyyy' }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Possible dates:</div>
+          <div class='col-md-8'>{{ (application.possibleDate1 | date:'dd/MM/yyyy') + ', ' + (application.possibleDate2 | date:'dd/MM/yyyy') }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Status:</div>
+          <div class='col-md-8'>{{ getApplicationStatusViewValue(application.applicationStatus) }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Driver:</div>
+          <div class='col-md-8'>{{ application.driver.name + ' ' + application.driver.firstName }}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Vehicle chassisnr:</div>
+          <div class='col-md-8'>{{ application.vehicle.chassisNr }}</div>
+        </div>
+        <!--
+  <div class='row'>
+    <div class='col-md-4'>Approved:</div>
+    <div class='col-md-8'><input type="checkbox" [checked]="application.approved" class="notClickable"></div>
+  </div>-->
+      </div>
+    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary marginButton'
+            [routerLink]="['/applicationedit', application.id]">
+      <i class='fa fa-chevron-left'></i> Edit
+    </button>
+    <button class='btn btn-outline-secondary marginButton'
+            (click)='deleteApplication(application.id)'
+            style='width: 80px'>
+      <i class='fa fa-chevron-left'></i> Delete
+    </button>
+    <button class='btn btn-outline-secondary marginButton'
+            (click)='onBack()'
+            style='width:80px'>
+      <i class='fa fa-chevron-left'></i> Back
+    </button>
+  </div>
+</div>

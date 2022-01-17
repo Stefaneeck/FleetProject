@@ -81,7 +81,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
+    <ProjectReference Include="..\DataLayer\Models\Models.csproj">
       <Project>{60207134-51e1-4399-bed1-a1abf5344fb8}</Project>
       <Name>Models</Name>
     </ProjectReference>

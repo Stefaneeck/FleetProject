@@ -1,0 +1,11 @@
+.pointer {
+  cursor: pointer;
+}
+
+.notClickable {
+  pointer-events: none
+}
+
+.marginBottom {
+  margin-bottom: 25px;
+}

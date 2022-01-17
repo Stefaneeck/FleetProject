@@ -1,0 +1,23 @@
+.marginLeft {
+  margin-left: 10px;
+}
+
+.marginBottom {
+  margin-bottom: 50px;
+}
+
+.marginBottomList {
+  margin-bottom: 25px;
+}
+
+.marginButton {
+  margin: 0 5px 0 5px;
+}
+
+.notClickable {
+  pointer-events: none
+}
+
+.pointer {
+  cursor: pointer;
+}

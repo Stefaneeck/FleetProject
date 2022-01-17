@@ -1,0 +1,32 @@
+<div class='table-responsive'>
+  <table class='table'
+         *ngIf='fuelcards && fuelcards.length'>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Card number</th>
+        <th>Pincode</th>
+        <th>Auth type</th>
+        <th>Options</th>
+        <th>Valid until</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let fuelcard of fuelcards' [routerLink]="['/fuelcard', fuelcard.id]" class="pointer">
+        <td>{{ fuelcard.id }}</td>
+        <td>{{ fuelcard.cardNumber }}</td>
+        <td>{{ fuelcard.pincode }}</td>
+        <td>{{ getAuthTypeViewValue(fuelcard.authType) }}</td>
+        <td>{{ fuelcard.options }}</td>
+        <td>{{ fuelcard.validUntilDate | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <input type="checkbox" [checked]="fuelcard.active" class="notClickable">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="nav-item marginBottomList" [routerLinkActive]="['link-active']">
+    <a class="btn btn-primary" [routerLink]="['/fuelcardadd']">Add fuelcard</a>
+  </div>
+</div>

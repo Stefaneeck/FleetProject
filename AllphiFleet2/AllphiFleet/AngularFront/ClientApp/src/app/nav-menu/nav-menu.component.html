@@ -1,0 +1,62 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">Allphi Fleet Management</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/driverlist']">Drivers</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/addresslist']">Addresses</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/fuelcardlist']">Fuelcards</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/applicationlist']">Applications</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/vehiclelist']">Vehicles</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a *ngIf="isUserAuthenticated" class="nav-link text-dark" [routerLink]="['/maintenancelist']">Maintenances</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <!--<a class="nav-link text-dark"  [routerLink]="['/login']">Login</a>-->
+            <section>
+              <button *ngIf="!isUserAuthenticated" class="btn btn-link" style="color:gray" (click)="login()">Login</button>
+              <button *ngIf="isUserAuthenticated" class="btn btn-link" style="color:gray" (click)="logout()">Logout</button>
+            </section>
+          </li>
+          <li class="nav-item">
+            <!-- To add the classes only when the URL matches the link exactly, add the option exact: true -->
+            <a *ngIf="isUserAdmin" class="nav-link" [routerLink]="['/privacy']" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact: true}"> Privacy </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

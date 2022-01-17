@@ -1,0 +1,94 @@
+<!-- added ngif drivers to only show form after driver data arrives -->
+<form [formGroup]="applicationForm" class="marginBottom" (ngSubmit)="addApplication(applicationForm.value)" *ngIf='drivers && drivers.length && claims'>
+  <div class="form-group">
+    <label for="inputApplicationDate">Application date</label>
+    <input type="date" class="form-control" id="inputApplicationDate" formControlName="ApplicationDate">
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.ApplicationDate.touched || submitted) && applicationForm.controls.ApplicationDate.errors?.required">
+      Application date is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="selectApplicationType">Application type</label>
+    <select id="selectApplicationType" class="form-control" formControlName="ApplicationType">
+      <option *ngFor="let type of enumApplicationTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+    </select>
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.ApplicationType.touched || submitted) && applicationForm.controls.ApplicationType.errors?.required">
+      Application type is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputPossibleDate1">Possible date 1</label>
+    <input type="date" class="form-control" id="inputPossibleDate1" formControlName="PossibleDate1">
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.PossibleDate1.touched || submitted) && applicationForm.controls.PossibleDate1.errors?.required">
+      Possible date 1 is required.
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPossibleDate2">Possible date 2</label>
+    <input type="date" class="form-control" id="inputPossibleDate2" formControlName="PossibleDate2">
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.PossibleDate2.touched || submitted) && applicationForm.controls.PossibleDate2.errors?.required">
+      Possible date 1 is required.
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="selectApplicationStatus">Application status</label>
+    <select id="selectApplicationStatus" class="form-control" formControlName="ApplicationStatus">
+      <option *ngFor="let type of enumApplicationStatuses | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+    </select>
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.ApplicationStatus.touched || submitted) && applicationForm.controls.ApplicationStatus.errors?.required">
+      Application status is required.
+    </span>
+  </div>
+
+  <!-- only if admin -->
+  <div class="form-group" *ngIf="isUserAdmin">
+    <label for="selectDriverId">Driver</label>
+    <select id="selectDriverId" class="form-control" formControlName="DriverId">
+      <option *ngFor="let driver of drivers" [ngValue]="driver.id">{{ driver.name + " " + driver.firstName }}</option>
+    </select>
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.DriverId.touched || submitted) && applicationForm.controls.DriverId.errors?.required">
+      Driver is required.
+    </span>
+  </div>
+
+  <!-- only if not admin-->
+  <div class="form-group" *ngIf="!isUserAdmin">
+    <label for="inputDriverEmail">Driver email</label>
+    <input type="text" class="form-control" id="inputDriverEmail" formControlName="DriverEmail">
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.DriverEmail.touched || submitted) && applicationForm.controls.DriverEmail.errors?.required">
+      Driver email is required.
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="selectVehicleId">Vehicle</label>
+    <select id="selectVehicleId" class="form-control" formControlName="VehicleId">
+      <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.id">{{ vehicle.chassisNr }}</option>
+    </select>
+
+    <span class="text-danger"
+          *ngIf="(applicationForm.controls.VehicleId.touched || submitted) && applicationForm.controls.VehicleId.errors?.required">
+      Vehicle is required.
+    </span>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button class='btn btn-primary marginLeft' (click)='onBack()'>Back</button>
+</form>
+

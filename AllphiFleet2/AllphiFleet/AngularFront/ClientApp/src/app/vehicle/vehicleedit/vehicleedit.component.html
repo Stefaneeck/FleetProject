@@ -1,0 +1,45 @@
+<form [formGroup]="vehicleForm" class="marginBottom" *ngIf="vehicle">
+  <div class="form-group">
+    <label for="inputChassisNr">Chassis nr</label>
+    <input type="number" class="form-control" id="inputChassisNr" formControlName="ChassisNr">
+
+    <span class="text-danger"
+          *ngIf="(vehicleForm.controls.ChassisNr.touched || submitted) && vehicleForm.controls.ChassisNr.errors?.required">
+      Chassis nr is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="selectFuelType">Fuel type</label>
+    <select id="selectFuelType" class="form-control" formControlName="FuelType">
+      <option *ngFor="let type of enumFuelTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+    </select>
+
+    <span class="text-danger"
+          *ngIf="(vehicleForm.controls.FuelType.touched || submitted) && vehicleForm.controls.FuelType.errors?.required">
+      Fuel type is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="selectVehicleType">Vehicle type</label>
+    <select id="selectVehicleType" class="form-control" formControlName="VehicleType">
+      <option *ngFor="let type of enumVehicleTypes | keyvalue" [ngValue]="type.key">{{ type.value }}</option>
+    </select>
+
+    <span class="text-danger"
+          *ngIf="(vehicleForm.controls.VehicleType.touched || submitted) && vehicleForm.controls.VehicleType.errors?.required">
+      Vehicle type is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputMileage">Mileage</label>
+    <input type="number" class="form-control" id="inputMileage" formControlName="Mileage">
+
+    <span class="text-danger"
+          *ngIf="(vehicleForm.controls.Mileage.touched || submitted) && vehicleForm.controls.Mileage.errors?.required">
+      Mileage is required.
+    </span>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="updateVehicle(vehicleForm.value)">Submit</button>
+  <button class='btn btn-primary marginLeft' (click)='onBack()'>Back</button>
+</form>

@@ -1,0 +1,41 @@
+<form class="marginBottom" [formGroup]="addressForm" *ngIf='address'>
+  <div class="form-group">
+    <label for="inputStreet">Street</label>
+    <input type="text" class="form-control" id="inputStraat" formControlName="Street">
+
+    <span class="text-danger"
+          *ngIf="(addressForm.controls.Street.touched || submitted) && addressForm.controls.Street.errors?.required">
+      Street is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputNumber">Number</label>
+    <input type="number" class="form-control" id="inputNumber" formControlName="Number">
+
+    <span class="text-danger"
+          *ngIf="(addressForm.controls.Number.touched || submitted) && addressForm.controls.Number.errors?.required">
+      House number is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputZipcode">Zipcode</label>
+    <input type="number" class="form-control" id="inputZipcode" formControlName="Zipcode">
+
+    <span class="text-danger"
+          *ngIf="(addressForm.controls.Zipcode.touched || submitted) && addressForm.controls.Zipcode.errors?.required">
+      Zipcode is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="inputCity">City</label>
+    <input type="text" class="form-control" id="inputCity" formControlName="City">
+  </div>
+
+  <span class="text-danger"
+        *ngIf="(addressForm.controls.City.touched || submitted) && addressForm.controls.City.errors?.required">
+    City is required.
+  </span>
+
+  <button type="submit" class="btn btn-primary" (click)="updateAddress(addressForm.value)">Submit</button>
+  <button class='btn btn-primary marginLeft' (click)='onBack()'>Back</button>
+</form>
