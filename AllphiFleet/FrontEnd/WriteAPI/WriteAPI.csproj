@@ -12,12 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands\Commands.csproj" />
-    <ProjectReference Include="..\DTO\DTO.csproj" />
-    <ProjectReference Include="..\Services\ReadServices.csproj" />
-    <ProjectReference Include="..\Validation\Validation.csproj" />
-    <ProjectReference Include="..\WriteRepositories\WriteRepositories.csproj" />
-    <ProjectReference Include="..\WriteServices\WriteServices.csproj" />
+    <ProjectReference Include="..\..\DataLayer\WriteRepositories\WriteRepositories.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\Commands\Commands.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\DTO\DTO.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\ReadServices\ReadServices.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\Validation\Validation.csproj" />
+    <ProjectReference Include="..\..\ServiceLayer\WriteServices\WriteServices.csproj" />
   </ItemGroup>
 
 

@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DataLayer\WriteRepositories\WriteRepositories.csproj" />
     <ProjectReference Include="..\Commands\Commands.csproj" />
-    <ProjectReference Include="..\Services\ReadServices.csproj" />
-    <ProjectReference Include="..\WriteRepositories\WriteRepositories.csproj" />
+    <ProjectReference Include="..\ReadServices\ReadServices.csproj" />
   </ItemGroup>
 
 </Project>
