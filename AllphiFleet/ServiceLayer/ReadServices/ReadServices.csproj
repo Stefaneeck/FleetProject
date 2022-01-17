@@ -10,9 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DataLayer\Models\Models.csproj" />
-    <ProjectReference Include="..\..\DataLayer\ReadRepositories\ReadRepositories.csproj" />
     <ProjectReference Include="..\DTO\DTO.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Repositories\ReadRepositories.csproj" />
   </ItemGroup>
 
 </Project>

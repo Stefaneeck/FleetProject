@@ -9,10 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DataLayer\WriteRepositories\WriteRepositories.csproj" />
-    <ProjectReference Include="..\..\MailingService\MailingService.csproj" />
     <ProjectReference Include="..\Commands\Commands.csproj" />
-    <ProjectReference Include="..\ReadServices\ReadServices.csproj" />
+    <ProjectReference Include="..\MailingService\MailingService.csproj" />
+    <ProjectReference Include="..\Services\ReadServices.csproj" />
+    <ProjectReference Include="..\WriteRepositories\WriteRepositories.csproj" />
   </ItemGroup>
 
 </Project>
